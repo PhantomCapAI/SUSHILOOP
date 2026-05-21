@@ -25,3 +25,12 @@
 }
 ```
 ---
+
+## [2026-05-21T12:57:52.448862] Cycle 4: CycleResult.TEST_FAILED
+```json
+{
+  "proposal": "Overreliance Detector",
+  "skill": "overreliance_detector"
+}
+```
+---

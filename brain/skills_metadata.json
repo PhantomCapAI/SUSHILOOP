@@ -15,5 +15,24 @@
     "diversity": 1.0,
     "failure_modes": [],
     "timestamp": "2026-05-21T12:45:28.725078"
+  },
+  "overreliance_detector": {
+    "name": "overreliance_detector",
+    "title": "Overreliance Detector",
+    "code_hash": "9ae8c3ce876ece48",
+    "summary": "import re\nimport json\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    weight: float\n    detect: callable\n\ndef keyword_detection(input_text: str) -> float:\n    \"\"\"Detects overreliance based on keyword presence\"\"\"\n    keywords = [\"AI\", \"generated\", \"response\"]\n    score = 0.0\n    for keyword in keywords:\n        if re.search(r'\\b' + keyword + r'\\b', input_text, re.IGNORECASE):\n            score += 1.0\n    return score / len(keywords)\n\ndef sentence_similarity_detection(input_text: str) -> float:\n    \"\"\"Detects overrelian",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "total": 40
+    },
+    "diversity": 0.768,
+    "failure_modes": [
+      ""
+    ],
+    "timestamp": "2026-05-21T12:57:52.448096"
   }
 }
