@@ -1,0 +1,1 @@
+﻿# SUSHI LOOP MemoryInitialized
