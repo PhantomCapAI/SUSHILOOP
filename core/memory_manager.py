@@ -1,4 +1,4 @@
-﻿"""Memory and state management for SUSHI LOOP"""
+"""Memory and state management for SUSHI LOOP"""
 import structlog
 import json
 from pathlib import Path
@@ -27,7 +27,7 @@ class MemoryManager:
 
     def load_state(self) -> LoopState:
         try:
-            data = json.loads(self.state_file.read_text())
+            data = json.loads(self.state_file.read_text(encoding='utf-8-sig'))
             return LoopState(**data)
         except Exception as e:
             logger.warning(f"Failed to load state: {e}")
@@ -65,7 +65,7 @@ class MemoryManager:
         })
 
     def register_skill(self, skill_name: str, metadata: dict):
-        registry = json.loads(self.skills_registry.read_text())
+        registry = json.loads(self.skills_registry.read_text(encoding='utf-8-sig'))
         registry[skill_name] = {**metadata, "created_at": datetime.now().isoformat()}
         self.skills_registry.write_text(json.dumps(registry, indent=2))
         logger.info(f"Skill registered: {skill_name}")
