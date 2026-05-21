@@ -1,4 +1,4 @@
-﻿name: SUSHI LOOP Evolution
+name: SUSHI LOOP Evolution
 
 on:
   schedule:
@@ -15,28 +15,33 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      
+
       - name: Install dependencies
         run: pip install -r requirements.txt
-      
+
       - name: Configure git
         run: |
           git config user.name "SUSHI LOOP Bot"
           git config user.email "sushi@phantomcap.ai"
-      
+
       - name: Run cycle
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-        run: python run_cycle.py || echo "Cycle completed"
-      
-      - name: Commit changes
+        run: python run_cycle.py
+        continue-on-error: true
+
+      - name: Commit and push changes
         run: |
-          git add skills/ tests/ brain/ docs/ || true
-          if ! git diff --staged --quiet; then
+          git add skills/ tests/ brain/ docs/ 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
             git commit -m "🍣 SUSHI LOOP Auto Evolution"
+            git pull --rebase origin main || true
             git push origin main
           fi
