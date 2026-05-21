@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: sushi-loop-evolution
+  cancel-in-progress: false
+
 jobs:
   evolve:
     runs-on: ubuntu-latest
@@ -40,8 +44,15 @@ jobs:
           git add skills/ tests/ brain/ docs/ 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "🍣 SUSHI LOOP Auto Evolution"
-            git pull --rebase origin main || true
-            git push origin main
+            exit 0
           fi
+          git commit -m "🍣 SUSHI LOOP Auto Evolution"
+          # Pull with strategy: ours-wins for brain files (they're runner-generated)
+          git fetch origin main
+          git merge -X ours origin/main --no-edit || {
+            echo "Merge failed, resetting brain files and retrying"
+            git checkout --ours brain/
+            git add brain/
+            git commit -m "Resolve brain/ conflicts (keep runner state)" || true
+          }
+          git push origin main
