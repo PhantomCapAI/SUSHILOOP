@@ -1,4 +1,4 @@
-﻿cd C:\Users\White\Desktop\sushiloop-clean
+cd C:\Users\White\Desktop\sushiloop-clean
 
 # Create the fixed evolve.py
 @'
