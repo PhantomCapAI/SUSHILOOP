@@ -1,14 +1,13 @@
 """Main SUSHI LOOP evolution engine"""
 import structlog
 import traceback
-from typing import Optional
 from core.memory_manager import MemoryManager
 from core.validator import CognitiveFrictionValidator
 from core.test_runner import TestRunner
 from core.proposal_engine import ProposalEngine
 from core.skill_generator import SkillGenerator
 from core.git_manager import GitManager
-from core.schemas import CycleResult, CycleHistory, Proposal
+from core.schemas import CycleResult, CycleHistory
 
 logger = structlog.get_logger(__name__)
 
@@ -20,9 +19,6 @@ class SushiLoop:
         self.proposal_engine = ProposalEngine(self.memory)
         self.skill_generator = SkillGenerator()
         self.test_runner = TestRunner()
-        # For GitHub Actions auto-tweet integration
-        self.last_successful_proposal: Optional[Proposal] = None
-        self.last_skill_name: Optional[str] = None
 
     def run_cycle(self) -> CycleResult:
         state = self.memory.load_state()
@@ -61,8 +57,6 @@ class SushiLoop:
                     "category": proposal.category,
                     "cycle": cycle
                 })
-                self.last_successful_proposal = proposal
-                self.last_skill_name = skill_name
                 self.git.commit_improvement(proposal, skill_name)
                 self.git.merge_and_push(branch)
                 history.result = CycleResult.SUCCESS
