@@ -1,4 +1,8 @@
-﻿"""Main SUSHI LOOP evolution engine"""
+﻿cd C:\Users\White\Desktop\sushiloop-clean
+
+# Create the fixed evolve.py
+@'
+"""Main SUSHI LOOP evolution engine"""
 import structlog
 import traceback
 from core.memory_manager import MemoryManager
@@ -25,11 +29,9 @@ class SushiLoop:
         cycle = state.cycle_count + 1
         logger.info(f'🍣 SUSHI LOOP Cycle {cycle} started')
         
-        history = CycleHistory(cycle_number=cycle, proposal=None, result=CycleResult.ERROR)
-        
         try:
             proposal = self.proposal_engine.generate_proposal()
-            history.proposal = proposal
+            history = CycleHistory(cycle_number=cycle, proposal=proposal, result=CycleResult.ERROR)
             logger.info(f"Proposal: {proposal.title}")
             
             validation = self.validator.validate(proposal)
@@ -73,10 +75,7 @@ class SushiLoop:
                 
         except Exception as e:
             logger.error(f"Error: {e}")
-            if history.proposal:
-                history.result = CycleResult.ERROR
-                history.error_message = str(e)[:500]
-                self.memory.record_cycle(history)
+            logger.error(traceback.format_exc())
             return CycleResult.ERROR
 
     def get_status(self) -> dict:
@@ -87,3 +86,8 @@ class SushiLoop:
             "total_skills": state.total_skills,
             "performance": perf
         }
+'@ | Out-File -FilePath core\evolve.py -Encoding utf8
+
+git add core\evolve.py
+git commit -m "🐛 Fix proposal None bug"
+git push origin main
