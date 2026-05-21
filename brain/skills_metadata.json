@@ -1,1 +1,19 @@
-{}
+{
+  "s": {
+    "name": "s",
+    "title": "False Urgency Framing Catcher",
+    "code_hash": "4f9bbe7198136544",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    \"\"\"Data class to hold detection strategy details.\"\"\"\n    name: str\n    pattern: str\n    weight: float\n\ndef s(input_text: str) -> Dict:\n    \"\"\"\n    False Urgency Framing Catcher.\n\n    Detects manufactured time pressure pushing users to skip verification.\n    This function uses multiple detection strategies to identify artificial scarcity and time-pressure language.\n    It returns a dictionary with the result, including a confidence score and a reason for the detection.\n\n    M",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "total": 50
+    },
+    "diversity": 1.0,
+    "failure_modes": [],
+    "timestamp": "2026-05-21T12:45:28.725078"
+  }
+}
