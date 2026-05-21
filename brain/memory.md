@@ -1,3 +1,3 @@
-﻿# SUSHI LOOP Memory
-Initialized: System ready
+# SUSHI LOOP Memory
+Initialized
 ---
