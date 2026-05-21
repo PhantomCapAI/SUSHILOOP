@@ -1,7 +1,3 @@
-cd C:\Users\White\Desktop\sushiloop-clean
-
-# Create the fixed evolve.py
-@'
 """Main SUSHI LOOP evolution engine"""
 import structlog
 import traceback
@@ -86,8 +82,3 @@ class SushiLoop:
             "total_skills": state.total_skills,
             "performance": perf
         }
-'@ | Out-File -FilePath core\evolve.py -Encoding utf8
-
-git add core\evolve.py
-git commit -m "🐛 Fix proposal None bug"
-git push origin main
