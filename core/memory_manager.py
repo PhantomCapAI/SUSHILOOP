@@ -37,7 +37,7 @@ class MemoryManager:
             return LoopState()
 
     def save_state(self, state: LoopState):
-        self.state_file.write_text(state.model_dump_json(indent=2))
+        self.state_file.write_text(state.model_dump_json(indent=2), encoding='utf-8')
         logger.info(f"State saved - Cycle: {state.cycle_count}")
 
     def append_memory(self, text: str, metadata: dict = None):
@@ -68,9 +68,12 @@ class MemoryManager:
         })
 
     def register_skill(self, skill_name: str, metadata: dict):
-        registry = json.loads(self.skills_registry.read_text(encoding='utf-8-sig'))
+        try:
+            registry = json.loads(self.skills_registry.read_text(encoding='utf-8-sig'))
+        except Exception:
+            registry = {}
         registry[skill_name] = {**metadata, "created_at": datetime.now().isoformat()}
-        self.skills_registry.write_text(json.dumps(registry, indent=2))
+        self.skills_registry.write_text(json.dumps(registry, indent=2), encoding='utf-8')
         logger.info(f"Skill registered: {skill_name}")
 
     def register_skill_metadata(self, skill_name: str, code: str, proposal_title: str,
@@ -91,7 +94,7 @@ class MemoryManager:
             "failure_modes": failure_modes or [],
             "timestamp": datetime.now().isoformat(),
         }
-        self.skills_metadata.write_text(json.dumps(metadata, indent=2))
+        self.skills_metadata.write_text(json.dumps(metadata, indent=2), encoding='utf-8')
         logger.info(f"Metadata logged: {skill_name} (score={score.get('total')}, diversity={diversity})")
 
     def load_skills_metadata(self) -> dict:
