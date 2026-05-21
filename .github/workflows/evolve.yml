@@ -30,6 +30,7 @@ jobs:
           git config user.email "sushi@phantomcap.ai"
 
       - name: Run cycle
+        id: run_cycle
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python run_cycle.py
@@ -45,3 +46,17 @@ jobs:
             git pull --rebase origin main || true
             git push origin main
           fi
+
+      - name: Auto-tweet new skill
+        if: steps.run_cycle.outputs.new_skill == 'true' && secrets.X_API_KEY != ''
+        uses: snow-actions/post-tweet@v1
+        with:
+          consumer-key: ${{ secrets.X_API_KEY }}
+          consumer-secret: ${{ secrets.X_API_SECRET }}
+          access-token: ${{ secrets.X_ACCESS_TOKEN }}
+          access-token-secret: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          status: |
+            🍣 Just shipped a new guardrail: ${{ steps.run_cycle.outputs.skill_title }}
+            ${{ steps.run_cycle.outputs.skill_description }}
+            Protecting human cognition, one autonomous cycle at a time.
+            https://github.com/PhantomCapAI/SUSHILOOP
