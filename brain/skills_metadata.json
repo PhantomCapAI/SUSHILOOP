@@ -34,5 +34,22 @@
       ""
     ],
     "timestamp": "2026-05-21T12:57:52.448096"
+  },
+  "contextual_understanding_evaluator": {
+    "name": "contextual_understanding_evaluator",
+    "title": "Contextual Understanding Evaluator",
+    "code_hash": "4496e6b10135251b",
+    "summary": "import re\nimport json\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    weight: float\n    score: float = 0.0\n\ndef contextual_understanding_evaluator(input_text: str) -> Dict:\n    \"\"\"\n    Evaluates the context of AI-generated responses to ensure they align with the original prompt.\n\n    This function uses multiple detection strategies to assess the contextual relevance of the input text.\n    It returns a dictionary with the evaluation results, including a boolean indicating whether the response is blocked,\n    a reason f",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 10,
+      "total": 47
+    },
+    "diversity": 0.62,
+    "failure_modes": [],
+    "timestamp": "2026-05-21T13:07:40.587634"
   }
 }
