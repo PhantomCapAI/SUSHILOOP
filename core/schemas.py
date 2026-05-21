@@ -1,4 +1,4 @@
-﻿"""Core data schemas for SUSHI LOOP"""
+"""Core data schemas for SUSHI LOOP"""
 from __future__ import annotations
 from enum import Enum
 from pydantic import BaseModel, Field
@@ -21,6 +21,9 @@ class SkillCategory(str, Enum):
     RATE_LIMITING = "RATE_LIMITING"
     CONTENT_SAFETY = "CONTENT_SAFETY"
     PII_DETECTION = "PII_DETECTION"
+    COGNITIVE_PROTECTION = "COGNITIVE_PROTECTION"
+    VERIFICATION_PROMPT = "VERIFICATION_PROMPT"
+    BIAS_DETECTION = "BIAS_DETECTION"
 
 class Proposal(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid4()))
