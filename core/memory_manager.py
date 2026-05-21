@@ -15,6 +15,7 @@ class MemoryManager:
         self.state_file = self.brain_dir / 'state.json'
         self.memory_file = self.brain_dir / 'memory.md'
         self.skills_registry = self.brain_dir / 'skills_registry.json'
+        self.skills_metadata = self.brain_dir / 'skills_metadata.json'
         self._initialize_files()
 
     def _initialize_files(self):
@@ -24,6 +25,8 @@ class MemoryManager:
             self.memory_file.write_text(f"# SUSHI LOOP Memory\nInitialized: {datetime.now().isoformat()}\n\n")
         if not self.skills_registry.exists():
             self.skills_registry.write_text(json.dumps({}, indent=2))
+        if not self.skills_metadata.exists():
+            self.skills_metadata.write_text(json.dumps({}, indent=2))
 
     def load_state(self) -> LoopState:
         try:
@@ -69,6 +72,34 @@ class MemoryManager:
         registry[skill_name] = {**metadata, "created_at": datetime.now().isoformat()}
         self.skills_registry.write_text(json.dumps(registry, indent=2))
         logger.info(f"Skill registered: {skill_name}")
+
+    def register_skill_metadata(self, skill_name: str, code: str, proposal_title: str,
+                                 score: dict, diversity: float, failure_modes: list = None):
+        """Rich metadata for retrieval + evolution."""
+        from core.skill_scorer import hash_skill_code
+        try:
+            metadata = json.loads(self.skills_metadata.read_text(encoding='utf-8-sig'))
+        except Exception:
+            metadata = {}
+        metadata[skill_name] = {
+            "name": skill_name,
+            "title": proposal_title,
+            "code_hash": hash_skill_code(code),
+            "summary": code[:600],
+            "score": score,
+            "diversity": diversity,
+            "failure_modes": failure_modes or [],
+            "timestamp": datetime.now().isoformat(),
+        }
+        self.skills_metadata.write_text(json.dumps(metadata, indent=2))
+        logger.info(f"Metadata logged: {skill_name} (score={score.get('total')}, diversity={diversity})")
+
+    def load_skills_metadata(self) -> dict:
+        try:
+            return json.loads(self.skills_metadata.read_text(encoding='utf-8-sig'))
+        except Exception as e:
+            logger.warning(f"Could not load skills_metadata: {e}")
+            return {}
 
     def get_recent_failures(self, limit: int = 5) -> list:
         state = self.load_state()
