@@ -1,9 +1,9 @@
 {
-  "cycle_count": 1,
+  "cycle_count": 2,
   "total_skills": 1,
   "success_count": 1,
-  "failure_count": 0,
-  "last_run": "2026-05-21T06:01:31.607384",
+  "failure_count": 1,
+  "last_run": "2026-05-21T08:56:58.331170",
   "history": [
     {
       "cycle_number": 1,
@@ -35,6 +35,40 @@
         }
       ],
       "timestamp": "2026-05-21T06:01:31.607384",
+      "error_message": null
+    },
+    {
+      "cycle_number": 2,
+      "proposal": {
+        "id": "955138d0-76cf-4dd9-8753-640df3028137",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Hallucination Confidence Marker",
+        "description": "Flags AI outputs that present uncertain claims as definitive facts",
+        "rationale": "Users accept AI outputs without verifying when confidence appears high",
+        "success_criteria": [
+          "Detects hedge-free assertions",
+          "Flags numeric claims without sources",
+          "Returns confidence"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 6,
+        "rollback_plan": "Delete file",
+        "created_at": "2026-05-21T08:56:58.330088"
+      },
+      "result": "TEST_FAILED",
+      "skill_generated": "",
+      "test_results": [
+        {
+          "passed": false,
+          "test_name": "smoke:",
+          "message": "",
+          "duration_seconds": 0.013129949569702148
+        }
+      ],
+      "timestamp": "2026-05-21T08:56:58.331170",
       "error_message": null
     }
   ]
