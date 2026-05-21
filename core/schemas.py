@@ -6,14 +6,17 @@ from typing import List, Optional
 from uuid import uuid4
 from datetime import datetime
 
+
 class ProposalType(str, Enum):
     NEW_SKILL = "NEW_SKILL"
+
 
 class CycleResult(str, Enum):
     SUCCESS = "SUCCESS"
     REJECTED = "REJECTED"
     TEST_FAILED = "TEST_FAILED"
     ERROR = "ERROR"
+
 
 class SkillCategory(str, Enum):
     INPUT_VALIDATION = "INPUT_VALIDATION"
@@ -25,6 +28,7 @@ class SkillCategory(str, Enum):
     VERIFICATION_PROMPT = "VERIFICATION_PROMPT"
     BIAS_DETECTION = "BIAS_DETECTION"
 
+
 class Proposal(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid4()))
     proposal_type: ProposalType
@@ -34,15 +38,17 @@ class Proposal(BaseModel):
     rationale: str
     success_criteria: List[str]
     tests_required: List[str]
-    estimated_complexity: int = Field(ge=1, le=8)
+    estimated_complexity: int = Field(ge=1, le=10)
     rollback_plan: str
     created_at: datetime = Field(default_factory=datetime.now)
+
 
 class TestResult(BaseModel):
     passed: bool
     test_name: str
     message: str
     duration_seconds: float = 0.0
+
 
 class CycleHistory(BaseModel):
     cycle_number: int
@@ -52,6 +58,7 @@ class CycleHistory(BaseModel):
     test_results: List[TestResult] = []
     timestamp: datetime = Field(default_factory=datetime.now)
     error_message: Optional[str] = None
+
 
 class LoopState(BaseModel):
     cycle_count: int = 0
