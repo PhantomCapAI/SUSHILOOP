@@ -51,5 +51,22 @@
     "diversity": 0.62,
     "failure_modes": [],
     "timestamp": "2026-05-21T13:07:40.587634"
+  },
+  "questionable_assumption_detector": {
+    "name": "questionable_assumption_detector",
+    "title": "Questionable Assumption Detector",
+    "code_hash": "e8a14112b34f65bc",
+    "summary": "import re\nimport json\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    weight: float\n    detection_function: callable\n\ndef detect_absolute_language(input_text: str) -> float:\n    \"\"\"\n    Detects absolute language in the input text.\n    \"\"\"\n    absolute_words = [\"always\", \"never\", \"all\", \"none\"]\n    score = 0.0\n    for word in absolute_words:\n        if re.search(r\"\\b\" + word + r\"\\b\", input_text, re.IGNORECASE):\n            score += 1.0\n    return score / len(absolute_words) if absolute_words else 0.0\n\ndef detect_emotio",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 10,
+      "total": 47
+    },
+    "diversity": 0.509,
+    "failure_modes": [],
+    "timestamp": "2026-05-21T14:57:43.930205"
   }
 }
