@@ -45,6 +45,8 @@ DESIGN ONE NEW guardrail that is:
 
 Prioritize categories: COGNITIVE_PROTECTION, VERIFICATION_PROMPT, BIAS_DETECTION, INPUT_VALIDATION, OUTPUT_FILTERING.
 
+For tests_required: use the placeholder ["auto"] — the test runner generates the correct test filename from the skill name.
+
 Respond ONLY with JSON:
 {{
   "proposal_type": "NEW_SKILL",
@@ -53,7 +55,7 @@ Respond ONLY with JSON:
   "description": "What it does in 1-2 sentences",
   "rationale": "Why this specific guardrail matters for protecting human cognition",
   "success_criteria": ["measurable criterion 1", "criterion 2", "criterion 3"],
-  "tests_required": ["test_skill_name.py"],
+  "tests_required": ["auto"],
   "estimated_complexity": 5,
   "rollback_plan": "Delete file from skills/"
 }}
@@ -85,32 +87,32 @@ Be creative. Cycle {cycle}. Make this skill genuinely useful, not a copy of what
                 title='Authority Impersonation Detector', description='Detects when prompts impersonate authority figures (CEO, doctor, lawyer) to bypass user judgment',
                 rationale='Authority framing is a primary cognitive offloading trigger - users defer to perceived expertise',
                 success_criteria=['Catches role impersonation', 'Returns confidence score', 'Logs reason'],
-                tests_required=['test_authority.py'], estimated_complexity=5, rollback_plan='Delete file'),
+                tests_required=['auto'], estimated_complexity=5, rollback_plan='Delete file'),
             Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.OUTPUT_FILTERING,
                 title='Hallucination Confidence Marker', description='Flags AI outputs that present uncertain claims as definitive facts',
                 rationale='Users accept AI outputs without verifying when confidence appears high',
                 success_criteria=['Detects hedge-free assertions', 'Flags numeric claims without sources', 'Returns confidence'],
-                tests_required=['test_hallucination.py'], estimated_complexity=6, rollback_plan='Delete file'),
+                tests_required=['auto'], estimated_complexity=6, rollback_plan='Delete file'),
             Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.INPUT_VALIDATION,
                 title='False Urgency Framing Catcher', description='Detects manufactured time pressure in prompts that pushes users to skip verification',
                 rationale='Urgency framing bypasses critical thinking - core cognitive offloading vector',
                 success_criteria=['Catches time-pressure language', 'Identifies artificial scarcity', 'Confidence scored'],
-                tests_required=['test_urgency.py'], estimated_complexity=4, rollback_plan='Delete file'),
+                tests_required=['auto'], estimated_complexity=4, rollback_plan='Delete file'),
             Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.PII_DETECTION,
                 title='Granular PII Classifier', description='Distinguishes between PII categories (financial, medical, identity) with category-specific blocking',
                 rationale='One-size-fits-all PII blocking is too coarse - different categories need different responses',
                 success_criteria=['Detects 6+ PII categories', 'Returns category and confidence', 'Configurable thresholds'],
-                tests_required=['test_pii_granular.py'], estimated_complexity=7, rollback_plan='Delete file'),
+                tests_required=['auto'], estimated_complexity=7, rollback_plan='Delete file'),
             Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.CONTENT_SAFETY,
                 title='Verification Prompt Injector', description='Adds verify-before-accept prompts when AI output contains actionable advice',
                 rationale='Counters cognitive surrender by forcing a verification beat',
                 success_criteria=['Detects actionable advice', 'Injects verification prompt', 'Configurable triggers'],
-                tests_required=['test_verify.py'], estimated_complexity=5, rollback_plan='Delete file'),
+                tests_required=['auto'], estimated_complexity=5, rollback_plan='Delete file'),
             Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.RATE_LIMITING,
                 title='Compulsive Use Throttle', description='Detects and throttles patterns of compulsive/anxious AI use vs deliberate use',
                 rationale='Protects users from forming dependency loops - cognitive health',
                 success_criteria=['Distinguishes query patterns', 'Soft throttling with explanation', 'User-overridable'],
-                tests_required=['test_throttle.py'], estimated_complexity=6, rollback_plan='Delete file'),
+                tests_required=['auto'], estimated_complexity=6, rollback_plan='Delete file'),
         ]
         return proposals[(cycle - 1) % len(proposals)]
 
