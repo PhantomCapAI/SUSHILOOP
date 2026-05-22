@@ -119,5 +119,22 @@
     "diversity": 0.389,
     "failure_modes": [],
     "timestamp": "2026-05-22T08:55:57.861909"
+  },
+  "ambiguous_input_clarifier": {
+    "name": "ambiguous_input_clarifier",
+    "title": "Ambiguous Input Clarifier",
+    "code_hash": "4e91551fab0dba2c",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    weight: float\n    score: float = 0.0\n\ndef ambiguous_input_clarifier(input_text: str) -> Dict:\n    \"\"\"\n    Identifies ambiguous inputs that may lead to AI overreliance and prompts users to clarify their queries.\n\n    Mission Alignment:\n    This skill protects human cognition by preventing users from relying on AI to fill knowledge gaps,\n    instead encouraging them to think critically about their queries and seek more accurate information.\n\n    Args:\n        inp",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "total": 50
+    },
+    "diversity": 0.654,
+    "failure_modes": [],
+    "timestamp": "2026-05-22T14:31:09.395395"
   }
 }
