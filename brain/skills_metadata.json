@@ -170,5 +170,22 @@
     "diversity": 0.482,
     "failure_modes": [],
     "timestamp": "2026-05-23T08:12:56.892469"
+  },
+  "input_redundancy_analyzer": {
+    "name": "input_redundancy_analyzer",
+    "title": "Input Redundancy Analyzer",
+    "code_hash": "978f6283760bfd5b",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass RedundancyDetectionResult:\n    \"\"\"Result of a single redundancy detection strategy.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n\ndef keyword_repetition_analyzer(input_text: str) -> RedundancyDetectionResult:\n    \"\"\"\n    Detects repetitive keywords in the input text.\n\n    Args:\n    input_text (str): The input text to analyze.\n\n    Returns:\n    RedundancyDetectionResult: The result of the analysis.\n    \"\"\"\n    keywords = re.findall(r'\\b\\w+\\b', input_text.lower())\n    keyword_counts = ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 7,
+      "total": 44
+    },
+    "diversity": 0.689,
+    "failure_modes": [],
+    "timestamp": "2026-05-23T13:16:32.881097"
   }
 }
