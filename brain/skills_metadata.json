@@ -341,5 +341,31 @@
     "diversity": 0.632,
     "failure_modes": [],
     "timestamp": "2026-05-24T03:20:27.337482"
+  },
+  "unnecessary_abstraction_detector": {
+    "name": "unnecessary_abstraction_detector",
+    "title": "Unnecessary Abstraction Detector",
+    "code_hash": "e570094576cecfc1",
+    "summary": "import re\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    weight: float\n    detection_function: callable\n\ndef detect_jargon(input_text: str) -> float:\n    \"\"\"\n    Detects jargon by checking for words with more than 3 syllables.\n    \"\"\"\n    syllable_count = 0\n    for word in input_text.split():\n        syllable_count += len(re.findall(r'[aeiouy]+', word.lower()))\n    return syllable_count / len(input_text.split()) if input_text.split() else 0\n\ndef detect_vagueness(input_text: str) -> float:\n    \"\"\"\n    Detects vagueness by checkin",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 80
+    },
+    "diversity": 0.567,
+    "failure_modes": [],
+    "timestamp": "2026-05-24T07:56:52.331811"
   }
 }
