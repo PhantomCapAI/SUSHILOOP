@@ -17,6 +17,16 @@ logger = structlog.get_logger(__name__)
 # Reject skills that are >70% similar to existing ones
 DIVERSITY_THRESHOLD = 0.30
 
+# Behavioral floor — reject skills that pass tests but don't actually DO their job.
+# discrimination (0-10) measures whether the skill distinguishes input it should
+# flag from input it shouldn't; 2 = keyword-matching theater, 5 = real signal.
+# A guardrail that doesn't discriminate isn't protecting cognition (Charter
+# principle 1), it's theater — so we gate on it the same as a charter violation.
+# CONSERVATIVE start per handoff: too high stalls the loop, too low ships theater.
+# Tune empirically by watching live cycles; raise only if shallow skills slip past.
+MIN_DISCRIMINATION = 5      # out of 10 (scorer emits 0/2/5/7/10)
+MIN_BEHAVIORAL_TOTAL = 18   # out of 30
+
 
 class SushiLoop:
     def __init__(self):
@@ -113,6 +123,39 @@ class SushiLoop:
                 logger.info(f"Skill score: {score['total']}/80 "
                             f"(static {score.get('static_total')}/50, "
                             f"behavioral {score.get('behavioral', {}).get('behavioral_total')}/30)")
+
+                # Behavioral floor — a skill can pass every test and still be
+                # theater: returns valid verdicts but barely distinguishes input
+                # it should flag from input it shouldn't. That's a Charter
+                # principle 1 violation in spirit (it doesn't protect cognition,
+                # it performs protecting it). Gate on it like a charter violation:
+                # don't ship, log the reason as a failure mode so the proposal
+                # engine learns, delete the file so the workflow can't commit it.
+                behavioral = score.get('behavioral', {})
+                discrimination = behavioral.get('discrimination', 0)
+                behavioral_total = behavioral.get('behavioral_total', 0)
+                behavioral_error = behavioral.get('error')
+                if discrimination < MIN_DISCRIMINATION or behavioral_total < MIN_BEHAVIORAL_TOTAL:
+                    detail = f" (load/run error: {behavioral_error})" if behavioral_error else ""
+                    logger.warning(
+                        f"Behavioral floor: {skill_name} too shallow "
+                        f"(discrim={discrimination}<{MIN_DISCRIMINATION} or "
+                        f"total={behavioral_total}<{MIN_BEHAVIORAL_TOTAL}){detail} — rejecting")
+                    if skill_path.exists():
+                        skill_path.unlink()
+                    # Log as a failure mode so the proposal engine learns to avoid it.
+                    self.memory.register_skill_metadata(
+                        skill_name=skill_name,
+                        code=code,
+                        proposal_title=proposal.title,
+                        score=score,
+                        diversity=diversity,
+                        failure_modes=[f"shallow:discrimination={discrimination},behavioral_total={behavioral_total}"],
+                    )
+                    self.git.rollback(branch)
+                    history.result = CycleResult.REJECTED
+                    self.memory.record_cycle(history)
+                    return CycleResult.REJECTED
 
                 self.memory.register_skill(skill_name, {
                     "title": proposal.title,
