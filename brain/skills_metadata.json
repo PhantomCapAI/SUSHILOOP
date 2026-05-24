@@ -204,5 +204,33 @@
     "diversity": 0.672,
     "failure_modes": [],
     "timestamp": "2026-05-23T19:03:53.662622"
+  },
+  "multistep_reasoning_validator": {
+    "name": "multistep_reasoning_validator",
+    "title": "Multistep Reasoning Validator",
+    "code_hash": "cde45ab7ad19bb06",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    weight: float\n    detect: callable\n\ndef keyword_detection(input_text: str) -> bool:\n    keywords = [\"simple\", \"easy\", \"straightforward\"]\n    return any(re.search(keyword, input_text, re.IGNORECASE) for keyword in keywords)\n\ndef sentence_count_detection(input_text: str) -> bool:\n    sentences = re.split(r'[.!?]', input_text)\n    return len([sentence for sentence in sentences if sentence.strip()]) < 3\n\ndef word_count_detection(input_text: str) -> bool:\n    words ",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 40,
+      "behavioral": {
+        "robustness": 9,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 29,
+        "probes_raised": 1,
+        "probes_valid": 6
+      },
+      "total": 69
+    },
+    "diversity": 0.481,
+    "failure_modes": [
+      "RAISED TypeError: expected string or bytes-like object, got 'NoneType'"
+    ],
+    "timestamp": "2026-05-24T02:43:01.953132"
   }
 }
