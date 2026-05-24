@@ -41,12 +41,29 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git add skills/ tests/ brain/ docs/ 2>/dev/null || true
+          RESULT=$(cat .cycle_result 2>/dev/null || echo "UNKNOWN")
+          echo "Cycle result: $RESULT"
+
+          # brain/ and docs/ always persist (memory + state), so the loop learns
+          # from rejections too.
+          git add brain/ docs/ 2>/dev/null || true
+
+          if [ "$RESULT" = "SUCCESS" ]; then
+            # Only a passing skill ships its skill + test files.
+            git add skills/ tests/ 2>/dev/null || true
+          else
+            # Gate rejected the skill: discard any generated skill/test files so
+            # a broken skill never reaches main. (brain/ already staged above.)
+            echo "Result is $RESULT — discarding unstaged skill/test changes"
+            git checkout -- skills/ tests/ 2>/dev/null || true
+            git clean -fq skills/ tests/ 2>/dev/null || true
+          fi
+
           if git diff --staged --quiet; then
             echo "No changes to commit"
             exit 0
           fi
-          git commit -m "🍣 SUSHI LOOP Auto Evolution"
+          git commit -m "🍣 SUSHI LOOP Auto Evolution ($RESULT)"
           # Pull with strategy: ours-wins for brain files (they're runner-generated)
           git fetch origin main
           git merge -X ours origin/main --no-edit || {
