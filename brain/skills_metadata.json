@@ -232,5 +232,33 @@
       "RAISED TypeError: expected string or bytes-like object, got 'NoneType'"
     ],
     "timestamp": "2026-05-24T02:43:01.953132"
+  },
+  "input_premise_relevance_evaluator": {
+    "name": "input_premise_relevance_evaluator",
+    "title": "Input Premise Relevance Evaluator",
+    "code_hash": "38f8747bd22f858f",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass PremiseRelevanceEvaluation:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef input_premise_relevance_evaluator(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Evaluates the relevance of input premises to the problem being addressed.\n\n    This function assesses the input premises based on their novelty, diversity, and pertinence to the problem at hand.\n    It protects human cognition by preventing information overload and promoting a mo",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 40,
+      "behavioral": {
+        "robustness": 9,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 14,
+        "probes_raised": 1,
+        "probes_valid": 6
+      },
+      "total": 54
+    },
+    "diversity": 0.653,
+    "failure_modes": [
+      "RAISED TypeError: expected string or bytes-like object, got 'NoneType'"
+    ],
+    "timestamp": "2026-05-24T02:51:02.993788"
   }
 }
