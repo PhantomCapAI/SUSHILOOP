@@ -393,5 +393,31 @@
     "diversity": 0.5,
     "failure_modes": [],
     "timestamp": "2026-05-24T08:24:26.353683"
+  },
+  "insufficient_context_provider": {
+    "name": "insufficient_context_provider",
+    "title": "Insufficient Context Provider",
+    "code_hash": "cb2dc6288ec5a807",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    weight: float\n    detection_function: callable\n\ndef keyword_check(input_text: str) -> float:\n    \"\"\"Check for presence of keywords that indicate lack of context\"\"\"\n    keywords = [\"what\", \"how\", \"why\", \"where\", \"when\"]\n    score = 0.0\n    for keyword in keywords:\n        if keyword in input_text.lower():\n            score += 1.0\n    return score / len(keywords)\n\ndef sentence_length_check(input_text: str) -> float:\n    \"\"\"Check if input text is too short\"\"\"\n    sentences = ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 75
+    },
+    "diversity": 0.358,
+    "failure_modes": [],
+    "timestamp": "2026-05-24T13:17:10.879222"
   }
 }
