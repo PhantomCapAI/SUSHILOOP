@@ -419,5 +419,33 @@
     "diversity": 0.358,
     "failure_modes": [],
     "timestamp": "2026-05-24T13:17:10.879222"
+  },
+  "inconsistent_terminology_detector": {
+    "name": "inconsistent_terminology_detector",
+    "title": "Inconsistent Terminology Detector",
+    "code_hash": "6427ab20afc94551",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    weight: float\n    detection_function: callable\n\ndef keyword_detection(input_text: str) -> float:\n    \"\"\"\n    Detects inconsistent terminology based on keyword presence.\n    \"\"\"\n    keywords = [\"inconsistent\", \"terminology\", \"bias\"]\n    matches = sum(1 for keyword in keywords if keyword in input_text.lower())\n    return matches / len(keywords)\n\ndef sentence_length_detection(input_text: str) -> float:\n    \"\"\"\n    Detects inconsistent terminology based on sentence",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 40,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 65
+    },
+    "diversity": 0.396,
+    "failure_modes": [
+      "confidence out of range or wrong type: -19.6"
+    ],
+    "timestamp": "2026-05-24T19:12:01.408488"
   }
 }
