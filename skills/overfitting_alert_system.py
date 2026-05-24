@@ -28,6 +28,10 @@ def overfitting_alert_system(input_text: str) -> Dict[str, object]:
     :param input_text: User input text
     :return: A dictionary containing the detection result
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
 
     # Initialize detection result
     result = OverfittingDetectionResult(False, "", 0.0, "", {})

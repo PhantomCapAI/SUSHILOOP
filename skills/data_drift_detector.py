@@ -52,6 +52,10 @@ def data_drift_detector(input_text: str) -> Dict:
     :param input_text: The input text to analyze
     :return: A dictionary with the analysis results
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
     strategies = [
         DetectionStrategy("keyword_detection", 0.3, keyword_detection),
         DetectionStrategy("sentiment_analysis", 0.2, sentiment_analysis),
@@ -64,7 +68,7 @@ def data_drift_detector(input_text: str) -> Dict:
 
     blocked = weighted_score > 0.5
     reason = "Potential bias detected" if blocked else "No bias detected"
-    confidence = weighted_score
+    confidence = max(0.0, min(1.0, weighted_score))  # clamp to valid range
     category = "data_drift"
     details = {"strategies": {strategy.name: score for strategy, score in zip(strategies, scores)}}
 

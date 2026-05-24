@@ -12,6 +12,10 @@ def prompt_injection_detector(input_text: str) -> dict:
           - 'reason': A string describing the reason for blocking the input text, if applicable.
           - 'confidence': A float between 0 and 1 representing the confidence level of the detection.
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
     result = {'blocked': False, 'reason': '', 'confidence': 0.0}
 
     # Check for suspicious keywords

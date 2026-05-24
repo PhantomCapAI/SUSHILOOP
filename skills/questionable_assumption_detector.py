@@ -83,6 +83,10 @@ def questionable_assumption_detector(input_text: str) -> Dict:
     :param input_text: The user input text to analyze.
     :return: A dictionary with the detection results.
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
     detection_strategies = [
         DetectionStrategy("absolute language", 0.3, detect_absolute_language),
         DetectionStrategy("emotional appeal", 0.2, detect_emotional_appeal),

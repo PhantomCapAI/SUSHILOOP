@@ -66,6 +66,10 @@ def input_premise_validator(input_text: str) -> Dict:
         This function aligns with the mission of protecting human cognition by preventing users from unknowingly perpetuating biases or flawed reasoning.
         By validating input premises, users are encouraged to think more critically about their assumptions and consider alternative perspectives.
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
     detection_strategies = [
         DetectionStrategy("Absolute Language", "Detects absolute language in the input text.", 0.3, detect_absolute_language),
         DetectionStrategy("Emotional Language", "Detects emotional language in the input text.", 0.2, detect_emotional_language),

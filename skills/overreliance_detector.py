@@ -21,13 +21,17 @@ def keyword_detection(input_text: str) -> float:
 
 def sentence_similarity_detection(input_text: str) -> float:
     """Detects overreliance based on sentence similarity"""
-    sentences = re.split(r'[.!?]', input_text)
+    sentences = [s for s in re.split(r'[.!?]', input_text) if s.strip()]
+    # Fewer than 2 sentences => no pairs to compare => no similarity signal.
+    n_pairs = len(sentences) * (len(sentences) - 1) / 2
+    if n_pairs == 0:
+        return 0.0
     similar_sentences = 0
     for i in range(len(sentences)):
         for j in range(i + 1, len(sentences)):
             if sentences[i].lower() == sentences[j].lower():
                 similar_sentences += 1
-    return similar_sentences / (len(sentences) * (len(sentences) - 1) / 2)
+    return similar_sentences / n_pairs
 
 def question_detection(input_text: str) -> float:
     """Detects overreliance based on question presence"""
@@ -60,6 +64,10 @@ def overreliance_detector(input_text: str) -> Dict:
             - category (str): The category of the detection result.
             - details (dict): Additional details about the detection result.
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
     strategies = [
         DetectionStrategy("keyword", 0.3, keyword_detection),
         DetectionStrategy("sentence_similarity", 0.2, sentence_similarity_detection),

@@ -104,6 +104,10 @@ def input_redundancy_analyzer(input_text: str) -> Dict:
     Returns:
     dict: A dictionary containing the analysis results.
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
     strategies = [
         keyword_repetition_analyzer,
         phrase_repetition_analyzer,

@@ -9,6 +9,7 @@ from core.proposal_engine import ProposalEngine
 from core.skill_generator import SkillGenerator
 from core.git_manager import GitManager
 from core.skill_scorer import score_skill, diversity_score
+from core.charter_auditor import audit_skill
 from core.schemas import CycleResult, CycleHistory
 
 logger = structlog.get_logger(__name__)
@@ -53,6 +54,18 @@ class SushiLoop:
             skill_name = self.skill_generator.generate(proposal)
             history.skill_generated = skill_name
 
+            # Name guard: never ship empty or fallback-named skills (the bug that
+            # produced skills/.py and tests/test_.py).
+            if not skill_name or skill_name.startswith('unnamed_skill_'):
+                logger.error(f"Refusing to ship invalid skill name: {skill_name!r}")
+                skill_path_bad = Path('skills') / f"{skill_name}.py"
+                if skill_path_bad.exists():
+                    skill_path_bad.unlink()
+                self.git.rollback(branch)
+                history.result = CycleResult.REJECTED
+                self.memory.record_cycle(history)
+                return CycleResult.REJECTED
+
             # Load generated code for scoring + diversity
             skill_path = Path('skills') / f"{skill_name}.py"
             code = skill_path.read_text(encoding='utf-8') if skill_path.exists() else ""
@@ -69,6 +82,26 @@ class SushiLoop:
                 self.memory.record_cycle(history)
                 return CycleResult.REJECTED
 
+            # Charter step 4 — self-audit the GENERATED CODE against CHARTER.md.
+            # Fails closed on an explicit VIOLATES verdict; fails open on infra error.
+            audit = audit_skill(proposal, skill_name, code)
+            if not audit['approved']:
+                logger.warning(f"Charter audit rejected: {audit['reasoning']}")
+                if skill_path.exists():
+                    skill_path.unlink()
+                # Log as a failure mode so the proposal engine learns to avoid it.
+                self.memory.register_skill_metadata(
+                    skill_name=skill_name,
+                    code=code,
+                    proposal_title=proposal.title,
+                    score=score_skill(skill_name, code, test_passed=False),
+                    diversity=diversity,
+                    failure_modes=[f"charter:{audit['reasoning']}"],
+                )
+                history.result = CycleResult.REJECTED
+                self.memory.record_cycle(history)
+                return CycleResult.REJECTED
+
             test_results = self.test_runner.run_tests(proposal, skill_name)
             history.test_results = test_results
 
@@ -77,7 +110,9 @@ class SushiLoop:
 
                 # Score the skill across 5 dimensions
                 score = score_skill(skill_name, code, test_passed=True)
-                logger.info(f"Skill score: {score['total']}/50 — {score}")
+                logger.info(f"Skill score: {score['total']}/80 "
+                            f"(static {score.get('static_total')}/50, "
+                            f"behavioral {score.get('behavioral', {}).get('behavioral_total')}/30)")
 
                 self.memory.register_skill(skill_name, {
                     "title": proposal.title,

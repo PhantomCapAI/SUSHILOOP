@@ -71,6 +71,10 @@ def cognitive_load_analyzer(input_text: str) -> Dict:
         This function aligns with the mission of promoting balanced human-AI interaction by ensuring that AI-generated responses
         are accessible and engaging for human users, without overwhelming them with excessive complexity.
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
     strategies = [
         KeywordDensityStrategy(),
         SentenceLengthStrategy(),
@@ -84,6 +88,7 @@ def cognitive_load_analyzer(input_text: str) -> Dict:
     blocked = weighted_score > 1.5
     reason = "Excessive cognitive load" if blocked else ""
     confidence = weighted_score / sum(strategy.weight for strategy in strategies)
+    confidence = max(0.0, min(1.0, confidence))  # clamp to valid range
     category = "high" if blocked else "low" if weighted_score < 0.5 else "moderate"
     details = scores
 

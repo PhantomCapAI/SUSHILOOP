@@ -37,6 +37,10 @@ def unintended_consequence_elicitor(input_text: str) -> Dict:
         This skill aligns with the mission of protecting human cognition by providing a critical thinking 
         tool that helps users anticipate potential pitfalls and consider alternative outcomes.
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
 
     # Define detection strategies
     strategies = [

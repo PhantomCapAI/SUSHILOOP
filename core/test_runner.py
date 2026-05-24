@@ -1,11 +1,37 @@
-﻿"""Automated testing for generated skills"""
+"""Automated testing for generated skills.
+
+Replaces the old single-input ("test") smoke test, which passed every skill
+that returned a dict — including skills that crash on empty string, None, or a
+single word. A guardrail that raises instead of returning a verdict is a
+guardrail that fails to guard, so those inputs are now a hard gate.
+
+A skill must, for EVERY input in the battery:
+  - not raise, AND
+  - return a dict containing at least 'blocked' and 'confidence'.
+"""
 import structlog
-import subprocess
+import importlib.util
 import time
 from pathlib import Path
 from core.schemas import Proposal, TestResult
 
 logger = structlog.get_logger(__name__)
+
+EDGE_BATTERY = {
+    "empty_string": "",
+    "whitespace_only": "   \n\t ",
+    "single_char": "a",
+    "single_word": "hello",
+    "single_sentence_no_punct": "this has no terminal punctuation",
+    "none_input": None,
+    "numeric_like": "12345",
+    "very_long": "spam " * 2000,
+    "unicode": "café ☕ 日本語 🍣",
+    "newlines_only": "\n\n\n",
+}
+
+REQUIRED_KEYS = {"blocked", "confidence"}
+
 
 class TestRunner:
     def __init__(self):
@@ -14,46 +40,95 @@ class TestRunner:
 
     def run_tests(self, proposal: Proposal, skill_name: str) -> list:
         results = []
-        test_file = self._ensure_test_file(proposal, skill_name)
-        results.append(self._run_smoke_test(skill_name))
+        results.append(self._run_import_check(skill_name))
+        if results[0].passed:
+            results.extend(self._run_edge_battery(skill_name))
+        self._ensure_pytest_file(proposal, skill_name)
         return results
 
-    def _ensure_test_file(self, proposal: Proposal, skill_name: str) -> Path:
+    def _load_skill_fn(self, skill_name: str):
+        skill_path = Path('skills') / f"{skill_name}.py"
+        spec = importlib.util.spec_from_file_location(skill_name, skill_path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        fn = getattr(mod, skill_name, None)
+        if not callable(fn):
+            raise AttributeError(f"no callable named '{skill_name}' in {skill_path.name}")
+        return fn
+
+    def _run_import_check(self, skill_name: str) -> TestResult:
+        start = time.time()
+        try:
+            self._load_skill_fn(skill_name)
+            return TestResult(passed=True, test_name=f"import:{skill_name}",
+                              message="import + callable OK", duration_seconds=time.time() - start)
+        except Exception as e:
+            return TestResult(passed=False, test_name=f"import:{skill_name}",
+                              message=f"{type(e).__name__}: {e}"[:200],
+                              duration_seconds=time.time() - start)
+
+    def _run_edge_battery(self, skill_name: str) -> list:
+        results = []
+        try:
+            fn = self._load_skill_fn(skill_name)
+        except Exception as e:
+            return [TestResult(passed=False, test_name=f"battery:{skill_name}",
+                               message=f"load failed: {e}"[:200])]
+
+        for label, value in EDGE_BATTERY.items():
+            start = time.time()
+            try:
+                out = fn(value)
+                if not isinstance(out, dict):
+                    results.append(TestResult(passed=False, test_name=f"edge:{label}",
+                        message=f"returned {type(out).__name__}, expected dict",
+                        duration_seconds=time.time() - start))
+                    continue
+                missing = REQUIRED_KEYS - set(out.keys())
+                if missing:
+                    results.append(TestResult(passed=False, test_name=f"edge:{label}",
+                        message=f"missing required keys: {sorted(missing)}",
+                        duration_seconds=time.time() - start))
+                    continue
+                conf = out.get("confidence")
+                if not isinstance(conf, (int, float)) or not (0.0 <= float(conf) <= 1.0):
+                    results.append(TestResult(passed=False, test_name=f"edge:{label}",
+                        message=f"confidence out of range or wrong type: {conf!r}",
+                        duration_seconds=time.time() - start))
+                    continue
+                results.append(TestResult(passed=True, test_name=f"edge:{label}",
+                    message="ok", duration_seconds=time.time() - start))
+            except Exception as e:
+                results.append(TestResult(passed=False, test_name=f"edge:{label}",
+                    message=f"RAISED {type(e).__name__}: {e}"[:200],
+                    duration_seconds=time.time() - start))
+        return results
+
+    def _ensure_pytest_file(self, proposal: Proposal, skill_name: str) -> Path:
         test_path = self.tests_dir / f"test_{skill_name}.py"
-        if not test_path.exists():
-            test_code = f'''"""Tests for {proposal.title}"""
-import pytest
+        if test_path.exists():
+            return test_path
+        test_code = f'''"""Tests for {proposal.title} — auto-generated by SUSHILOOP."""
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / 'skills'))
-
 from {skill_name} import {skill_name}
 
-def test_basic():
-    result = {skill_name}("test")
-    assert isinstance(result, dict)
-    assert 'blocked' in result
+EDGE_INPUTS = ["", "   ", "a", "hello", "no punct here", None, "12345", "\\n\\n"]
+
+def test_returns_dict_on_all_edges():
+    for inp in EDGE_INPUTS:
+        out = {skill_name}(inp)
+        assert isinstance(out, dict), f"non-dict on {{inp!r}}"
+        assert "blocked" in out and "confidence" in out, f"missing keys on {{inp!r}}"
+
+def test_confidence_in_range():
+    for inp in EDGE_INPUTS:
+        c = {skill_name}(inp).get("confidence")
+        assert isinstance(c, (int, float)) and 0.0 <= c <= 1.0
 '''
-            test_path.write_text(test_code, encoding='utf-8')
+        test_path.write_text(test_code, encoding='utf-8')
         return test_path
 
-    def _run_smoke_test(self, skill_name: str) -> TestResult:
-        start = time.time()
-        test_code = f'''
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path.cwd() / 'skills'))
-import {skill_name}
-result = {skill_name}.{skill_name}("test")
-assert isinstance(result, dict)
-print("PASS")
-'''
-        try:
-            result = subprocess.run(['python', '-c', test_code], capture_output=True, text=True, timeout=10, cwd=Path.cwd())
-            passed = 'PASS' in result.stdout
-            return TestResult(passed=passed, test_name=f"smoke:{skill_name}", message=result.stdout[:200], duration_seconds=time.time()-start)
-        except Exception as e:
-            return TestResult(passed=False, test_name=f"smoke:{skill_name}", message=str(e)[:200], duration_seconds=time.time()-start)
-
     def all_tests_passed(self, results: list) -> bool:
-        return all(r.passed for r in results)
+        return bool(results) and all(r.passed for r in results)

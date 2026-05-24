@@ -24,6 +24,10 @@ def contextual_understanding_evaluator(input_text: str) -> Dict:
     :param input_text: The AI-generated response to be evaluated
     :return: A dictionary with the evaluation results
     """
+    # SUSHILOOP input guard (added in hardening pass): never raise on bad input.
+    if not isinstance(input_text, str) or not input_text.strip():
+        return {"blocked": False, "reason": "empty_or_invalid_input",
+                "confidence": 0.0, "category": "none", "details": {}}
 
     # Initialize detection strategies
     strategies = [
