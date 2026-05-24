@@ -151,3 +151,12 @@
 }
 ```
 ---
+
+## [2026-05-24T02:55:00.241041] Cycle 18: CycleResult.TEST_FAILED
+```json
+{
+  "proposal": "Overconfidence Detector",
+  "skill": "overconfidence_detector"
+}
+```
+---
