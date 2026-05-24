@@ -315,5 +315,31 @@
       "AttributeError: no callable named 'implicit_assumption_extractor' in implicit_assumption_extractor.p"
     ],
     "timestamp": "2026-05-24T03:00:03.449562"
+  },
+  "anthropomorphism_detector": {
+    "name": "anthropomorphism_detector",
+    "title": "Anthropomorphism Detector",
+    "code_hash": "108baf49fa6c0793",
+    "summary": "import re\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef anthropomorphism_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects anthropomorphism in user input, identifying language that implies human-like intelligence, emotions, or intentions in AI.\n\n    Mission alignment: This skill promotes a balanced human-AI collaboration by preventing users from developing an overly trusting or dependent relationship with AI.\n    \n    The ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 72
+    },
+    "diversity": 0.632,
+    "failure_modes": [],
+    "timestamp": "2026-05-24T03:20:27.337482"
   }
 }
