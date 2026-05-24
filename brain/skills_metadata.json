@@ -288,5 +288,32 @@
       "RAISED TypeError: expected string or bytes-like object, got 'NoneType'"
     ],
     "timestamp": "2026-05-24T02:55:00.239649"
+  },
+  "implicit_assumption_extractor": {
+    "name": "implicit_assumption_extractor",
+    "title": "Implicit Assumption Extractor",
+    "code_hash": "79a4a99cc78da2b7",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    pattern: str\n    weight: float\n\nclass ImplicitAssumptionExtractor:\n    \"\"\"\n    Identifies implicit assumptions in user input by analyzing language patterns and warning users of potential biases or unstated premises.\n\n    This skill promotes more explicit and critical thinking by highlighting unconscious assumptions that may influence decision-making or problem-solving processes.\n    It aligns with the mission of using AI as a sparring partner rather than a brai",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 40,
+      "behavioral": {
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "no callable implicit_assumption_extractor"
+      },
+      "total": 40
+    },
+    "diversity": 0.679,
+    "failure_modes": [
+      "AttributeError: no callable named 'implicit_assumption_extractor' in implicit_assumption_extractor.p"
+    ],
+    "timestamp": "2026-05-24T03:00:03.449562"
   }
 }
