@@ -250,3 +250,12 @@
 }
 ```
 ---
+
+## [2026-05-25T19:23:43.364033] Cycle 29: CycleResult.REJECTED
+```json
+{
+  "proposal": "Mental Model Mapper",
+  "skill": "mental_model_mapper"
+}
+```
+---
