@@ -214,3 +214,12 @@
 }
 ```
 ---
+
+## [2026-05-25T02:59:33.130388] Cycle 25: CycleResult.TEST_FAILED
+```json
+{
+  "proposal": "Overly Broad Generalization Detector",
+  "skill": "overly_broad_generalization_detector"
+}
+```
+---
