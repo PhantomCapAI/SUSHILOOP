@@ -502,5 +502,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-05-25T09:58:35.902644"
+  },
+  "lack_of_temporal_context_validator": {
+    "name": "lack_of_temporal_context_validator",
+    "title": "Lack of Temporal Context Validator",
+    "code_hash": "43974948a2d4bc86",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass TemporalContext:\n    \"\"\"Data class to store temporal context signals\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_temporal_context(input_text: str) -> TemporalContext:\n    \"\"\"\n    Calculate temporal context signals from input text.\n\n    Args:\n    input_text (str): The input text to analyze.\n\n    Returns:\n    TemporalContext: A data class containing the calculated signals.\n    \"\"\"\n    # Calculate absolute terms ra",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.678,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-05-25T14:46:48.535576"
   }
 }
