@@ -474,5 +474,33 @@
       "AttributeError: no callable named 'overly_broad_generalization_detector' in overly_broad_generalizat"
     ],
     "timestamp": "2026-05-25T02:59:33.128891"
+  },
+  "implicit_assumption_validator": {
+    "name": "implicit_assumption_validator",
+    "title": "Implicit Assumption Validator",
+    "code_hash": "6f49698e4224d4bc",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass SentenceFeatures:\n    \"\"\"Features extracted from a sentence.\"\"\"\n    absolutes: int\n    hedges: int\n    overgeneral_terms: int\n    word_count: int\n\ndef extract_sentence_features(sentence: str) -> SentenceFeatures:\n    \"\"\"Extract features from a sentence.\"\"\"\n    absolutes = len(re.findall(r'\\b(always|never|all|every|none)\\b', sentence, re.IGNORECASE))\n    hedges = len(re.findall(r'\\b(maybe|perhaps|possibly|likely|unlikely)\\b', sentence, re.IGNORECASE))\n    overgeneral_terms = len",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.356,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-05-25T09:58:35.902644"
   }
 }
