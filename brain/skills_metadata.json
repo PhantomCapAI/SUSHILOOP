@@ -264,30 +264,30 @@
   "overconfidence_detector": {
     "name": "overconfidence_detector",
     "title": "Overconfidence Detector",
-    "code_hash": "022a4e26c35ef490",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    \"\"\"Dataclass to hold detection strategy details.\"\"\"\n    name: str\n    pattern: str\n    weight: float\n\ndef overconfidence_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when AI outputs convey an overly high confidence level in its predictions or recommendations.\n\n    This function analyzes the language used in AI responses to identify phrases that may indicate excessive confidence.\n    It uses multiple detection strategies with weighted scoring to provide a calibrated confidence ",
+    "code_hash": "64717bb59e115977",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nimport math\n\n@dataclass\nclass SentenceFeatures:\n    \"\"\"Features extracted from a sentence.\"\"\"\n    absolutes: int\n    hedges: int\n    overgeneral_terms: int\n    words: int\n\ndef extract_features(sentence: str) -> SentenceFeatures:\n    \"\"\"Extract features from a sentence.\"\"\"\n    absolutes = len(re.findall(r\"\\b(always|never|every|all)\\b\", sentence, re.IGNORECASE))\n    hedges = len(re.findall(r\"\\b(maybe|perhaps|possibly|likely)\\b\", sentence, re.IGNORECASE))\n    overgeneral_terms = len(re.findall(r\"\\b(everyone|everything|all the tim",
     "score": {
-      "tests_pass": 0,
+      "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 10,
-      "static_total": 40,
+      "strategies": 4,
+      "static_total": 44,
       "behavioral": {
-        "robustness": 9,
-        "discrimination": 0,
-        "calibration": 5,
-        "behavioral_total": 14,
-        "probes_raised": 1,
-        "probes_valid": 6
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
       },
-      "total": 54
+      "total": 63
     },
-    "diversity": 0.654,
+    "diversity": 0.723,
     "failure_modes": [
-      "RAISED TypeError: expected string or bytes-like object, got 'NoneType'"
+      "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-05-24T02:55:00.239649"
+    "timestamp": "2026-05-25T05:30:16.832955"
   },
   "implicit_assumption_extractor": {
     "name": "implicit_assumption_extractor",

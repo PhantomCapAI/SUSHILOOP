@@ -223,3 +223,12 @@
 }
 ```
 ---
+
+## [2026-05-25T05:30:16.834779] Cycle 26: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overconfidence Detector",
+  "skill": "overconfidence_detector"
+}
+```
+---
