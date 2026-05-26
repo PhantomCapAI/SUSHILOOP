@@ -612,5 +612,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-05-26T09:44:50.909976"
+  },
+  "temporal_context_validator": {
+    "name": "temporal_context_validator",
+    "title": "Temporal Context Validator",
+    "code_hash": "3cc969b357752374",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass TemporalContext:\n    \"\"\"Temporal context information\"\"\"\n    time_sensitive: bool\n    temporal_context: str\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n\ndef calculate_temporal_context(input_text: str) -> TemporalContext:\n    \"\"\"\n    Calculate temporal context information\n\n    Args:\n    input_text (str): Input text to analyze\n\n    Returns:\n    TemporalContext: Temporal context information\n    \"\"\"\n    sentences = re.split(r'[.!?]', input_text)\n    sentenc",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.435,
+    "failure_modes": [],
+    "timestamp": "2026-05-26T20:04:23.844062"
   }
 }

@@ -100,5 +100,11 @@
     "category": "COGNITIVE_PROTECTION",
     "cycle": 30,
     "created_at": "2026-05-26T02:47:04.310503"
+  },
+  "temporal_context_validator": {
+    "title": "Temporal Context Validator",
+    "category": "INPUT_VALIDATION",
+    "cycle": 33,
+    "created_at": "2026-05-26T20:04:23.843333"
   }
 }
