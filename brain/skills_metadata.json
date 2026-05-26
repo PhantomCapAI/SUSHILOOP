@@ -558,5 +558,31 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-05-25T19:23:43.361188"
+  },
+  "cognitive_feedback_loop_detector": {
+    "name": "cognitive_feedback_loop_detector",
+    "title": "Cognitive Feedback Loop Detector",
+    "code_hash": "286459ff95fa6705",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass SentenceFeatures:\n    \"\"\"Features extracted from a sentence.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: int\n\ndef extract_sentence_features(sentence: str) -> SentenceFeatures:\n    \"\"\"Extract features from a sentence.\"\"\"\n    absolutes = re.findall(r'\\b(always|never|all|every|none)\\b', sentence, re.IGNORECASE)\n    absolutes_ratio = len(absolutes) / (len(sentence.split()) or 1)\n    hedges = re.findall(r'\\b(maybe|perhaps|possibly|likely|unlikely)\\b', sentence, re.IGNO",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 69
+    },
+    "diversity": 0.318,
+    "failure_modes": [],
+    "timestamp": "2026-05-26T02:47:04.311320"
   }
 }

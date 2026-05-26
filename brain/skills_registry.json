@@ -94,5 +94,11 @@
     "category": "INPUT_VALIDATION",
     "cycle": 23,
     "created_at": "2026-05-24T13:17:10.878443"
+  },
+  "cognitive_feedback_loop_detector": {
+    "title": "Cognitive Feedback Loop Detector",
+    "category": "COGNITIVE_PROTECTION",
+    "cycle": 30,
+    "created_at": "2026-05-26T02:47:04.310503"
   }
 }
