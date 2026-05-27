@@ -664,5 +664,33 @@
     "diversity": 0.592,
     "failure_modes": [],
     "timestamp": "2026-05-27T02:58:33.072247"
+  },
+  "self_reference_detector": {
+    "name": "self_reference_detector",
+    "title": "Self-Reference Detector",
+    "code_hash": "0eb730eae245a68b",
+    "summary": "import re\nfrom typing import Dict\nfrom collections import Counter\nfrom math import log\n\ndef self_reference_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects self-referential statements or questions in user input.\n\n    This function combines multiple signals to determine the confidence of self-reference:\n    - Absolute term density: The ratio of absolute terms (e.g., \"always\", \"never\") to total words.\n    - Hedge term density: The ratio of hedge terms (e.g., \"maybe\", \"possibly\") to total words.\n    - Overgeneral term density: The ratio of overgeneral terms (e.g., \"everyone\", \"everything\") ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.756,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-05-27T15:30:48.283362"
   }
 }

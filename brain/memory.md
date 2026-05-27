@@ -313,3 +313,12 @@
 }
 ```
 ---
+
+## [2026-05-27T15:30:48.285944] Cycle 36: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Reference Detector",
+  "skill": "self_reference_detector"
+}
+```
+---
