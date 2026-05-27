@@ -638,5 +638,31 @@
     "diversity": 0.435,
     "failure_modes": [],
     "timestamp": "2026-05-26T20:04:23.844062"
+  },
+  "information_density_evaluator": {
+    "name": "information_density_evaluator",
+    "title": "Information Density Evaluator",
+    "code_hash": "d04d434dcb259f6c",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass InformationDensityEvaluation:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef information_density_evaluator(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Evaluates the density of information in a given input text, detecting potential oversimplification or information overload,\n    and provides suggestions for improvement to maintain optimal cognitive engagement.\n\n    Args:\n    input_text (str): The input text to be evaluated.\n\n    R",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 71
+    },
+    "diversity": 0.592,
+    "failure_modes": [],
+    "timestamp": "2026-05-27T02:58:33.072247"
   }
 }
