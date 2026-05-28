@@ -358,3 +358,12 @@
 }
 ```
 ---
+
+## [2026-05-28T20:14:34.428259] Cycle 41: CycleResult.REJECTED
+```json
+{
+  "proposal": "Cognitive Overfitting Preventer",
+  "skill": "cognitive_overfitting_preventer"
+}
+```
+---
