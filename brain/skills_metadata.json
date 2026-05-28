@@ -264,30 +264,28 @@
   "overconfidence_detector": {
     "name": "overconfidence_detector",
     "title": "Overconfidence Detector",
-    "code_hash": "c4895acdc6cbfa66",
-    "summary": "import re\nfrom typing import Dict\n\ndef overconfidence_detector(input_text: str) -> Dict:\n    \"\"\"\n    This function detects instances where AI outputs may lead to overconfidence in human decision-making.\n    \n    It identifies absolute language, certainty statements, and lack of caveats, prompting users to re-evaluate their reliance on AI outputs.\n    \n    The mission of this function is to protect human cognition by preventing the uncritical acceptance of AI-generated information, \n    which can lead to poor decision-making and diminished critical thinking skills.\n    \n    The function returns",
+    "code_hash": "517109dd9680d60c",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass OverconfidenceSignals:\n    \"\"\"Dataclass to hold overconfidence signals\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_overconfidence_signals(input_text: str) -> OverconfidenceSignals:\n    \"\"\"\n    Calculate overconfidence signals from input text.\n\n    Args:\n    input_text (str): The input text to analyze.\n\n    Returns:\n    OverconfidenceSignals: A dataclass containing the calculated signals.\n   ",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
+      "documentation": 10,
       "strategies": 1,
-      "static_total": 38,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
-        "calibration": 7,
-        "behavioral_total": 17,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
         "probes_raised": 0,
         "probes_valid": 7
       },
-      "total": 55
+      "total": 66
     },
-    "diversity": 0.73,
-    "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
-    ],
-    "timestamp": "2026-05-26T15:16:48.108454"
+    "diversity": 0.444,
+    "failure_modes": [],
+    "timestamp": "2026-05-28T02:45:55.955226"
   },
   "implicit_assumption_extractor": {
     "name": "implicit_assumption_extractor",

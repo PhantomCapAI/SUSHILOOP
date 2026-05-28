@@ -112,5 +112,11 @@
     "category": "COGNITIVE_PROTECTION",
     "cycle": 34,
     "created_at": "2026-05-27T02:58:33.071521"
+  },
+  "overconfidence_detector": {
+    "title": "Overconfidence Detector",
+    "category": "COGNITIVE_PROTECTION",
+    "cycle": 38,
+    "created_at": "2026-05-28T02:45:55.954399"
   }
 }
