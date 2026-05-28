@@ -1,9 +1,9 @@
 {
-  "cycle_count": 39,
+  "cycle_count": 40,
   "total_skills": 20,
   "success_count": 20,
   "failure_count": 8,
-  "last_run": "2026-05-28T09:55:12.610984",
+  "last_run": "2026-05-28T15:41:56.716642",
   "history": [
     {
       "cycle_number": 1,
@@ -2573,6 +2573,33 @@
         }
       ],
       "timestamp": "2026-05-28T09:55:12.610984",
+      "error_message": null
+    },
+    {
+      "cycle_number": 40,
+      "proposal": {
+        "id": "94d6a565-f252-4832-8dde-29b9dd89cb0e",
+        "proposal_type": "NEW_SKILL",
+        "category": "COGNITIVE_PROTECTION",
+        "title": "Explanatory Gap Detector",
+        "description": "This skill identifies when AI-generated responses lack concrete, step-by-step explanations for complex decisions or processes, potentially leading to overreliance on vague or unverifiable outputs. It assesses the clarity and completeness of explanations provided by the AI.",
+        "rationale": "Protecting human cognition requires ensuring that AI outputs are not only accurate but also transparent and understandable. By detecting explanatory gaps, this skill encourages users to critically evaluate AI-generated responses and seek additional information when necessary, fostering a more balanced human-AI collaboration.",
+        "success_criteria": [
+          "Identification of explanations lacking step-by-step reasoning",
+          "Detection of vague or overly broad statements in AI outputs",
+          "Promotion of user inquiry into unclear or incomplete explanations"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 6,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-05-28T15:41:56.715622"
+      },
+      "result": "REJECTED",
+      "skill_generated": "explanatory_gap_detector",
+      "test_results": [],
+      "timestamp": "2026-05-28T15:41:56.716642",
       "error_message": null
     }
   ]

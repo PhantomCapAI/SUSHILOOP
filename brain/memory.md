@@ -349,3 +349,12 @@
 }
 ```
 ---
+
+## [2026-05-28T15:41:59.494488] Cycle 40: CycleResult.REJECTED
+```json
+{
+  "proposal": "Explanatory Gap Detector",
+  "skill": "explanatory_gap_detector"
+}
+```
+---
