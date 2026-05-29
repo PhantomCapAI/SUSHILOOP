@@ -421,15 +421,15 @@
   "inconsistent_terminology_detector": {
     "name": "inconsistent_terminology_detector",
     "title": "Inconsistent Terminology Detector",
-    "code_hash": "2ddc2086bfadb112",
-    "summary": "import re\nfrom math import log\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass TerminologyAnalysis:\n    \"\"\"Dataclass to hold the results of terminology analysis.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: int\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the input text.\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|all|none)\\b', input_text, re.IGNORECASE)\n    word_count = len(re.findall(r'\\b\\w+\\b', input_text))\n    return ",
+    "code_hash": "106d28b10f090ea2",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\nfrom math import sqrt\n\n@dataclass\nclass TerminologyAnalysis:\n    \"\"\"Data class to hold the results of the terminology analysis\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the text\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|all|none)\\b', text, re.IGNORECASE)\n    word_count = len(re.findall(r'\\b\\w+\\b', text",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 4,
-      "static_total": 44,
+      "strategies": 1,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
         "discrimination": 2,
@@ -438,13 +438,13 @@
         "probes_raised": 0,
         "probes_valid": 7
       },
-      "total": 63
+      "total": 60
     },
-    "diversity": 0.382,
+    "diversity": 0.308,
     "failure_modes": [
       "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-05-28T09:55:15.203459"
+    "timestamp": "2026-05-29T14:57:20.842563"
   },
   "overly_broad_generalization_detector": {
     "name": "overly_broad_generalization_detector",
