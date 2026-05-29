@@ -532,30 +532,28 @@
   "mental_model_mapper": {
     "name": "mental_model_mapper",
     "title": "Mental Model Mapper",
-    "code_hash": "60fc43fd4ebf05c9",
-    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass MentalModelAnalysis:\n    \"\"\"Dataclass to hold the results of mental model analysis\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the text\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|every|all)\\b', text, re.IGNORECASE)\n    total_words = len(re.findall(r'\\b\\w+\\b', text))\n    return len(absolute_terms) / total_wor",
+    "code_hash": "ff3cf1d96b8f9a0a",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass MentalModelMapperResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef mental_model_mapper(input_text: str) -> Dict:\n    \"\"\"\n    Identifies and highlights potential mental model mismatches between human users and AI outputs.\n\n    This function combines multiple signals to detect potential mismatches, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term density\n    - Sentence structure and complexity\n\n    The funct",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 10,
+      "documentation": 7,
       "strategies": 1,
-      "static_total": 41,
+      "static_total": 38,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
-        "calibration": 7,
-        "behavioral_total": 17,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
         "probes_raised": 0,
         "probes_valid": 7
       },
-      "total": 58
+      "total": 68
     },
-    "diversity": 0.625,
-    "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
-    ],
-    "timestamp": "2026-05-25T19:23:43.361188"
+    "diversity": 0.679,
+    "failure_modes": [],
+    "timestamp": "2026-05-29T09:46:07.079142"
   },
   "cognitive_feedback_loop_detector": {
     "name": "cognitive_feedback_loop_detector",
