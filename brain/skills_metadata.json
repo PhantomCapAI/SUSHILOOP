@@ -476,8 +476,8 @@
   "implicit_assumption_validator": {
     "name": "implicit_assumption_validator",
     "title": "Implicit Assumption Validator",
-    "code_hash": "6f49698e4224d4bc",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass SentenceFeatures:\n    \"\"\"Features extracted from a sentence.\"\"\"\n    absolutes: int\n    hedges: int\n    overgeneral_terms: int\n    word_count: int\n\ndef extract_sentence_features(sentence: str) -> SentenceFeatures:\n    \"\"\"Extract features from a sentence.\"\"\"\n    absolutes = len(re.findall(r'\\b(always|never|all|every|none)\\b', sentence, re.IGNORECASE))\n    hedges = len(re.findall(r'\\b(maybe|perhaps|possibly|likely|unlikely)\\b', sentence, re.IGNORECASE))\n    overgeneral_terms = len",
+    "code_hash": "9e2afac5744edc92",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass SentenceFeatures:\n    \"\"\"Features extracted from a sentence.\"\"\"\n    absolutes: int  # Number of absolute terms (e.g., always, never)\n    hedges: int  # Number of hedging terms (e.g., maybe, possibly)\n    overgeneral_terms: int  # Number of overgeneral terms (e.g., everyone, everything)\n    word_count: int  # Total word count in the sentence\n\ndef extract_sentence_features(sentence: str) -> SentenceFeatures:\n    \"\"\"Extract features from a sentence.\"\"\"\n    absolutes = len(re.findall(r\"\\b(alw",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -495,11 +495,11 @@
       },
       "total": 60
     },
-    "diversity": 0.356,
+    "diversity": 0.561,
     "failure_modes": [
       "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-05-25T09:58:35.902644"
+    "timestamp": "2026-05-29T02:49:13.907332"
   },
   "lack_of_temporal_context_validator": {
     "name": "lack_of_temporal_context_validator",
