@@ -124,5 +124,11 @@
     "category": "COGNITIVE_PROTECTION",
     "cycle": 43,
     "created_at": "2026-05-29T09:46:07.078160"
+  },
+  "premature_simplification_detector": {
+    "title": "Premature Simplification Detector",
+    "category": "INPUT_VALIDATION",
+    "cycle": 45,
+    "created_at": "2026-05-29T20:15:11.966932"
   }
 }

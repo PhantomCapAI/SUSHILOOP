@@ -716,5 +716,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-05-27T20:09:51.767821"
+  },
+  "premature_simplification_detector": {
+    "name": "premature_simplification_detector",
+    "title": "Premature Simplification Detector",
+    "code_hash": "2c994ca097341196",
+    "summary": "import re\nfrom math import log\nfrom typing import Dict\n\ndef premature_simplification_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when a user's input oversimplifies a complex issue, potentially leading to incomplete or inaccurate AI responses,\n    and prompts the user to consider additional factors.\n\n    This function combines multiple signals to determine the confidence of premature simplification:\n    - Absolute term density: The ratio of absolute terms (e.g., \"always\", \"never\") to the total number of words.\n    - Hedge term density: The ratio of hedge terms (e.g., \"maybe\", \"possib",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.535,
+    "failure_modes": [],
+    "timestamp": "2026-05-29T20:15:11.967712"
   }
 }
