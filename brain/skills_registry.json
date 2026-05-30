@@ -130,5 +130,11 @@
     "category": "INPUT_VALIDATION",
     "cycle": 45,
     "created_at": "2026-05-29T20:15:11.966932"
+  },
+  "redundant_information_detector": {
+    "title": "Redundant Information Detector",
+    "category": "INPUT_VALIDATION",
+    "cycle": 47,
+    "created_at": "2026-05-30T08:23:48.672544"
   }
 }

@@ -770,5 +770,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-05-30T02:43:14.268435"
+  },
+  "redundant_information_detector": {
+    "name": "redundant_information_detector",
+    "title": "Redundant Information Detector",
+    "code_hash": "36110595d0075985",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\nimport math\n\ndef redundant_information_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects and alerts users when input prompts contain redundant or repetitive information.\n\n    This function combines multiple signals to determine the confidence of redundant information:\n    1. Sentence count and ratio\n    2. Lexical diversity (type-token ratio)\n    3. Hedging/absolute-term density\n    4. Duplicate phrases or sentences\n\n    Args:\n        input_text (str): The input text to be analyzed.\n\n    Returns:\n        Dict: A dictionary ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.627,
+    "failure_modes": [],
+    "timestamp": "2026-05-30T08:23:48.673442"
   }
 }
