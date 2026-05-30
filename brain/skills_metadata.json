@@ -796,5 +796,33 @@
     "diversity": 0.627,
     "failure_modes": [],
     "timestamp": "2026-05-30T08:23:48.673442"
+  },
+  "unexamined_premise_identifier": {
+    "name": "unexamined_premise_identifier",
+    "title": "Unexamined Premise Identifier",
+    "code_hash": "a3dc47ccb1bccd3d",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass Sentence:\n    text: str\n    absolutes: int\n    hedges: int\n    overgeneral_terms: int\n\ndef count_absolutes(sentence: str) -> int:\n    \"\"\"\n    Count the number of absolute terms in a sentence.\n    \"\"\"\n    absolutes = re.findall(r'\\b(always|never|every|all)\\b', sentence, re.IGNORECASE)\n    return len(absolutes)\n\ndef count_hedges(sentence: str) -> int:\n    \"\"\"\n    Count the number of hedge terms in a sentence.\n    \"\"\"\n    hedges = re.findall(r'\\b(maybe|perhaps|possibly|likely|unli",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 57
+    },
+    "diversity": 0.444,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-05-30T13:20:46.174814"
   }
 }
