@@ -430,3 +430,12 @@
 }
 ```
 ---
+
+## [2026-05-30T19:06:45.586800] Cycle 49: CycleResult.REJECTED
+```json
+{
+  "proposal": "Input Novelty Detector",
+  "skill": "input_novelty_detector"
+}
+```
+---

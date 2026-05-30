@@ -824,5 +824,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-05-30T13:20:46.174814"
+  },
+  "input_novelty_detector": {
+    "name": "input_novelty_detector",
+    "title": "Input Novelty Detector",
+    "code_hash": "146b23779ff84fd4",
+    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef input_novelty_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when user input is overly similar to previous inputs, indicating potential stagnation in thought process.\n    \n    This function analyzes input patterns to identify repetitive or unoriginal thinking, promoting creative and original thinking.\n    \n    Parameters:\n    input_text (str): The user's input text.\n    \n    Returns:\n    dict: A dictionary containing the results of the input novelty detection.\n        - \"blocked\" (bool): Whether",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 56
+    },
+    "diversity": 0.714,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-05-30T19:06:45.583579"
   }
 }
