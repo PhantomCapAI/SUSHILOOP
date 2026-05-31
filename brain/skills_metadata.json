@@ -852,5 +852,31 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-05-30T19:06:45.583579"
+  },
+  "self_reference_validator": {
+    "name": "self_reference_validator",
+    "title": "Self-Reference Validator",
+    "code_hash": "4c0127b97d061341",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\nfrom math import log\n\n@dataclass\nclass SentenceFeatures:\n    \"\"\"Features extracted from a sentence.\"\"\"\n    absolutes: int\n    hedges: int\n    overgeneral_terms: int\n    word_count: int\n\ndef extract_sentence_features(sentence: str) -> SentenceFeatures:\n    \"\"\"Extract features from a sentence.\"\"\"\n    absolutes = len(re.findall(r'\\b(always|never|all|every|none)\\b', sentence, re.IGNORECASE))\n    hedges = len(re.findall(r'\\b(maybe|perhaps|possibly|likely|unlikely)\\b', sentence, re.IGNORECASE))\n    ov",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.347,
+    "failure_modes": [],
+    "timestamp": "2026-05-31T03:24:14.836602"
   }
 }
