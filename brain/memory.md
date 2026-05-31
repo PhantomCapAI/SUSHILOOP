@@ -448,3 +448,12 @@
 }
 ```
 ---
+
+## [2026-05-31T08:40:13.902178] Cycle 51: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overthink Detector",
+  "skill": "overthink_detector"
+}
+```
+---
