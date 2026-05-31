@@ -466,3 +466,12 @@
 }
 ```
 ---
+
+## [2026-05-31T19:10:29.273311] Cycle 53: CycleResult.REJECTED
+```json
+{
+  "proposal": "Ambiguity Propagation Detector",
+  "skill": "ambiguity_propagation_detector"
+}
+```
+---
