@@ -290,29 +290,30 @@
   "implicit_assumption_extractor": {
     "name": "implicit_assumption_extractor",
     "title": "Implicit Assumption Extractor",
-    "code_hash": "79a4a99cc78da2b7",
-    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    pattern: str\n    weight: float\n\nclass ImplicitAssumptionExtractor:\n    \"\"\"\n    Identifies implicit assumptions in user input by analyzing language patterns and warning users of potential biases or unstated premises.\n\n    This skill promotes more explicit and critical thinking by highlighting unconscious assumptions that may influence decision-making or problem-solving processes.\n    It aligns with the mission of using AI as a sparring partner rather than a brai",
+    "code_hash": "4ebe253c2177f3a7",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass AssumptionSignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    lexical_diversity: float\n\ndef calculate_assumption_signals(input_text: str) -> AssumptionSignals:\n    sentences = re.split(r'[.!?]', input_text)\n    sentences = [s.strip() for s in sentences if s.strip()]\n    sentence_count = len(sentences)\n\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    word_count = len(words)\n    lexi",
     "score": {
-      "tests_pass": 0,
+      "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 10,
-      "static_total": 40,
+      "strategies": 1,
+      "static_total": 41,
       "behavioral": {
-        "robustness": 0,
-        "discrimination": 0,
-        "calibration": 0,
-        "behavioral_total": 0,
-        "error": "no callable implicit_assumption_extractor"
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
       },
-      "total": 40
+      "total": 60
     },
-    "diversity": 0.679,
+    "diversity": 0.478,
     "failure_modes": [
-      "AttributeError: no callable named 'implicit_assumption_extractor' in implicit_assumption_extractor.p"
+      "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-05-24T03:00:03.449562"
+    "timestamp": "2026-05-31T13:27:57.295738"
   },
   "anthropomorphism_detector": {
     "name": "anthropomorphism_detector",
