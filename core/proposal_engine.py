@@ -1,12 +1,56 @@
-"""AI-powered proposal generation using Groq with retrieval-augmented prompting"""
+"""AI-powered proposal generation using Groq with retrieval-augmented prompting.
+
+Upgraded with anti-rut steering:
+  1. Category-gap targeting — each cycle is FORCED toward the least-covered
+     charter category, so the loop systematically fills empty buckets
+     (PII_DETECTION, OUTPUT_FILTERING, CONTENT_SAFETY, ...) instead of
+     camping on COGNITIVE_PROTECTION / INPUT_VALIDATION.
+  2. Full-history rut memory — concepts already shipped OR proposed repeatedly
+     across ALL history are hard-banned in the prompt (not just the last 3).
+  3. Collision guard — if the model ignores the steer and returns a known rut,
+     we fall back to a fresh proposal in the target category so the cycle still
+     makes forward progress.
+"""
 import os
+import re
 import json
 import structlog
+from collections import Counter
 from core.schemas import Proposal, ProposalType, SkillCategory
 from core.memory_manager import MemoryManager
 from core.skill_scorer import select_top_examples
 
 logger = structlog.get_logger(__name__)
+
+# All charter-sanctioned categories, in gap-fill priority order (empty/reserved first).
+CHARTER_CATEGORIES = [
+    "PII_DETECTION",
+    "OUTPUT_FILTERING",
+    "CONTENT_SAFETY",
+    "BIAS_DETECTION",
+    "VERIFICATION_PROMPT",
+    "RATE_LIMITING",
+    "INPUT_VALIDATION",
+    "COGNITIVE_PROTECTION",
+]
+
+# Title suffix words that describe the *form* of a skill, not its *concept*.
+# Stripping these collapses "Implicit Assumption Validator/Extractor/Clarifier"
+# into one concept stem so we can see the rut.
+_SUFFIX_WORDS = {
+    "detector", "validator", "analyzer", "evaluator", "checker", "system",
+    "catcher", "mapper", "clarifier", "extractor", "identifier", "preventer",
+    "enhancer", "marker", "throttle", "classifier", "injector", "elicitor",
+    "provider", "alert", "tool", "module", "guard", "guardrail",
+}
+
+
+def _normalize_stem(title: str) -> str:
+    """Reduce a title to its core concept (lowercased, form-words removed)."""
+    words = re.findall(r"[a-z0-9]+", (title or "").lower())
+    core = [w for w in words if w not in _SUFFIX_WORDS]
+    return " ".join(core).strip() or " ".join(words).strip()
+
 
 class ProposalEngine:
     def __init__(self, memory: MemoryManager):
@@ -19,44 +63,118 @@ class ProposalEngine:
     def generate_proposal(self) -> Proposal:
         state = self.memory.load_state()
         cycle = state.cycle_count + 1
-        if self.use_ai:
-            return self._generate_ai_proposal(state, cycle)
-        return self._generate_fallback_proposal(cycle)
 
-    def _generate_ai_proposal(self, state, cycle: int) -> Proposal:
+        target, coverage = self._pick_target_category(cycle)
+        banned = self._banned_concepts()
+        logger.info(f"Target category: {target} | banned concepts: {len(banned)}")
+
+        if self.use_ai:
+            proposal = self._generate_ai_proposal(state, cycle, target, coverage, banned)
+        else:
+            proposal = self._fallback_for_category(target, cycle)
+
+        # Collision guard: if the model walked back into a rut, force a fresh
+        # proposal in the target category instead of shipping the cycle empty.
+        if _normalize_stem(proposal.title) in banned:
+            logger.warning(f"Proposal '{proposal.title}' is a known rut — using fallback for {target}")
+            proposal = self._fallback_for_category(target, cycle)
+        return proposal
+
+    # ---- steering helpers -------------------------------------------------
+
+    def _category_coverage(self) -> dict:
+        """How many SHIPPED skills exist per charter category."""
+        counts = {c: 0 for c in CHARTER_CATEGORIES}
+        try:
+            registry = json.loads(self.memory.skills_registry.read_text(encoding='utf-8-sig'))
+        except Exception:
+            registry = {}
+        for meta in registry.values():
+            cat = str(meta.get('category', '')).replace('SkillCategory.', '')
+            if cat in counts:
+                counts[cat] += 1
+        return counts
+
+    def _pick_target_category(self, cycle: int):
+        """Force this cycle toward the least-covered category; rotate on ties."""
+        counts = self._category_coverage()
+        fewest = min(counts.values())
+        candidates = [c for c in CHARTER_CATEGORIES if counts[c] == fewest]
+        target = candidates[cycle % len(candidates)]
+        return target, counts
+
+    def _banned_concepts(self) -> set:
+        """Concept stems already shipped OR proposed >=2x across ALL history."""
+        banned = set()
+        # Already shipped
+        try:
+            registry = json.loads(self.memory.skills_registry.read_text(encoding='utf-8-sig'))
+            for meta in registry.values():
+                banned.add(_normalize_stem(meta.get('title', '')))
+        except Exception:
+            pass
+        # Repeatedly proposed (the actual rut signal)
+        state = self.memory.load_state()
+        stems = Counter(_normalize_stem(h.proposal.title) for h in state.history)
+        for stem, n in stems.items():
+            if n >= 2 and stem:
+                banned.add(stem)
+        banned.discard("")
+        return banned
+
+    def _rut_report(self, banned: set, top: int = 12) -> str:
+        state = self.memory.load_state()
+        stems = Counter(_normalize_stem(h.proposal.title) for h in state.history)
+        ranked = sorted(((s, n) for s, n in stems.items() if s), key=lambda x: -x[1])
+        lines = []
+        for stem, n in ranked[:top]:
+            tag = f" (proposed {n}x — STOP)" if n >= 2 else ""
+            lines.append(f"- {stem}{tag}")
+        return "\n".join(lines) if lines else "None yet"
+
+    # ---- AI path ----------------------------------------------------------
+
+    def _generate_ai_proposal(self, state, cycle, target, coverage, banned) -> Proposal:
         import requests
 
         existing_skills = self._get_skills_summary()
-        recent_failures = self._get_recent_failures_summary()
         top_examples = self._format_top_examples()
+        rut_report = self._rut_report(banned)
+        coverage_line = ", ".join(f"{c}:{n}" for c, n in coverage.items())
 
         prompt = f"""You are designing AI safety guardrails for SUSHILOOP, an open-source project protecting human cognition from AI overreliance.
 
 MISSION: Every guardrail must help humans use AI as a sparring partner, not a brain replacement.
 
-EXISTING SKILLS (do NOT duplicate):
-{existing_skills}
+CURRENT CATEGORY COVERAGE (skills shipped per category):
+{coverage_line}
 
-TOP-SCORING PREVIOUS SKILLS (learn from these — match or exceed their quality):
+>>> THIS CYCLE YOU MUST PROPOSE IN CATEGORY: {target} <
+This category is under-covered. Do NOT propose in a different category. The
+project is lopsided toward INPUT_VALIDATION and COGNITIVE_PROTECTION — we need
+breadth, not another variation on the same theme.
+
+EXISTING / OVERUSED CONCEPTS — these are BANNED. Do NOT propose anything that
+resembles, rephrases, or is a synonym of these. Anything proposed 2+ times has
+been rejected as a near-clone every time:
+{rut_report}
+
+TOP-SCORING PREVIOUS SKILLS (match or exceed their quality):
 {top_examples}
 
-RECENT FAILED PROPOSALS (avoid these patterns):
-{recent_failures}
-
 DESIGN ONE NEW guardrail that is:
-- Novel (not in existing skills list)
-- Specific (NOT "general jailbreak detector" — be precise)
-- Mission-aligned (protects cognition, not just safety)
-- Practical (deployable as ~50-200 line pure-Python function)
+- In the {target} category (REQUIRED)
+- A concept NOT in the banned list above (REQUIRED — be genuinely new)
+- Specific and concrete (name the exact pattern it catches)
+- Mission-aligned (protects cognition, not just generic safety)
+- Practical (deployable as a ~50-200 line pure-Python function)
 
-Prioritize categories: COGNITIVE_PROTECTION, VERIFICATION_PROMPT, BIAS_DETECTION, INPUT_VALIDATION, OUTPUT_FILTERING.
-
-For tests_required: use ["auto"] — the test runner derives the filename.
+For tests_required: use ["auto"].
 
 Respond ONLY with JSON:
 {{
   "proposal_type": "NEW_SKILL",
-  "category": "INPUT_VALIDATION",
+  "category": "{target}",
   "title": "Specific Skill Name",
   "description": "What it does in 1-2 sentences",
   "rationale": "Why this matters for protecting human cognition",
@@ -66,13 +184,13 @@ Respond ONLY with JSON:
   "rollback_plan": "Delete file from skills/"
 }}
 
-Cycle {cycle}. Make this skill genuinely useful."""
+Cycle {cycle}. Make this skill genuinely useful and genuinely new."""
 
         try:
             response = requests.post(
                 "https://api.groq.com/openai/v1/chat/completions",
                 headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},
-                json={"model": "llama-3.3-70b-versatile", "messages": [{"role": "user", "content": prompt}], "temperature": 0.85, "max_tokens": 2000},
+                json={"model": "llama-3.3-70b-versatile", "messages": [{"role": "user", "content": prompt}], "temperature": 0.9, "max_tokens": 2000},
                 timeout=30
             )
             if response.status_code == 200:
@@ -81,46 +199,67 @@ Cycle {cycle}. Make this skill genuinely useful."""
                 json_end = content.rfind('}') + 1
                 if json_start != -1 and json_end > json_start:
                     proposal_data = json.loads(content[json_start:json_end])
+                    # Hard-pin the category to the target; the model sometimes drifts.
+                    proposal_data['category'] = target
                     return Proposal(**proposal_data)
             logger.warning(f"API failed: {response.status_code}")
         except Exception as e:
             logger.error(f"AI proposal failed: {e}")
-        return self._generate_fallback_proposal(cycle)
+        return self._fallback_for_category(target, cycle)
 
-    def _generate_fallback_proposal(self, cycle: int) -> Proposal:
-        proposals = [
-            Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.INPUT_VALIDATION,
-                title='Authority Impersonation Detector', description='Detects when prompts impersonate authority figures (CEO, doctor, lawyer) to bypass user judgment',
-                rationale='Authority framing is a primary cognitive offloading trigger',
-                success_criteria=['Catches role impersonation', 'Returns confidence score', 'Logs reason'],
-                tests_required=['auto'], estimated_complexity=5, rollback_plan='Delete file'),
-            Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.OUTPUT_FILTERING,
-                title='Hallucination Confidence Marker', description='Flags AI outputs that present uncertain claims as definitive facts',
-                rationale='Users accept AI outputs without verifying when confidence appears high',
-                success_criteria=['Detects hedge-free assertions', 'Flags numeric claims without sources', 'Returns confidence'],
-                tests_required=['auto'], estimated_complexity=6, rollback_plan='Delete file'),
-            Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.INPUT_VALIDATION,
-                title='False Urgency Framing Catcher', description='Detects manufactured time pressure pushing users to skip verification',
-                rationale='Urgency bypasses critical thinking - core cognitive offloading vector',
-                success_criteria=['Catches time-pressure language', 'Identifies artificial scarcity', 'Confidence scored'],
-                tests_required=['auto'], estimated_complexity=4, rollback_plan='Delete file'),
-            Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.PII_DETECTION,
-                title='Granular PII Classifier', description='Distinguishes between PII categories with category-specific blocking',
-                rationale='One-size-fits-all PII blocking is too coarse',
-                success_criteria=['Detects 6+ PII categories', 'Returns category and confidence', 'Configurable thresholds'],
-                tests_required=['auto'], estimated_complexity=7, rollback_plan='Delete file'),
-            Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.CONTENT_SAFETY,
-                title='Verification Prompt Injector', description='Adds verify-before-accept prompts when AI output contains actionable advice',
-                rationale='Counters cognitive surrender by forcing a verification beat',
-                success_criteria=['Detects actionable advice', 'Injects verification prompt', 'Configurable triggers'],
-                tests_required=['auto'], estimated_complexity=5, rollback_plan='Delete file'),
-            Proposal(proposal_type=ProposalType.NEW_SKILL, category=SkillCategory.RATE_LIMITING,
-                title='Compulsive Use Throttle', description='Detects and throttles patterns of compulsive AI use vs deliberate use',
-                rationale='Protects users from forming dependency loops',
-                success_criteria=['Distinguishes query patterns', 'Soft throttling with explanation', 'User-overridable'],
-                tests_required=['auto'], estimated_complexity=6, rollback_plan='Delete file'),
-        ]
-        return proposals[(cycle - 1) % len(proposals)]
+    # ---- fallback path ----------------------------------------------------
+
+    def _fallback_for_category(self, target: str, cycle: int) -> Proposal:
+        """Deterministic, category-targeted fallbacks. Multiple per category so
+        repeated fallbacks in the same category still differ."""
+        C = SkillCategory
+        bank = {
+            "PII_DETECTION": [
+                ("Indirect Identifier Combiner", "Flags inputs where several non-PII fields (ZIP, birth year, job) combine into a re-identifiable fingerprint", "Quasi-identifiers leak identity even when no single field is PII"),
+                ("Pasted Credential Catcher", "Detects API keys, tokens, and passwords accidentally pasted into prompts before they reach the model", "Users routinely paste secrets they meant to redact"),
+            ],
+            "OUTPUT_FILTERING": [
+                ("Fabricated Citation Flagger", "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable", "Invented citations are the highest-trust hallucination"),
+                ("Unhedged Medical/Legal Claim Filter", "Flags AI output giving medical or legal directives without a verify-with-a-professional caveat", "Directive high-stakes advice invites cognitive surrender"),
+            ],
+            "CONTENT_SAFETY": [
+                ("Escalation Advice Detector", "Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat", "High-arousal advice short-circuits deliberation"),
+                ("Self-Harm Routing Guard", "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model", "A model must scaffold, not substitute, real support"),
+            ],
+            "BIAS_DETECTION": [
+                ("Loaded-Framing Detector", "Flags when a prompt's wording presupposes a conclusion, nudging the model to confirm rather than examine it", "Confirmation framing turns AI into an echo, not a sparring partner"),
+                ("One-Sided Question Detector", "Detects questions that ask only for support for a position and prompts a steelman of the opposing view", "Single-sided queries entrench priors"),
+            ],
+            "VERIFICATION_PROMPT": [
+                ("Actionable-Step Verifier", "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint", "A verification beat is the antidote to ask-accept-move-on"),
+                ("Number-Claim Spotlighter", "Highlights specific figures in output and asks the user to confirm the source before relying on them", "Numbers feel authoritative and get accepted unchecked"),
+            ],
+            "RATE_LIMITING": [
+                ("Deliberation-Pace Nudger", "Distinguishes rapid-fire dependent querying from deliberate use and adds a soft, overridable pause", "Compulsive querying forms dependency loops"),
+                ("Re-ask Loop Breaker", "Detects the user re-asking the same thing in slightly different words and suggests stepping back to think", "Re-ask loops signal offloading, not progress"),
+            ],
+            "INPUT_VALIDATION": [
+                ("Authority Impersonation Detector", "Detects prompts impersonating authority figures (CEO, doctor, lawyer) to bypass user judgment", "Authority framing is a primary cognitive offloading trigger"),
+            ],
+            "COGNITIVE_PROTECTION": [
+                ("Effortless-Answer Warner", "Detects requests to fully outsource a task the user could reason through, and offers a scaffold instead of a finished answer", "Doing all the thinking replaces the user one decision at a time"),
+            ],
+        }
+        options = bank.get(target) or bank["VERIFICATION_PROMPT"]
+        title, desc, why = options[cycle % len(options)]
+        return Proposal(
+            proposal_type=ProposalType.NEW_SKILL,
+            category=C(target),
+            title=title,
+            description=desc,
+            rationale=why,
+            success_criteria=["Catches the target pattern", "Returns reason + confidence", "Low false-positive rate"],
+            tests_required=["auto"],
+            estimated_complexity=5,
+            rollback_plan="Delete file from skills/",
+        )
+
+    # ---- prompt context helpers ------------------------------------------
 
     def _get_skills_summary(self) -> str:
         try:
@@ -130,15 +269,6 @@ Cycle {cycle}. Make this skill genuinely useful."""
             return "\n".join([f"- {name}: {meta.get('title', 'Unknown')}" for name, meta in registry.items()])
         except Exception as e:
             logger.warning(f"Could not load registry: {e}")
-            return "None"
-
-    def _get_recent_failures_summary(self) -> str:
-        try:
-            failures = self.memory.get_recent_failures(limit=3)
-            if not failures:
-                return "None"
-            return "\n".join([f"- {f.proposal.title} ({f.result})" for f in failures])
-        except Exception:
             return "None"
 
     def _format_top_examples(self) -> str:
