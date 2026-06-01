@@ -879,5 +879,31 @@
     "diversity": 0.347,
     "failure_modes": [],
     "timestamp": "2026-05-31T03:24:14.836602"
+  },
+  "feedback_loop_closure_detector": {
+    "name": "feedback_loop_closure_detector",
+    "title": "Feedback Loop Closure Detector",
+    "code_hash": "3ba65a76ebcb6b2c",
+    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef feedback_loop_closure_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects self-referential feedback loops in user input and alerts users to reframe their queries.\n\n    This function combines multiple signals to detect potential feedback loops, including:\n    - Absolute term density\n    - Hedging term density\n    - Overgeneral term density\n    - Lexical diversity\n    - Sentence structure\n\n    The confidence score is a graded value between 0.0 and 1.0, representing the likelihood of a feedback loop.\n\n ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 71
+    },
+    "diversity": 0.574,
+    "failure_modes": [],
+    "timestamp": "2026-06-01T03:37:03.335857"
   }
 }
