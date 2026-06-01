@@ -484,3 +484,12 @@
 }
 ```
 ---
+
+## [2026-06-01T03:40:43.913085] Cycle 55: CycleResult.REJECTED
+```json
+{
+  "proposal": "Narrative Closure Detector",
+  "skill": "narrative_closure_detector"
+}
+```
+---
