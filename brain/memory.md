@@ -502,3 +502,12 @@
 }
 ```
 ---
+
+## [2026-06-01T17:30:58.652607] Cycle 57: CycleResult.REJECTED
+```json
+{
+  "proposal": "Echo Chamber Detector",
+  "skill": "echo_chamber_detector"
+}
+```
+---
