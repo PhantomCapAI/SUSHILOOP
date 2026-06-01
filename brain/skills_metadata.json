@@ -905,5 +905,33 @@
     "diversity": 0.574,
     "failure_modes": [],
     "timestamp": "2026-06-01T03:37:03.335857"
+  },
+  "emotional_contagion_detector": {
+    "name": "emotional_contagion_detector",
+    "title": "Emotional Contagion Detector",
+    "code_hash": "88edf0e24a5a0611",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass EmotionalContagionSignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_emotional_contagion_signals(input_text: str) -> EmotionalContagionSignals:\n    \"\"\"\n    Calculate emotional contagion signals from the input text.\n\n    Args:\n    input_text (str): The text to analyze.\n\n    Returns:\n    EmotionalContagionSignals: A dataclass containing the calculated signals.\n    \"\"\"\n    sentences = re.split(r'[.!?]', ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 7,
+      "static_total": 47,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.317,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-01T11:25:15.289173"
   }
 }
