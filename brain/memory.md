@@ -529,3 +529,12 @@
 }
 ```
 ---
+
+## [2026-06-02T10:15:42.902493] Cycle 60: CycleResult.REJECTED
+```json
+{
+  "proposal": "Inferred Attribute Protector",
+  "skill": "inferred_attribute_protector"
+}
+```
+---
