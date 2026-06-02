@@ -1073,5 +1073,33 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-06-02T16:15:34.852229"
+  },
+  "narrow_information_tunnel_detector": {
+    "name": "narrow_information_tunnel_detector",
+    "title": "Narrow Information Tunnel Detector",
+    "code_hash": "c66a20bd312871d2",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass Sentence:\n    text: str\n    word_count: int\n    absolute_terms: int\n    hedge_terms: int\n\ndef calculate_lexical_diversity(word_counts: Dict[str, int]) -> float:\n    \"\"\"Calculate lexical diversity as the ratio of unique words to total words.\"\"\"\n    total_words = sum(word_counts.values())\n    unique_words = len(word_counts)\n    return unique_words / total_words if total_words > 0 else 0.0\n\ndef calculate_hedge_density(sentence: Sentence) -> float:\n    \"\"\"Calculate hedg",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 58
+    },
+    "diversity": 0.574,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-06-02T20:42:26.631076"
   }
 }
