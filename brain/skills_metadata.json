@@ -1045,5 +1045,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-02T10:15:42.898824"
+  },
+  "ambiguous_recommendation_detector": {
+    "name": "ambiguous_recommendation_detector",
+    "title": "Ambiguous Recommendation Detector",
+    "code_hash": "7a95f9a51f224d75",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef ambiguous_recommendation_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects ambiguous or vague recommendations in AI output and filters them to prevent humans from over-relying on unclear suggestions.\n\n    This function uses natural language processing to identify phrases that indicate indecision or lack of confidence in the recommendation.\n    It combines multiple signals, including weighted pattern matches, structural features, lexical diversity, hedging/absolute-term density, etc.\n    to produce a graded confidence s",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 61
+    },
+    "diversity": 0.738,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-06-02T16:15:34.852229"
   }
 }

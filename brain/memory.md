@@ -538,3 +538,12 @@
 }
 ```
 ---
+
+## [2026-06-02T16:15:34.856884] Cycle 61: CycleResult.REJECTED
+```json
+{
+  "proposal": "Ambiguous Recommendation Detector",
+  "skill": "ambiguous_recommendation_detector"
+}
+```
+---
