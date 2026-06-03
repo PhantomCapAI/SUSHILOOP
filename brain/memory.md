@@ -565,3 +565,12 @@
 }
 ```
 ---
+
+## [2026-06-03T10:51:37.724798] Cycle 64: CycleResult.REJECTED
+```json
+{
+  "proposal": "Ambiguous Directive Detector",
+  "skill": "ambiguous_directive_detector"
+}
+```
+---
