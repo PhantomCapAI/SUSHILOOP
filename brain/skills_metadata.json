@@ -1129,5 +1129,31 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-06-03T10:51:37.720076"
+  },
+  "inferred_attribute_exposer": {
+    "name": "inferred_attribute_exposer",
+    "title": "Inferred Attribute Exposer",
+    "code_hash": "20d4caf86241bf2d",
+    "summary": "import re\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass Signal:\n    name: str\n    weight: float\n    value: float\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms to total words in the text.\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|all|none|every)\\b', text, re.IGNORECASE)\n    total_words = len(re.findall(r'\\b\\w+\\b', text))\n    return len(absolute_terms) / total_words if total_words > 0 else 0.0\n\ndef calculate_hedge_density(text: str) -> float:\n    \"\"\"Calculate the density of hedging terms in the text.\"\"\"\n ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.339,
+    "failure_modes": [],
+    "timestamp": "2026-06-03T20:52:00.994706"
   }
 }

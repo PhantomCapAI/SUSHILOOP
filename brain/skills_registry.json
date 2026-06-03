@@ -148,5 +148,11 @@
     "category": "INPUT_VALIDATION",
     "cycle": 54,
     "created_at": "2026-06-01T03:37:03.335037"
+  },
+  "inferred_attribute_exposer": {
+    "title": "Inferred Attribute Exposer",
+    "category": "PII_DETECTION",
+    "cycle": 66,
+    "created_at": "2026-06-03T20:52:00.993793"
   }
 }
