@@ -1183,5 +1183,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-04T03:36:34.506312"
+  },
+  "ambiguity_spotlighter": {
+    "name": "ambiguity_spotlighter",
+    "title": "Ambiguity Spotlighter",
+    "code_hash": "a14edcca6ee6ed52",
+    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass AmbiguitySignals:\n    \"\"\"Dataclass to hold ambiguity signals\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the input text\"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    absolute_count = sum(1 for word in words if word in ab",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.333,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-04T09:51:02.313311"
   }
 }
