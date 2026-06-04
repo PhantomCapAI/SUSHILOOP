@@ -1155,5 +1155,33 @@
     "diversity": 0.339,
     "failure_modes": [],
     "timestamp": "2026-06-03T20:52:00.994706"
+  },
+  "echo_chamber_identifier": {
+    "name": "echo_chamber_identifier",
+    "title": "Echo Chamber Identifier",
+    "code_hash": "496014f1f2f390e8",
+    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass EchoChamberAnalysis:\n    \"\"\"Data class to hold the analysis results.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_lexical_diversity(words: list) -> float:\n    \"\"\"Calculate the lexical diversity of a given list of words.\"\"\"\n    word_count = len(words)\n    unique_word_count = len(set(words))\n    if word_count == 0:\n        return 0.0\n    return unique_word_count / word_count\n\ndef calculate_hedge_density(",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.436,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-04T03:36:34.506312"
   }
 }
