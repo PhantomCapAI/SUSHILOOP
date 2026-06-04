@@ -693,8 +693,8 @@
   "conversational_loop_detector": {
     "name": "conversational_loop_detector",
     "title": "Conversational Loop Detector",
-    "code_hash": "967f6e3316928843",
-    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass ConversationAnalysis:\n    \"\"\"Holds the results of conversation analysis.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculates the ratio of absolute terms in the text.\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|every|all)\\b', text, re.IGNORECASE)\n    word_count = len(re.findall(r'\\b\\w+\\b', text))\n    return len(absolute_terms)",
+    "code_hash": "83bb8f1ee68c2d52",
+    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass Sentence:\n    text: str\n    word_count: int\n    absolute_terms: int\n    hedge_terms: int\n\ndef calculate_lexical_diversity(sentences: list[Sentence]) -> float:\n    \"\"\"Calculate the lexical diversity of a list of sentences.\"\"\"\n    all_words = [word for sentence in sentences for word in sentence.text.split()]\n    unique_words = set(all_words)\n    if len(all_words) == 0:\n        return 0.0\n    return len(unique_words) / len(all_words)\n\ndef calculate_absolute_term_density(sentences:",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -712,11 +712,11 @@
       },
       "total": 60
     },
-    "diversity": 0.483,
+    "diversity": 0.463,
     "failure_modes": [
       "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-05-27T20:09:51.767821"
+    "timestamp": "2026-06-04T19:59:56.748365"
   },
   "premature_simplification_detector": {
     "name": "premature_simplification_detector",
