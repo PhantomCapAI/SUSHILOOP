@@ -646,3 +646,12 @@
 }
 ```
 ---
+
+## [2026-06-05T14:40:58.020092] Cycle 73: CycleResult.REJECTED
+```json
+{
+  "proposal": "Anchoring Bias Detector",
+  "skill": "anchoring_bias_detector"
+}
+```
+---
