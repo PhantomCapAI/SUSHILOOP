@@ -655,3 +655,12 @@
 }
 ```
 ---
+
+## [2026-06-05T19:48:56.755980] Cycle 74: CycleResult.REJECTED
+```json
+{
+  "proposal": "Causal Leap Detector",
+  "skill": "causal_leap_detector"
+}
+```
+---

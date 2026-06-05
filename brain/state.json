@@ -1,9 +1,9 @@
 {
-  "cycle_count": 73,
+  "cycle_count": 74,
   "total_skills": 27,
   "success_count": 27,
   "failure_count": 8,
-  "last_run": "2026-06-05T14:40:55.587082",
+  "last_run": "2026-06-05T19:48:54.399138",
   "history": [
     {
       "cycle_number": 1,
@@ -5166,6 +5166,33 @@
       "skill_generated": "anchoring_bias_detector",
       "test_results": [],
       "timestamp": "2026-06-05T14:40:55.587082",
+      "error_message": null
+    },
+    {
+      "cycle_number": 74,
+      "proposal": {
+        "id": "7927a580-d1eb-472e-945c-851e41ce3f3a",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Causal Leap Detector",
+        "description": "This skill detects when a user's prompt or AI response makes an unjustified causal leap, where a conclusion is drawn without sufficient evidence or logical connection, potentially leading to flawed decision-making or reasoning.",
+        "rationale": "Protecting human cognition from AI overreliance requires ensuring that users are not misled by unsubstantiated claims or unwarranted assumptions, which can undermine critical thinking and problem-solving skills.",
+        "success_criteria": [
+          "Identifies causal leaps in prompt-response pairs",
+          "Provides feedback to users on how to rephrase or support their claims",
+          "Integrates with existing skills to enhance overall cognitive protection"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-05T19:48:54.397829"
+      },
+      "result": "REJECTED",
+      "skill_generated": "causal_leap_detector",
+      "test_results": [],
+      "timestamp": "2026-06-05T19:48:54.399138",
       "error_message": null
     }
   ]
