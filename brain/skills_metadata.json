@@ -1237,5 +1237,33 @@
     "diversity": 0.678,
     "failure_modes": [],
     "timestamp": "2026-06-05T02:58:32.900921"
+  },
+  "unintended_consequence_omitter": {
+    "name": "unintended_consequence_omitter",
+    "title": "Unintended Consequence Omitter",
+    "code_hash": "ab531df98c2edf80",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass TextAnalysis:\n    sentence_count: int\n    word_count: int\n    absolute_terms: int\n    hedge_terms: int\n    overgeneral_terms: int\n\ndef analyze_text(input_text: str) -> TextAnalysis:\n    sentences = re.split(r'[.!?]', input_text)\n    sentence_count = len([s for s in sentences if s.strip()])\n    words = re.findall(r'\\b\\w+\\b', input_text)\n    word_count = len(words)\n    absolute_terms = len(re.findall(r'\\b(always|never|all|none)\\b', input_text, re.IGNORECASE))\n    hedge_terms = len(re.findal",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 63
+    },
+    "diversity": 0.318,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-05T09:39:19.505963"
   }
 }
