@@ -1211,5 +1211,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-04T09:51:02.313311"
+  },
+  "narrative_fragmentation_detector": {
+    "name": "narrative_fragmentation_detector",
+    "title": "Narrative Fragmentation Detector",
+    "code_hash": "b2ed1a3defec01ea",
+    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef narrative_fragmentation_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects narrative fragmentation in AI-generated content.\n\n    This function analyzes the input text for disjointed or unconnected narrative fragments,\n    which can lead to cognitive confusion or disorientation in human readers. It combines\n    multiple signals, including weighted pattern matches, structural features, lexical\n    diversity, hedging/absolute-term density, and more, to produce a graded confidence\n    score.\n\n    Args:\n",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 74
+    },
+    "diversity": 0.678,
+    "failure_modes": [],
+    "timestamp": "2026-06-05T02:58:32.900921"
   }
 }
