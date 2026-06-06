@@ -691,3 +691,12 @@
 }
 ```
 ---
+
+## [2026-06-06T19:15:45.666159] Cycle 78: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unbalanced Assertion Detector",
+  "skill": "unbalanced_assertion_detector"
+}
+```
+---
