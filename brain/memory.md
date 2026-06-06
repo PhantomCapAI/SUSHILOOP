@@ -673,3 +673,12 @@
 }
 ```
 ---
+
+## [2026-06-06T08:29:27.681687] Cycle 76: CycleResult.REJECTED
+```json
+{
+  "proposal": "Anchoring Effect Detector",
+  "skill": "anchoring_effect_detector"
+}
+```
+---
