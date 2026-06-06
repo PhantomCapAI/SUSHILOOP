@@ -1265,5 +1265,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-05T09:39:19.505963"
+  },
+  "rapid_fire_query_limiter": {
+    "name": "rapid_fire_query_limiter",
+    "title": "Rapid Fire Query Limiter",
+    "code_hash": "6c309d96000c7009",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom datetime import datetime, timedelta\n\n@dataclass\nclass QueryHistory:\n    timestamp: datetime\n    text: str\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the input text.\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|every|all)\\b', text, re.IGNORECASE)\n    words = re.findall(r'\\b\\w+\\b', text)\n    return len(absolute_terms) / len(words) if words else 0.0\n\ndef calculate_hedge_density(text: str) -> float:\n    \"\"\"Calculate the density of hedge terms in the ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 7,
+        "calibration": 7,
+        "behavioral_total": 24,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 65
+    },
+    "diversity": 0.321,
+    "failure_modes": [],
+    "timestamp": "2026-06-06T02:45:26.361531"
   }
 }
