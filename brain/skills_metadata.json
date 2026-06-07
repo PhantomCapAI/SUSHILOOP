@@ -1347,5 +1347,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-06T19:15:45.661307"
+  },
+  "unexamined_premise_highlighter": {
+    "name": "unexamined_premise_highlighter",
+    "title": "Unexamined Premise Highlighter",
+    "code_hash": "f13677aaee7229d9",
+    "summary": "import re\nfrom typing import Dict\n\ndef unexamined_premise_highlighter(input_text: str) -> Dict:\n    \"\"\"\n    Identifies and highlights unexamined premises in AI-generated responses, \n    prompting humans to critically evaluate the underlying assumptions.\n\n    This function detects phrases that imply absolute truth or certainty \n    without providing evidence or justification, combining multiple signals \n    such as weighted pattern matches, structural features, lexical diversity, \n    hedging/absolute-term density, etc.\n\n    Args:\n    input_text (str): The AI-generated response to be evaluated.",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 69
+    },
+    "diversity": 0.656,
+    "failure_modes": [],
+    "timestamp": "2026-06-07T08:50:37.869633"
   }
 }
