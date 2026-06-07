@@ -718,3 +718,12 @@
 }
 ```
 ---
+
+## [2026-06-07T13:44:14.430624] Cycle 81: CycleResult.REJECTED
+```json
+{
+  "proposal": "Temporal Framing Bias Detector",
+  "skill": "temporal_framing_bias_detector"
+}
+```
+---

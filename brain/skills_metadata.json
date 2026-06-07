@@ -1373,5 +1373,33 @@
     "diversity": 0.656,
     "failure_modes": [],
     "timestamp": "2026-06-07T08:50:37.869633"
+  },
+  "temporal_framing_bias_detector": {
+    "name": "temporal_framing_bias_detector",
+    "title": "Temporal Framing Bias Detector",
+    "code_hash": "6e3a70bd555e3b1b",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\nimport math\n\n@dataclass\nclass TemporalFramingBias:\n    \"\"\"Temporal Framing Bias detection result\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef temporal_framing_bias_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects temporal framing bias in AI-generated text.\n\n    Temporal framing bias occurs when the timing or sequence of events influences the user's judgment or decision-making.\n    This function identifies patterns where the",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 58
+    },
+    "diversity": 0.607,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-06-07T13:44:14.425731"
   }
 }
