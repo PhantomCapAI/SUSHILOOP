@@ -172,5 +172,11 @@
     "category": "VERIFICATION_PROMPT",
     "cycle": 80,
     "created_at": "2026-06-07T08:50:37.868688"
+  },
+  "oversimplification_sentinel": {
+    "title": "Oversimplification Sentinel",
+    "category": "OUTPUT_FILTERING",
+    "cycle": 84,
+    "created_at": "2026-06-08T10:29:29.310125"
   }
 }

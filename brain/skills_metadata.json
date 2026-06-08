@@ -1457,5 +1457,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-08T03:34:29.071467"
+  },
+  "oversimplification_sentinel": {
+    "name": "oversimplification_sentinel",
+    "title": "Oversimplification Sentinel",
+    "code_hash": "ef4f41705f037fc3",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass SentenceFeatures:\n    \"\"\"Features extracted from a sentence.\"\"\"\n    word_count: int\n    clause_count: int\n    absolute_terms: int\n    hedge_terms: int\n\ndef extract_sentence_features(sentence: str) -> SentenceFeatures:\n    \"\"\"Extract features from a sentence.\"\"\"\n    word_count = len(re.findall(r'\\b\\w+\\b', sentence))\n    clause_count = len(re.findall(r'[.!?]', sentence))\n    absolute_terms = len(re.findall(r'\\b(always|never|all|none)\\b', sentence, re.IGNORECASE))\n    hedge_terms = len(re.findall(r'\\",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.489,
+    "failure_modes": [],
+    "timestamp": "2026-06-08T10:29:29.311137"
   }
 }
