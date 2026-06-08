@@ -763,3 +763,12 @@
 }
 ```
 ---
+
+## [2026-06-08T20:09:10.819098] Cycle 86: CycleResult.REJECTED
+```json
+{
+  "proposal": "Escalation Advice Detector",
+  "skill": "escalation_advice_detector"
+}
+```
+---
