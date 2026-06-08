@@ -1483,5 +1483,31 @@
     "diversity": 0.489,
     "failure_modes": [],
     "timestamp": "2026-06-08T10:29:29.311137"
+  },
+  "temporal_frame_bias_detector": {
+    "name": "temporal_frame_bias_detector",
+    "title": "Temporal Frame Bias Detector",
+    "code_hash": "7e06c9e4882284d8",
+    "summary": "import re\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass TemporalFrameAnalysis:\n    \"\"\"Dataclass to hold the results of the temporal frame analysis\"\"\"\n    present_tense_count: int\n    future_tense_count: int\n    past_tense_count: int\n    sentence_count: int\n    word_count: int\n    lexical_diversity: float\n    hedging_term_density: float\n    absolute_term_density: float\n\ndef calculate_lexical_diversity(word_list: list) -> float:\n    \"\"\"Calculate the lexical diversity of a given list of words\"\"\"\n    unique_words = set(word_list)\n    return len(unique_words) / len(wor",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.6,
+    "failure_modes": [],
+    "timestamp": "2026-06-08T15:41:54.394490"
   }
 }
