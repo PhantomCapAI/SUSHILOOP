@@ -1429,5 +1429,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-07T19:15:59.904259"
+  },
+  "outlier_perspective_omitter_detector": {
+    "name": "outlier_perspective_omitter_detector",
+    "title": "Outlier Perspective Omitter Detector",
+    "code_hash": "b569ef9cf4730bbb",
+    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef calculate_lexical_diversity(words: list) -> float:\n    \"\"\"\n    Calculate the lexical diversity of a given list of words.\n    \n    Lexical diversity is the ratio of unique words to the total number of words.\n    \"\"\"\n    unique_words = len(set(words))\n    total_words = len(words)\n    if total_words == 0:\n        return 0.0\n    return unique_words / total_words\n\ndef calculate_hedge_density(text: str) -> float:\n    \"\"\"\n    Calculate the hedge density of a given text.\n    \n    Hedge density is the ratio of h",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.423,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-08T03:34:29.071467"
   }
 }
