@@ -1507,5 +1507,33 @@
     "diversity": 0.6,
     "failure_modes": [],
     "timestamp": "2026-06-08T15:41:54.394490"
+  },
+  "ambiguous_quantifier_detector": {
+    "name": "ambiguous_quantifier_detector",
+    "title": "Ambiguous Quantifier Detector",
+    "code_hash": "2b4545eff7519614",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass QuantifierAnalysis:\n    \"\"\"Dataclass to hold the results of the quantifier analysis\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: int\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the input text\"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    word_count = len(input_text.split())\n    absolute_count = sum(1 for word in input_text.split() if word.lower() in absolu",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.321,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-09T09:34:52.372020"
   }
 }
