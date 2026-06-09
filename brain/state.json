@@ -1,9 +1,9 @@
 {
-  "cycle_count": 86,
-  "total_skills": 31,
-  "success_count": 31,
+  "cycle_count": 87,
+  "total_skills": 32,
+  "success_count": 32,
   "failure_count": 8,
-  "last_run": "2026-06-08T20:09:07.920001",
+  "last_run": "2026-06-09T02:44:24.944360",
   "history": [
     {
       "cycle_number": 1,
@@ -6120,6 +6120,100 @@
       "skill_generated": "escalation_advice_detector",
       "test_results": [],
       "timestamp": "2026-06-08T20:09:07.920001",
+      "error_message": null
+    },
+    {
+      "cycle_number": 87,
+      "proposal": {
+        "id": "58149370-c7a6-4e13-a028-758ddd0f77ac",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "Temporal Framing Bias Detector",
+        "description": "This skill detects instances where AI-generated text presents information in a way that creates a temporal framing bias, influencing users' decisions by manipulating the time frame in which information is presented. It identifies and flags text that uses time-related language to create a biased narrative.",
+        "rationale": "Protecting human cognition from temporal framing bias is crucial as it can lead to poor decision-making. By detecting and mitigating this bias, users can make more informed decisions and develop a more nuanced understanding of the information presented to them.",
+        "success_criteria": [
+          "Detection accuracy of temporal framing bias patterns",
+          "Effective flagging of biased text without false positives",
+          "Compatibility with existing AI safety guardrails"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-09T02:44:24.943064"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "temporal_framing_bias_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:temporal_framing_bias_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0017971992492675781
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.58306884765625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 5.245208740234375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00013756752014160156
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000013828277587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000010967254638671875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 1.9073486328125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 7.62939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.00045013427734375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.0000171661376953125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        }
+      ],
+      "timestamp": "2026-06-09T02:44:24.944360",
       "error_message": null
     }
   ]
