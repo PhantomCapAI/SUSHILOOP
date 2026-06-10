@@ -808,3 +808,12 @@
 }
 ```
 ---
+
+## [2026-06-10T02:57:37.237496] Cycle 91: CycleResult.REJECTED
+```json
+{
+  "proposal": "Narrative Closure Detector",
+  "skill": "narrative_closure_detector"
+}
+```
+---
