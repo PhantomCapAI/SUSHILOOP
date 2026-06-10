@@ -817,3 +817,12 @@
 }
 ```
 ---
+
+## [2026-06-10T09:51:31.719715] Cycle 92: CycleResult.REJECTED
+```json
+{
+  "proposal": "Undisclosed Premise Detector",
+  "skill": "undisclosed_premise_detector"
+}
+```
+---

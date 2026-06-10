@@ -1591,5 +1591,33 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-06-09T20:03:32.568634"
+  },
+  "undisclosed_premise_detector": {
+    "name": "undisclosed_premise_detector",
+    "title": "Undisclosed Premise Detector",
+    "code_hash": "2c9513259e926e98",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass PremiseDetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef undisclosed_premise_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects when AI-generated content assumes a premise without explicitly stating it,\n    potentially misleading humans into accepting unstated assumptions.\n\n    This function analyzes the input text for phrases that imply a premise without clear\n    supporting evidence, providing a",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.662,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-10T09:51:31.713330"
   }
 }
