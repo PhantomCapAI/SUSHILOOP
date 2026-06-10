@@ -835,3 +835,12 @@
 }
 ```
 ---
+
+## [2026-06-10T20:24:36.030600] Cycle 94: CycleResult.REJECTED
+```json
+{
+  "proposal": "Rapid Query Cascade Detector",
+  "skill": "rapid_query_cascade_detector"
+}
+```
+---

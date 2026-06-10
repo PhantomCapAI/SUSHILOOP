@@ -1,9 +1,9 @@
 {
-  "cycle_count": 93,
+  "cycle_count": 94,
   "total_skills": 32,
   "success_count": 32,
   "failure_count": 8,
-  "last_run": "2026-06-10T15:24:38.049667",
+  "last_run": "2026-06-10T20:24:33.803187",
   "history": [
     {
       "cycle_number": 1,
@@ -6644,6 +6644,33 @@
       "skill_generated": null,
       "test_results": [],
       "timestamp": "2026-06-10T15:24:38.049667",
+      "error_message": null
+    },
+    {
+      "cycle_number": 94,
+      "proposal": {
+        "id": "fbada6f5-644f-4c6c-a867-11082bd0fd5d",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Rapid Query Cascade Detector",
+        "description": "This skill detects when a user is submitting an excessive number of similar queries in a short period, potentially indicating overreliance on AI for iterative problem-solving, and rate-limits the input to encourage human reflection and analysis. It identifies bursts of queries with similar intent, flagging them for review and potential timeout.",
+        "rationale": "Protecting human cognition requires preventing the misuse of AI as a rapid-fire solution generator, which can hinder critical thinking and problem-solving skills. By detecting and mitigating rapid query cascades, this skill promotes a healthier interaction between humans and AI, fostering more thoughtful and reflective query construction.",
+        "success_criteria": [
+          "Detection accuracy of rapid query cascades exceeds 80%",
+          "Rate-limiting reduces query submission rate by at least 30% in high-usage scenarios",
+          "User feedback indicates improved query quality and reduced overreliance on AI"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-10T20:24:33.801743"
+      },
+      "result": "REJECTED",
+      "skill_generated": "rapid_query_cascade_detector",
+      "test_results": [],
+      "timestamp": "2026-06-10T20:24:33.803187",
       "error_message": null
     }
   ]
