@@ -826,3 +826,12 @@
 }
 ```
 ---
+
+## [2026-06-10T15:24:38.054624] Cycle 93: CycleResult.REJECTED
+```json
+{
+  "proposal": "Ambiguity Resolver",
+  "skill": null
+}
+```
+---
