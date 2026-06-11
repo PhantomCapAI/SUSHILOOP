@@ -1619,5 +1619,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-10T09:51:31.713330"
+  },
+  "inconsistent_identifier_format_detector": {
+    "name": "inconsistent_identifier_format_detector",
+    "title": "Inconsistent Identifier Format Detector",
+    "code_hash": "d3c7ea723db7041c",
+    "summary": "import re\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef inconsistent_identifier_format_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects inconsistencies in the format of personally identifiable information (PII) \n    such as names, addresses, and phone numbers, to prevent potential data leaks or misuse.\n\n    This function checks for deviations from standard formats, such as inconsistent date formats \n    or mismatched name and address combinations",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 65
+    },
+    "diversity": 0.403,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-06-11T03:32:21.903228"
   }
 }
