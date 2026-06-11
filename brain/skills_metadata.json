@@ -909,30 +909,30 @@
   "emotional_contagion_detector": {
     "name": "emotional_contagion_detector",
     "title": "Emotional Contagion Detector",
-    "code_hash": "88edf0e24a5a0611",
-    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass EmotionalContagionSignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_emotional_contagion_signals(input_text: str) -> EmotionalContagionSignals:\n    \"\"\"\n    Calculate emotional contagion signals from the input text.\n\n    Args:\n    input_text (str): The text to analyze.\n\n    Returns:\n    EmotionalContagionSignals: A dataclass containing the calculated signals.\n    \"\"\"\n    sentences = re.split(r'[.!?]', ",
+    "code_hash": "49a45ff80a67cee8",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass EmotionalContagionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef emotional_contagion_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects and flags text that may elicit strong emotions in the reader, \n    potentially compromising their objective judgment, by analyzing the \n    language and tone used in the content.\n\n    Args:\n        input_text (str): The text to be analyzed.\n\n    Returns:\n        Dict: A dictionary containing the results",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 7,
-      "static_total": 47,
+      "strategies": 1,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
+        "discrimination": 0,
         "calibration": 7,
-        "behavioral_total": 19,
+        "behavioral_total": 17,
         "probes_raised": 0,
         "probes_valid": 7
       },
-      "total": 66
+      "total": 58
     },
-    "diversity": 0.317,
+    "diversity": 0.671,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
+      "shallow:discrimination=0,behavioral_total=17"
     ],
-    "timestamp": "2026-06-01T11:25:15.289173"
+    "timestamp": "2026-06-11T15:52:06.327518"
   },
   "echo_chamber_detector": {
     "name": "echo_chamber_detector",
