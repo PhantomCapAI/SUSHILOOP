@@ -1647,5 +1647,33 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-06-11T03:32:21.903228"
+  },
+  "excessive_speculation_detector": {
+    "name": "excessive_speculation_detector",
+    "title": "Excessive Speculation Detector",
+    "code_hash": "12320c131642d8a1",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass SpeculationSignals:\n    \"\"\"Container for speculation detection signals.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_speculation_signals(input_text: str) -> SpeculationSignals:\n    \"\"\"\n    Calculate speculation detection signals.\n\n    Args:\n    input_text (str): The input text to analyze.\n\n    Returns:\n    SpeculationSignals: A container with speculation detection signals.\n    \"\"\"\n    sentenc",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 58
+    },
+    "diversity": 0.333,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-06-11T10:17:04.625516"
   }
 }

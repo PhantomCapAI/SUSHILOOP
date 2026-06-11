@@ -853,3 +853,12 @@
 }
 ```
 ---
+
+## [2026-06-11T10:17:04.631976] Cycle 96: CycleResult.REJECTED
+```json
+{
+  "proposal": "Excessive Speculation Detector",
+  "skill": "excessive_speculation_detector"
+}
+```
+---
