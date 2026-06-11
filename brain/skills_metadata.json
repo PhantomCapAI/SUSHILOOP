@@ -1675,5 +1675,33 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-06-11T10:17:04.625516"
+  },
+  "premature_closure_detector": {
+    "name": "premature_closure_detector",
+    "title": "Premature Closure Detector",
+    "code_hash": "24e0fe508e518f40",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass TextFeatures:\n    \"\"\"Struct to hold various features extracted from input text.\"\"\"\n    sentence_count: int\n    word_count: int\n    absolute_terms: int\n    hedge_terms: int\n    overgeneral_terms: int\n    unique_words: int\n\ndef extract_features(input_text: str) -> TextFeatures:\n    \"\"\"Extract various features from input text.\"\"\"\n    sentences = re.split(r'[.!?]\\s*', input_text)\n    sentence_count = len([s for s in sentences if s])  # ignore empty strings\n    words = re.findall(r'\\b\\w+\\b', i",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.392,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-11T20:15:54.580678"
   }
 }
