@@ -1703,5 +1703,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-11T20:15:54.580678"
+  },
+  "inconsistent_data_format_detector": {
+    "name": "inconsistent_data_format_detector",
+    "title": "Inconsistent Data Format Detector",
+    "code_hash": "5f862bdca4de2bb8",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, str]\n\ndef inconsistent_data_format_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects inconsistent personally identifiable information (PII) formats in the input text.\n\n    This function aims to protect human cognition from AI overreliance by encouraging humans to critically evaluate the data they provide to AI systems.\n    It detects inconsistent date, address, and identi",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 65
+    },
+    "diversity": 0.569,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-06-12T10:04:26.706233"
   }
 }
