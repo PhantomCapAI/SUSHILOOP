@@ -1,42 +1,10 @@
 {
-  "cycle_count": 100,
+  "cycle_count": 101,
   "total_skills": 32,
   "success_count": 32,
   "failure_count": 8,
-  "last_run": "2026-06-12T10:04:23.676495",
+  "last_run": "2026-06-12T14:49:28.690913",
   "history": [
-    {
-      "cycle_number": 1,
-      "proposal": {
-        "id": "9bae8084-2e33-4e0d-96f5-ef52eba6afc3",
-        "proposal_type": "NEW_SKILL",
-        "category": "INPUT_VALIDATION",
-        "title": "Prompt Injection Detector",
-        "description": "Detects jailbreak attempts",
-        "rationale": "First defense",
-        "success_criteria": [
-          "Catches jailbreaks"
-        ],
-        "tests_required": [
-          "test_injection.py"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file",
-        "created_at": "2026-05-21T06:01:31.607309"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "prompt_injection_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "smoke:prompt_injection_detector",
-          "message": "PASS\n",
-          "duration_seconds": 0.024887561798095703
-        }
-      ],
-      "timestamp": "2026-05-21T06:01:31.607384",
-      "error_message": null
-    },
     {
       "cycle_number": 2,
       "proposal": {
@@ -7235,6 +7203,33 @@
         }
       ],
       "timestamp": "2026-06-12T10:04:23.676495",
+      "error_message": null
+    },
+    {
+      "cycle_number": 101,
+      "proposal": {
+        "id": "5a7f4654-8c72-414e-b5f0-ffe8d7c78d53",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Overly Simplistic Explanation Detector",
+        "description": "This skill detects when AI-generated explanations oversimplify complex topics, potentially leading to misunderstandings or misconceptions, and flags them for human review. It analyzes the output for signs of oversimplification, such as short sentences, lack of technical terms, or absence of caveats.",
+        "rationale": "This skill matters for protecting human cognition because it helps prevent the dissemination of misleading or incomplete information, which can erode trust in AI systems and undermine human critical thinking. By flagging overly simplistic explanations, this skill encourages humans to engage more deeply with complex topics and think critically about the information presented.",
+        "success_criteria": [
+          "Detects oversimplification in 80% of test cases",
+          "Flags explanations with low technical term density",
+          "Identifies explanations lacking caveats or limitations"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-12T14:49:28.689351"
+      },
+      "result": "REJECTED",
+      "skill_generated": "overly_simplistic_explanation_detector",
+      "test_results": [],
+      "timestamp": "2026-06-12T14:49:28.690913",
       "error_message": null
     }
   ]

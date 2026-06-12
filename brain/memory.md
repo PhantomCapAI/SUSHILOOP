@@ -898,3 +898,12 @@
 }
 ```
 ---
+
+## [2026-06-12T14:49:31.299041] Cycle 101: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overly Simplistic Explanation Detector",
+  "skill": "overly_simplistic_explanation_detector"
+}
+```
+---
