@@ -1539,30 +1539,30 @@
   "re_ask_loop_breaker": {
     "name": "re_ask_loop_breaker",
     "title": "Re-ask Loop Breaker",
-    "code_hash": "513807c3941a5c1f",
-    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef re_ask_loop_breaker(input_text: str) -> Dict:\n    \"\"\"\n    Detects the user re-asking the same thing in slightly different words and suggests stepping back to think.\n\n    This function combines multiple signals to detect re-ask loops, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term density\n    - Lexical diversity\n    - Sentence structure\n\n    The confidence score is a graded value between 0.0 and 1.0, representing the strength of the signals.\n\n    :param input_text:",
+    "code_hash": "91421382a54b0b13",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef re_ask_loop_breaker(input_text: str) -> Dict:\n    \"\"\"\n    Detects the user re-asking the same thing in slightly different words and suggests stepping back to think.\n\n    Mission alignment: This function aims to prevent re-ask loops, which can signal offloading rather than progress.\n    It uses a combination of distinct signals, including weighted pattern matches, structural features, and lexical diversity,\n    to produce a graded confidence score that varies with the input.\n\n    Args:\n        input_text (str): The user's in",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
-      "strategies": 1,
-      "static_total": 38,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
+        "discrimination": 2,
         "calibration": 7,
-        "behavioral_total": 17,
+        "behavioral_total": 19,
         "probes_raised": 0,
         "probes_valid": 7
       },
-      "total": 55
+      "total": 63
     },
-    "diversity": 0.472,
+    "diversity": 0.549,
     "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
+      "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-06-09T14:40:49.051363"
+    "timestamp": "2026-06-12T03:32:18.733555"
   },
   "inconsistent_identifier_detector": {
     "name": "inconsistent_identifier_detector",
