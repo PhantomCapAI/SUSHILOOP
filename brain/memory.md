@@ -916,3 +916,12 @@
 }
 ```
 ---
+
+## [2026-06-13T02:57:21.203630] Cycle 103: CycleResult.REJECTED
+```json
+{
+  "proposal": "Ambiguity Spotlighter",
+  "skill": "ambiguity_spotlighter"
+}
+```
+---
