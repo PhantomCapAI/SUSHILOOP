@@ -943,3 +943,12 @@
 }
 ```
 ---
+
+## [2026-06-13T19:19:25.620988] Cycle 106: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unintended Instruction Follower",
+  "skill": "unintended_instruction_follower"
+}
+```
+---
