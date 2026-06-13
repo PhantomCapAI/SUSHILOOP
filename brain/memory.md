@@ -925,3 +925,12 @@
 }
 ```
 ---
+
+## [2026-06-13T08:52:49.949228] Cycle 104: CycleResult.REJECTED
+```json
+{
+  "proposal": "Deliberation-Pace Nudger",
+  "skill": "deliberation_pace_nudger"
+}
+```
+---
