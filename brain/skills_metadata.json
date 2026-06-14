@@ -1841,5 +1841,31 @@
     "diversity": 0.56,
     "failure_modes": [],
     "timestamp": "2026-06-14T09:27:40.805200"
+  },
+  "overly_simplistic_explanation_detector": {
+    "name": "overly_simplistic_explanation_detector",
+    "title": "Overly Simplistic Explanation Detector",
+    "code_hash": "f03226c62b50411c",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass ExplanationAnalysis:\n    \"\"\"Dataclass to hold the analysis of the input text.\"\"\"\n    sentence_count: int\n    word_count: int\n    absolute_terms: int\n    hedge_terms: int\n    overgeneral_terms: int\n    lexical_diversity: float\n\ndef calculate_lexical_diversity(word_count: int, unique_word_count: int) -> float:\n    \"\"\"Calculate the lexical diversity of the input text.\"\"\"\n    if word_count == 0:\n        return 0.0\n    return unique_word_count / word_count\n\ndef calculate_absolute_terms(sentenc",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 63
+    },
+    "diversity": 0.528,
+    "failure_modes": [],
+    "timestamp": "2026-06-14T13:53:31.400741"
   }
 }

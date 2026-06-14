@@ -196,5 +196,11 @@
     "category": "VERIFICATION_PROMPT",
     "cycle": 108,
     "created_at": "2026-06-14T09:27:40.803935"
+  },
+  "overly_simplistic_explanation_detector": {
+    "title": "Overly Simplistic Explanation Detector",
+    "category": "OUTPUT_FILTERING",
+    "cycle": 109,
+    "created_at": "2026-06-14T13:53:31.399463"
   }
 }
