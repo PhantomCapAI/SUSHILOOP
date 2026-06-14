@@ -1787,5 +1787,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-13T13:51:09.851335"
+  },
+  "incongruous_information_density_detector": {
+    "name": "incongruous_information_density_detector",
+    "title": "Incongruous Information Density Detector",
+    "code_hash": "fc517049b01be1d5",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass TextFeatures:\n    \"\"\"Features extracted from the input text.\"\"\"\n    sentence_count: int\n    word_count: int\n    token_count: int\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    lexical_diversity: float\n\ndef extract_features(input_text: str) -> TextFeatures:\n    \"\"\"Extract features from the input text.\"\"\"\n    sentences = re.split(r'[.!?]', input_text)\n    sentence_count = len([s for s in sentences if s.strip()])\n    \n    words = re.findall(r'\\b\\w+\\b', input_text",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.333,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-14T03:35:26.195672"
   }
 }
