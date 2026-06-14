@@ -202,5 +202,11 @@
     "category": "OUTPUT_FILTERING",
     "cycle": 109,
     "created_at": "2026-06-14T13:53:31.399463"
+  },
+  "rapid_fire_inquiry_limiter": {
+    "title": "Rapid Fire Inquiry Limiter",
+    "category": "RATE_LIMITING",
+    "cycle": 110,
+    "created_at": "2026-06-14T19:20:13.653215"
   }
 }
