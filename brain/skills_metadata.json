@@ -1815,5 +1815,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-14T03:35:26.195672"
+  },
+  "actionable_step_verifier": {
+    "name": "actionable_step_verifier",
+    "title": "Actionable-Step Verifier",
+    "code_hash": "dda61776e9b82722",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Mission: Verify actionable steps in input text to prevent ask-accept-move-on behavior.\n\n    This function combines multiple signals to detect actionable steps and returns a dictionary\n    with a graded confidence score. The signals used are:\n\n    1. Absolute term density: The ratio of absolute terms (e.g., \"always\", \"never\") to total words.\n    2. Hedge term density: The ratio of hedge terms (e.g., \"maybe\", \"possibly\") to total words.\n    3. Overgeneral term den",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.56,
+    "failure_modes": [],
+    "timestamp": "2026-06-14T09:27:40.805200"
   }
 }

@@ -190,5 +190,11 @@
     "category": "BIAS_DETECTION",
     "cycle": 87,
     "created_at": "2026-06-09T02:44:28.281241"
+  },
+  "actionable_step_verifier": {
+    "title": "Actionable-Step Verifier",
+    "category": "VERIFICATION_PROMPT",
+    "cycle": 108,
+    "created_at": "2026-06-14T09:27:40.803935"
   }
 }
