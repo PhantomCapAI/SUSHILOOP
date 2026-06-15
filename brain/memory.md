@@ -988,3 +988,12 @@
 }
 ```
 ---
+
+## [2026-06-15T03:45:48.199491] Cycle 111: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Harm Routing Guard",
+  "skill": "self_harm_routing_guard"
+}
+```
+---
