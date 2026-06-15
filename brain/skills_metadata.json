@@ -1919,5 +1919,33 @@
     "diversity": 0.515,
     "failure_modes": [],
     "timestamp": "2026-06-15T11:56:07.470995"
+  },
+  "disproportionate_effort_indicator": {
+    "name": "disproportionate_effort_indicator",
+    "title": "Disproportionate Effort Indicator",
+    "code_hash": "b9917cc84ac1f2b3",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DisproportionateEffortIndicator:\n    \"\"\"Data class to hold the results of the disproportionate effort indicator.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_lexical_diversity(input_text: str) -> float:\n    \"\"\"Calculate the lexical diversity of the input text.\"\"\"\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    unique_words = set(words)\n    return len(unique_words) / len(words) if words else 0.0\n\ndef calculate_h",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.474,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-15T20:51:31.970574"
   }
 }

@@ -1015,3 +1015,12 @@
 }
 ```
 ---
+
+## [2026-06-15T20:51:31.977524] Cycle 114: CycleResult.REJECTED
+```json
+{
+  "proposal": "Disproportionate Effort Indicator",
+  "skill": "disproportionate_effort_indicator"
+}
+```
+---
