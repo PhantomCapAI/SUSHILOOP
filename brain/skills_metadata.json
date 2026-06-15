@@ -1893,5 +1893,31 @@
     "diversity": 0.772,
     "failure_modes": [],
     "timestamp": "2026-06-14T19:20:13.654143"
+  },
+  "inconsistent_data_type_detector": {
+    "name": "inconsistent_data_type_detector",
+    "title": "Inconsistent Data Type Detector",
+    "code_hash": "05ab7cb6982f59cc",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, str]\n\ndef inconsistent_data_type_detector(input_text: str) -> Dict[str, str]:\n    \"\"\"\n    Detects when personally identifiable information (PII) is provided in an inconsistent data type format.\n\n    This function combines multiple signals to detect inconsistent data types in PII, \n    including weighted pattern matches, structural features, lexical diversity, \n    hedging/absolute-term",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 7,
+        "calibration": 10,
+        "behavioral_total": 27,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 77
+    },
+    "diversity": 0.515,
+    "failure_modes": [],
+    "timestamp": "2026-06-15T11:56:07.470995"
   }
 }
