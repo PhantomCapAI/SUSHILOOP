@@ -1,104 +1,10 @@
 {
-  "cycle_count": 117,
+  "cycle_count": 118,
   "total_skills": 37,
   "success_count": 37,
   "failure_count": 8,
-  "last_run": "2026-06-16T16:43:08.858318",
+  "last_run": "2026-06-16T20:45:27.921725",
   "history": [
-    {
-      "cycle_number": 18,
-      "proposal": {
-        "id": "b105b352-e9cd-4b8f-9d2b-53777d9b1298",
-        "proposal_type": "NEW_SKILL",
-        "category": "COGNITIVE_PROTECTION",
-        "title": "Overconfidence Detector",
-        "description": "Detects when AI outputs convey an overly high confidence level in its predictions or recommendations, potentially leading to human overreliance. It analyzes the language used in AI responses to identify phrases that may indicate excessive confidence.",
-        "rationale": "This skill is essential for protecting human cognition because it helps prevent the AI from presenting its outputs as absolute truths, encouraging humans to think critically and question the results. By detecting overconfident language, this skill promotes a more nuanced understanding of AI limitations and fosters a healthier human-AI collaboration.",
-        "success_criteria": [
-          "Identify phrases indicating high confidence",
-          "Detect tone and language that may lead to overreliance",
-          "Provide feedback to encourage critical thinking"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 6,
-        "rollback_plan": "Delete OverconfidenceDetector.py from skills/",
-        "created_at": "2026-05-24T02:54:57.084403"
-      },
-      "result": "TEST_FAILED",
-      "skill_generated": "overconfidence_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:overconfidence_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.001659393310546875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.0005476474761962891
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 0.00001239776611328125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000011205673217773438
-        },
-        {
-          "passed": false,
-          "test_name": "edge:none_input",
-          "message": "RAISED TypeError: expected string or bytes-like object, got 'NoneType'",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 7.152557373046875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0011372566223144531
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 5.9604644775390625e-6
-        }
-      ],
-      "timestamp": "2026-05-24T02:54:57.085332",
-      "error_message": null
-    },
     {
       "cycle_number": 19,
       "proposal": {
@@ -7742,6 +7648,100 @@
         }
       ],
       "timestamp": "2026-06-16T16:43:08.858318",
+      "error_message": null
+    },
+    {
+      "cycle_number": 118,
+      "proposal": {
+        "id": "d3f1e28d-cda5-43b6-8d8f-625cd7646592",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Actionable-Step Verifier",
+        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
+        "rationale": "A verification beat is the antidote to ask-accept-move-on",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-16T20:45:27.921088"
+      },
+      "result": "REJECTED",
+      "skill_generated": "actionable_step_verifier",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:actionable_step_verifier",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0013232231140136719
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.821487426757812e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 5.4836273193359375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00012826919555664062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010013580322265625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 8.58306884765625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 5.4836273193359375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0006611347198486328
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.0000133514404296875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        }
+      ],
+      "timestamp": "2026-06-16T20:45:27.921725",
       "error_message": null
     }
   ]
