@@ -1947,5 +1947,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-15T20:51:31.970574"
+  },
+  "multifaceted_perspective_analyzer": {
+    "name": "multifaceted_perspective_analyzer",
+    "title": "Multifaceted Perspective Analyzer",
+    "code_hash": "e45dfb56b61780b9",
+    "summary": "import re\nimport json\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass Sentence:\n    text: str\n    absolutes: int\n    hedges: int\n    overgeneral_terms: int\n\ndef multifaceted_perspective_analyzer(input_text: str) -> Dict:\n    \"\"\"\n    Analyzes AI-generated content to detect the presence of diverse, credible sources \n    and evaluates the depth of discussion on a topic, ensuring that users are exposed \n    to well-rounded perspectives.\n\n    Args:\n    input_text (str): The text to be analyzed.\n\n    Returns:\n    dict: A diction",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.708,
+    "failure_modes": [],
+    "timestamp": "2026-06-16T03:39:19.001863"
   }
 }
