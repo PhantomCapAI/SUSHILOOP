@@ -1973,5 +1973,33 @@
     "diversity": 0.708,
     "failure_modes": [],
     "timestamp": "2026-06-16T03:39:19.001863"
+  },
+  "unwarranted_binary_choice_presenter": {
+    "name": "unwarranted_binary_choice_presenter",
+    "title": "Unwarranted Binary Choice Presenter",
+    "code_hash": "0b5c3d523786bd3f",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass TextAnalysis:\n    \"\"\"Dataclass to hold text analysis results\"\"\"\n    sentence_count: int\n    word_count: int\n    absolute_terms: int\n    hedge_terms: int\n    overgeneral_terms: int\n\ndef analyze_text(input_text: str) -> TextAnalysis:\n    \"\"\"Analyze the input text and return a TextAnalysis object\"\"\"\n    sentences = re.split(r'[.!?]', input_text)\n    sentence_count = len([s for s in sentences if s.strip()])\n    words = re.findall(r'\\b\\w+\\b', input_text)\n    word_count = len(words)\n    absolut",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.456,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-16T11:04:08.020085"
   }
 }
