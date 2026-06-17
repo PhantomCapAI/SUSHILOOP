@@ -2085,5 +2085,31 @@
     "diversity": 0.407,
     "failure_modes": [],
     "timestamp": "2026-06-17T15:17:04.613080"
+  },
+  "insufficient_counterfactual_consideration_detector": {
+    "name": "insufficient_counterfactual_consideration_detector",
+    "title": "Insufficient Counterfactual Consideration Detector",
+    "code_hash": "3f01045c8a14b423",
+    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef insufficient_counterfactual_consideration_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects lack of counterfactual consideration in AI-generated text.\n\n    This function combines multiple signals to determine the confidence level of insufficient counterfactual consideration.\n    The signals include:\n    - Absolute term density: The ratio of absolute terms (e.g., always, never) to the total number of terms.\n    - Hedge term density: The ratio of hedge terms (e.g., maybe, possibly) to the total numbe",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 63
+    },
+    "diversity": 0.443,
+    "failure_modes": [],
+    "timestamp": "2026-06-17T20:07:55.353223"
   }
 }

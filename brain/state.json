@@ -1,104 +1,10 @@
 {
-  "cycle_count": 121,
-  "total_skills": 38,
-  "success_count": 38,
+  "cycle_count": 122,
+  "total_skills": 39,
+  "success_count": 39,
   "failure_count": 8,
-  "last_run": "2026-06-17T15:17:01.162822",
+  "last_run": "2026-06-17T20:07:52.274323",
   "history": [
-    {
-      "cycle_number": 22,
-      "proposal": {
-        "id": "059ca9be-8e41-4bc5-92d2-4651f604a997",
-        "proposal_type": "NEW_SKILL",
-        "category": "INPUT_VALIDATION",
-        "title": "Lack of Contextual Breadth Detector",
-        "description": "Detects when users rely too heavily on AI for narrow, specialized knowledge, rather than exploring broader contextual understanding, and prompts them to consider a wider range of factors and perspectives",
-        "rationale": "This skill matters for protecting human cognition because it encourages users to engage in more holistic and nuanced thinking, rather than simply relying on AI for quick answers or specialized information",
-        "success_criteria": [
-          "detects narrow, specialized queries",
-          "prompts users to consider broader context",
-          "increases user engagement with diverse perspectives"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-05-24T08:24:23.543761"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "lack_of_contextual_breadth_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:lack_of_contextual_breadth_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00177001953125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 4.5299530029296875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00010132789611816406
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000012159347534179688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 1.6689300537109375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0003247261047363281
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000014543533325195312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 1.430511474609375e-6
-        }
-      ],
-      "timestamp": "2026-05-24T08:24:23.544522",
-      "error_message": null
-    },
     {
       "cycle_number": 23,
       "proposal": {
@@ -7735,6 +7641,100 @@
         }
       ],
       "timestamp": "2026-06-17T15:17:01.162822",
+      "error_message": null
+    },
+    {
+      "cycle_number": 122,
+      "proposal": {
+        "id": "ca98d1b7-0634-4458-9698-51b2762e55ae",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "Insufficient Counterfactual Consideration Detector",
+        "description": "This skill detects when AI-generated text lacks sufficient consideration of alternative perspectives or scenarios, potentially leading to biased or incomplete reasoning. It identifies instances where the AI fails to provide adequate counterfactuals, which can hinder human critical thinking and problem-solving abilities.",
+        "rationale": "Protecting human cognition requires ensuring that AI systems encourage and facilitate critical thinking, rather than simply presenting a single, potentially biased narrative. By detecting insufficient counterfactual consideration, this skill promotes more comprehensive and nuanced reasoning, ultimately safeguarding human cognitive abilities.",
+        "success_criteria": [
+          "Detects lack of counterfactuals in AI-generated text",
+          "Identifies instances of biased or incomplete reasoning",
+          "Provides feedback to promote more comprehensive consideration of alternative perspectives"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-17T20:07:52.272673"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "insufficient_counterfactual_consideration_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:insufficient_counterfactual_consideration_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.001706838607788086
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000010967254638671875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.9141387939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.0001633167266845703
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000016927719116210938
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000017881393432617188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.5762786865234375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 0.000010967254638671875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0017392635345458984
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000022649765014648438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 3.0994415283203125e-6
+        }
+      ],
+      "timestamp": "2026-06-17T20:07:52.274323",
       "error_message": null
     }
   ]
