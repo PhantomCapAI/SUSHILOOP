@@ -1069,3 +1069,12 @@
 }
 ```
 ---
+
+## [2026-06-17T10:47:57.820877] Cycle 120: CycleResult.REJECTED
+```json
+{
+  "proposal": "Named Entity Disclosure Detector",
+  "skill": "named_entity_disclosure_detector"
+}
+```
+---
