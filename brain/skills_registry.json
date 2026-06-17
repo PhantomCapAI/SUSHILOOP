@@ -220,5 +220,11 @@
     "category": "CONTENT_SAFETY",
     "cycle": 115,
     "created_at": "2026-06-16T03:39:19.000671"
+  },
+  "unhedged_medicallegal_claim_filter": {
+    "title": "Unhedged Medical/Legal Claim Filter",
+    "category": "OUTPUT_FILTERING",
+    "cycle": 121,
+    "created_at": "2026-06-17T15:17:04.611747"
   }
 }

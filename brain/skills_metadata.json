@@ -2059,5 +2059,31 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-06-17T10:47:57.813380"
+  },
+  "unhedged_medicallegal_claim_filter": {
+    "name": "unhedged_medicallegal_claim_filter",
+    "title": "Unhedged Medical/Legal Claim Filter",
+    "code_hash": "572482d2e777f72c",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass SentenceFeatures:\n    \"\"\"Features extracted from a sentence.\"\"\"\n    absolutes: int  # Number of absolute terms (e.g., \"always\", \"never\")\n    hedges: int  # Number of hedging terms (e.g., \"may\", \"might\")\n    overgeneral_terms: int  # Number of overgeneral terms (e.g., \"all\", \"every\")\n\ndef extract_features(sentence: str) -> SentenceFeatures:\n    \"\"\"Extract features from a sentence.\"\"\"\n    absolutes = len(re.findall(r\"\\b(always|never|must|should|will)\\b\", sentence, re.IGNORECASE))\n    hedges",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.407,
+    "failure_modes": [],
+    "timestamp": "2026-06-17T15:17:04.613080"
   }
 }
