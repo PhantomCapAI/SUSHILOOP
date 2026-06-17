@@ -1060,3 +1060,12 @@
 }
 ```
 ---
+
+## [2026-06-17T03:39:02.383938] Cycle 119: CycleResult.REJECTED
+```json
+{
+  "proposal": "Sequential Query Burst Limiter",
+  "skill": "sequential_query_burst_limiter"
+}
+```
+---
