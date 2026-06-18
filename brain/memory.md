@@ -1096,3 +1096,12 @@
 }
 ```
 ---
+
+## [2026-06-18T03:31:35.094964] Cycle 123: CycleResult.REJECTED
+```json
+{
+  "proposal": "Rapid Query Velocity Detector",
+  "skill": "rapid_query_velocity_detector"
+}
+```
+---

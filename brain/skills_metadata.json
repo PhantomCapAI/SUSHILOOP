@@ -2111,5 +2111,33 @@
     "diversity": 0.443,
     "failure_modes": [],
     "timestamp": "2026-06-17T20:07:55.353223"
+  },
+  "rapid_query_velocity_detector": {
+    "name": "rapid_query_velocity_detector",
+    "title": "Rapid Query Velocity Detector",
+    "code_hash": "70505d9caf7c2a10",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom datetime import datetime, timedelta\n\n@dataclass\nclass QueryHistory:\n    \"\"\"Store query history with timestamps.\"\"\"\n    queries: list = None\n\n    def __post_init__(self):\n        if self.queries is None:\n            self.queries = []\n\n    def add_query(self, query: str):\n        \"\"\"Add a query to the history.\"\"\"\n        self.queries.append((query, datetime.now()))\n\n    def get_recent_queries(self, window: timedelta) -> list:\n        \"\"\"Get queries within a given time window.\"\"\"\n        recent_queries = []\n     ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.746,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-18T03:31:35.088355"
   }
 }
