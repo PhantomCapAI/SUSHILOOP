@@ -1,44 +1,10 @@
 {
-  "cycle_count": 124,
-  "total_skills": 39,
-  "success_count": 39,
+  "cycle_count": 125,
+  "total_skills": 40,
+  "success_count": 40,
   "failure_count": 8,
-  "last_run": "2026-06-18T10:14:44.980889",
+  "last_run": "2026-06-18T14:58:25.938811",
   "history": [
-    {
-      "cycle_number": 25,
-      "proposal": {
-        "id": "7655bf41-5fee-4d98-8082-08ff0f1cac49",
-        "proposal_type": "NEW_SKILL",
-        "category": "INPUT_VALIDATION",
-        "title": "Overly Broad Generalization Detector",
-        "description": "This skill identifies and flags user inputs that contain overly broad generalizations, which can lead to inaccurate or misleading conclusions, and provides suggestions for more specific and nuanced inputs. It helps users to recognize and avoid generalizations that might hinder critical thinking and cognitive depth.",
-        "rationale": "Overly broad generalizations can hinder critical thinking, lead to oversimplification of complex issues, and result in inaccurate conclusions. By detecting and addressing these generalizations, users can develop more nuanced and detailed thinking, which is essential for protecting human cognition in the context of AI-assisted decision-making.",
-        "success_criteria": [
-          "Correctly identifies overly broad generalizations in user inputs",
-          "Provides relevant and actionable suggestions for improvement",
-          "Integrates seamlessly with existing skills and guardrails"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-05-25T02:59:30.511956"
-      },
-      "result": "TEST_FAILED",
-      "skill_generated": "overly_broad_generalization_detector",
-      "test_results": [
-        {
-          "passed": false,
-          "test_name": "import:overly_broad_generalization_detector",
-          "message": "AttributeError: no callable named 'overly_broad_generalization_detector' in overly_broad_generalization_detector.py",
-          "duration_seconds": 0.0014264583587646484
-        }
-      ],
-      "timestamp": "2026-05-25T02:59:30.512797",
-      "error_message": null
-    },
     {
       "cycle_number": 26,
       "proposal": {
@@ -7735,6 +7701,100 @@
         }
       ],
       "timestamp": "2026-06-18T10:14:44.980889",
+      "error_message": null
+    },
+    {
+      "cycle_number": 125,
+      "proposal": {
+        "id": "704afc35-caaf-4270-950e-0ece3e8b37b1",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Insufficient Nuance Indicator",
+        "description": "Detects AI-generated content that oversimplifies complex issues by using absolute language, failing to acknowledge potential counterarguments, or neglecting to provide evidence-based support for claims. This skill helps protect human cognition by promoting critical thinking and nuanced understanding.",
+        "rationale": "This matters for protecting human cognition because it encourages users to think critically about the information presented to them, rather than blindly accepting simplistic or biased content. By highlighting the lack of nuance in AI-generated content, this skill helps users develop a more discerning and informed perspective.",
+        "success_criteria": [
+          "Detects absolute language in AI-generated content",
+          "Identifies lack of counterarguments in AI-generated content",
+          "Recognizes insufficient evidence-based support in AI-generated content"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-18T14:58:25.937362"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "insufficient_nuance_indicator",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:insufficient_nuance_indicator",
+          "message": "import + callable OK",
+          "duration_seconds": 0.002096891403198242
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.9141387939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00009632110595703125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000014543533325195312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000012636184692382812
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.0994415283203125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 8.58306884765625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0008022785186767578
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000017404556274414062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        }
+      ],
+      "timestamp": "2026-06-18T14:58:25.938811",
       "error_message": null
     }
   ]

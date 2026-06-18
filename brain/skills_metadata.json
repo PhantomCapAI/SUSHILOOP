@@ -2167,5 +2167,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-18T10:14:48.233609"
+  },
+  "insufficient_nuance_indicator": {
+    "name": "insufficient_nuance_indicator",
+    "title": "Insufficient Nuance Indicator",
+    "code_hash": "179f2618591309a9",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass InsufficientNuanceIndicatorResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef insufficient_nuance_indicator(input_text: str) -> Dict:\n    \"\"\"\n    Detects AI-generated content that oversimplifies complex issues by using absolute language, \n    failing to acknowledge potential counterarguments, or neglecting to provide evidence-based \n    support for claims. This function helps protect human cognition by promoting critical th",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.644,
+    "failure_modes": [],
+    "timestamp": "2026-06-18T14:58:28.991409"
   }
 }
