@@ -2193,5 +2193,33 @@
     "diversity": 0.644,
     "failure_modes": [],
     "timestamp": "2026-06-18T14:58:28.991409"
+  },
+  "inferred_attribute_detector": {
+    "name": "inferred_attribute_detector",
+    "title": "Inferred Attribute Detector",
+    "code_hash": "e09003b9e8b01419",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef inferred_attribute_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects when AI-generated text implies or infers personal attributes, \n    such as age, location, or occupation, without explicitly stating them.\n\n    Args:\n        input_text (str): The input text to be analyzed.\n\n    Returns:\n        Dict[str, object]: A dictionary containing the detec",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 63
+    },
+    "diversity": 0.577,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=22"
+    ],
+    "timestamp": "2026-06-18T20:21:03.778847"
   }
 }

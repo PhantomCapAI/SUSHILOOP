@@ -1123,3 +1123,12 @@
 }
 ```
 ---
+
+## [2026-06-18T20:21:03.786939] Cycle 126: CycleResult.REJECTED
+```json
+{
+  "proposal": "Inferred Attribute Detector",
+  "skill": "inferred_attribute_detector"
+}
+```
+---
