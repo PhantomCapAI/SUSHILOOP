@@ -2139,5 +2139,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-18T03:31:35.088355"
+  },
+  "unintended_identifier_disclosure_detector": {
+    "name": "unintended_identifier_disclosure_detector",
+    "title": "Unintended Identifier Disclosure Detector",
+    "code_hash": "850fdbf29e807a63",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DisclosureSignals:\n    \"\"\"Dataclass to hold the disclosure signals.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g., always, never) in the input text.\n    \n    Args:\n    input_text (str): The input text to analyze.\n    \n    Returns:\n    float: The ratio of absolute terms in the input text.\n    \"\"\"\n    absol",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.439,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-18T10:14:48.233609"
   }
 }
