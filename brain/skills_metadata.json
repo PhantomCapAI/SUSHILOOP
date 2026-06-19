@@ -1819,8 +1819,8 @@
   "actionable_step_verifier": {
     "name": "actionable_step_verifier",
     "title": "Actionable-Step Verifier",
-    "code_hash": "587284d1026aa706",
-    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Verifies if the input text contains concrete steps that the user will act on.\n    \n    This function combines multiple signals to determine the confidence level of the input text.\n    The signals used are:\n    - Absolute term density: The ratio of absolute terms (e.g., always, never) to the total number of words.\n    - Hedge term density: The ratio of hedge terms (e.g., maybe, possibly) to the total number of words.\n    - Overgeneral term de",
+    "code_hash": "aced29e1a0b34e05",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\nimport math\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Verifies if the input text contains concrete steps that the user will act on.\n    \n    This function combines multiple signals to detect actionable steps, including:\n    - Absolute term density\n    - Hedging term density\n    - Overgeneral term density\n    - Sentence count and ratio of short sentences\n    - Lexical diversity\n    \n    The function returns a dictionary with the following keys:\n    - blocked: Whether the input text contains actionable st",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -1830,19 +1830,17 @@
       "static_total": 38,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
         "probes_raised": 0,
         "probes_valid": 7
       },
-      "total": 57
+      "total": 63
     },
-    "diversity": 0.446,
-    "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
-    ],
-    "timestamp": "2026-06-16T20:45:30.840960"
+    "diversity": 0.448,
+    "failure_modes": [],
+    "timestamp": "2026-06-19T19:43:52.230229"
   },
   "overly_simplistic_explanation_detector": {
     "name": "overly_simplistic_explanation_detector",
