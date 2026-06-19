@@ -1679,8 +1679,8 @@
   "premature_closure_detector": {
     "name": "premature_closure_detector",
     "title": "Premature Closure Detector",
-    "code_hash": "24e0fe508e518f40",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass TextFeatures:\n    \"\"\"Struct to hold various features extracted from input text.\"\"\"\n    sentence_count: int\n    word_count: int\n    absolute_terms: int\n    hedge_terms: int\n    overgeneral_terms: int\n    unique_words: int\n\ndef extract_features(input_text: str) -> TextFeatures:\n    \"\"\"Extract various features from input text.\"\"\"\n    sentences = re.split(r'[.!?]\\s*', input_text)\n    sentence_count = len([s for s in sentences if s])  # ignore empty strings\n    words = re.findall(r'\\b\\w+\\b', i",
+    "code_hash": "96a9a23ded3dfcf4",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef calculate_lexical_diversity(input_text: str) -> float:\n    \"\"\"Calculate the lexical diversity of the input text.\"\"\"\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    unique_words = set(words)\n    if len(words) == 0:\n        return 0.0\n    return len(unique_words) / len(words)\n\ndef calculate_hedge_density(input_text: str) -> float:\n    \"\"\"Calculate the hedge density of the input text.\"\"\"\n    hedge_words = ['maybe', 'possibly', 'probably', 'certainly', 'definitely']\n    words = re.findall(r'\\b\\w+\\b', input_text.lower",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -1698,11 +1698,11 @@
       },
       "total": 60
     },
-    "diversity": 0.392,
+    "diversity": 0.36,
     "failure_modes": [
       "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-06-11T20:15:54.580678"
+    "timestamp": "2026-06-19T03:53:29.018248"
   },
   "inconsistent_data_format_detector": {
     "name": "inconsistent_data_format_detector",
