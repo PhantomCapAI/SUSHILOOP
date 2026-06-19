@@ -2249,5 +2249,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-19T10:20:05.170216"
+  },
+  "identity_fragmentation_detector": {
+    "name": "identity_fragmentation_detector",
+    "title": "Identity Fragmentation Detector",
+    "code_hash": "6b72227fe807fd3c",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g., \"always\", \"never\") to total words.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    words = re.findall(r'\\b\\w+\\b', text.lower())\n    absolute_count = sum(1 for word in words if word in absolute_terms)\n    return absolute_count / len(words) if words else",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.467,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=22"
+    ],
+    "timestamp": "2026-06-19T14:55:56.438746"
   }
 }
