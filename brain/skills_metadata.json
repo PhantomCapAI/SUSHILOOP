@@ -2221,5 +2221,33 @@
       "shallow:discrimination=2,behavioral_total=22"
     ],
     "timestamp": "2026-06-18T20:21:03.778847"
+  },
+  "rapid_query_escalation_detector": {
+    "name": "rapid_query_escalation_detector",
+    "title": "Rapid Query Escalation Detector",
+    "code_hash": "b4da10886fa5ff1c",
+    "summary": "import re\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass QueryFeatures:\n    \"\"\"Dataclass to hold features of a query.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the input text.\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|every|all)\\b', input_text, re.IGNORECASE)\n    word_count = len(input_text.split())\n    return len(absolute_terms) / word_count if word_count > 0 else ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.356,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-19T10:20:05.170216"
   }
 }
