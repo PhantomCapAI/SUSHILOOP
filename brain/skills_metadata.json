@@ -2272,5 +2272,31 @@
       "shallow:discrimination=2,behavioral_total=22"
     ],
     "timestamp": "2026-06-19T14:55:56.438746"
+  },
+  "unintended_pii_inference_detector": {
+    "name": "unintended_pii_inference_detector",
+    "title": "Unintended PII Inference Detector",
+    "code_hash": "bfa80575d3dcae70",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass PIIInference:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef unintended_pii_inference_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when AI-generated text inadvertently reveals personally identifiable information (PII) \n    through subtle context clues, such as mentioning specific locations or organizations that \n    could be linked to an individual.\n\n    Args:\n        input_text (str): The AI-generated text to analyze.\n\n    Returns:\n     ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 69
+    },
+    "diversity": 0.608,
+    "failure_modes": [],
+    "timestamp": "2026-06-20T19:19:25.088830"
   }
 }

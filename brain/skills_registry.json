@@ -250,5 +250,11 @@
     "category": "VERIFICATION_PROMPT",
     "cycle": 133,
     "created_at": "2026-06-20T13:52:42.321087"
+  },
+  "unintended_pii_inference_detector": {
+    "title": "Unintended PII Inference Detector",
+    "category": "PII_DETECTION",
+    "cycle": 134,
+    "created_at": "2026-06-20T19:19:25.087495"
   }
 }
