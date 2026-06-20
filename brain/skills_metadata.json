@@ -450,29 +450,28 @@
   "overly_broad_generalization_detector": {
     "name": "overly_broad_generalization_detector",
     "title": "Overly Broad Generalization Detector",
-    "code_hash": "a2af654d8afcf1a3",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionStrategy:\n    name: str\n    pattern: str\n    weight: float\n\nclass OverlyBroadGeneralizationDetector:\n    \"\"\"\n    This class detects overly broad generalizations in user inputs and provides suggestions for improvement.\n\n    The mission of this class is to identify and flag user inputs that contain overly broad generalizations, \n    which can lead to inaccurate or misleading conclusions, and provide suggestions for more specific and nuanced inputs.\n    This helps users to recognize and avoid generaliza",
+    "code_hash": "aa896b6f207f610b",
+    "summary": "import re\nfrom typing import Dict\n\ndef overly_broad_generalization_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when a user's prompt is overly broad or general, potentially leading to vague or misleading AI responses.\n    \n    This function analyzes the prompt's linguistic features, such as the presence of absolute words or phrases, \n    and the lack of specific details or constraints. It prompts the user to refine their query with suggestions \n    for improvement, encouraging more precise and informed thinking.\n\n    Args:\n        input_text (str): The user's input text to be analyze",
     "score": {
-      "tests_pass": 0,
+      "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 10,
-      "static_total": 40,
+      "strategies": 1,
+      "static_total": 41,
       "behavioral": {
-        "robustness": 0,
-        "discrimination": 0,
-        "calibration": 0,
-        "behavioral_total": 0,
-        "error": "no callable overly_broad_generalization_detector"
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
       },
-      "total": 40
+      "total": 66
     },
-    "diversity": 0.707,
-    "failure_modes": [
-      "AttributeError: no callable named 'overly_broad_generalization_detector' in overly_broad_generalizat"
-    ],
-    "timestamp": "2026-05-25T02:59:33.128891"
+    "diversity": 0.697,
+    "failure_modes": [],
+    "timestamp": "2026-06-20T13:52:42.322132"
   },
   "implicit_assumption_validator": {
     "name": "implicit_assumption_validator",

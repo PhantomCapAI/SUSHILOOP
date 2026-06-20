@@ -1,104 +1,10 @@
 {
-  "cycle_count": 132,
-  "total_skills": 42,
-  "success_count": 42,
+  "cycle_count": 133,
+  "total_skills": 43,
+  "success_count": 43,
   "failure_count": 8,
-  "last_run": "2026-06-20T08:48:47.626407",
+  "last_run": "2026-06-20T13:52:39.196504",
   "history": [
-    {
-      "cycle_number": 33,
-      "proposal": {
-        "id": "1608eb27-977e-40a4-88d6-ee9f77aa2107",
-        "proposal_type": "NEW_SKILL",
-        "category": "INPUT_VALIDATION",
-        "title": "Temporal Context Validator",
-        "description": "This skill checks if the input prompt or context provided to the AI model is time-sensitive and requires consideration of temporal factors, ensuring that the human user is aware of potential temporal biases or limitations in the AI's response.",
-        "rationale": "This matters for protecting human cognition because it helps prevent users from relying on AI responses that may be outdated, time-insensitive, or based on incomplete temporal context, thereby promoting more informed decision-making and critical thinking.",
-        "success_criteria": [
-          "Identifies time-sensitive prompts",
-          "Detects lack of temporal context",
-          "Provides feedback to user on potential temporal biases"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-05-26T20:04:20.415763"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "temporal_context_validator",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:temporal_context_validator",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0022597312927246094
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010013580322265625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00011205673217773438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000015020370483398438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000011205673217773438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.106231689453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.00019049644470214844
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000015497207641601562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.1457672119140625e-6
-        }
-      ],
-      "timestamp": "2026-05-26T20:04:20.416791",
-      "error_message": null
-    },
     {
       "cycle_number": 34,
       "proposal": {
@@ -7795,6 +7701,100 @@
         }
       ],
       "timestamp": "2026-06-20T08:48:47.626407",
+      "error_message": null
+    },
+    {
+      "cycle_number": 133,
+      "proposal": {
+        "id": "a80e0f88-1a34-40e6-99cd-78481bf88820",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Overly Broad Generalization Detector",
+        "description": "This skill detects when a user's prompt is overly broad or general, potentially leading to vague or misleading AI responses, and prompts the user to refine their query. It achieves this by analyzing the prompt's linguistic features, such as the presence of absolute words or phrases, and the lack of specific details or constraints.",
+        "rationale": "This skill matters for protecting human cognition because overly broad generalizations can lead to a lack of critical thinking and nuance in AI-assisted decision-making. By prompting users to refine their queries, we can encourage more precise and informed thinking.",
+        "success_criteria": [
+          "Detects prompts with absolute words or phrases",
+          "Identifies prompts lacking specific details or constraints",
+          "Prompts user to refine their query with suggestions for improvement"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-20T13:52:39.195363"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "overly_broad_generalization_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:overly_broad_generalization_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0012280941009521484
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000010967254638671875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000095367431640625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 7.867813110351562e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 4.291534423828125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0005490779876708984
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000014066696166992188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.6689300537109375e-6
+        }
+      ],
+      "timestamp": "2026-06-20T13:52:39.196504",
       "error_message": null
     }
   ]
