@@ -238,5 +238,11 @@
     "category": "CONTENT_SAFETY",
     "cycle": 125,
     "created_at": "2026-06-18T14:58:28.989903"
+  },
+  "re_ask_loop_breaker": {
+    "title": "Re-ask Loop Breaker",
+    "category": "RATE_LIMITING",
+    "cycle": 131,
+    "created_at": "2026-06-20T02:55:42.372825"
   }
 }
