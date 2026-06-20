@@ -1177,3 +1177,12 @@
 }
 ```
 ---
+
+## [2026-06-20T08:48:50.533514] Cycle 132: CycleResult.REJECTED
+```json
+{
+  "proposal": "Inferred Attribute Protector",
+  "skill": "inferred_attribute_protector"
+}
+```
+---

@@ -1021,8 +1021,8 @@
   "inferred_attribute_protector": {
     "name": "inferred_attribute_protector",
     "title": "Inferred Attribute Protector",
-    "code_hash": "57c5c68410cb09b4",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass TextFeatures:\n    \"\"\"Struct to hold various features extracted from input text.\"\"\"\n    sentence_count: int\n    word_count: int\n    lexical_diversity: float\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n\ndef extract_features(input_text: str) -> TextFeatures:\n    \"\"\"Extracts various features from input text.\"\"\"\n    sentences = re.split(r'[.!?]', input_text)\n    sentence_count = len([s for s in sentences if s.strip()])\n    words = re.findall(r'\\b\\w+\\b', inp",
+    "code_hash": "75d8dd9407dd4314",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass Signal:\n    name: str\n    weight: float\n    value: float\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g., always, never) in the input text.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    absolute_count = sum(1 for term in absolute_terms if term in input_text.lower())\n    word_count = len(input_text.split())\n    return absolute_count / max(word_count, 1)\n\ndef calculate_hedge_density(input_text: str) -> f",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -1040,11 +1040,11 @@
       },
       "total": 60
     },
-    "diversity": 0.479,
+    "diversity": 0.379,
     "failure_modes": [
       "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-06-02T10:15:42.898824"
+    "timestamp": "2026-06-20T08:48:50.526210"
   },
   "ambiguous_recommendation_detector": {
     "name": "ambiguous_recommendation_detector",
