@@ -2352,5 +2352,33 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-06-21T09:43:26.290872"
+  },
+  "self_harm_routing_guard": {
+    "name": "self_harm_routing_guard",
+    "title": "Self-Harm Routing Guard",
+    "code_hash": "3a64591fc57bb616",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nimport math\n\n@dataclass\nclass Signal:\n    \"\"\"Data class to hold signal information\"\"\"\n    name: str\n    weight: float\n    value: float\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g., always, never) in the input text.\n    \n    Args:\n    input_text (str): The input text to analyze.\n    \n    Returns:\n    float: The ratio of absolute terms in the input text.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    words = re.findall(r'\\b\\w+\\b', input_tex",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.333,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-21T14:00:31.710018"
   }
 }
