@@ -2298,5 +2298,31 @@
     "diversity": 0.608,
     "failure_modes": [],
     "timestamp": "2026-06-20T19:19:25.088830"
+  },
+  "overly_homogeneous_perspective_detector": {
+    "name": "overly_homogeneous_perspective_detector",
+    "title": "Overly Homogeneous Perspective Detector",
+    "code_hash": "d944976dbcdd9074",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\nfrom math import log\n\ndef overly_homogeneous_perspective_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when AI-generated text presents a single, dominant viewpoint without \n    acknowledging potential counterarguments or alternative perspectives, \n    potentially leading to biased or one-sided information.\n\n    This function combines multiple signals to compute a graded confidence score:\n    1. Absolute term density: the ratio of absolute terms (e.g., \"always\", \"never\") \n       to the total number of words.\n    2. Hedge",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.63,
+    "failure_modes": [],
+    "timestamp": "2026-06-21T03:41:43.391311"
   }
 }
