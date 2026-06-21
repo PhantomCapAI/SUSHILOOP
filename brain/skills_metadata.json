@@ -2324,5 +2324,33 @@
     "diversity": 0.63,
     "failure_modes": [],
     "timestamp": "2026-06-21T03:41:43.391311"
+  },
+  "overly_specific_answer_detector": {
+    "name": "overly_specific_answer_detector",
+    "title": "Overly Specific Answer Detector",
+    "code_hash": "c08a87ce01ff30c0",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef count_decimal_places(text: str) -> int:\n    \"\"\"Count the number of decimal places in a given text.\"\"\"\n    return sum(1 for token in re.findall(r'\\d+\\.\\d+', text) if len(token.split('.')[1]) > 5)\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms (e.g., always, never) in a given text.\"\"\"\n    absolute_terms = re.findall(r'\\b(alway",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 58
+    },
+    "diversity": 0.469,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-06-21T09:43:26.290872"
   }
 }

@@ -1213,3 +1213,12 @@
 }
 ```
 ---
+
+## [2026-06-21T09:43:26.297756] Cycle 136: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overly Specific Answer Detector",
+  "skill": "overly_specific_answer_detector"
+}
+```
+---
