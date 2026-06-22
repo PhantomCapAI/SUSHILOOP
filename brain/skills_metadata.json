@@ -2382,5 +2382,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-21T14:00:31.710018"
+  },
+  "inconsistent_identifier_pattern_detector": {
+    "name": "inconsistent_identifier_pattern_detector",
+    "title": "Inconsistent Identifier Pattern Detector",
+    "code_hash": "b8ebd6cfddb9cb07",
+    "summary": "import re\nimport json\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef inconsistent_identifier_pattern_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects inconsistencies in identifier patterns to prevent potential PII leaks and promote accurate human oversight.\n    \n    This function analyzes input data for irregularities in identifier formats, alerting users to potential errors or manipulations.\n    It comb",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 75
+    },
+    "diversity": 0.549,
+    "failure_modes": [],
+    "timestamp": "2026-06-22T11:45:36.163216"
   }
 }
