@@ -1,37 +1,10 @@
 {
-  "cycle_count": 140,
+  "cycle_count": 141,
   "total_skills": 46,
   "success_count": 46,
   "failure_count": 8,
-  "last_run": "2026-06-22T11:45:33.555782",
+  "last_run": "2026-06-22T16:47:59.967635",
   "history": [
-    {
-      "cycle_number": 41,
-      "proposal": {
-        "id": "813cdfc0-9af0-422c-91fd-4b51c98c8f47",
-        "proposal_type": "NEW_SKILL",
-        "category": "COGNITIVE_PROTECTION",
-        "title": "Cognitive Overfitting Preventer",
-        "description": "This skill prevents cognitive overfitting by detecting and alerting users when they are relying too heavily on AI-generated responses, encouraging them to think critically and generate their own solutions.",
-        "rationale": "This skill matters for protecting human cognition because it helps users avoid overreliance on AI and instead develop their own critical thinking skills, which is essential for maintaining cognitive autonomy and agency.",
-        "success_criteria": [
-          "Detects instances of over-reliance on AI-generated responses",
-          "Effectively encourages users to think critically and generate their own solutions",
-          "Does not interfere with legitimate use of AI as a tool for learning and exploration"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 6,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-05-28T20:14:32.169153"
-      },
-      "result": "REJECTED",
-      "skill_generated": "cognitive_overfitting_preventer",
-      "test_results": [],
-      "timestamp": "2026-05-28T20:14:32.170379",
-      "error_message": null
-    },
     {
       "cycle_number": 42,
       "proposal": {
@@ -7862,6 +7835,33 @@
         }
       ],
       "timestamp": "2026-06-22T11:45:33.555782",
+      "error_message": null
+    },
+    {
+      "cycle_number": 141,
+      "proposal": {
+        "id": "8ee3e737-97ff-49cd-85a1-6827c833fd00",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Self-Harm Routing Guard",
+        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
+        "rationale": "A model must scaffold, not substitute, real support",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-22T16:47:59.967006"
+      },
+      "result": "REJECTED",
+      "skill_generated": "self_harm_routing_guard",
+      "test_results": [],
+      "timestamp": "2026-06-22T16:47:59.967635",
       "error_message": null
     }
   ]
