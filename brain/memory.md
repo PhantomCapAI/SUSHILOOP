@@ -1294,3 +1294,12 @@
 }
 ```
 ---
+
+## [2026-06-23T14:39:59.049400] Cycle 145: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overly Prescriptive Instruction Detector",
+  "skill": "overly_prescriptive_instruction_detector"
+}
+```
+---
