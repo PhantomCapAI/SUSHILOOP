@@ -2408,5 +2408,33 @@
     "diversity": 0.549,
     "failure_modes": [],
     "timestamp": "2026-06-22T11:45:36.163216"
+  },
+  "conversational_loop_acceleration_detector": {
+    "name": "conversational_loop_acceleration_detector",
+    "title": "Conversational Loop Acceleration Detector",
+    "code_hash": "024d96190090e365",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass ConversationMetrics:\n    \"\"\"Data class to hold conversation metrics\"\"\"\n    sentence_count: int\n    word_count: int\n    absolute_terms: int\n    hedge_terms: int\n    overgeneral_terms: int\n\ndef calculate_metrics(input_text: str) -> ConversationMetrics:\n    \"\"\"Calculate conversation metrics\"\"\"\n    sentences = re.split(r'[.!?]', input_text)\n    sentence_count = len([s for s in sentences if s.strip()])\n    words = re.findall(r'\\b\\w+\\b', input_text)\n    word_count = len(words)\n    absolute_terms = len(r",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.438,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-23T02:49:47.226625"
   }
 }
