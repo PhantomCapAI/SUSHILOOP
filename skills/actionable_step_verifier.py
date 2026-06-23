@@ -1,94 +1,100 @@
 import re
 from collections import Counter
 from typing import Dict
-import math
 
 def actionable_step_verifier(input_text: str) -> Dict:
     """
-    Verifies if the input text contains concrete steps that the user will act on.
-    
-    This function combines multiple signals to detect actionable steps, including:
-    - Absolute term density
-    - Hedging term density
-    - Overgeneral term density
-    - Sentence count and ratio of short sentences
-    - Lexical diversity
-    
-    The function returns a dictionary with the following keys:
-    - blocked: Whether the input text contains actionable steps
-    - reason: The reason for blocking the input text
-    - confidence: A graded confidence score between 0.0 and 1.0
-    - category: The category of the input text
-    - details: Additional details about the input text
-    
-    :param input_text: The input text to verify
-    :return: A dictionary with the verification results
+    Actionable Step Verifier: Injects a 'verify these before acting' checkpoint when output contains concrete steps.
+
+    Mission Alignment:
+    This module aims to provide a safety guardrail for AI outputs by detecting and flagging potentially actionable steps.
+    It combines multiple signals, including weighted pattern matches, structural features, and lexical diversity,
+    to produce a graded confidence score that varies with the input.
+
+    Args:
+        input_text (str): The input text to be verified.
+
+    Returns:
+        Dict: A dictionary containing the verification result, including:
+            - blocked (bool): Whether the input text contains potentially actionable steps.
+            - reason (str): The reason for the verification result.
+            - confidence (float): A graded confidence score between 0.0 and 1.0.
+            - category (str): The category of the verification result.
+            - details (Dict): Additional details about the verification result.
     """
     # SUSHILOOP input guard (auto-injected): never raise on bad input.
     if not isinstance(input_text, str) or not input_text.strip():
         return {"blocked": False, "reason": "empty_or_invalid_input",
                 "confidence": 0.0, "category": "none", "details": {}}
 
-    # Tokenize the input text into sentences and words
+    # Preprocessing
+    input_text = input_text.lower()
     sentences = re.split(r'[.!?]', input_text)
-    words = re.findall(r'\b\w+\b', input_text.lower())
+    sentences = [s.strip() for s in sentences if s.strip()]
+    words = re.findall(r'\b\w+\b', input_text)
+    word_count = len(words)
 
-    # Calculate the absolute term density
-    absolute_terms = ['always', 'never', 'must', 'should', 'will']
-    absolute_ratio = sum(1 for word in words if word in absolute_terms) / len(words) if words else 0.0
+    # Signal 1: Weighted pattern matches
+    pattern_matches = re.findall(r'\b(step|action|instruction)\b', input_text)
+    pattern_match_ratio = len(pattern_matches) / word_count if word_count > 0 else 0
 
-    # Calculate the hedging term density
-    hedging_terms = ['maybe', 'possibly', 'could', 'might', 'may']
-    hedge_density = sum(1 for word in words if word in hedging_terms) / len(words) if words else 0.0
-
-    # Calculate the overgeneral term density
-    overgeneral_terms = ['all', 'every', 'each', 'any', 'none']
-    overgeneral_ratio = sum(1 for word in words if word in overgeneral_terms) / len(words) if words else 0.0
-
-    # Calculate the sentence count and ratio of short sentences
+    # Signal 2: Structural features
     sentence_count = len(sentences)
-    short_sentence_ratio = sum(1 for sentence in sentences if len(sentence.split()) < 5) / sentence_count if sentences else 0.0
+    sentence_ratio = sentence_count / word_count if word_count > 0 else 0
 
-    # Calculate the lexical diversity
-    word_counts = Counter(words)
-    lexical_diversity = len(word_counts) / len(words) if words else 0.0
+    # Signal 3: Lexical diversity
+    word_freq = Counter(words)
+    lexical_diversity = len(word_freq) / word_count if word_count > 0 else 0
 
-    # Combine the signals to calculate the confidence score
-    raw_score = 0.2 * absolute_ratio + 0.2 * hedge_density + 0.2 * overgeneral_ratio + 0.2 * short_sentence_ratio + 0.2 * (1 - lexical_diversity)
+    # Signal 4: Hedging/absolute-term density
+    hedge_terms = re.findall(r'\b(maybe|perhaps|possibly|probably)\b', input_text)
+    absolute_terms = re.findall(r'\b(always|never|definitely)\b', input_text)
+    hedge_density = len(hedge_terms) / word_count if word_count > 0 else 0
+    absolute_term_density = len(absolute_terms) / word_count if word_count > 0 else 0
+
+    # Combine signals
+    raw_score = 0.4 * pattern_match_ratio + 0.3 * sentence_ratio + 0.2 * lexical_diversity + 0.1 * hedge_density
     confidence = max(0.0, min(1.0, raw_score))
 
-    # Determine the blocking decision based on the confidence score
+    # Determine verification result
     blocked = confidence > 0.5
-
-    # Create the output dictionary
-    output = {
-        'blocked': blocked,
-        'reason': 'Actionable steps detected' if blocked else 'No actionable steps detected',
-        'confidence': confidence,
-        'category': 'Actionable steps' if blocked else 'No actionable steps',
-        'details': {
-            'absolute_ratio': absolute_ratio,
-            'hedge_density': hedge_density,
-            'overgeneral_ratio': overgeneral_ratio,
-            'short_sentence_ratio': short_sentence_ratio,
-            'lexical_diversity': lexical_diversity
-        }
+    reason = "Potentially actionable steps detected" if blocked else "No potentially actionable steps detected"
+    category = "Actionable Step" if blocked else "Non-Actionable Step"
+    details = {
+        "pattern_match_ratio": pattern_match_ratio,
+        "sentence_ratio": sentence_ratio,
+        "lexical_diversity": lexical_diversity,
+        "hedge_density": hedge_density,
+        "absolute_term_density": absolute_term_density
     }
 
-    return output
+    return {
+        "blocked": blocked,
+        "reason": reason,
+        "confidence": confidence,
+        "category": category,
+        "details": details
+    }
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     test_cases = [
-        'You should always follow the instructions carefully.',
-        'Maybe you could try this approach.',
-        'Every day, I will exercise for 30 minutes.',
-        'This is a test case with no actionable steps.',
-        'Always remember to verify the results before acting.'
+        "Please follow these steps to complete the task.",
+        "This is a non-actionable sentence.",
+        "Maybe you should consider taking this action.",
+        "Always follow the instructions carefully.",
+        "This sentence contains multiple actionable steps, including step 1 and step 2.",
+        "The task requires careful consideration and attention to detail.",
+        "You should probably take this action, but maybe not.",
+        "The instructions are clear and easy to follow.",
+        "This is a test case with multiple sentences. The first sentence is non-actionable. The second sentence contains actionable steps.",
+        "The task requires careful planning and execution."
     ]
 
     for test_case in test_cases:
-        print(actionable_step_verifier(test_case))
+        result = actionable_step_verifier(test_case)
+        print(f"Input: {test_case}")
+        print(f"Result: {result}")
+        print()
 
 # SUSHILOOP contract normalizer (auto): clamp confidence into [0,1], guarantee dict shape
 _sushi_raw_actionable_step_verifier = actionable_step_verifier
