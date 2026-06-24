@@ -2462,5 +2462,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-23T09:31:30.501459"
+  },
+  "overly_simplistic_conclusion_detector": {
+    "name": "overly_simplistic_conclusion_detector",
+    "title": "Overly Simplistic Conclusion Detector",
+    "code_hash": "fd1ed8d63ba1e250",
+    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef overly_simplistic_conclusion_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when AI output oversimplifies complex issues by identifying conclusions \n    that are disproportionately brief or lacking in nuanced discussion.\n\n    Args:\n    input_text (str): The text to be analyzed.\n\n    Returns:\n    dict: A dictionary containing the detection result, including w",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 58
+    },
+    "diversity": 0.63,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-06-24T09:21:21.471878"
   }
 }
