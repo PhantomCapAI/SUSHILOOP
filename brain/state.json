@@ -1,104 +1,10 @@
 {
-  "cycle_count": 153,
+  "cycle_count": 154,
   "total_skills": 48,
   "success_count": 48,
   "failure_count": 8,
-  "last_run": "2026-06-25T14:22:26.774749",
+  "last_run": "2026-06-25T19:52:59.451178",
   "history": [
-    {
-      "cycle_number": 54,
-      "proposal": {
-        "id": "c0f9c86f-f113-435e-ac43-2346d02933b1",
-        "proposal_type": "NEW_SKILL",
-        "category": "INPUT_VALIDATION",
-        "title": "Feedback Loop Closure Detector",
-        "description": "This skill detects when user input inadvertently creates a self-referential feedback loop with AI-generated responses, potentially leading to cognitive overreliance. It identifies and alerts users to such loops, encouraging them to reframe their queries.",
-        "rationale": "By detecting feedback loops, this skill protects human cognition by preventing the reinforcement of potentially flawed assumptions or the creation of information echo chambers, thus promoting more independent and critical thinking.",
-        "success_criteria": [
-          "Detection accuracy of self-referential loops",
-          "Effective alert system for users",
-          "Reduction in user reliance on AI-generated responses without critical evaluation"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-01T03:37:00.479711"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "feedback_loop_closure_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:feedback_loop_closure_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0014536380767822266
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010013580322265625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.152557373046875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000148773193359375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000014781951904296875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000013828277587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0008502006530761719
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000017404556274414062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        }
-      ],
-      "timestamp": "2026-06-01T03:37:00.480694",
-      "error_message": null
-    },
     {
       "cycle_number": 55,
       "proposal": {
@@ -7728,6 +7634,100 @@
         }
       ],
       "timestamp": "2026-06-25T14:22:26.774749",
+      "error_message": null
+    },
+    {
+      "cycle_number": 154,
+      "proposal": {
+        "id": "4483a06c-15ba-4a04-b37d-ab272dd036f1",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Overly Broad Assumption Detector",
+        "description": "This skill detects when a user's prompt relies on overly broad assumptions, encouraging them to consider more specific and nuanced scenarios, thus protecting human cognition by promoting critical thinking. It analyzes the prompt for absolute language and generic terms, prompting the user to refine their query.",
+        "rationale": "This matters for protecting human cognition because it helps users recognize and challenge their own assumptions, fostering a deeper understanding of the topic and preventing the reliance on AI for simplistic or misleading answers.",
+        "success_criteria": [
+          "Detects absolute language in prompts",
+          "Identifies generic terms that may lead to overly broad assumptions",
+          "Provides constructive feedback to refine the prompt"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-25T19:52:59.449766"
+      },
+      "result": "REJECTED",
+      "skill_generated": "overly_broad_assumption_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:overly_broad_assumption_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0020956993103027344
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.775161743164062e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.0005316734313964844
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000016927719116210938
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000016689300537109375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.001857757568359375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.00003814697265625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        }
+      ],
+      "timestamp": "2026-06-25T19:52:59.451178",
       "error_message": null
     }
   ]
