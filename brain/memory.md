@@ -1348,3 +1348,12 @@
 }
 ```
 ---
+
+## [2026-06-25T02:50:22.578035] Cycle 151: CycleResult.REJECTED
+```json
+{
+  "proposal": "Sequential Query Flooding Detector",
+  "skill": "sequential_query_flooding_detector"
+}
+```
+---
