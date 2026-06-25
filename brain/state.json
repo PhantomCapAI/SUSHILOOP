@@ -1,37 +1,10 @@
 {
-  "cycle_count": 152,
-  "total_skills": 47,
-  "success_count": 47,
+  "cycle_count": 153,
+  "total_skills": 48,
+  "success_count": 48,
   "failure_count": 8,
-  "last_run": "2026-06-25T08:54:48.354096",
+  "last_run": "2026-06-25T14:22:26.774749",
   "history": [
-    {
-      "cycle_number": 53,
-      "proposal": {
-        "id": "59fec4b4-0bc3-41d8-972b-5ad9fd2c1ddf",
-        "proposal_type": "NEW_SKILL",
-        "category": "INPUT_VALIDATION",
-        "title": "Ambiguity Propagation Detector",
-        "description": "Detects when user input may lead to ambiguous or unclear AI responses, prompting the user to refine their query for more accurate results. This skill identifies potential ambiguity propagation by analyzing the input's semantic meaning and context.",
-        "rationale": "This skill matters for protecting human cognition as it helps prevent the perpetuation of ambiguities, ensuring that users receive clear and relevant information from AI systems, thereby reducing the risk of misinterpretation and promoting more effective human-AI collaboration.",
-        "success_criteria": [
-          "Correctly identifies ambiguous input that could lead to unclear AI responses",
-          "Provides useful feedback to users to refine their queries",
-          "Does not unnecessarily flag clear and specific user input"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 6,
-        "rollback_plan": "Delete AmbiguityPropagationDetector.py from skills/",
-        "created_at": "2026-05-31T19:10:27.193885"
-      },
-      "result": "REJECTED",
-      "skill_generated": "ambiguity_propagation_detector",
-      "test_results": [],
-      "timestamp": "2026-05-31T19:10:27.194830",
-      "error_message": null
-    },
     {
       "cycle_number": 54,
       "proposal": {
@@ -7661,6 +7634,100 @@
         }
       ],
       "timestamp": "2026-06-25T08:54:48.354096",
+      "error_message": null
+    },
+    {
+      "cycle_number": 153,
+      "proposal": {
+        "id": "46f224b7-4373-48e5-b399-ca0bdb72d437",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Overly Prescriptive Language Detector",
+        "description": "This skill detects when AI-generated content uses overly prescriptive language, which can undermine human autonomy and critical thinking by presenting information as absolute or unquestionable. It identifies phrases that imply a single, 'correct' course of action or interpretation.",
+        "rationale": "Protecting human cognition from AI overreliance requires ensuring that AI-generated content does not inadvertently erode critical thinking skills by presenting information in an overly prescriptive manner. By detecting and mitigating such language, this skill helps maintain a balance between leveraging AI for assistance and preserving human autonomy in decision-making.",
+        "success_criteria": [
+          "Successfully identifies 90% of prescriptive language patterns in test content",
+          "Correctly distinguishes between prescriptive and descriptive language in AI-generated text",
+          "Provides actionable feedback for revising detected prescriptive language into more suggestive or neutral forms"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-25T14:22:26.773191"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "overly_prescriptive_language_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:overly_prescriptive_language_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0016269683837890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000011682510375976562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.9141387939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000396728515625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000015974044799804688
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000012874603271484375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 7.867813110351562e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0009837150573730469
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000017404556274414062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-06-25T14:22:26.774749",
       "error_message": null
     }
   ]
