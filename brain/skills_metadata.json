@@ -2574,5 +2574,33 @@
     "diversity": 0.426,
     "failure_modes": [],
     "timestamp": "2026-06-26T08:57:25.238125"
+  },
+  "insufficient_nuance_detector": {
+    "name": "insufficient_nuance_detector",
+    "title": "Insufficient Nuance Detector",
+    "code_hash": "6a901d54fa5de4b9",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass InsufficientNuance:\n    \"\"\"Dataclass to hold the results of the insufficient nuance detector.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef insufficient_nuance_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects and flags prompts with overly simplistic language, suggesting alternative prompts with added nuance.\n    \n    This function combines multiple signals to determine the confidence of the det",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.583,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-26T19:41:58.265450"
   }
 }
