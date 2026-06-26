@@ -2546,5 +2546,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-25T19:53:02.732682"
+  },
+  "overly_concise_answer_detector": {
+    "name": "overly_concise_answer_detector",
+    "title": "Overly Concise Answer Detector",
+    "code_hash": "e90df11431445cc9",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass Sentence:\n    text: str\n    word_count: int\n    absolute_terms: int\n    hedge_terms: int\n    overgeneral_terms: int\n\ndef calculate_absolutes_ratio(sentence: Sentence) -> float:\n    \"\"\"Calculate the ratio of absolute terms in a sentence.\"\"\"\n    if sentence.word_count == 0:\n        return 0.0\n    return sentence.absolute_terms / sentence.word_count\n\ndef calculate_hedge_density(sentence: Sentence) -> float:\n    \"\"\"Calculate the density of hedge terms in a sentence.\"\"\"\n    if sente",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 66
+    },
+    "diversity": 0.426,
+    "failure_modes": [],
+    "timestamp": "2026-06-26T08:57:25.238125"
   }
 }
