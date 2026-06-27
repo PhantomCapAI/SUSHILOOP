@@ -1447,3 +1447,12 @@
 }
 ```
 ---
+
+## [2026-06-27T19:14:21.848696] Cycle 162: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overly Broad Assumption Detector",
+  "skill": "overly_broad_assumption_detector"
+}
+```
+---

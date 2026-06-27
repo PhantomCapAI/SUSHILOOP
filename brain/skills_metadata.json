@@ -2524,30 +2524,30 @@
   "overly_broad_assumption_detector": {
     "name": "overly_broad_assumption_detector",
     "title": "Overly Broad Assumption Detector",
-    "code_hash": "08d3dd85e9aa919e",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef overly_broad_assumption_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects when a user's prompt relies on overly broad assumptions, encouraging them to consider more specific and nuanced scenarios.\n\n    This function analyzes the prompt for absolute language and generic terms, prompting the user to refine their query.\n    It combines multiple signals, including weighte",
+    "code_hash": "9497b0ad1f83c053",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms to total words in the text.\n    \"\"\"\n    absolutes = re.findall(r'\\b(always|never|all|every|none)\\b', text, re.IGNORECASE)\n    words = re.findall(r'\\b\\w+\\b', text)\n    return len(absolutes) / len(words) if words else 0.0\n\ndef calculate_hedge_density(text: str)",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 4,
-      "static_total": 44,
+      "strategies": 1,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
+        "discrimination": 0,
         "calibration": 7,
-        "behavioral_total": 19,
+        "behavioral_total": 17,
         "probes_raised": 0,
         "probes_valid": 7
       },
-      "total": 63
+      "total": 58
     },
-    "diversity": 0.636,
+    "diversity": 0.345,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
+      "shallow:discrimination=0,behavioral_total=17"
     ],
-    "timestamp": "2026-06-25T19:53:02.732682"
+    "timestamp": "2026-06-27T19:14:21.841761"
   },
   "overly_concise_answer_detector": {
     "name": "overly_concise_answer_detector",
