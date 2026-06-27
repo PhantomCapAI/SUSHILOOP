@@ -1429,3 +1429,12 @@
 }
 ```
 ---
+
+## [2026-06-27T08:31:07.546149] Cycle 160: CycleResult.REJECTED
+```json
+{
+  "proposal": "Echo Chamber Detector",
+  "skill": "echo_chamber_detector"
+}
+```
+---
