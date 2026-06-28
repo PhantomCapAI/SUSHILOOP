@@ -2658,5 +2658,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-06-28T03:24:15.559417"
+  },
+  "overconfidence_indicator": {
+    "name": "overconfidence_indicator",
+    "title": "Overconfidence Indicator",
+    "code_hash": "a4594551a37c8bc2",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass OverconfidenceSignals:\n    \"\"\"Dataclass to hold overconfidence signals\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the text\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|every|all)\\b', text, re.IGNORECASE)\n    word_count = len(re.findall(r'\\b\\w+\\b', text))\n    return len(absolute_terms) / word_count if word_count > 0 else 0.0\n\ndef ca",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.302,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-28T08:46:16.434964"
   }
 }

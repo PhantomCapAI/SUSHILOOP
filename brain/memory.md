@@ -1465,3 +1465,12 @@
 }
 ```
 ---
+
+## [2026-06-28T08:46:16.441939] Cycle 164: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overconfidence Indicator",
+  "skill": "overconfidence_indicator"
+}
+```
+---
