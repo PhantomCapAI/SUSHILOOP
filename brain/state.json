@@ -1,37 +1,10 @@
 {
-  "cycle_count": 162,
+  "cycle_count": 163,
   "total_skills": 49,
   "success_count": 49,
   "failure_count": 8,
-  "last_run": "2026-06-27T19:14:19.220456",
+  "last_run": "2026-06-28T03:24:12.247045",
   "history": [
-    {
-      "cycle_number": 63,
-      "proposal": {
-        "id": "ab15a2e4-8704-4b87-b3dd-3788731cd6c3",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Mono-Perspective Identifier",
-        "description": "This skill detects when AI-generated content predominantly presents a single viewpoint or perspective, potentially leading to a lack of diverse opinions and ideas, and alerts users to consider alternative perspectives. It analyzes the language and sentiment used in the content to identify dominance of a single perspective.",
-        "rationale": "By identifying mono-perspective content, this skill helps protect human cognition by encouraging users to seek out diverse viewpoints, fostering critical thinking, and preventing the reinforcement of biased or limited perspectives.",
-        "success_criteria": [
-          "Detection accuracy of 80% or higher for single-perspective content",
-          "Identification of at least 3 alternative perspectives for each detected piece of content",
-          "User engagement with alternative perspectives increases by 20%"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-03T03:40:44.772619"
-      },
-      "result": "REJECTED",
-      "skill_generated": "mono_perspective_identifier",
-      "test_results": [],
-      "timestamp": "2026-06-03T03:40:44.773952",
-      "error_message": null
-    },
     {
       "cycle_number": 64,
       "proposal": {
@@ -7661,6 +7634,100 @@
         }
       ],
       "timestamp": "2026-06-27T19:14:19.220456",
+      "error_message": null
+    },
+    {
+      "cycle_number": 163,
+      "proposal": {
+        "id": "93889128-455e-42e6-8935-8de1efb1896e",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Rapid Inference Burst Limiter",
+        "description": "This guardrail detects and limits bursts of rapid inferences made by the AI within a short time frame, preventing overwhelming users with excessive information and protecting their cognitive processing capacity. It ensures a more balanced and human-paced interaction with the AI.",
+        "rationale": "Protecting human cognition from AI overreliance requires ensuring that users are not subjected to information overload, which can impede their ability to critically evaluate and process information. By limiting rapid inference bursts, this skill promotes a more manageable and reflective interaction with the AI.",
+        "success_criteria": [
+          "Reduces average user response time to AI outputs by 30%",
+          "Decreases reports of information overwhelm by 25%",
+          "Maintains or improves user engagement metrics"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-06-28T03:24:12.245679"
+      },
+      "result": "REJECTED",
+      "skill_generated": "rapid_inference_burst_limiter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:rapid_inference_burst_limiter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.002042531967163086
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.775161743164062e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.0005667209625244141
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000018358230590820312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.00002193450927734375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.0994415283203125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 0.000010251998901367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0029973983764648438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.00002193450927734375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-06-28T03:24:12.247045",
       "error_message": null
     }
   ]
