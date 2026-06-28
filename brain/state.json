@@ -1,104 +1,10 @@
 {
-  "cycle_count": 165,
+  "cycle_count": 166,
   "total_skills": 49,
   "success_count": 49,
   "failure_count": 8,
-  "last_run": "2026-06-28T13:27:31.489277",
+  "last_run": "2026-06-28T19:12:42.523411",
   "history": [
-    {
-      "cycle_number": 66,
-      "proposal": {
-        "id": "99c2cd3a-52b8-427d-832d-71999d3712ff",
-        "proposal_type": "NEW_SKILL",
-        "category": "PII_DETECTION",
-        "title": "Inferred Attribute Exposer",
-        "description": "This skill detects when AI-generated text implies or infers personal attributes about an individual, such as age, location, or occupation, without explicitly stating them, and highlights these inferences to prevent potential privacy leaks.",
-        "rationale": "By exposing inferred attributes, this skill helps protect human cognition by making users aware of potential privacy risks and encouraging critical thinking about the information being shared, rather than relying solely on AI-generated content.",
-        "success_criteria": [
-          "Detects implied age attributes",
-          "Detects implied location attributes",
-          "Detects implied occupation attributes"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-03T20:51:57.815174"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "inferred_attribute_exposer",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:inferred_attribute_exposer",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0021152496337890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00045871734619140625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.00002384185791015625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000026226043701171875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000015020370483398438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.002980470657348633
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000027418136596679688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-06-03T20:51:57.816333",
-      "error_message": null
-    },
     {
       "cycle_number": 67,
       "proposal": {
@@ -7728,6 +7634,100 @@
       "skill_generated": "rapid_iteration_detector",
       "test_results": [],
       "timestamp": "2026-06-28T13:27:31.489277",
+      "error_message": null
+    },
+    {
+      "cycle_number": 166,
+      "proposal": {
+        "id": "6f61d1b6-1950-4af9-badb-756f7a10c1e1",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Overly Narrow Framing Detector",
+        "description": "This skill detects when a user's prompt is overly narrow, potentially leading to a limited or biased set of responses from the AI, and suggests broader framing alternatives to encourage more comprehensive thinking. It analyzes the prompt's scope, keywords, and context to identify potential narrowness.",
+        "rationale": "This matters for protecting human cognition because overly narrow prompts can lead to incomplete or inaccurate information, reinforcing existing biases and limiting the user's understanding of the topic. By detecting and suggesting broader framing alternatives, this skill promotes more holistic thinking and encourages users to consider multiple perspectives.",
+        "success_criteria": [
+          "Detects overly narrow prompts with 80% accuracy",
+          "Suggests relevant broader framing alternatives in 90% of cases",
+          "Improves user engagement with more comprehensive responses from the AI"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete OverlyNarrowFramingDetector.py from skills/",
+        "created_at": "2026-06-28T19:12:42.522039"
+      },
+      "result": "REJECTED",
+      "skill_generated": "overly_narrow_framing_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:overly_narrow_framing_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0014081001281738281
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.00001049041748046875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.9141387939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00009775161743164062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000011920928955078125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000011920928955078125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.0994415283203125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 7.62939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0008828639984130859
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000015735626220703125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        }
+      ],
+      "timestamp": "2026-06-28T19:12:42.523411",
       "error_message": null
     }
   ]

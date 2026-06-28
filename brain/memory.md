@@ -1483,3 +1483,12 @@
 }
 ```
 ---
+
+## [2026-06-28T19:12:44.935524] Cycle 166: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overly Narrow Framing Detector",
+  "skill": "overly_narrow_framing_detector"
+}
+```
+---
