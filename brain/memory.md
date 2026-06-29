@@ -1492,3 +1492,12 @@
 }
 ```
 ---
+
+## [2026-06-29T03:29:06.094973] Cycle 167: CycleResult.REJECTED
+```json
+{
+  "proposal": "Rapid Iteration Detector",
+  "skill": "rapid_iteration_detector"
+}
+```
+---
