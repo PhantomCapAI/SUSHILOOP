@@ -746,8 +746,8 @@
   "implicit_assumption_clarifier": {
     "name": "implicit_assumption_clarifier",
     "title": "Implicit Assumption Clarifier",
-    "code_hash": "76d8426257bd52fe",
-    "summary": "import re\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass AssumptionSignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n\ndef calculate_assumption_signals(input_text: str) -> AssumptionSignals:\n    sentences = re.split(r'[.!?]', input_text)\n    sentences = [s for s in sentences if s]  # remove empty strings\n\n    if not sentences:\n        return AssumptionSignals(0.0, 0.0, 0.0)\n\n    words = re.findall(r'\\b\\w+\\b', input_text)\n    if not words:\n        return AssumptionSignals(0.0, 0.0, 0.0)\n\n    absolute_terms = re.findall(r'\\b(alw",
+    "code_hash": "c1521c40ac8b0329",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass SentenceFeatures:\n    \"\"\"Features extracted from a sentence.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n\ndef extract_sentence_features(sentence: str) -> SentenceFeatures:\n    \"\"\"Extract features from a sentence.\"\"\"\n    words = sentence.split()\n    absolutes = len([word for word in words if word.lower() in [\"always\", \"never\", \"every\", \"all\"]])\n    hedges = len([word for word in words if word.lower() in [\"maybe\", \"possibly\", \"could\", \"might\"]])\n    o",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -765,11 +765,11 @@
       },
       "total": 60
     },
-    "diversity": 0.638,
+    "diversity": 0.442,
     "failure_modes": [
       "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-05-30T02:43:14.268435"
+    "timestamp": "2026-06-29T19:50:58.604536"
   },
   "redundant_information_detector": {
     "name": "redundant_information_detector",
