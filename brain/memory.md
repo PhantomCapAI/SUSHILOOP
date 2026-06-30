@@ -1555,3 +1555,12 @@
 }
 ```
 ---
+
+## [2026-06-30T19:49:04.251986] Cycle 174: CycleResult.REJECTED
+```json
+{
+  "proposal": "Insufficient Analogical Reasoning Detector",
+  "skill": "insufficient_analogical_reasoning_detector"
+}
+```
+---
