@@ -51,6 +51,9 @@ Propose (Groq/Llama) → Generate skill → Test → Register → Commit to main
 | `RATE_LIMITING` | Prevent abuse and runaway costs |
 | `CONTENT_SAFETY` | Block harmful generations |
 | `PII_DETECTION` | GDPR-compliant data protection |
+| `COGNITIVE_PROTECTION` | Keep the user thinking — scaffold reasoning instead of replacing it |
+| `VERIFICATION_PROMPT` | Inject verify-before-acting checkpoints on actionable output |
+| `BIAS_DETECTION` | Catch loaded framing and one-sided prompts that entrench priors |
 
 All generated skills live in [`skills/`](./skills) — drop them into your own pipelines.
 
