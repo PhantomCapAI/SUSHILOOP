@@ -2742,5 +2742,33 @@
       "shallow:discrimination=2,behavioral_total=22"
     ],
     "timestamp": "2026-06-30T09:26:50.952428"
+  },
+  "insufficient_human_reflection_interval_detector": {
+    "name": "insufficient_human_reflection_interval_detector",
+    "title": "Insufficient Human Reflection Interval Detector",
+    "code_hash": "33c4d4eddb456775",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass ReflectionIntervalDetector:\n    \"\"\"Dataclass to store the state of the reflection interval detector\"\"\"\n    last_request_time: float = 0.0\n    request_count: int = 0\n    total_interval: float = 0.0\n\ndef insufficient_human_reflection_interval_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects insufficient human reflection intervals and limits the rate of new requests.\n\n    This function combines multiple signals to determine the confidence of insufficient reflection:\n    - Absolute term density\n",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 7
+      },
+      "total": 60
+    },
+    "diversity": 0.676,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-06-30T14:09:43.054404"
   }
 }
