@@ -27,6 +27,15 @@ DIVERSITY_THRESHOLD = 0.30
 MIN_DISCRIMINATION = 5      # out of 10 (scorer emits 0/2/5/7/10)
 MIN_BEHAVIORAL_TOTAL = 18   # out of 30
 
+# Best-of-N generation. A single free-tier 70B generation clears the quality
+# gates only ~1-in-8 times, so a single-shot cycle rejects most of the time even
+# though the gates are correct. Generating a few candidates per cycle and keeping
+# the best one that passes — with the rejection reason fed back between attempts —
+# raises the per-cycle ship rate to ~1-(1-p)^N WITHOUT touching the gates, so
+# quality is unchanged (a shallow skill still cannot pass). Bounded to stay well
+# within the free tier over a 6-hourly schedule.
+GENERATION_ATTEMPTS = 4
+
 
 class SushiLoop:
     def __init__(self):
@@ -36,6 +45,57 @@ class SushiLoop:
         self.proposal_engine = ProposalEngine(self.memory)
         self.skill_generator = SkillGenerator()
         self.test_runner = TestRunner()
+
+    def _generate_best_candidate(self, proposal, existing_metadata):
+        """Generate up to GENERATION_ATTEMPTS candidates for this proposal and
+        return the name of the best one, with its code left on disk.
+
+        Stops at the first candidate that clears diversity + the behavioral floor;
+        otherwise returns the highest-scoring attempt so the existing downstream
+        gates still make the real ship/reject decision on a genuine candidate.
+        The concrete rejection reason is fed back between attempts so the model
+        fixes THAT instead of resampling the same failure. This changes only
+        WHICH candidate reaches the gates — never the gates themselves — so the
+        quality bar is identical; we just stop wasting cycles on the first
+        unlucky draw."""
+        existing = list(existing_metadata.values())
+        best = None            # (rank_tuple, skill_name, code)
+        feedback = None
+        for attempt in range(1, GENERATION_ATTEMPTS + 1):
+            skill_name = self.skill_generator.generate(proposal, feedback=feedback)
+            if not skill_name or skill_name.startswith('unnamed_skill_'):
+                continue
+            path = Path('skills') / f"{skill_name}.py"
+            code = path.read_text(encoding='utf-8') if path.exists() else ""
+            if not code:
+                continue
+            div = diversity_score(code, existing)
+            beh = score_skill(skill_name, code, test_passed=True).get('behavioral', {})
+            disc = beh.get('discrimination', 0)
+            btot = beh.get('behavioral_total', 0)
+            div_ok = (div >= DIVERSITY_THRESHOLD) or not existing
+            passes = div_ok and disc >= MIN_DISCRIMINATION and btot >= MIN_BEHAVIORAL_TOTAL
+            rank = (passes, div_ok, disc, btot, div)
+            logger.info(f"Candidate {attempt}/{GENERATION_ATTEMPTS}: {skill_name} "
+                        f"div={div:.2f} discrim={disc} behavioral={btot} pass={passes}")
+            if best is None or rank > best[0]:
+                best = (rank, skill_name, code)
+            if passes:
+                break
+            reasons = []
+            if not div_ok:
+                reasons.append(f"too similar to an existing skill (diversity {div:.2f} < {DIVERSITY_THRESHOLD}) — use a genuinely different detection approach and signals")
+            if disc < MIN_DISCRIMINATION:
+                reasons.append(f"it did not discriminate (score {disc}/10) — make `blocked` clearly True on strong positives and False on benign input, and widen the confidence range")
+            if btot < MIN_BEHAVIORAL_TOTAL:
+                reasons.append(f"weak behavioral score ({btot}/30) — vary confidence with signal strength and handle empty/edge input without raising")
+            feedback = "; ".join(reasons) or "make the detection deeper and more discriminating"
+        if best is None:
+            return None
+        # Later attempts overwrite the same path, so re-materialize the winner.
+        best_name, best_code = best[1], best[2]
+        (Path('skills') / f"{best_name}.py").write_text(best_code, encoding='utf-8')
+        return best_name
 
     def run_cycle(self) -> CycleResult:
         state = self.memory.load_state()
@@ -61,7 +121,8 @@ class SushiLoop:
                 return CycleResult.REJECTED
 
             branch = self.git.create_evolution_branch(cycle)
-            skill_name = self.skill_generator.generate(proposal)
+            existing_metadata = self.memory.load_skills_metadata()
+            skill_name = self._generate_best_candidate(proposal, existing_metadata)
             history.skill_generated = skill_name
 
             # Name guard: never ship empty or fallback-named skills (the bug that
@@ -80,8 +141,7 @@ class SushiLoop:
             skill_path = Path('skills') / f"{skill_name}.py"
             code = skill_path.read_text(encoding='utf-8') if skill_path.exists() else ""
 
-            # Diversity check — reject near-clones
-            existing_metadata = self.memory.load_skills_metadata()
+            # Diversity check — reject near-clones (existing_metadata loaded above)
             diversity = diversity_score(code, list(existing_metadata.values()))
             logger.info(f"Diversity score: {diversity}")
             if diversity < DIVERSITY_THRESHOLD and existing_metadata:

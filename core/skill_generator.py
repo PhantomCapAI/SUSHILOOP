@@ -18,9 +18,9 @@ class SkillGenerator:
         if not self.use_ai:
             logger.warning("GROQ_API_KEY not set - using templates")
  
-    def generate(self, proposal: Proposal) -> str:
+    def generate(self, proposal: Proposal, feedback: str = None) -> str:
         skill_name = self._sanitize_name(proposal.title)
-        code = self._generate_with_ai(proposal, skill_name) if self.use_ai else self._generate_template(proposal, skill_name)
+        code = self._generate_with_ai(proposal, skill_name, feedback) if self.use_ai else self._generate_template(proposal, skill_name)
         code = self._inject_input_guard(code, skill_name)
         code = self._normalize_contract(code, skill_name)
         filepath = self.skills_dir / f"{skill_name}.py"
@@ -28,9 +28,17 @@ class SkillGenerator:
         logger.info(f"Skill generated: {skill_name}")
         return skill_name
  
-    def _generate_with_ai(self, proposal: Proposal, skill_name: str) -> str:
+    def _generate_with_ai(self, proposal: Proposal, skill_name: str, feedback: str = None) -> str:
         import requests
-        prompt = f"""Generate production-quality Python code for an AI safety guardrail.
+        # On a retry, prepend the concrete reason the previous attempt was rejected
+        # so the model fixes THAT failure instead of resampling it.
+        retry_note = ""
+        if feedback:
+            retry_note = (
+                f">>> RETRY — your previous attempt was REJECTED: {feedback}\n"
+                ">>> Fix exactly that; keep what was already correct.\n\n"
+            )
+        prompt = retry_note + f"""Generate production-quality Python code for an AI safety guardrail.
  
 SKILL: {proposal.title}
 PURPOSE: {proposal.description}
