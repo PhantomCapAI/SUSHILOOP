@@ -95,11 +95,37 @@ class ProposalEngine:
                 counts[cat] += 1
         return counts
 
+    # How many recent cycles of "attempt pressure" to hold against a category.
+    # Long enough to notice a deadlock, short enough that a bucket reopens once
+    # the loop has moved on and the rejections age out of the window.
+    _RECENT_WINDOW = 12
+
+    def _recent_attempts(self) -> Counter:
+        """Proposals per category over the last _RECENT_WINDOW cycles, regardless
+        of outcome — i.e. how much effort has already been spent on each bucket."""
+        state = self.memory.load_state()
+        return Counter(
+            str(h.proposal.category).replace('SkillCategory.', '')
+            for h in state.history[-self._RECENT_WINDOW:]
+        )
+
     def _pick_target_category(self, cycle: int):
-        """Force this cycle toward the least-covered category; rotate on ties."""
+        """Steer toward the category with the lowest EFFECTIVE load, where
+        effective load = shipped skills + recent attempts; rotate on ties.
+
+        Shipped-count alone deadlocks: the least-covered categories are exactly
+        the ones the generator keeps failing in, so their coverage never rises
+        and the steer never leaves them (18+ straight rejections observed on
+        RATE_LIMITING / VERIFICATION_PROMPT). Folding in recent-attempt pressure
+        makes a category the loop has hammered without success 'fill up' and
+        rotate out, so the loop explores buckets that still yield passing skills
+        instead of camping on a dead one. Returns SHIPPED counts for prompt
+        display so the model still sees true coverage."""
         counts = self._category_coverage()
-        fewest = min(counts.values())
-        candidates = [c for c in CHARTER_CATEGORIES if counts[c] == fewest]
+        attempts = self._recent_attempts()
+        effective = {c: counts[c] + attempts.get(c, 0) for c in CHARTER_CATEGORIES}
+        fewest = min(effective.values())
+        candidates = [c for c in CHARTER_CATEGORIES if effective[c] == fewest]
         target = candidates[cycle % len(candidates)]
         return target, counts
 
