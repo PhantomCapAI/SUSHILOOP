@@ -1627,3 +1627,12 @@
 }
 ```
 ---
+
+## [2026-07-01T13:12:55.214598] Cycle 182: CycleResult.REJECTED
+```json
+{
+  "proposal": "Loaded-Framing Detector",
+  "skill": "loaded_framing_detector"
+}
+```
+---
