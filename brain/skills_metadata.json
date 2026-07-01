@@ -2826,5 +2826,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-01T09:38:35.337560"
+  },
+  "overemphasized_anomaly_detector": {
+    "name": "overemphasized_anomaly_detector",
+    "title": "Overemphasized Anomaly Detector",
+    "code_hash": "0a9cf9669025f0a5",
+    "summary": "import re\nfrom math import log\nfrom typing import Dict\n\ndef calculate_lexical_diversity(words: list) -> float:\n    \"\"\"Calculate the lexical diversity of a given list of words.\"\"\"\n    word_set = set(words)\n    return len(word_set) / len(words) if words else 0.0\n\ndef calculate_hedge_density(sentences: list) -> float:\n    \"\"\"Calculate the hedge density of a given list of sentences.\"\"\"\n    hedge_terms = [\"maybe\", \"possibly\", \"could\", \"might\", \"may\"]\n    total_hedges = sum(1 for sentence in sentences for word in sentence.split() if word.lower() in hedge_terms)\n    total_words = sum(len(sentence.spl",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 15
+      },
+      "total": 60
+    },
+    "diversity": 0.509,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-01T13:09:44.271131"
   }
 }
