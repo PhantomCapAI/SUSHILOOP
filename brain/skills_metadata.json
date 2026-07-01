@@ -2963,5 +2963,33 @@
     "diversity": 0.688,
     "failure_modes": [],
     "timestamp": "2026-07-01T13:34:52.566113"
+  },
+  "rapid_concept_drift_detector": {
+    "name": "rapid_concept_drift_detector",
+    "title": "Rapid Concept Drift Detector",
+    "code_hash": "f8d7ec2fcf7c760e",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Rapid Concept Drift Detector\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-01\n \nDescription:\n    This skill detects when a user is rapidly switching between different topics or concepts in a short period, indicating potential overreliance on AI for idea generation. It limits the rate at which users can request new ideas or topics to encourage more in-depth exploration and human-led thinking.\n \nRationale:\n    By controlling the pace at which users can engage with AI-generated ideas, this skill helps prevent the erosion of human critical thinking abilities a",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 56
+    },
+    "diversity": 0.506,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-07-01T14:26:03.755085"
   }
 }
