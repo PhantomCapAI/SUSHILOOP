@@ -2910,5 +2910,32 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-01T13:13:47.723929"
+  },
+  "rapid_concept_shift_detector": {
+    "name": "rapid_concept_shift_detector",
+    "title": "Rapid Concept Shift Detector",
+    "code_hash": "4f98918d6f04ecfd",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Rapid Concept Shift Detector\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-01\n \nDescription:\n    This skill detects when a user is rapidly switching between multiple unrelated concepts or topics within a short timeframe, indicating potential overreliance on AI for idea generation. It will trigger a rate limit to encourage humans to reflect and consolidate their thoughts\n \nRationale:\n    This matters for protecting human cognition because rapid concept switching can hinder deep thinking and lead to shallow understanding, whereas pausing to reflect and conso",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 31,
+      "behavioral": {
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/rapid_concept_shift_detector.py'"
+      },
+      "total": 31
+    },
+    "diversity": 0.826,
+    "failure_modes": [
+      "charter:The code does not align with the charter's principles as it attempts to detect and block specific patterns, but its primary function seems to be rate limiting based on the presence of certain keywords, which may not necessarily protect human cognition or encourage users to think for themselves."
+    ],
+    "timestamp": "2026-07-01T13:33:44.001748"
   }
 }
