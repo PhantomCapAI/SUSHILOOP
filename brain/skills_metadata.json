@@ -2991,5 +2991,33 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-07-01T14:26:03.755085"
+  },
+  "fabricated_citation_flagger": {
+    "name": "fabricated_citation_flagger",
+    "title": "Fabricated Citation Flagger",
+    "code_hash": "10c00697c52939d1",
+    "summary": "import re\nfrom typing import Dict\n\ndef fabricated_citation_flagger(input_text: str) -> Dict:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.\n\n    This function combines multiple signals to detect fabricated citations, including:\n    - Pattern matches for common citation formats\n    - Structural features such as sentence and clause counts\n    - Lexical diversity and hedging/absolute-term density\n\n    The confidence score is a graded, clamped value between 0.0 and 1.0, where:\n    - Near 0.0 indicates clearly-benign input\n    - A",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 10,
+      "static_total": 47,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 69
+    },
+    "diversity": 0.58,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=22"
+    ],
+    "timestamp": "2026-07-01T19:47:38.068911"
   }
 }
