@@ -2882,5 +2882,33 @@
       "shallow:discrimination=2,behavioral_total=22"
     ],
     "timestamp": "2026-07-01T13:12:14.593350"
+  },
+  "overemphasis_on_authority_detector": {
+    "name": "overemphasis_on_authority_detector",
+    "title": "Overemphasis on Authority Detector",
+    "code_hash": "0125ee70d3d6282d",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef overemphasis_on_authority_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when AI-generated content overemphasizes authority or credibility without substantial evidence.\n\n    This function combines multiple signals to determine the confidence of overemphasis on authority:\n    1. Absolute term density: The ratio of absolute terms (e.g., \"always\", \"never\") to ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 15
+      },
+      "total": 60
+    },
+    "diversity": 0.576,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-01T13:13:47.723929"
   }
 }

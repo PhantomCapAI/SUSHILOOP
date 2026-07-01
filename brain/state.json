@@ -1,104 +1,10 @@
 {
-  "cycle_count": 182,
+  "cycle_count": 183,
   "total_skills": 49,
   "success_count": 49,
   "failure_count": 8,
-  "last_run": "2026-07-01T13:12:53.428008",
+  "last_run": "2026-07-01T13:13:44.737834",
   "history": [
-    {
-      "cycle_number": 83,
-      "proposal": {
-        "id": "95b3b3fe-6112-4df4-a056-779ef948a91f",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Outlier Perspective Omitter Detector",
-        "description": "This skill detects when an AI-generated response omits outlier perspectives, which can lead to biased decision-making by only presenting majority views, thereby failing to consider alternative, potentially valuable insights.",
-        "rationale": "Protecting human cognition requires ensuring that AI systems do not inadvertently suppress diverse viewpoints, which is crucial for well-rounded decision-making and critical thinking.",
-        "success_criteria": [
-          "Detects omissions of outlier perspectives in AI-generated text",
-          "Flags responses lacking diverse viewpoints",
-          "Provides suggestions for incorporating omitted perspectives"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-08T03:34:25.828441"
-      },
-      "result": "REJECTED",
-      "skill_generated": "outlier_perspective_omitter_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:outlier_perspective_omitter_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.001425027847290039
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00007939338684082031
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000014781951904296875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000017642974853515625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0021827220916748047
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.00002002716064453125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-06-08T03:34:25.829486",
-      "error_message": null
-    },
     {
       "cycle_number": 84,
       "proposal": {
@@ -7594,6 +7500,100 @@
       "skill_generated": "loaded_framing_detector",
       "test_results": [],
       "timestamp": "2026-07-01T13:12:53.428008",
+      "error_message": null
+    },
+    {
+      "cycle_number": 183,
+      "proposal": {
+        "id": "346ed68f-22e2-4376-9d42-4f3ede58be3d",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Overemphasis on Authority Detector",
+        "description": "Detects when AI-generated content overemphasizes authority or credibility without substantial evidence, potentially undermining critical thinking. This skill identifies phrases that excessively rely on authority, such as 'according to experts' or 'as stated by leading researchers', without providing concrete data or reasoning.",
+        "rationale": "This skill matters for protecting human cognition because it helps users recognize when AI-generated content might be using authority as a proxy for actual evidence, potentially leading to uncritical acceptance of information. By detecting such patterns, users can be encouraged to think more critically about the information presented to them.",
+        "success_criteria": [
+          "Detection accuracy of 80% or higher for overemphasis on authority phrases",
+          "Ability to distinguish between legitimate citations and overemphasis on authority",
+          "Integration with existing content safety guardrails without significant performance impact"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-01T13:13:44.736169"
+      },
+      "result": "REJECTED",
+      "skill_generated": "overemphasis_on_authority_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:overemphasis_on_authority_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.002062082290649414
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000012159347534179688
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 8.106231689453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00041794776916503906
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000013828277587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.0000133514404296875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 7.867813110351562e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0011391639709472656
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000020265579223632812
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-07-01T13:13:44.737834",
       "error_message": null
     }
   ]
