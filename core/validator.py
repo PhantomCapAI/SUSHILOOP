@@ -11,8 +11,8 @@ class CognitiveFrictionValidator:
 
     def validate(self, proposal: Proposal) -> dict:
         issues = []
-        if proposal.estimated_complexity > 8 or proposal.estimated_complexity < 1:
-            issues.append("Complexity must be 1-8")
+        if proposal.estimated_complexity > 10 or proposal.estimated_complexity < 1:
+            issues.append("Complexity must be 1-10")
         if not proposal.success_criteria:
             issues.append("Need success criteria")
         if not proposal.tests_required:
