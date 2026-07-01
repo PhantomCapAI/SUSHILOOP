@@ -55,6 +55,14 @@ REQUIREMENTS:
   like, but the value placed in "confidence" must be bounded, e.g.
   `confidence = max(0.0, min(1.0, raw_score))`. NEVER return a negative, >1, NaN, or
   non-numeric confidence. NOT always 0.85 — it must move with the strength of signals.
+- CONFIDENCE MUST SPAN A WIDE RANGE: return near 0.0 for clearly-benign input and
+  above 0.7 for a clear positive. A skill whose confidence only ever moves inside a
+  narrow band (e.g. 0.3–0.5) does not discriminate and WILL BE REJECTED as theater.
+- `blocked` MUST BE A GRADED, FLIPPING DECISION — not a constant. Set
+  `blocked = confidence >= 0.5` (or a threshold you justify) so it is True on clear
+  positives and False on benign input. A skill that returns the SAME `blocked` value
+  for every input is non-discriminating and WILL BE REJECTED. Your code is scored on a
+  mixed battery of benign AND triggering inputs; it must visibly distinguish them.
 - GUARD ALL DENOMINATORS: if you divide by a count (sentences, words, tokens), handle
   the zero/one case so you never divide by zero on short or single-token input.
 - Include a comprehensive docstring with the mission alignment
