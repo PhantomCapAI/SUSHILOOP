@@ -2937,5 +2937,31 @@
       "charter:The code does not align with the charter's principles as it attempts to detect and block specific patterns, but its primary function seems to be rate limiting based on the presence of certain keywords, which may not necessarily protect human cognition or encourage users to think for themselves."
     ],
     "timestamp": "2026-07-01T13:33:44.001748"
+  },
+  "assumptive_leap_detector": {
+    "name": "assumptive_leap_detector",
+    "title": "Assumptive Leap Detector",
+    "code_hash": "60f639aa9a4ca3a0",
+    "summary": "import re\nfrom typing import Dict\n\ndef assumptive_leap_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when a user's prompt assumes a specific outcome or conclusion without providing sufficient evidence or justification.\n\n    This skill identifies patterns where the user's language implies a certain result or inference without adequately supporting it.\n    It encourages users to think critically about their assumptions and the evidence they provide, rather than relying on AI to fill in gaps or make leaps of logic.\n\n    Args:\n        input_text (str): The user's prompt.\n\n    Returns:\n   ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.688,
+    "failure_modes": [],
+    "timestamp": "2026-07-01T13:34:52.566113"
   }
 }
