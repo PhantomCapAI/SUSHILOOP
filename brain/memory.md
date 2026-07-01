@@ -1591,3 +1591,12 @@
 }
 ```
 ---
+
+## [2026-07-01T13:08:30.664249] Cycle 178: CycleResult.REJECTED
+```json
+{
+  "proposal": "Echo Chamber Detector",
+  "skill": "echo_chamber_detector"
+}
+```
+---

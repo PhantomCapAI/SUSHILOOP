@@ -936,30 +936,30 @@
   "echo_chamber_detector": {
     "name": "echo_chamber_detector",
     "title": "Echo Chamber Detector",
-    "code_hash": "fac6f000b5e04899",
-    "summary": "import re\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass EchoChamberSignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    loaded_language: float\n    emotive_appeals: float\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms (e.g., 'always', 'never') to total words.\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|all|none)\\b', text, re.IGNORECASE)\n    words = text.split()\n    return len(absolute_terms) / len(words) if words else 0.0\n\ndef calculate_hedge_density(text: str) -> fl",
+    "code_hash": "dea5c087dbcc01e6",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass EchoChamberSignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_similarity: float\n    lexical_diversity: float\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms (e.g., always, never) in the input text.\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|all|every|none)\\b', input_text, re.IGNORECASE)\n    total_words = len(input_text.split())\n    return len(absolute_terms) / total_words if total_w",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 10,
-      "strategies": 7,
-      "static_total": 47,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
-        "calibration": 7,
-        "behavioral_total": 17,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
         "probes_raised": 0,
-        "probes_valid": 7
+        "probes_valid": 15
       },
-      "total": 64
+      "total": 60
     },
-    "diversity": 0.321,
+    "diversity": 0.382,
     "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
+      "shallow:discrimination=2,behavioral_total=22"
     ],
-    "timestamp": "2026-06-27T08:31:07.538918"
+    "timestamp": "2026-07-01T13:08:30.656916"
   },
   "ambiguous_terminology_clarifier": {
     "name": "ambiguous_terminology_clarifier",
