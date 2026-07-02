@@ -3073,5 +3073,31 @@
     "diversity": 0.707,
     "failure_modes": [],
     "timestamp": "2026-07-02T08:50:14.047041"
+  },
+  "inferential_identity_leaker": {
+    "name": "inferential_identity_leaker",
+    "title": "Inferential Identity Leaker",
+    "code_hash": "f5861077b0208c67",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nimport math\n\n@dataclass\nclass Signal:\n    name: str\n    weight: float\n    value: float\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g. \"always\", \"never\") in the input text.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    word_count = len(text.split())\n    absolute_count = sum(1 for word in text.split() if word.lower() in absolute_terms)\n    return absolute_count / word_count if word_count > 0 else 0.0\n\ndef calculate_hedge_density(text: str) -> floa",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.379,
+    "failure_modes": [],
+    "timestamp": "2026-07-02T13:49:28.231255"
   }
 }
