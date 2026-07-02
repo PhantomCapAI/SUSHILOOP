@@ -3099,5 +3099,33 @@
     "diversity": 0.379,
     "failure_modes": [],
     "timestamp": "2026-07-02T13:49:28.231255"
+  },
+  "unintended_consequence_suggester": {
+    "name": "unintended_consequence_suggester",
+    "title": "Unintended Consequence Suggester",
+    "code_hash": "2b4afe379714fd2e",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass UnintendedConsequence:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef unintended_consequence_suggester(input_text: str) -> Dict:\n    \"\"\"\n    Detects when AI output implies a specific course of action without considering potential secondary effects,\n    and suggests alternative perspectives to encourage more comprehensive decision-making.\n\n    Args:\n    input_text (str): The AI-generated text to be evaluated.\n\n    Returns:\n    Dict: A dictionary con",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.644,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-02T19:18:16.388691"
   }
 }
