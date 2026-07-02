@@ -286,5 +286,11 @@
     "category": "VERIFICATION_PROMPT",
     "cycle": 188,
     "created_at": "2026-07-01T13:34:52.564407"
+  },
+  "overemphasis_on_consensus_detector": {
+    "title": "Overemphasis on Consensus Detector",
+    "category": "BIAS_DETECTION",
+    "cycle": 192,
+    "created_at": "2026-07-02T08:50:14.045506"
   }
 }

@@ -1,104 +1,10 @@
 {
-  "cycle_count": 191,
-  "total_skills": 50,
-  "success_count": 50,
+  "cycle_count": 192,
+  "total_skills": 51,
+  "success_count": 51,
   "failure_count": 8,
-  "last_run": "2026-07-02T02:50:34.955753",
+  "last_run": "2026-07-02T08:50:11.002823",
   "history": [
-    {
-      "cycle_number": 92,
-      "proposal": {
-        "id": "f7a5dd01-1f63-429a-8a35-aeae04db0578",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Undisclosed Premise Detector",
-        "description": "This skill detects when AI-generated content assumes a premise without explicitly stating it, potentially misleading humans into accepting unstated assumptions. It analyzes the input text for phrases that imply a premise without clear supporting evidence.",
-        "rationale": "This matters for protecting human cognition because undisclosed premises can lead to flawed reasoning and decision-making. By identifying such premises, humans can critically evaluate the information and make more informed decisions.",
-        "success_criteria": [
-          "Detects implied premises in AI-generated text",
-          "Provides clear explanations for detected premises",
-          "Does not incorrectly flag explicit premises"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-10T09:51:28.720893"
-      },
-      "result": "REJECTED",
-      "skill_generated": "undisclosed_premise_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:undisclosed_premise_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002254962921142578
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010728836059570312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00035381317138671875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.0000171661376953125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000015735626220703125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.001089334487915039
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.00002193450927734375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-06-10T09:51:28.722370",
-      "error_message": null
-    },
     {
       "cycle_number": 93,
       "proposal": {
@@ -7527,6 +7433,100 @@
         }
       ],
       "timestamp": "2026-07-02T02:50:34.955753",
+      "error_message": null
+    },
+    {
+      "cycle_number": 192,
+      "proposal": {
+        "id": "984686b2-a13e-446f-aadd-b1f0f09def7c",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "Overemphasis on Consensus Detector",
+        "description": "This skill detects when AI-generated content overemphasizes consensus or unanimous opinions, potentially leading to the suppression of minority viewpoints and hindering critical thinking. It identifies patterns where the AI-generated text repeatedly uses phrases that imply universal agreement, such as 'everyone agrees' or 'it's widely accepted'.",
+        "rationale": "Protecting human cognition from the potential biases of AI-generated content is crucial. By detecting overemphasis on consensus, this skill helps prevent the suppression of diverse perspectives and promotes more nuanced thinking.",
+        "success_criteria": [
+          "Detects phrases implying universal agreement",
+          "Identifies repetition of such phrases",
+          "Provides feedback to encourage more balanced presentation of opinions"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-02T08:50:11.001318"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "overemphasis_on_consensus_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:overemphasis_on_consensus_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.00046515464782714844
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000010967254638671875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000022411346435546875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000012874603271484375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.00001430511474609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 8.821487426757812e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0014679431915283203
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000020742416381835938
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 3.337860107421875e-6
+        }
+      ],
+      "timestamp": "2026-07-02T08:50:11.002823",
       "error_message": null
     }
   ]

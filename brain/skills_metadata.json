@@ -3047,5 +3047,31 @@
       "shallow:discrimination=2,behavioral_total=22"
     ],
     "timestamp": "2026-07-02T02:50:41.465939"
+  },
+  "overemphasis_on_consensus_detector": {
+    "name": "overemphasis_on_consensus_detector",
+    "title": "Overemphasis on Consensus Detector",
+    "code_hash": "a708318eb1897a1d",
+    "summary": "import re\nfrom typing import Dict\n\ndef overemphasis_on_consensus_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects overemphasis on consensus in AI-generated content.\n\n    This function identifies patterns where the AI-generated text repeatedly uses phrases \n    that imply universal agreement, such as 'everyone agrees' or 'it's widely accepted'. \n    It provides feedback to encourage more balanced presentation of opinions.\n\n    Args:\n        input_text (str): The input text to be analyzed.\n\n    Returns:\n        Dict: A dictionary containing the results of the analysis, including:\n         ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 71
+    },
+    "diversity": 0.707,
+    "failure_modes": [],
+    "timestamp": "2026-07-02T08:50:14.047041"
   }
 }
