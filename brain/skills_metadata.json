@@ -3127,5 +3127,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-02T19:18:16.388691"
+  },
+  "overly_confident_assertion_detector": {
+    "name": "overly_confident_assertion_detector",
+    "title": "Overly Confident Assertion Detector",
+    "code_hash": "2d16404f038ea33f",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g. \"always\", \"never\") to total words.\n    \"\"\"\n    absolute_terms = re.findall(r\"\\b(always|never|certainly|definitely)\\b\", text, re.IGNORECASE)\n    total_words = len(re.findall(r\"\\b\\w+\\b\", text))\n    return len(absolute_terms) / total_words if total_words > 0 else 0.0\n\ndef calculate_hedge",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.304,
+    "failure_modes": [],
+    "timestamp": "2026-07-03T02:33:23.290769"
   }
 }
