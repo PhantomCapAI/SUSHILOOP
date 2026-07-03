@@ -3153,5 +3153,31 @@
     "diversity": 0.304,
     "failure_modes": [],
     "timestamp": "2026-07-03T02:33:23.290769"
+  },
+  "overly_homogeneous_information_detector": {
+    "name": "overly_homogeneous_information_detector",
+    "title": "Overly Homogeneous Information Detector",
+    "code_hash": "423de3bbb4df00fc",
+    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef overly_homogeneous_information_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects overly homogeneous information in the provided input text.\n\n    This function analyzes the input text for repetitive ideas, similar sentence structures,\n    and limited vocabulary to identify potential homogeneous information. It returns a\n    dictionary with a graded confidence score and a decision to block the text.\n\n    The mission of this function is to protect human cognition from overly homogeneous\n    informatio",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.595,
+    "failure_modes": [],
+    "timestamp": "2026-07-03T08:56:18.686102"
   }
 }
