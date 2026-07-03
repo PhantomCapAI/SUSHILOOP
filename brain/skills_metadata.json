@@ -3179,5 +3179,33 @@
     "diversity": 0.595,
     "failure_modes": [],
     "timestamp": "2026-07-03T08:56:18.686102"
+  },
+  "overconfidence_in_limited_data_detector": {
+    "name": "overconfidence_in_limited_data_detector",
+    "title": "Overconfidence in Limited Data Detector",
+    "code_hash": "019ab18fc4fe8116",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef overconfidence_in_limited_data_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when an AI model is making predictions or providing information with high confidence \n    based on a limited dataset or incomplete information.\n\n    This function combines multiple signals to determine the confidence level of the input text. \n    It uses the following signals:\n    - Absolu",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 57
+    },
+    "diversity": 0.571,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-03T13:53:35.429784"
   }
 }

@@ -1762,3 +1762,12 @@
 }
 ```
 ---
+
+## [2026-07-03T13:53:35.446458] Cycle 197: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overconfidence in Limited Data Detector",
+  "skill": "overconfidence_in_limited_data_detector"
+}
+```
+---
