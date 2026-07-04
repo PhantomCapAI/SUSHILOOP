@@ -3317,5 +3317,33 @@
     "diversity": 0.592,
     "failure_modes": [],
     "timestamp": "2026-07-04T13:15:08.852085"
+  },
+  "insight_saturation_threshold": {
+    "name": "insight_saturation_threshold",
+    "title": "Insight Saturation Threshold",
+    "code_hash": "58acf68c06e3e281",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass InsightSaturationResponse:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef calculate_lexical_diversity(input_text: str) -> float:\n    \"\"\"Calculate lexical diversity as the ratio of unique words to total words.\"\"\"\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    unique_words = set(words)\n    if len(words) == 0:\n        return 0.0\n    return len(unique_words) / len(words)\n\ndef calculate_hedging_density(input_text: str) -> float:\n    \"\"\"Calcu",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.309,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-04T19:04:11.963905"
   }
 }
