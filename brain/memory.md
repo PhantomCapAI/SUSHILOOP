@@ -1780,3 +1780,12 @@
 }
 ```
 ---
+
+## [2026-07-04T02:30:56.780764] Cycle 199: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overreliance on Single Source Detector",
+  "skill": "overreliance_on_single_source_detector"
+}
+```
+---
