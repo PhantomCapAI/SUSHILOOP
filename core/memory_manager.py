@@ -54,10 +54,13 @@ class MemoryManager:
         state.last_run = history.timestamp
         if history.result == "SUCCESS":
             state.success_count += 1
-            if history.skill_generated:
-                state.total_skills += 1
         elif history.result in ["TEST_FAILED", "ERROR"]:
             state.failure_count += 1
+        # total_skills reflects the DISTINCT skills that actually shipped. Derive it
+        # from the skills directory rather than incrementing per success: a success
+        # that regenerates an existing skill overwrites its file instead of adding
+        # one, so a naive counter drifts above the real file count over time.
+        state.total_skills = self._count_shipped_skills()
         state.history.append(history)
         if len(state.history) > 100:
             state.history = state.history[-100:]
@@ -66,6 +69,13 @@ class MemoryManager:
             "proposal": history.proposal.title,
             "skill": history.skill_generated
         })
+
+    def _count_shipped_skills(self, skills_dir: str = 'skills') -> int:
+        """Count distinct shipped skill files (excluding the package __init__)."""
+        d = Path(skills_dir)
+        if not d.exists():
+            return 0
+        return sum(1 for p in d.glob('*.py') if p.name != '__init__.py')
 
     def register_skill(self, skill_name: str, metadata: dict):
         try:
