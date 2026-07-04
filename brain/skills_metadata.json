@@ -3291,5 +3291,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-04T08:30:58.257658"
+  },
+  "overly_rigid_assumption_detector": {
+    "name": "overly_rigid_assumption_detector",
+    "title": "Overly Rigid Assumption Detector",
+    "code_hash": "964a10e12fb23745",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef overly_rigid_assumption_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects overly rigid assumptions in user input by analyzing the text for signs of \n    absolute language, overgeneralization, and lack of hedging. Returns a dictionary \n    with a confidence score and other metadata.\n\n    Mission alignment: This skill promotes critical thinking and healthy human-",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.592,
+    "failure_modes": [],
+    "timestamp": "2026-07-04T13:15:08.852085"
   }
 }
