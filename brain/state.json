@@ -1,104 +1,10 @@
 {
-  "cycle_count": 204,
-  "total_skills": 54,
-  "success_count": 56,
+  "cycle_count": 205,
+  "total_skills": 55,
+  "success_count": 57,
   "failure_count": 8,
-  "last_run": "2026-07-05T08:47:08.885607",
+  "last_run": "2026-07-05T13:21:57.706402",
   "history": [
-    {
-      "cycle_number": 105,
-      "proposal": {
-        "id": "bb7fd713-b7b2-4e9b-88bd-7077febfa248",
-        "proposal_type": "NEW_SKILL",
-        "category": "PII_DETECTION",
-        "title": "Inconsistent Personal Detail Tracker",
-        "description": "This skill detects inconsistencies in personal details, such as name, address, or phone number, across different interactions with the AI, to prevent potential identity theft or misuse of personal information. It tracks and flags discrepancies in user-provided PII to ensure data accuracy and security.",
-        "rationale": "This skill matters for protecting human cognition because it helps prevent the unintended disclosure of personal information, which can lead to identity theft, financial loss, or other malicious activities. By detecting inconsistencies in personal details, this skill promotes cautious and secure interaction with AI systems.",
-        "success_criteria": [
-          "Detects inconsistencies in name, address, or phone number across interactions",
-          "Flags discrepancies in user-provided PII",
-          "Provides accurate and secure tracking of personal details"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-13T13:51:07.060343"
-      },
-      "result": "REJECTED",
-      "skill_generated": "inconsistent_personal_detail_tracker",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:inconsistent_personal_detail_tracker",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0019066333770751953
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 8.106231689453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 5.245208740234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.0002200603485107422
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000012874603271484375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000010013580322265625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 1.6689300537109375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0008466243743896484
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.0000152587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 1.6689300537109375e-6
-        }
-      ],
-      "timestamp": "2026-06-13T13:51:07.061661",
-      "error_message": null
-    },
     {
       "cycle_number": 106,
       "proposal": {
@@ -7862,6 +7768,100 @@
         }
       ],
       "timestamp": "2026-07-05T08:47:08.885607",
+      "error_message": null
+    },
+    {
+      "cycle_number": 205,
+      "proposal": {
+        "id": "d67891cb-86ca-4093-993a-412936e4f69b",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "Overemphasized Minority Detector",
+        "description": "This skill detects when a minority viewpoint is overrepresented in the AI's output, potentially indicating bias towards a particular group or perspective. It analyzes the frequency of minority viewpoints in the output and raises a flag if they exceed a certain threshold.",
+        "rationale": "This skill matters for protecting human cognition because it helps to identify and mitigate potential biases in AI-generated content, ensuring that users are exposed to a balanced and diverse range of perspectives. By detecting overemphasized minority viewpoints, this skill promotes critical thinking and media literacy.",
+        "success_criteria": [
+          "Detects overemphasized minority viewpoints with 80% accuracy",
+          "Raises flags for output with biased representations of minority groups",
+          "Provides clear and actionable feedback for users to address potential biases"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-05T13:21:57.704798"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "overemphasized_minority_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:overemphasized_minority_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0011682510375976562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000010251998901367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000021219253540039062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000014066696166992188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.00001430511474609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0010988712310791016
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000020742416381835938
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-07-05T13:21:57.706402",
       "error_message": null
     }
   ]

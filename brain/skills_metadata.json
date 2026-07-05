@@ -3399,5 +3399,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-05T08:47:11.349180"
+  },
+  "overemphasized_minority_detector": {
+    "name": "overemphasized_minority_detector",
+    "title": "Overemphasized Minority Detector",
+    "code_hash": "47c09c61405c55c8",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef overemphasized_minority_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects when a minority viewpoint is overrepresented in the AI's output, \n    potentially indicating bias towards a particular group or perspective.\n\n    This function analyzes the frequency of minority viewpoints in the output \n    and raises a flag if they exceed a certain threshold.\n\n    ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.608,
+    "failure_modes": [],
+    "timestamp": "2026-07-05T13:22:00.718740"
   }
 }
