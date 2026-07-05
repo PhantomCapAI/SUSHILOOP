@@ -3345,5 +3345,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-04T19:04:11.963905"
+  },
+  "overwhelming_suggestion_limiter": {
+    "name": "overwhelming_suggestion_limiter",
+    "title": "Overwhelming Suggestion Limiter",
+    "code_hash": "f9a053cd640b4bce",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass SuggestionLimiterResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef overwhelming_suggestion_limiter(input_text: str) -> Dict:\n    \"\"\"\n    This function implements the Overwhelming Suggestion Limiter guardrail.\n    It detects and limits the number of suggestions provided by the AI within a short time frame,\n    preventing information overload and allowing humans to process and reflect on the suggestions.\n\n    The function combines multi",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.608,
+    "failure_modes": [],
+    "timestamp": "2026-07-05T02:40:47.660687"
   }
 }
