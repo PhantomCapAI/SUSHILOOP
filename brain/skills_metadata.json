@@ -3371,5 +3371,33 @@
     "diversity": 0.608,
     "failure_modes": [],
     "timestamp": "2026-07-05T02:40:47.660687"
+  },
+  "inverse_identifier_extractor": {
+    "name": "inverse_identifier_extractor",
+    "title": "Inverse Identifier Extractor",
+    "code_hash": "01826886c9c7ffe9",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass InverseIdentifierExtractorResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef inverse_identifier_extractor(input_text: str) -> Dict:\n    \"\"\"\n    Detects and extracts potentially sensitive inverse identifiers in text data.\n\n    This function uses natural language processing and machine learning algorithms to identify\n    patterns that may indicate the presence of inverse identifiers. It returns a dictionary\n    containing the results ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 57
+    },
+    "diversity": 0.62,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-05T08:47:11.349180"
   }
 }
