@@ -1852,3 +1852,12 @@
 }
 ```
 ---
+
+## [2026-07-06T02:45:44.221170] Cycle 207: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Harm Routing Guard",
+  "skill": "self_harm_routing_guard"
+}
+```
+---

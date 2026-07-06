@@ -2360,30 +2360,30 @@
   "self_harm_routing_guard": {
     "name": "self_harm_routing_guard",
     "title": "Self-Harm Routing Guard",
-    "code_hash": "3a64591fc57bb616",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nimport math\n\n@dataclass\nclass Signal:\n    \"\"\"Data class to hold signal information\"\"\"\n    name: str\n    weight: float\n    value: float\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g., always, never) in the input text.\n    \n    Args:\n    input_text (str): The input text to analyze.\n    \n    Returns:\n    float: The ratio of absolute terms in the input text.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    words = re.findall(r'\\b\\w+\\b', input_tex",
+    "code_hash": "c436b0af3064359a",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef self_harm_routing_guard(input_text: str) -> Dict:\n    \"\"\"\n    Detects distress signals in the input text and returns a graded decision to surface the path to human/professional support.\n\n    The detection combines multiple signals such as weighted pattern matches, structural features, lexical diversity, \n    hedging/absolute-term density, etc. The confidence is com",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 1,
-      "static_total": 41,
+      "strategies": 4,
+      "static_total": 44,
       "behavioral": {
         "robustness": 10,
         "discrimination": 2,
         "calibration": 7,
         "behavioral_total": 19,
         "probes_raised": 0,
-        "probes_valid": 7
+        "probes_valid": 17
       },
-      "total": 60
+      "total": 63
     },
-    "diversity": 0.333,
+    "diversity": 0.547,
     "failure_modes": [
       "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-06-21T14:00:31.710018"
+    "timestamp": "2026-07-06T02:45:44.204382"
   },
   "inconsistent_identifier_pattern_detector": {
     "name": "inconsistent_identifier_pattern_detector",

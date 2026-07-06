@@ -1,104 +1,10 @@
 {
-  "cycle_count": 206,
+  "cycle_count": 207,
   "total_skills": 56,
   "success_count": 58,
   "failure_count": 8,
-  "last_run": "2026-07-05T19:10:14.132634",
+  "last_run": "2026-07-06T02:45:38.655238",
   "history": [
-    {
-      "cycle_number": 107,
-      "proposal": {
-        "id": "80c768a3-21d1-4228-982d-47ca77ab432d",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Incongruous Information Density Detector",
-        "description": "This skill detects when a piece of content presents a large amount of information in a small amount of space, potentially overwhelming the user and hindering their ability to critically evaluate the information. It calculates the information density of a given text and flags it if it exceeds a certain threshold.",
-        "rationale": "This matters for protecting human cognition because when users are presented with too much information at once, they may rely too heavily on the AI to process and understand it, rather than engaging their own critical thinking skills. By detecting and flagging incongruously dense information, we can encourage users to slow down and engage more deeply with the content.",
-        "success_criteria": [
-          "Detector correctly identifies texts with high information density",
-          "Detector does not incorrectly flag texts with normal information density",
-          "Detector provides a clear and actionable warning to the user"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-14T03:35:23.349403"
-      },
-      "result": "REJECTED",
-      "skill_generated": "incongruous_information_density_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:incongruous_information_density_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0020554065704345703
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.775161743164062e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000453948974609375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000019311904907226562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000019788742065429688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000011682510375976562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.002076387405395508
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000025033950805664062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-06-14T03:35:23.350924",
-      "error_message": null
-    },
     {
       "cycle_number": 108,
       "proposal": {
@@ -7929,6 +7835,100 @@
         }
       ],
       "timestamp": "2026-07-05T19:10:14.132634",
+      "error_message": null
+    },
+    {
+      "cycle_number": 207,
+      "proposal": {
+        "id": "5fba0179-e077-44f9-98e0-c34f0b0e2ea3",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Self-Harm Routing Guard",
+        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
+        "rationale": "A model must scaffold, not substitute, real support",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-06T02:45:38.654567"
+      },
+      "result": "REJECTED",
+      "skill_generated": "self_harm_routing_guard",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:self_harm_routing_guard",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0029447078704833984
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.821487426757812e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.0000171661376953125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000011682510375976562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000013589859008789062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.5762786865234375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 8.821487426757812e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.001173257827758789
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000016689300537109375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-07-06T02:45:38.655238",
       "error_message": null
     }
   ]
