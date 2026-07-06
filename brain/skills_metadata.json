@@ -3448,5 +3448,33 @@
     "diversity": 0.69,
     "failure_modes": [],
     "timestamp": "2026-07-05T19:10:17.209573"
+  },
+  "overly_concise_conclusion_detector": {
+    "name": "overly_concise_conclusion_detector",
+    "title": "Overly Concise Conclusion Detector",
+    "code_hash": "5530f29d99d724e7",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef overly_concise_conclusion_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when AI-generated output provides overly concise conclusions without sufficient supporting evidence or context.\n\n    This skill combines multiple signals to detect overly concise conclusions, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term usage\n    - Sentence and clause counts\n    - Lexical diversity\n\n    The confidence score is a graded, clamped value between 0.0 and 1.0, representing the likelihood of a",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 57
+    },
+    "diversity": 0.662,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-06T19:50:15.137274"
   }
 }
