@@ -334,5 +334,11 @@
     "category": "PII_DETECTION",
     "cycle": 206,
     "created_at": "2026-07-05T19:10:17.207984"
+  },
+  "self_harm_routing_guard": {
+    "title": "Self-Harm Routing Guard",
+    "category": "CONTENT_SAFETY",
+    "cycle": 209,
+    "created_at": "2026-07-06T15:22:23.758602"
   }
 }
