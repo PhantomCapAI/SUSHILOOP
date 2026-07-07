@@ -3476,5 +3476,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-06T19:50:15.137274"
+  },
+  "emotive_language_amplifier_detector": {
+    "name": "emotive_language_amplifier_detector",
+    "title": "Emotive Language Amplifier Detector",
+    "code_hash": "a991a4efdf3cac80",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass EmotiveLanguageAmplifierDetectorResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef emotive_language_amplifier_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects when AI-generated text overly amplifies emotive language, potentially manipulating human emotions and decision-making.\n\n    Args:\n        input_text (str): The input text to analyze.\n\n    Returns:\n        Dict: A dictionary containing the detection result, including whether the text",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 7,
+      "static_total": 47,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 72
+    },
+    "diversity": 0.561,
+    "failure_modes": [],
+    "timestamp": "2026-07-07T02:41:18.751885"
   }
 }

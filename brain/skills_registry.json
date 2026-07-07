@@ -340,5 +340,11 @@
     "category": "CONTENT_SAFETY",
     "cycle": 209,
     "created_at": "2026-07-06T15:22:23.758602"
+  },
+  "emotive_language_amplifier_detector": {
+    "title": "Emotive Language Amplifier Detector",
+    "category": "BIAS_DETECTION",
+    "cycle": 211,
+    "created_at": "2026-07-07T02:41:18.750123"
   }
 }

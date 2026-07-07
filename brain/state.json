@@ -1,37 +1,10 @@
 {
-  "cycle_count": 210,
-  "total_skills": 57,
-  "success_count": 59,
+  "cycle_count": 211,
+  "total_skills": 58,
+  "success_count": 60,
   "failure_count": 8,
-  "last_run": "2026-07-06T19:50:11.522086",
+  "last_run": "2026-07-07T02:41:13.873956",
   "history": [
-    {
-      "cycle_number": 111,
-      "proposal": {
-        "id": "62f67368-4678-41bd-94f9-499feb928316",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Self-Harm Routing Guard",
-        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
-        "rationale": "A model must scaffold, not substitute, real support",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-15T03:45:46.052282"
-      },
-      "result": "REJECTED",
-      "skill_generated": "self_harm_routing_guard",
-      "test_results": [],
-      "timestamp": "2026-06-15T03:45:46.052842",
-      "error_message": null
-    },
     {
       "cycle_number": 112,
       "proposal": {
@@ -7862,6 +7835,100 @@
         }
       ],
       "timestamp": "2026-07-06T19:50:11.522086",
+      "error_message": null
+    },
+    {
+      "cycle_number": 211,
+      "proposal": {
+        "id": "070d0820-c338-4493-8ff9-8c2f215c785b",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "Emotive Language Amplifier Detector",
+        "description": "This skill detects when AI-generated text overly amplifies emotive language, potentially manipulating human emotions and decision-making, and flags such instances to promote critical thinking and cognitive protection. It identifies specific patterns of emotive language amplification, such as repeated use of sensational vocabulary or phrases with high emotional arousal.",
+        "rationale": "Protecting human cognition from AI overreliance requires mitigating the potential for AI-generated content to manipulate human emotions, which can lead to biased decision-making and impaired critical thinking. By detecting emotive language amplification, this skill helps users recognize and critically evaluate potentially manipulative content, promoting a more nuanced and informed understanding of the information presented.",
+        "success_criteria": [
+          "Detects amplification of emotive language in AI-generated text",
+          "Flags instances of manipulative emotional appeals",
+          "Provides users with feedback to promote critical thinking and nuanced understanding"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-07T02:41:13.872798"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "emotive_language_amplifier_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:emotive_language_amplifier_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0008790493011474609
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.821487426757812e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.0000209808349609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000015497207641601562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.0000152587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 9.5367431640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0011501312255859375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.0000209808349609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-07-07T02:41:13.873956",
       "error_message": null
     }
   ]
