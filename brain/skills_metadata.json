@@ -1818,30 +1818,28 @@
   "actionable_step_verifier": {
     "name": "actionable_step_verifier",
     "title": "Actionable-Step Verifier",
-    "code_hash": "78d21111d39b39ed",
-    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Verifies if the input text contains concrete steps that the user will act on.\n    \n    This function combines multiple signals to detect actionable steps, including:\n    - Weighted pattern matches\n    - Structural features (sentence or clause counts, ratios)\n    - Lexical diversity\n    - Hedging/absolute-term density\n    \n    The confidence score is a graded value between 0.0 and 1.0, representing the strength of the signals.\n    \n    Parame",
+    "code_hash": "63bd5cfba25f9057",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass ActionableStepVerifierResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Mission: Verify actionable steps in user input to prevent ask-accept-move-on behavior.\n\n    This function combines multiple signals to detect potential actionable steps in the input text.\n    It returns a dictionary with a graded confidence score, indicating the likelihood of the input conta",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 10,
-      "static_total": 50,
+      "strategies": 1,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
-        "calibration": 7,
-        "behavioral_total": 17,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
         "probes_raised": 0,
-        "probes_valid": 7
+        "probes_valid": 17
       },
-      "total": 67
+      "total": 66
     },
-    "diversity": 0.519,
-    "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
-    ],
-    "timestamp": "2026-06-24T19:41:12.492944"
+    "diversity": 0.588,
+    "failure_modes": [],
+    "timestamp": "2026-07-07T09:33:55.529376"
   },
   "overly_simplistic_explanation_detector": {
     "name": "overly_simplistic_explanation_detector",

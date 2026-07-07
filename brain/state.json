@@ -1,104 +1,10 @@
 {
-  "cycle_count": 211,
+  "cycle_count": 212,
   "total_skills": 58,
-  "success_count": 60,
+  "success_count": 61,
   "failure_count": 8,
-  "last_run": "2026-07-07T02:41:13.873956",
+  "last_run": "2026-07-07T09:33:52.801586",
   "history": [
-    {
-      "cycle_number": 112,
-      "proposal": {
-        "id": "f572e769-1183-49d9-af2d-29905fa24917",
-        "proposal_type": "NEW_SKILL",
-        "category": "PII_DETECTION",
-        "title": "Inconsistent Data Type Detector",
-        "description": "This skill detects when personally identifiable information (PII) is provided in an inconsistent data type format, such as a phone number being entered as a string instead of a numerical value, which can lead to potential security vulnerabilities and cognitive overreliance on AI for data validation.",
-        "rationale": "Protecting human cognition from AI overreliance requires ensuring that PII is handled and validated correctly, and inconsistent data types can lead to errors and security breaches, making it essential to detect and prevent such inconsistencies",
-        "success_criteria": [
-          "Detection of inconsistent data types in PII",
-          "Prevention of potential security vulnerabilities",
-          "Reduction of cognitive overreliance on AI for data validation"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-15T11:56:03.806721"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "inconsistent_data_type_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:inconsistent_data_type_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0023093223571777344
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.5367431640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.0003349781036376953
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000023365020751953125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.00002193450927734375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.0000133514404296875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.001409769058227539
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000026226043701171875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        }
-      ],
-      "timestamp": "2026-06-15T11:56:03.808140",
-      "error_message": null
-    },
     {
       "cycle_number": 113,
       "proposal": {
@@ -7929,6 +7835,100 @@
         }
       ],
       "timestamp": "2026-07-07T02:41:13.873956",
+      "error_message": null
+    },
+    {
+      "cycle_number": 212,
+      "proposal": {
+        "id": "9df4a64a-f812-4fe1-a9e6-c4a957ee618c",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Actionable-Step Verifier",
+        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
+        "rationale": "A verification beat is the antidote to ask-accept-move-on",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-07T09:33:52.801013"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "actionable_step_verifier",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:actionable_step_verifier",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0010821819305419922
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.00001049041748046875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00001430511474609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010013580322265625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.00001049041748046875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0009033679962158203
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000015020370483398438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        }
+      ],
+      "timestamp": "2026-07-07T09:33:52.801586",
       "error_message": null
     }
   ]
