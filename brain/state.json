@@ -1,104 +1,10 @@
 {
-  "cycle_count": 216,
+  "cycle_count": 217,
   "total_skills": 58,
   "success_count": 61,
   "failure_count": 8,
-  "last_run": "2026-07-08T08:21:15.715975",
+  "last_run": "2026-07-08T13:52:47.189131",
   "history": [
-    {
-      "cycle_number": 117,
-      "proposal": {
-        "id": "c72cc267-cfc2-4a9a-9f6f-4d739805c379",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Chrono-Geographic Inconsistency Detector",
-        "description": "This skill detects inconsistencies between the timing and geographic location of events mentioned in AI-generated text, helping to identify potential biases in the presentation of historical or cultural information. It analyzes the temporal and spatial context of events to identify discrepancies that may indicate a distorted or misleading narrative.",
-        "rationale": "This skill matters for protecting human cognition because it helps to identify potential biases in AI-generated text that may influence users' perceptions of historical or cultural events. By detecting chrono-geographic inconsistencies, this skill can help users to critically evaluate the information presented to them and make more informed decisions.",
-        "success_criteria": [
-          "Detects inconsistencies between event timing and location",
-          "Provides clear explanations for detected inconsistencies",
-          "Does not generate false positives for text with consistent chrono-geographic information"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-16T16:43:08.856860"
-      },
-      "result": "REJECTED",
-      "skill_generated": "chrono_geographic_inconsistency_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:chrono_geographic_inconsistency_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.001987457275390625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00007748603820800781
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 6.198883056640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 4.5299530029296875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0000362396240234375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 5.7220458984375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-06-16T16:43:08.858318",
-      "error_message": null
-    },
     {
       "cycle_number": 118,
       "proposal": {
@@ -7996,6 +7902,100 @@
         }
       ],
       "timestamp": "2026-07-08T08:21:15.715975",
+      "error_message": null
+    },
+    {
+      "cycle_number": 217,
+      "proposal": {
+        "id": "f5689e2a-c6eb-4e95-81e5-eca99c478881",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Ambiguity Clarification Prompter",
+        "description": "This skill detects ambiguous questions or prompts in user input and suggests clarifying questions to ensure the AI model provides accurate and relevant responses, thus protecting human cognition by promoting critical thinking and clear communication. It achieves this by identifying vague terms, unclear objectives, or missing context in the input.",
+        "rationale": "This matters for protecting human cognition because ambiguous prompts can lead to misleading or incomplete information, causing humans to overrely on AI without fully understanding the context or implications of the response. By prompting users to clarify their questions, this skill encourages active engagement and deeper understanding of the topic at hand.",
+        "success_criteria": [
+          "Reduces the rate of vague or open-ended questions",
+          "Increases user engagement through clarifying prompts",
+          "Improves the accuracy of AI responses by ensuring well-defined questions"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-08T13:52:47.187516"
+      },
+      "result": "REJECTED",
+      "skill_generated": "ambiguity_clarification_prompter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:ambiguity_clarification_prompter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0004398822784423828
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000011205673217773438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000011205673217773438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 5.7220458984375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 5.0067901611328125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.337860107421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 3.337860107421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.000021696090698242188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 8.344650268554688e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        }
+      ],
+      "timestamp": "2026-07-08T13:52:47.189131",
       "error_message": null
     }
   ]

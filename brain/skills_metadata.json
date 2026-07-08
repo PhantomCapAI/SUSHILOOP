@@ -3584,5 +3584,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-08T08:21:19.366242"
+  },
+  "ambiguity_clarification_prompter": {
+    "name": "ambiguity_clarification_prompter",
+    "title": "Ambiguity Clarification Prompter",
+    "code_hash": "6e0ae86c3ae6a464",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Ambiguity Clarification Prompter\n \nCategory: SkillCategory.VERIFICATION_PROMPT\nGenerated: 2026-07-08\n \nDescription:\n    This skill detects ambiguous questions or prompts in user input and suggests clarifying questions to ensure the AI model provides accurate and relevant responses, thus protecting human cognition by promoting critical thinking and clear communication. It achieves this by identifying vague terms, unclear objectives, or missing context in the input.\n \nRationale:\n    This matters for protecting human cognition because ambiguous prompts can lead to mislead",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 56
+    },
+    "diversity": 0.777,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-07-08T13:52:50.890630"
   }
 }
