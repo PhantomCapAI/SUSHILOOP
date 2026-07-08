@@ -3560,30 +3560,28 @@
   "conversational_loop_density_limiter": {
     "name": "conversational_loop_density_limiter",
     "title": "Conversational Loop Density Limiter",
-    "code_hash": "6aa4c1aa99d1e73d",
-    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass ConversationAnalysis:\n    \"\"\"Dataclass to store conversation analysis results.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    lexical_diversity: float\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the input text.\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|every|all)\\b', text, re.IGNORECASE)\n    total_words = len(re.findall(r'\\b\\w+\\b', text))\n    return len(absolute_terms) / ",
+    "code_hash": "b2658d3700c8c79f",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass Result:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef conversational_loop_density_limiter(input_text: str) -> Dict:\n    \"\"\"\n    This function detects and limits conversational loops where a user repeatedly asks similar questions \n    or receives similar responses within a short time frame, helping to prevent overreliance on AI-generated answers.\n    \n    It analyzes the conversational history to identify dense loops and thrott",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
-      "strategies": 1,
-      "static_total": 38,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 57
+      "total": 80
     },
-    "diversity": 0.352,
-    "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
-    ],
-    "timestamp": "2026-07-08T08:21:19.366242"
+    "diversity": 0.548,
+    "failure_modes": [],
+    "timestamp": "2026-07-08T19:18:32.382164"
   },
   "ambiguity_clarification_prompter": {
     "name": "ambiguity_clarification_prompter",
