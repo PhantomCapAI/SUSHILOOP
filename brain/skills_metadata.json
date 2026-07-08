@@ -3528,5 +3528,33 @@
       "shallow:discrimination=2,behavioral_total=22"
     ],
     "timestamp": "2026-07-07T14:22:16.522538"
+  },
+  "cascading_inquiry_throttler": {
+    "name": "cascading_inquiry_throttler",
+    "title": "Cascading Inquiry Throttler",
+    "code_hash": "e6497b509e6f09cd",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nimport math\n\n@dataclass\nclass CascadingInquiryThrottlerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef cascading_inquiry_throttler(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    This function implements the Cascading Inquiry Throttler skill, which detects and limits instances \n    where a user is rapidly generating follow-up questions based on previous AI responses. It throttles \n    the rate at which these follow-up questions can be asked, encouraging us",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 63
+    },
+    "diversity": 0.581,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-08T02:15:08.884144"
   }
 }
