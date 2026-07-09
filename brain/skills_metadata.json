@@ -3608,5 +3608,31 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-07-08T13:52:50.890630"
+  },
+  "escalation_advice_detector": {
+    "name": "escalation_advice_detector",
+    "title": "Escalation Advice Detector",
+    "code_hash": "69234570d2d8b8b2",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass EscalationSignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_escalation_signals(input_text: str) -> EscalationSignals:\n    \"\"\"\n    Calculate various signals that may indicate escalation advice.\n    \n    :param input_text: The input text to analyze.\n    :return: A dataclass containing the calculated signals.\n    \"\"\"\n    sentences = re.split(r'[.!?]', input_text)\n    sentence_count = len([s for",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 63
+    },
+    "diversity": 0.383,
+    "failure_modes": [],
+    "timestamp": "2026-07-09T09:31:10.332071"
   }
 }
