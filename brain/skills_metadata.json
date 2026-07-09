@@ -2991,29 +2991,28 @@
   "fabricated_citation_flagger": {
     "name": "fabricated_citation_flagger",
     "title": "Fabricated Citation Flagger",
-    "code_hash": "2f86f9eaf8ff86e5",
-    "summary": "\"\"\"\nSUSHILOOP Guardrail: Fabricated Citation Flagger\n \nCategory: SkillCategory.OUTPUT_FILTERING\nGenerated: 2026-07-06\n \nDescription:\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable\n \nRationale:\n    Invented citations are the highest-trust hallucination\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef fabricated_citation_flagger(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable\n \n    Returns dict with: blocked, reason, confidence, cate",
+    "code_hash": "6a6d63881805ac41",
+    "summary": "import re\nfrom typing import Dict\n\ndef fabricated_citation_flagger(input_text: str) -> Dict:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.\n\n    The mission of this function is to detect fabricated citations in AI-generated text. It combines multiple signals,\n    including weighted pattern matches, structural features, lexical diversity, hedging/absolute-term density, and more.\n    The function returns a dictionary with a graded confidence score, reason, and category.\n\n    Args:\n        input_text (str): The input text to be ",
     "score": {
-      "tests_pass": 0,
+      "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
-      "strategies": 4,
-      "static_total": 31,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
       "behavioral": {
-        "robustness": 0,
-        "discrimination": 0,
-        "calibration": 0,
-        "behavioral_total": 0,
-        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/fabricated_citation_flagger.py'"
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
       },
-      "total": 31
+      "total": 75
     },
-    "diversity": 0.663,
-    "failure_modes": [
-      "charter:The code does not actually flag fabricated citations, but instead checks for specific patterns like 'ignore previous', 'jailbreak', 'DAN', 'override', 'bypass' which is not its stated purpose, and does not provide transparency into its actual reasoning process."
-    ],
-    "timestamp": "2026-07-06T10:09:41.075202"
+    "diversity": 0.586,
+    "failure_modes": [],
+    "timestamp": "2026-07-09T19:38:21.973456"
   },
   "narrative_consistency_validator": {
     "name": "narrative_consistency_validator",
