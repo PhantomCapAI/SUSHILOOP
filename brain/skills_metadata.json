@@ -1566,30 +1566,28 @@
   "inconsistent_identifier_detector": {
     "name": "inconsistent_identifier_detector",
     "title": "Inconsistent Identifier Detector",
-    "code_hash": "84e68b1a8daaf063",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, str]\n\ndef inconsistent_identifier_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects inconsistencies in identifiers such as names, addresses, and phone numbers within a given text.\n\n    This function combines multiple signals to detect potential personally identifiable information (PII) leaks.\n    It checks for discrepancies in formatting, spelling, and contex",
+    "code_hash": "58c945bc1ca901ef",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef inconsistent_identifier_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects and flags instances where personally identifiable information (PII) is inconsistent \n    across different parts of a conversation, potentially indicating a mismatch between a \n    user's actual identity and their claimed identity.\n\n    Args:\n    input_text (str): The input tex",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 7,
-      "static_total": 47,
+      "strategies": 10,
+      "static_total": 50,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
-        "calibration": 5,
-        "behavioral_total": 15,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
         "probes_raised": 0,
-        "probes_valid": 7
+        "probes_valid": 17
       },
-      "total": 62
+      "total": 75
     },
-    "diversity": 0.606,
-    "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=15"
-    ],
-    "timestamp": "2026-06-09T20:03:32.568634"
+    "diversity": 0.63,
+    "failure_modes": [],
+    "timestamp": "2026-07-09T02:33:25.905582"
   },
   "undisclosed_premise_detector": {
     "name": "undisclosed_premise_detector",
