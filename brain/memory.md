@@ -1978,3 +1978,12 @@
 }
 ```
 ---
+
+## [2026-07-09T14:48:16.149566] Cycle 221: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unhedged Medical/Legal Claim Filter",
+  "skill": "unhedged_medicallegal_claim_filter"
+}
+```
+---
