@@ -2014,3 +2014,12 @@
 }
 ```
 ---
+
+## [2026-07-10T14:12:22.248531] Cycle 225: CycleResult.REJECTED
+```json
+{
+  "proposal": "Number-Claim Spotlighter",
+  "skill": "number_claim_spotlighter"
+}
+```
+---

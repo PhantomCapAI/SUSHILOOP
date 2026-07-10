@@ -3690,5 +3690,33 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-07-10T09:27:22.420596"
+  },
+  "number_claim_spotlighter": {
+    "name": "number_claim_spotlighter",
+    "title": "Number-Claim Spotlighter",
+    "code_hash": "359864d03fe1940e",
+    "summary": "import re\nfrom typing import Dict\n\ndef number_claim_spotlighter(input_text: str) -> Dict:\n    \"\"\"\n    Highlights specific figures in output and asks the user to confirm the source before relying on them.\n\n    This function combines multiple signals to detect number claims in the input text. It calculates a graded confidence score based on the presence of absolute terms, hedge words, and overgeneral terms. The confidence score is then used to determine whether the input text is blocked or not.\n\n    Args:\n        input_text (str): The input text to be analyzed.\n\n    Returns:\n        Dict: A dict",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.59,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-10T14:12:22.234767"
   }
 }

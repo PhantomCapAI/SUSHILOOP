@@ -1,104 +1,10 @@
 {
-  "cycle_count": 224,
+  "cycle_count": 225,
   "total_skills": 62,
   "success_count": 65,
   "failure_count": 8,
-  "last_run": "2026-07-10T09:27:19.074621",
+  "last_run": "2026-07-10T14:12:18.186224",
   "history": [
-    {
-      "cycle_number": 125,
-      "proposal": {
-        "id": "704afc35-caaf-4270-950e-0ece3e8b37b1",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Insufficient Nuance Indicator",
-        "description": "Detects AI-generated content that oversimplifies complex issues by using absolute language, failing to acknowledge potential counterarguments, or neglecting to provide evidence-based support for claims. This skill helps protect human cognition by promoting critical thinking and nuanced understanding.",
-        "rationale": "This matters for protecting human cognition because it encourages users to think critically about the information presented to them, rather than blindly accepting simplistic or biased content. By highlighting the lack of nuance in AI-generated content, this skill helps users develop a more discerning and informed perspective.",
-        "success_criteria": [
-          "Detects absolute language in AI-generated content",
-          "Identifies lack of counterarguments in AI-generated content",
-          "Recognizes insufficient evidence-based support in AI-generated content"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-18T14:58:25.937362"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "insufficient_nuance_indicator",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:insufficient_nuance_indicator",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002096891403198242
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00009632110595703125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000014543533325195312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000012636184692382812
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.58306884765625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0008022785186767578
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000017404556274414062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-06-18T14:58:25.938811",
-      "error_message": null
-    },
     {
       "cycle_number": 126,
       "proposal": {
@@ -7996,6 +7902,100 @@
         }
       ],
       "timestamp": "2026-07-10T09:27:19.074621",
+      "error_message": null
+    },
+    {
+      "cycle_number": 225,
+      "proposal": {
+        "id": "2d76a0ec-0204-4ac2-a8b4-d83d5076bee7",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Number-Claim Spotlighter",
+        "description": "Highlights specific figures in output and asks the user to confirm the source before relying on them",
+        "rationale": "Numbers feel authoritative and get accepted unchecked",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-10T14:12:18.185715"
+      },
+      "result": "REJECTED",
+      "skill_generated": "number_claim_spotlighter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:number_claim_spotlighter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0010879039764404297
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.821487426757812e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 4.5299530029296875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000013589859008789062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 7.3909759521484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 7.62939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 1.9073486328125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 4.291534423828125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0004718303680419922
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.00001239776611328125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.430511474609375e-6
+        }
+      ],
+      "timestamp": "2026-07-10T14:12:18.186224",
       "error_message": null
     }
   ]
