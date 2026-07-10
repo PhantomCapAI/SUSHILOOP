@@ -2005,3 +2005,12 @@
 }
 ```
 ---
+
+## [2026-07-10T09:27:22.437534] Cycle 224: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overconfidence Phrase Detector",
+  "skill": "overconfidence_phrase_detector"
+}
+```
+---

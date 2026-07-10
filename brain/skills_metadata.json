@@ -3662,5 +3662,33 @@
       "charter:The code does not align with the charter's principles as it appears to be detecting specific patterns in the input text and blocking based on those patterns, which could be seen as replacing user judgment rather than protecting it."
     ],
     "timestamp": "2026-07-10T02:35:28.528996"
+  },
+  "overconfidence_phrase_detector": {
+    "name": "overconfidence_phrase_detector",
+    "title": "Overconfidence Phrase Detector",
+    "code_hash": "95842c03473d29b1",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Overconfidence Phrase Detector\n \nCategory: SkillCategory.BIAS_DETECTION\nGenerated: 2026-07-10\n \nDescription:\n    This skill detects phrases in AI-generated text that may indicate overconfidence, such as absolute language or universal claims, and flags them to prompt users to consider alternative perspectives. It helps users recognize when AI outputs may be overly assertive or lacking in nuance.\n \nRationale:\n    Protecting human cognition from AI overreliance requires being aware of potential biases in AI-generated content. Overconfidence in AI outputs can lead users to",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 56
+    },
+    "diversity": 0.67,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-07-10T09:27:22.420596"
   }
 }
