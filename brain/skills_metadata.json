@@ -3613,28 +3613,29 @@
   "escalation_advice_detector": {
     "name": "escalation_advice_detector",
     "title": "Escalation Advice Detector",
-    "code_hash": "69234570d2d8b8b2",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass EscalationSignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_escalation_signals(input_text: str) -> EscalationSignals:\n    \"\"\"\n    Calculate various signals that may indicate escalation advice.\n    \n    :param input_text: The input text to analyze.\n    :return: A dataclass containing the calculated signals.\n    \"\"\"\n    sentences = re.split(r'[.!?]', input_text)\n    sentence_count = len([s for",
+    "code_hash": "3acd3866684ddf03",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Escalation Advice Detector\n \nCategory: SkillCategory.CONTENT_SAFETY\nGenerated: 2026-07-10\n \nDescription:\n    Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat\n \nRationale:\n    High-arousal advice short-circuits deliberation\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef escalation_advice_detector(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat\n \n    Returns dict with: blocked, reason, confidence, c",
     "score": {
-      "tests_pass": 10,
+      "tests_pass": 0,
       "complexity": 10,
       "structure": 10,
       "documentation": 7,
-      "strategies": 1,
-      "static_total": 38,
+      "strategies": 4,
+      "static_total": 31,
       "behavioral": {
-        "robustness": 10,
-        "discrimination": 5,
-        "calibration": 10,
-        "behavioral_total": 25,
-        "probes_raised": 0,
-        "probes_valid": 17
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/escalation_advice_detector.py'"
       },
-      "total": 63
+      "total": 31
     },
-    "diversity": 0.383,
-    "failure_modes": [],
-    "timestamp": "2026-07-09T09:31:10.332071"
+    "diversity": 0.83,
+    "failure_modes": [
+      "charter:The code does not align with the charter's principles as it attempts to detect and block specific patterns without providing transparency into its reasoning or allowing the user to make their own judgment, thus potentially replacing user judgment."
+    ],
+    "timestamp": "2026-07-10T19:21:21.111342"
   },
   "overexplanation_detector": {
     "name": "overexplanation_detector",

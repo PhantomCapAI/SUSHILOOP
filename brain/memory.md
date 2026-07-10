@@ -2023,3 +2023,12 @@
 }
 ```
 ---
+
+## [2026-07-10T19:21:21.127724] Cycle 226: CycleResult.REJECTED
+```json
+{
+  "proposal": "Escalation Advice Detector",
+  "skill": "escalation_advice_detector"
+}
+```
+---
