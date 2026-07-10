@@ -3635,5 +3635,32 @@
     "diversity": 0.383,
     "failure_modes": [],
     "timestamp": "2026-07-09T09:31:10.332071"
+  },
+  "overexplanation_detector": {
+    "name": "overexplanation_detector",
+    "title": "Overexplanation Detector",
+    "code_hash": "d9eb9e217655ac18",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Overexplanation Detector\n \nCategory: SkillCategory.COGNITIVE_PROTECTION\nGenerated: 2026-07-10\n \nDescription:\n    This guardrail detects instances where AI-generated text overexplains a concept, potentially leading to cognitive overload, and flags it for review. It helps humans recognize when AI is providing too much information, allowing them to focus on the essential aspects of the topic.\n \nRationale:\n    Protecting human cognition from AI overreliance requires ensuring that AI-generated content is concise and relevant. Overexplanation can lead to information fatigue,",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 31,
+      "behavioral": {
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/overexplanation_detector.py'"
+      },
+      "total": 31
+    },
+    "diversity": 0.727,
+    "failure_modes": [
+      "charter:The code does not align with the charter's principles as it appears to be detecting specific patterns in the input text and blocking based on those patterns, which could be seen as replacing user judgment rather than protecting it."
+    ],
+    "timestamp": "2026-07-10T02:35:28.528996"
   }
 }

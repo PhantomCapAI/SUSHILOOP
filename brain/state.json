@@ -1,104 +1,10 @@
 {
-  "cycle_count": 222,
+  "cycle_count": 223,
   "total_skills": 62,
   "success_count": 65,
   "failure_count": 8,
-  "last_run": "2026-07-09T19:38:17.727961",
+  "last_run": "2026-07-10T02:35:25.058331",
   "history": [
-    {
-      "cycle_number": 123,
-      "proposal": {
-        "id": "a363395a-0357-487f-83c1-e674966346ea",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Rapid Query Velocity Detector",
-        "description": "This skill detects and limits consecutive queries with similar context or intent within a short time frame, preventing rapid-fire questioning that can lead to overreliance on AI responses. It enforces a delay between similar queries to encourage human reflection and analysis.",
-        "rationale": "Protecting human cognition requires ensuring that users are not relying too heavily on AI for instant answers, but rather using it as a tool to augment their thinking. By limiting rapid query velocities, we promote a more thoughtful and reflective approach to problem-solving.",
-        "success_criteria": [
-          "Detects and limits consecutive similar queries within a 30-second window",
-          "Enforces a minimum 10-second delay between similar queries",
-          "Allows for adjustable velocity thresholds and delay times"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-18T03:31:31.897389"
-      },
-      "result": "REJECTED",
-      "skill_generated": "rapid_query_velocity_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:rapid_query_velocity_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0022118091583251953
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.298324584960938e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00011086463928222656
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000022649765014648438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000022649765014648438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.00003886222839355469
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.002093076705932617
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000026941299438476562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-06-18T03:31:31.898789",
-      "error_message": null
-    },
     {
       "cycle_number": 124,
       "proposal": {
@@ -8063,6 +7969,33 @@
         }
       ],
       "timestamp": "2026-07-09T19:38:17.727961",
+      "error_message": null
+    },
+    {
+      "cycle_number": 223,
+      "proposal": {
+        "id": "1c8a1779-ae57-4fef-bbd4-70d33c66fdb1",
+        "proposal_type": "NEW_SKILL",
+        "category": "COGNITIVE_PROTECTION",
+        "title": "Overexplanation Detector",
+        "description": "This guardrail detects instances where AI-generated text overexplains a concept, potentially leading to cognitive overload, and flags it for review. It helps humans recognize when AI is providing too much information, allowing them to focus on the essential aspects of the topic.",
+        "rationale": "Protecting human cognition from AI overreliance requires ensuring that AI-generated content is concise and relevant. Overexplanation can lead to information fatigue, decreased comprehension, and reduced critical thinking skills. By detecting and flagging overexplanation, this guardrail promotes more effective human-AI collaboration and helps humans maintain control over their learning process.",
+        "success_criteria": [
+          "Detection accuracy of overexplanation patterns",
+          "Reduction in cognitive overload reported by users",
+          "Improved user engagement with AI-generated content"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-10T02:35:25.056837"
+      },
+      "result": "REJECTED",
+      "skill_generated": "overexplanation_detector",
+      "test_results": [],
+      "timestamp": "2026-07-10T02:35:25.058331",
       "error_message": null
     }
   ]
