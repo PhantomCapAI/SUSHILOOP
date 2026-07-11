@@ -3751,29 +3751,29 @@
   "sequential_dependency_limiter": {
     "name": "sequential_dependency_limiter",
     "title": "Sequential Dependency Limiter",
-    "code_hash": "a963aa0bf3d260c8",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass SequentialDependencyLimiterResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef sequential_dependency_limiter(input_text: str) -> Dict:\n    \"\"\"\n    Detects and limits the use of sequential dependencies in AI-generated responses.\n\n    This function combines multiple signals to detect sequential dependencies:\n    - Absolute term density: the ratio of absolute terms (e.g., \"always\", \"never\") to total words.\n    - Hedge density: ",
+    "code_hash": "c4ec4f32a6cf3e4a",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Sequential Dependency Limiter\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-11\n \nDescription:\n    This skill detects and limits sequential dependency on AI outputs by tracking the number of consecutive queries that rely on previous AI responses, preventing overreliance on AI-generated content. It intervenes when a user's queries exceed a certain threshold of sequential dependency, prompting them to verify information through other means.\n \nRationale:\n    This matters for protecting human cognition because it prevents the formation of a feedback loop where ",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 7,
-      "strategies": 10,
-      "static_total": 47,
+      "strategies": 4,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
-        "calibration": 10,
-        "behavioral_total": 22,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 69
+      "total": 56
     },
-    "diversity": 0.492,
+    "diversity": 0.731,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=22"
+      "shallow:discrimination=0,behavioral_total=15"
     ],
-    "timestamp": "2026-07-11T07:48:14.417957"
+    "timestamp": "2026-07-11T13:08:43.361755"
   }
 }
