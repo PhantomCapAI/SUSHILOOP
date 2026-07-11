@@ -1,104 +1,10 @@
 {
-  "cycle_count": 229,
+  "cycle_count": 230,
   "total_skills": 62,
   "success_count": 65,
   "failure_count": 8,
-  "last_run": "2026-07-11T13:08:40.281896",
+  "last_run": "2026-07-11T18:55:32.026422",
   "history": [
-    {
-      "cycle_number": 130,
-      "proposal": {
-        "id": "01e72bcd-fc8c-4ba9-85f7-290d77569421",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Actionable-Step Verifier",
-        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
-        "rationale": "A verification beat is the antidote to ask-accept-move-on",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-19T19:43:49.515327"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "actionable_step_verifier",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:actionable_step_verifier",
-          "message": "import + callable OK",
-          "duration_seconds": 0.001409769058227539
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010728836059570312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00015544891357421875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000018358230590820312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000016689300537109375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000011205673217773438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0011112689971923828
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.00002288818359375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-06-19T19:43:49.515984",
-      "error_message": null
-    },
     {
       "cycle_number": 131,
       "proposal": {
@@ -7929,6 +7835,100 @@
         }
       ],
       "timestamp": "2026-07-11T13:08:40.281896",
+      "error_message": null
+    },
+    {
+      "cycle_number": 230,
+      "proposal": {
+        "id": "bd55acd4-58b1-4119-bd4c-f63edff445f3",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Unverified Claim Sentinel",
+        "description": "This skill detects when a user is about to accept an AI-generated response without verifying its accuracy, and prompts them to fact-check the information before proceeding. It identifies patterns of immediate acceptance without critical evaluation.",
+        "rationale": "This matters for protecting human cognition because it encourages users to think critically about the information they receive from AI systems, rather than blindly accepting it, which can lead to overreliance on AI and diminished critical thinking skills.",
+        "success_criteria": [
+          "Detects 80% of instances where a user accepts AI-generated responses without verification",
+          "Prompts the user to fact-check the information in a clear and concise manner",
+          "Reduces the likelihood of users accepting inaccurate information by 30%"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-11T18:55:32.025071"
+      },
+      "result": "REJECTED",
+      "skill_generated": "unverified_claim_sentinel",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:unverified_claim_sentinel",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0012369155883789062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.5367431640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 0.000026702880859375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000017642974853515625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010251998901367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000010251998901367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.0994415283203125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.000701904296875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000012874603271484375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        }
+      ],
+      "timestamp": "2026-07-11T18:55:32.026422",
       "error_message": null
     }
   ]

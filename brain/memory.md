@@ -2059,3 +2059,12 @@
 }
 ```
 ---
+
+## [2026-07-11T18:55:34.683787] Cycle 230: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unverified Claim Sentinel",
+  "skill": "unverified_claim_sentinel"
+}
+```
+---
