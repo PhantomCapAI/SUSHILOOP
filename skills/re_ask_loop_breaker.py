@@ -1,6 +1,5 @@
 import re
 from collections import Counter
-from math import log
 from typing import Dict
 
 def re_ask_loop_breaker(input_text: str) -> Dict:
@@ -8,91 +7,86 @@ def re_ask_loop_breaker(input_text: str) -> Dict:
     Detects the user re-asking the same thing in slightly different words and suggests stepping back to think.
 
     This function combines multiple signals to detect re-ask loops, including:
-    - Weighted pattern matches
-    - Structural features (sentence or clause counts, ratios)
-    - Lexical diversity
-    - Hedging/absolute-term density
+    - Absolute term density
+    - Hedge term density
+    - Overgeneral term density
+    - Sentence structure similarity
 
-    The confidence score is a graded value between 0.0 and 1.0, indicating the likelihood of a re-ask loop.
+    Args:
+        input_text (str): The user's input text.
 
-    :param input_text: The user's input text
-    :return: A dictionary containing the detection result, including:
-        - blocked: A boolean indicating whether the input is blocked
-        - reason: A string explaining the reason for blocking
-        - confidence: A float between 0.0 and 1.0 indicating the confidence level
-        - category: A string indicating the category of the detection
-        - details: A dictionary containing additional details about the detection
+    Returns:
+        Dict: A dictionary containing the following keys:
+            - blocked (bool): Whether the input text is likely a re-ask loop.
+            - reason (str): A brief explanation for the decision.
+            - confidence (float): A graded confidence score between 0.0 and 1.0.
+            - category (str): The category of the detected pattern.
+            - details (Dict): Additional details about the detection.
     """
     # SUSHILOOP input guard (auto-injected): never raise on bad input.
     if not isinstance(input_text, str) or not input_text.strip():
         return {"blocked": False, "reason": "empty_or_invalid_input",
                 "confidence": 0.0, "category": "none", "details": {}}
 
-    # Tokenize the input text
-    tokens = re.findall(r'\b\w+\b', input_text.lower())
-
-    # Calculate lexical diversity
-    lexical_diversity = len(set(tokens)) / len(tokens) if tokens else 0.0
-
-    # Calculate hedging/absolute-term density
-    hedge_terms = ['maybe', 'possibly', 'perhaps', 'could', 'might']
-    absolute_terms = ['always', 'never', 'every', 'all']
-    hedge_density = sum(1 for token in tokens if token in hedge_terms) / len(tokens) if tokens else 0.0
-    absolute_density = sum(1 for token in tokens if token in absolute_terms) / len(tokens) if tokens else 0.0
-
-    # Calculate sentence and clause counts
+    # Preprocess the input text
+    input_text = input_text.lower()
     sentences = re.split(r'[.!?]', input_text)
-    clauses = re.split(r'[;,]', input_text)
+    sentences = [s.strip() for s in sentences if s]
 
-    # Calculate structural features
-    sentence_ratio = len(sentences) / len(clauses) if clauses else 0.0
-    clause_ratio = len(clauses) / len(sentences) if sentences else 0.0
+    # Calculate absolute term density
+    absolute_terms = ['always', 'never', 'every', 'all']
+    absolute_count = sum(1 for sentence in sentences for term in absolute_terms if term in sentence)
+    absolute_ratio = absolute_count / (len(sentences) or 1)
+
+    # Calculate hedge term density
+    hedge_terms = ['maybe', 'perhaps', 'possibly', 'could']
+    hedge_count = sum(1 for sentence in sentences for term in hedge_terms if term in sentence)
+    hedge_ratio = hedge_count / (len(sentences) or 1)
+
+    # Calculate overgeneral term density
+    overgeneral_terms = ['thing', 'stuff', 'everything', 'nothing']
+    overgeneral_count = sum(1 for sentence in sentences for term in overgeneral_terms if term in sentence)
+    overgeneral_ratio = overgeneral_count / (len(sentences) or 1)
+
+    # Calculate sentence structure similarity
+    sentence_lengths = [len(sentence.split()) for sentence in sentences]
+    sentence_length_stddev = (sum((x - sum(sentence_lengths) / len(sentence_lengths)) ** 2 for x in sentence_lengths) / len(sentence_lengths)) ** 0.5 if sentence_lengths else 0
 
     # Combine signals to calculate confidence
-    raw_score = 0.2 * (1 - lexical_diversity) + 0.3 * hedge_density + 0.2 * absolute_density + 0.3 * sentence_ratio
+    raw_score = 0.4 * absolute_ratio + 0.3 * hedge_ratio + 0.2 * overgeneral_ratio + 0.1 * (1 - sentence_length_stddev / (max(sentence_lengths) or 1))
     confidence = max(0.0, min(1.0, raw_score))
 
-    # Determine blocking and reason
-    blocked = confidence > 0.7
-    reason = 'Re-ask loop detected' if blocked else 'No re-ask loop detected'
+    # Determine the blocked decision
+    blocked = confidence >= 0.5
 
-    # Create result dictionary
-    result = {
+    # Return the result
+    return {
         'blocked': blocked,
-        'reason': reason,
+        'reason': 'Re-ask loop detected' if blocked else 'No re-ask loop detected',
         'confidence': confidence,
-        'category': 're-ask loop',
+        'category': 'Re-ask Loop',
         'details': {
-            'lexical_diversity': lexical_diversity,
-            'hedge_density': hedge_density,
-            'absolute_density': absolute_density,
-            'sentence_ratio': sentence_ratio,
-            'clause_ratio': clause_ratio
+            'absolute_ratio': absolute_ratio,
+            'hedge_ratio': hedge_ratio,
+            'overgeneral_ratio': overgeneral_ratio,
+            'sentence_length_stddev': sentence_length_stddev
         }
     }
 
-    return result
-
-
 if __name__ == '__main__':
     test_cases = [
-        'What is the meaning of life?',
-        'I am wondering what the meaning of life is.',
-        'Maybe the meaning of life is to find happiness.',
-        'I am not sure what the meaning of life is, but I think it might be to find happiness.',
-        'The meaning of life is to always be happy.',
-        'I have been thinking about the meaning of life, and I think it is to find happiness, but maybe I am wrong.',
-        'The meaning of life is never to be unhappy.',
-        'I am not sure what the meaning of life is, but I think it could be to find happiness, or maybe it is something else.',
-        'The meaning of life is every day to find happiness.',
-        'I have been thinking about the meaning of life, and I think it is to find happiness, but I am not sure.'
+        'I always wonder if I will ever find the answer.',
+        'Maybe I should just try something new.',
+        'Everything is possible if you just believe.',
+        'I am not sure what to do.',
+        'This is a test case with multiple sentences. It should not trigger the re-ask loop detector.'
     ]
 
     for test_case in test_cases:
         result = re_ask_loop_breaker(test_case)
         print(f'Input: {test_case}')
         print(f'Result: {result}')
-        print('---')
+        print()
 
 # SUSHILOOP contract normalizer (auto): clamp confidence into [0,1], guarantee dict shape
 _sushi_raw_re_ask_loop_breaker = re_ask_loop_breaker

@@ -1538,30 +1538,28 @@
   "re_ask_loop_breaker": {
     "name": "re_ask_loop_breaker",
     "title": "Re-ask Loop Breaker",
-    "code_hash": "7cac0f117b2c7c8e",
-    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef re_ask_loop_breaker(input_text: str) -> Dict:\n    \"\"\"\n    Detects the user re-asking the same thing in slightly different words and suggests stepping back to think.\n\n    This function combines multiple signals to detect re-ask loops, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term density\n    - Lexical diversity\n\n    The confidence score is a weighted sum of these signals, clamped to [0.0, 1.0].\n\n    :param input_text: The user's input text\n    :return: A dictionary with the following ",
+    "code_hash": "d1b7be5d21dc5219",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef re_ask_loop_breaker(input_text: str) -> Dict:\n    \"\"\"\n    Detects the user re-asking the same thing in slightly different words and suggests stepping back to think.\n\n    This function combines multiple signals to detect re-ask loops, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term density\n    - Sentence structure similarity\n\n    Args:\n        input_text (str): The user's input text.\n\n    Returns:\n        Dict: A dictionary containing the following keys:\n            - blocked (bool): Wh",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
+      "documentation": 10,
       "strategies": 1,
-      "static_total": 38,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
         "probes_raised": 0,
-        "probes_valid": 7
+        "probes_valid": 17
       },
-      "total": 57
+      "total": 71
     },
     "diversity": 0.333,
-    "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
-    ],
-    "timestamp": "2026-06-26T14:14:51.924185"
+    "failure_modes": [],
+    "timestamp": "2026-07-12T02:22:05.968538"
   },
   "inconsistent_identifier_detector": {
     "name": "inconsistent_identifier_detector",
