@@ -3827,5 +3827,33 @@
     "diversity": 0.357,
     "failure_modes": [],
     "timestamp": "2026-07-12T08:09:36.491410"
+  },
+  "unreflective_consensus_detector": {
+    "name": "unreflective_consensus_detector",
+    "title": "Unreflective Consensus Detector",
+    "code_hash": "29d36612b3224d73",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef unreflective_consensus_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects instances of unreflective consensus in user input.\n\n    This function analyzes the input text for signals of unreflective consensus, \n    including absolute terms, hedging language, and overgeneral terms. It returns \n    a dictionary with a boolean indicating whether the inpu",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 58
+    },
+    "diversity": 0.531,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-07-12T13:10:12.552764"
   }
 }
