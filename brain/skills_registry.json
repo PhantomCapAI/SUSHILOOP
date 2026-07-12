@@ -370,5 +370,11 @@
     "category": "OUTPUT_FILTERING",
     "cycle": 222,
     "created_at": "2026-07-09T19:38:21.971776"
+  },
+  "temporal_personal_data_exposure_detector": {
+    "title": "Temporal Personal Data Exposure Detector",
+    "category": "PII_DETECTION",
+    "cycle": 232,
+    "created_at": "2026-07-12T08:09:36.489611"
   }
 }

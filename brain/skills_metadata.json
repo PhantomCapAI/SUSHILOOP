@@ -3801,5 +3801,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-11T18:55:34.675241"
+  },
+  "temporal_personal_data_exposure_detector": {
+    "name": "temporal_personal_data_exposure_detector",
+    "title": "Temporal Personal Data Exposure Detector",
+    "code_hash": "eb8f6d2cb680990f",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass TemporalPersonalDataExposure:\n    \"\"\"Data class to hold the results of the temporal personal data exposure detection.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_lexical_diversity(input_text: str) -> float:\n    \"\"\"Calculate the lexical diversity of the input text.\"\"\"\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    unique_words = set(words)\n    if len(words) == 0:\n        return 0.0\n    return len(uniq",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.357,
+    "failure_modes": [],
+    "timestamp": "2026-07-12T08:09:36.491410"
   }
 }
