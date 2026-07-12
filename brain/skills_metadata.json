@@ -3855,5 +3855,31 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-07-12T13:10:12.552764"
+  },
+  "oversimplified_explanation_detector": {
+    "name": "oversimplified_explanation_detector",
+    "title": "Oversimplified Explanation Detector",
+    "code_hash": "491a75df4be18c52",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass ExplanationAnalysis:\n    \"\"\"Holds the results of the oversimplification analysis.\"\"\"\n    lexical_diversity: float\n    sentence_simplicity: float\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: int\n\ndef calculate_lexical_diversity(words: list[str]) -> float:\n    \"\"\"Calculates the lexical diversity of a given list of words.\"\"\"\n    unique_words = set(words)\n    if len(words) == 0:\n        return 0.0\n    return len(unique_words) / len(words)\n\ndef calculate_sentence_simplicit",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.509,
+    "failure_modes": [],
+    "timestamp": "2026-07-12T18:59:19.950719"
   }
 }
