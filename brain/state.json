@@ -1,104 +1,10 @@
 {
-  "cycle_count": 234,
-  "total_skills": 64,
-  "success_count": 68,
+  "cycle_count": 235,
+  "total_skills": 65,
+  "success_count": 69,
   "failure_count": 8,
-  "last_run": "2026-07-12T18:59:16.326816",
+  "last_run": "2026-07-13T02:23:27.239666",
   "history": [
-    {
-      "cycle_number": 135,
-      "proposal": {
-        "id": "6a4d54b2-5e59-4f0e-91ab-ebdf476acda9",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Overly Homogeneous Perspective Detector",
-        "description": "Detects when AI-generated text presents a single, dominant viewpoint without acknowledging potential counterarguments or alternative perspectives, potentially leading to biased or one-sided information",
-        "rationale": "This skill protects human cognition by encouraging the consideration of diverse perspectives and mitigating the risk of AI-generated content reinforcing existing biases or echo chambers",
-        "success_criteria": [
-          "Detects homogeneous perspectives in AI-generated text",
-          "Identifies potential counterarguments or alternative perspectives",
-          "Provides feedback to promote more balanced and nuanced content"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-21T03:41:40.004859"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "overly_homogeneous_perspective_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:overly_homogeneous_perspective_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.001565694808959961
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000011205673217773438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.152557373046875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00009751319885253906
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 5.9604644775390625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000015497207641601562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 4.0531158447265625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0009095668792724609
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.00001621246337890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-06-21T03:41:40.006449",
-      "error_message": null
-    },
     {
       "cycle_number": 136,
       "proposal": {
@@ -7929,6 +7835,100 @@
         }
       ],
       "timestamp": "2026-07-12T18:59:16.326816",
+      "error_message": null
+    },
+    {
+      "cycle_number": 235,
+      "proposal": {
+        "id": "a8e1c43a-6bbb-42a0-ab88-16a4d616b00f",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Overly Speculative Terminology Filter",
+        "description": "This skill detects and filters out AI-generated text that contains overly speculative terminology, such as phrases that imply certainty about uncertain events or outcomes, thereby protecting human cognition from potential misinformation.",
+        "rationale": "This matters for protecting human cognition because overly speculative terminology can lead to overreliance on AI-generated information, potentially causing individuals to make decisions based on unsubstantiated claims or predictions, rather than critically evaluating the evidence.",
+        "success_criteria": [
+          "Detects and filters out at least 80% of overly speculative terminology in AI-generated text",
+          "Does not falsely flag more than 10% of non-speculative text",
+          "Can be integrated with existing OUTPUT_FILTERING skills without significant performance degradation"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-13T02:23:27.237955"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "overly_speculative_terminology_filter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:overly_speculative_terminology_filter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.00048279762268066406
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000011444091796875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000018358230590820312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010013580322265625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000010013580322265625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.337860107421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0009353160858154297
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.0000152587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        }
+      ],
+      "timestamp": "2026-07-13T02:23:27.239666",
       "error_message": null
     }
   ]

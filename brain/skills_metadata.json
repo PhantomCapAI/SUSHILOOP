@@ -3881,5 +3881,31 @@
     "diversity": 0.509,
     "failure_modes": [],
     "timestamp": "2026-07-12T18:59:19.950719"
+  },
+  "overly_speculative_terminology_filter": {
+    "name": "overly_speculative_terminology_filter",
+    "title": "Overly Speculative Terminology Filter",
+    "code_hash": "fdb0a52f7317486b",
+    "summary": "import re\nfrom typing import Dict\n\ndef overly_speculative_terminology_filter(input_text: str) -> Dict:\n    \"\"\"\n    Detects and filters out AI-generated text that contains overly speculative terminology.\n\n    This function combines multiple signals to determine the confidence level of the input text.\n    The signals include:\n    - Absolute terms density: The ratio of absolute terms (e.g., \"always\", \"never\") to the total number of words.\n    - Hedge density: The ratio of hedge terms (e.g., \"maybe\", \"possibly\") to the total number of words.\n    - Overgeneral terms: The presence of overgeneral ter",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 63
+    },
+    "diversity": 0.4,
+    "failure_modes": [],
+    "timestamp": "2026-07-13T02:23:29.708526"
   }
 }

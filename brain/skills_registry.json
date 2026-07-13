@@ -382,5 +382,11 @@
     "category": "OUTPUT_FILTERING",
     "cycle": 234,
     "created_at": "2026-07-12T18:59:19.948826"
+  },
+  "overly_speculative_terminology_filter": {
+    "title": "Overly Speculative Terminology Filter",
+    "category": "OUTPUT_FILTERING",
+    "cycle": 235,
+    "created_at": "2026-07-13T02:23:29.706640"
   }
 }
