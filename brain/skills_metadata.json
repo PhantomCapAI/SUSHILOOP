@@ -3935,5 +3935,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-13T09:17:25.969272"
+  },
+  "tacit_assumption_clarifier": {
+    "name": "tacit_assumption_clarifier",
+    "title": "Tacit Assumption Clarifier",
+    "code_hash": "94fbff6398fe9e67",
+    "summary": "import re\nfrom typing import Dict\n\ndef tacit_assumption_clarifier(input_text: str) -> Dict:\n    \"\"\"\n    Tacit Assumption Clarifier: Detects and prompts users to verify tacit assumptions implicit in their queries.\n\n    This skill analyzes the query for phrases that imply unwritten assumptions and prompts the user to confirm these assumptions.\n    It achieves this by combining multiple signals such as weighted pattern matches, structural features, lexical diversity, \n    hedging/absolute-term density, etc.\n\n    Args:\n        input_text (str): The input text to be analyzed.\n\n    Returns:\n        ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 61
+    },
+    "diversity": 0.598,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-07-13T14:24:29.684975"
   }
 }
