@@ -2131,3 +2131,12 @@
 }
 ```
 ---
+
+## [2026-07-13T19:18:21.295462] Cycle 238: CycleResult.REJECTED
+```json
+{
+  "proposal": "Deliberation-Pace Nudger",
+  "skill": "deliberation_pace_nudger"
+}
+```
+---
