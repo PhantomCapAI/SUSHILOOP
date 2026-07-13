@@ -2113,3 +2113,12 @@
 }
 ```
 ---
+
+## [2026-07-13T09:17:25.978153] Cycle 236: CycleResult.REJECTED
+```json
+{
+  "proposal": "Causal Attribution Detector",
+  "skill": "causal_attribution_detector"
+}
+```
+---

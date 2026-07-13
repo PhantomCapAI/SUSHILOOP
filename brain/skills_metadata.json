@@ -3907,5 +3907,33 @@
     "diversity": 0.4,
     "failure_modes": [],
     "timestamp": "2026-07-13T02:23:29.708526"
+  },
+  "causal_attribution_detector": {
+    "name": "causal_attribution_detector",
+    "title": "Causal Attribution Detector",
+    "code_hash": "25038aa648ad95db",
+    "summary": "import re\nfrom typing import Dict\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g., always, never) in the text.\n    \n    Args:\n    text (str): The input text.\n    \n    Returns:\n    float: The ratio of absolute terms.\n    \"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|every|all)\\b', text, re.IGNORECASE)\n    total_words = len(text.split())\n    return len(absolute_terms) / total_words if total_words > 0 else 0.0\n\ndef calculate_hedge_density(text: str) -> float:\n    \"\"\"\n    Calculate the density of hedge terms (e.g., may, might, pos",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.346,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-13T09:17:25.969272"
   }
 }
