@@ -2158,3 +2158,12 @@
 }
 ```
 ---
+
+## [2026-07-14T13:24:11.972737] Cycle 241: CycleResult.REJECTED
+```json
+{
+  "proposal": "Emotive Language Imbalance Detector",
+  "skill": "emotive_language_imbalance_detector"
+}
+```
+---

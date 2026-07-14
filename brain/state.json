@@ -1,37 +1,10 @@
 {
-  "cycle_count": 240,
+  "cycle_count": 241,
   "total_skills": 66,
   "success_count": 70,
   "failure_count": 8,
-  "last_run": "2026-07-14T07:55:23.032794",
+  "last_run": "2026-07-14T13:24:06.153173",
   "history": [
-    {
-      "cycle_number": 141,
-      "proposal": {
-        "id": "8ee3e737-97ff-49cd-85a1-6827c833fd00",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Self-Harm Routing Guard",
-        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
-        "rationale": "A model must scaffold, not substitute, real support",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-22T16:47:59.967006"
-      },
-      "result": "REJECTED",
-      "skill_generated": "self_harm_routing_guard",
-      "test_results": [],
-      "timestamp": "2026-06-22T16:47:59.967635",
-      "error_message": null
-    },
     {
       "cycle_number": 142,
       "proposal": {
@@ -7996,6 +7969,100 @@
         }
       ],
       "timestamp": "2026-07-14T07:55:23.032794",
+      "error_message": null
+    },
+    {
+      "cycle_number": 241,
+      "proposal": {
+        "id": "af935e3d-9291-4c45-ad50-ff2edb039e6e",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "Emotive Language Imbalance Detector",
+        "description": "This skill detects instances where AI-generated text exhibits an imbalance in emotive language, potentially indicating biased or manipulative content. It analyzes the frequency and intensity of emotive words and phrases to identify patterns that may influence human cognition.",
+        "rationale": "Protecting human cognition from biased AI output is crucial, and emotive language can be a subtle yet powerful tool for manipulation. By detecting imbalances in emotive language, this skill helps users recognize potential biases and make more informed decisions.",
+        "success_criteria": [
+          "Detection accuracy exceeds 80%",
+          "False positive rate below 10%",
+          "Integration with existing SUSHILOOP guardrails"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-14T13:24:06.152048"
+      },
+      "result": "REJECTED",
+      "skill_generated": "emotive_language_imbalance_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:emotive_language_imbalance_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.00160980224609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 7.3909759521484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 5.7220458984375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000022411346435546875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010251998901367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 9.298324584960938e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 1.430511474609375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 5.245208740234375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0008842945098876953
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.0000133514404296875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.1920928955078125e-6
+        }
+      ],
+      "timestamp": "2026-07-14T13:24:06.153173",
       "error_message": null
     }
   ]

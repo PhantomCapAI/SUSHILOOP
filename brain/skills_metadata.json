@@ -4019,5 +4019,33 @@
     "diversity": 0.541,
     "failure_modes": [],
     "timestamp": "2026-07-14T07:55:25.596614"
+  },
+  "emotive_language_imbalance_detector": {
+    "name": "emotive_language_imbalance_detector",
+    "title": "Emotive Language Imbalance Detector",
+    "code_hash": "aa567ac381720850",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass EmotiveLanguageImbalance:\n    \"\"\"Dataclass to store emotive language imbalance details.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_emotive_language_imbalance(input_text: str) -> EmotiveLanguageImbalance:\n    \"\"\"\n    Calculate emotive language imbalance metrics.\n\n    Args:\n    input_text (str): The input text to analyze.\n\n    Returns:\n    EmotiveLanguageImbalance: A dataclass containing the calculate",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.489,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-14T13:24:11.956188"
   }
 }
