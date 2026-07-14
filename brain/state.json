@@ -1,37 +1,10 @@
 {
-  "cycle_count": 238,
-  "total_skills": 65,
+  "cycle_count": 239,
+  "total_skills": 64,
   "success_count": 69,
   "failure_count": 8,
-  "last_run": "2026-07-13T19:18:17.914971",
+  "last_run": "2026-07-14T02:03:13.558683",
   "history": [
-    {
-      "cycle_number": 139,
-      "proposal": {
-        "id": "fbe763f7-a0a6-4d73-b709-214edf7d233b",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Rapid Iteration Feedback Loop Detector",
-        "description": "This skill detects when a user is receiving an excessive number of responses from the AI within a short time frame, indicating a potential overreliance on the AI for iterative feedback, and limits the rate of responses to encourage more reflective and self-directed thinking. It monitors the frequency and timing of AI responses to identify rapid iteration feedback loops.",
-        "rationale": "This matters for protecting human cognition because it helps prevent users from relying too heavily on the AI for instant gratification and feedback, instead encouraging them to think critically and reflect on their own ideas and decisions",
-        "success_criteria": [
-          "Detects rapid iteration feedback loops with 90% accuracy",
-          "Reduces the average response rate from the AI by 30% in high-risk scenarios",
-          "Increases user engagement with self-reflection and critical thinking exercises by 25%"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-22T03:45:22.155385"
-      },
-      "result": "REJECTED",
-      "skill_generated": "rapid_iteration_feedback_loop_detector",
-      "test_results": [],
-      "timestamp": "2026-06-22T03:45:22.156772",
-      "error_message": null
-    },
     {
       "cycle_number": 140,
       "proposal": {
@@ -7929,6 +7902,100 @@
         }
       ],
       "timestamp": "2026-07-13T19:18:17.914971",
+      "error_message": null
+    },
+    {
+      "cycle_number": 239,
+      "proposal": {
+        "id": "5635432b-7f19-4ee6-90fc-2cf9f0635f5e",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Self-Harm Routing Guard",
+        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
+        "rationale": "A model must scaffold, not substitute, real support",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-14T02:03:13.558069"
+      },
+      "result": "REJECTED",
+      "skill_generated": "self_harm_routing_guard",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:self_harm_routing_guard",
+          "message": "import + callable OK",
+          "duration_seconds": 0.002062559127807617
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.775161743164062e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000017404556274414062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010967254638671875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000012159347534179688
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.001373291015625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000019073486328125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        }
+      ],
+      "timestamp": "2026-07-14T02:03:13.558683",
       "error_message": null
     }
   ]
