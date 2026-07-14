@@ -3993,5 +3993,31 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-07-13T19:18:21.286416"
+  },
+  "unsubstantiated_claim_detector": {
+    "name": "unsubstantiated_claim_detector",
+    "title": "Unsubstantiated Claim Detector",
+    "code_hash": "b600d9e8148180ba",
+    "summary": "import re\nfrom typing import Dict\n\ndef unsubstantiated_claim_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects unsubstantiated claims in user input and prompts for supporting evidence.\n\n    This skill combines multiple signals to determine the confidence of unsubstantiated claims:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term density\n    - Sentence structure complexity\n\n    The confidence score is graded and clamped between 0.0 and 1.0. The `blocked` decision is based on a threshold of 0.5.\n\n    Mission alignment: This skill protects human cognition from pote",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 71
+    },
+    "diversity": 0.541,
+    "failure_modes": [],
+    "timestamp": "2026-07-14T07:55:25.596614"
   }
 }
