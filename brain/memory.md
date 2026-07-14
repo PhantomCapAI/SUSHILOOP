@@ -2167,3 +2167,12 @@
 }
 ```
 ---
+
+## [2026-07-14T19:12:24.479645] Cycle 242: CycleResult.REJECTED
+```json
+{
+  "proposal": "Interrogation Burst Limiter",
+  "skill": "interrogation_burst_limiter"
+}
+```
+---
