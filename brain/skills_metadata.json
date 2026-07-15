@@ -4103,5 +4103,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-15T02:00:26.856165"
+  },
+  "unwarranted_certainty_detector": {
+    "name": "unwarranted_certainty_detector",
+    "title": "Unwarranted Certainty Detector",
+    "code_hash": "44da12c13aade9ed",
+    "summary": "import re\nfrom typing import Dict\n\ndef unwarranted_certainty_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects instances of unwarranted certainty in AI-generated text.\n\n    This function combines multiple signals to detect phrases that imply absolute confidence or universality.\n    It provides clear and actionable feedback to users on how to rephrase or reevaluate uncertain statements.\n\n    Args:\n        input_text (str): The input text to be evaluated.\n\n    Returns:\n        Dict: A dictionary containing the results of the evaluation, including:\n            - blocked (bool): Whether the i",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.605,
+    "failure_modes": [],
+    "timestamp": "2026-07-15T13:27:03.186367"
   }
 }
