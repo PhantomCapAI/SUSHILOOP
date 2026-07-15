@@ -4129,5 +4129,32 @@
     "diversity": 0.605,
     "failure_modes": [],
     "timestamp": "2026-07-15T13:27:03.186367"
+  },
+  "overly_frequent_insight_accelerator": {
+    "name": "overly_frequent_insight_accelerator",
+    "title": "Overly Frequent Insight Accelerator",
+    "code_hash": "68b0d9a6d6209c32",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Overly Frequent Insight Accelerator\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-15\n \nDescription:\n    This guardrail detects and limits instances where AI-generated insights are being requested at an excessively high frequency, potentially hindering human reflection and critical thinking. It blocks or flags such requests to ensure a more balanced interaction between human and AI.\n \nRationale:\n    This matters for protecting human cognition because excessive reliance on rapid AI-generated insights can impede the development of human critical thinking skil",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 31,
+      "behavioral": {
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/overly_frequent_insight_accelerator.p"
+      },
+      "total": 31
+    },
+    "diversity": 0.728,
+    "failure_modes": [
+      "charter:The code does not align with the charter's principles as it attempts to block or flag requests based on predefined patterns, potentially replacing user judgment rather than protecting it, and its confidence calculation and blocking logic may not be transparent or auditable."
+    ],
+    "timestamp": "2026-07-15T19:04:28.089597"
   }
 }
