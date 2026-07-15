@@ -4075,5 +4075,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-14T19:12:24.466763"
+  },
+  "overconfidence_feedback_loop_detector": {
+    "name": "overconfidence_feedback_loop_detector",
+    "title": "Overconfidence Feedback Loop Detector",
+    "code_hash": "8e40b59b6135bf33",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nimport math\n\n@dataclass\nclass OverconfidenceSignals:\n    \"\"\"Dataclass to hold overconfidence signals.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    lexical_diversity: float\n    sentence_ratio: float\n\ndef calculate_overconfidence_signals(input_text: str) -> OverconfidenceSignals:\n    \"\"\"\n    Calculate overconfidence signals from the input text.\n\n    Args:\n    input_text (str): The input text to analyze.\n\n    Returns:\n    OverconfidenceSignals: A dataclass containing the calculated overc",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.308,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-15T02:00:26.856165"
   }
 }
