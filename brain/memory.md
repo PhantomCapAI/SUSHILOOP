@@ -2185,3 +2185,12 @@
 }
 ```
 ---
+
+## [2026-07-15T08:00:25.797233] Cycle 244: CycleResult.REJECTED
+```json
+{
+  "proposal": "Interrogation Depth Limiter",
+  "skill": "interrogation_depth_limiter"
+}
+```
+---
