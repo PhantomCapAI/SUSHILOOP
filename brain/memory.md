@@ -2239,3 +2239,12 @@
 }
 ```
 ---
+
+## [2026-07-16T19:03:20.115676] Cycle 250: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overrepresented Demographic Flagger",
+  "skill": "overrepresented_demographic_flagger"
+}
+```
+---
