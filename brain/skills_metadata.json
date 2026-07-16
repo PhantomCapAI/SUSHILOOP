@@ -964,30 +964,29 @@
   "ambiguous_terminology_clarifier": {
     "name": "ambiguous_terminology_clarifier",
     "title": "Ambiguous Terminology Clarifier",
-    "code_hash": "6e0138da37894a5a",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass AmbiguitySignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g., always, never) to total words.\n    \"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|all|none|every)\\b', input_text, re.IGNORECASE)\n    total_words = len(input_text.split())\n    return len(absolute_terms) / total_words if total_words > 0 else 0.0\n\ndef calculate_hedge_density",
+    "code_hash": "749fb7be19c1ee74",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Ambiguous Terminology Clarifier\n \nCategory: SkillCategory.VERIFICATION_PROMPT\nGenerated: 2026-07-16\n \nDescription:\n    This skill detects and prompts users to clarify ambiguous terms in their input, helping to prevent AI from making incorrect assumptions and ensuring more accurate understanding. It identifies phrases with multiple possible meanings and suggests rephrasing for better clarity.\n \nRationale:\n    This skill matters for protecting human cognition because it helps users recognize and address potential ambiguities in their communication, reducing the risk of A",
     "score": {
-      "tests_pass": 10,
+      "tests_pass": 0,
       "complexity": 10,
       "structure": 10,
-      "documentation": 10,
-      "strategies": 1,
-      "static_total": 41,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 31,
       "behavioral": {
-        "robustness": 10,
-        "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
-        "probes_raised": 0,
-        "probes_valid": 7
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/ambiguous_terminology_clarifier.py'"
       },
-      "total": 60
+      "total": 31
     },
-    "diversity": 0.431,
+    "diversity": 0.651,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
+      "charter:The code does not align with the charter's principles as it appears to be detecting specific patterns and blocking input based on those patterns, which could be seen as replacing user judgment rather than protecting it, and the confidence score is calculated based on the number of matches which may "
     ],
-    "timestamp": "2026-06-01T21:28:33.824836"
+    "timestamp": "2026-07-16T02:10:00.663615"
   },
   "rapid_iteration_detector": {
     "name": "rapid_iteration_detector",
