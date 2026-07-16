@@ -4154,5 +4154,33 @@
       "charter:The code does not align with the charter's principles as it attempts to block or flag requests based on predefined patterns, potentially replacing user judgment rather than protecting it, and its confidence calculation and blocking logic may not be transparent or auditable."
     ],
     "timestamp": "2026-07-15T19:04:28.089597"
+  },
+  "inferred_attribute_shield": {
+    "name": "inferred_attribute_shield",
+    "title": "Inferred Attribute Shield",
+    "code_hash": "936647d189e72968",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass InferredAttribute:\n    \"\"\"Data class to hold the inferred attribute details.\"\"\"\n    category: str\n    details: Dict[str, str]\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms in the input text.\n    \n    Args:\n    input_text (str): The input text to analyze.\n    \n    Returns:\n    float: The ratio of absolute terms in the input text.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"every\", \"all\"]\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.449,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-16T13:40:54.934375"
   }
 }
