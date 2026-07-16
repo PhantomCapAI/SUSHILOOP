@@ -400,5 +400,11 @@
     "category": "CONTENT_SAFETY",
     "cycle": 245,
     "created_at": "2026-07-15T13:27:03.183944"
+  },
+  "overexplanation_detector": {
+    "title": "Overexplanation Detector",
+    "category": "COGNITIVE_PROTECTION",
+    "cycle": 248,
+    "created_at": "2026-07-16T08:05:22.631117"
   }
 }
