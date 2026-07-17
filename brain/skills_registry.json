@@ -406,5 +406,11 @@
     "category": "COGNITIVE_PROTECTION",
     "cycle": 248,
     "created_at": "2026-07-16T08:05:22.631117"
+  },
+  "overrepresented_demographic_flagger": {
+    "title": "Overrepresented Demographic Flagger",
+    "category": "BIAS_DETECTION",
+    "cycle": 254,
+    "created_at": "2026-07-17T19:00:49.403512"
   }
 }

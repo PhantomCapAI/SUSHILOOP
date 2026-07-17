@@ -4188,8 +4188,8 @@
   "overrepresented_demographic_flagger": {
     "name": "overrepresented_demographic_flagger",
     "title": "Overrepresented Demographic Flagger",
-    "code_hash": "d1e68e93f78b4b40",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass DemographicFlaggerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef overrepresented_demographic_flagger(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects and flags instances where a specific demographic group is overrepresented in a given text,\n    potentially indicating biased representation or stereotyping.\n\n    This function analyzes the text for disproportionate mentions of certain demographics and alerts the ",
+    "code_hash": "1dfea863ef026d61",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef overrepresented_demographic_flagger(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects and flags instances where a particular demographic is overrepresented in the AI-generated content.\n\n    This function analyzes the frequency of demographic mentions and compares it to a pre-defined threshold.\n    It combines multiple signals, including weighted pattern matches, st",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -4199,19 +4199,17 @@
       "static_total": 44,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
-        "calibration": 7,
-        "behavioral_total": 17,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 61
+      "total": 69
     },
-    "diversity": 0.571,
-    "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
-    ],
-    "timestamp": "2026-07-16T19:03:20.099216"
+    "diversity": 0.403,
+    "failure_modes": [],
+    "timestamp": "2026-07-17T19:00:49.405635"
   },
   "sequential_dependency_tracker": {
     "name": "sequential_dependency_tracker",
