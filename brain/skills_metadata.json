@@ -4210,5 +4210,33 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-07-16T19:03:20.099216"
+  },
+  "sequential_dependency_tracker": {
+    "name": "sequential_dependency_tracker",
+    "title": "Sequential Dependency Tracker",
+    "code_hash": "b0c55e1f654f3ee7",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Sequential Dependency Tracker\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-17\n \nDescription:\n    This skill detects and limits sequences of AI-generated responses that depend heavily on previous responses, preventing over-reliance on AI-generated context. It tracks the frequency and density of sequential dependencies in AI responses.\n \nRationale:\n    By limiting the sequential dependency of AI responses, we can encourage humans to engage more actively with the conversation, rather than passively relying on AI-generated context. This helps to protect human",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 56
+    },
+    "diversity": 0.674,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-07-17T02:12:53.429571"
   }
 }
