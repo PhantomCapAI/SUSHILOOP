@@ -4324,5 +4324,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-18T13:04:29.890019"
+  },
+  "overly_prescriptive_guidance_detector": {
+    "name": "overly_prescriptive_guidance_detector",
+    "title": "Overly Prescriptive Guidance Detector",
+    "code_hash": "e1d69fc74ce9a3df",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Overly Prescriptive Guidance Detector\n \nCategory: SkillCategory.CONTENT_SAFETY\nGenerated: 2026-07-18\n \nDescription:\n    This skill detects and flags instances where AI-generated content provides overly prescriptive guidance, potentially undermining human agency and critical thinking. It identifies patterns of language that imply a single, inflexible course of action.\n \nRationale:\n    This skill matters for protecting human cognition because it helps prevent the erosion of human decision-making capabilities. By detecting overly prescriptive guidance, we can ensure that ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 7,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 59
+    },
+    "diversity": 0.659,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-07-18T18:56:57.044703"
   }
 }

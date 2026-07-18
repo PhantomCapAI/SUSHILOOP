@@ -2311,3 +2311,12 @@
 }
 ```
 ---
+
+## [2026-07-18T18:56:57.059779] Cycle 258: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overly Prescriptive Guidance Detector",
+  "skill": "overly_prescriptive_guidance_detector"
+}
+```
+---
