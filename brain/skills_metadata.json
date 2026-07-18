@@ -1813,8 +1813,8 @@
   "actionable_step_verifier": {
     "name": "actionable_step_verifier",
     "title": "Actionable-Step Verifier",
-    "code_hash": "63bd5cfba25f9057",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass ActionableStepVerifierResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Mission: Verify actionable steps in user input to prevent ask-accept-move-on behavior.\n\n    This function combines multiple signals to detect potential actionable steps in the input text.\n    It returns a dictionary with a graded confidence score, indicating the likelihood of the input conta",
+    "code_hash": "46e0c74febb5477c",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass ActionableStepVerifierResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Verifies if the input text contains actionable steps that require verification before acting.\n\n    This function combines multiple signals to determine the confidence level of the input text.\n    The signals used are:\n    - Absolute terms density: The ratio of absolute terms (e.g., \"always\",",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -1824,17 +1824,19 @@
       "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 5,
-        "calibration": 10,
-        "behavioral_total": 25,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 66
+      "total": 60
     },
-    "diversity": 0.588,
-    "failure_modes": [],
-    "timestamp": "2026-07-07T09:33:55.529376"
+    "diversity": 0.485,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-18T07:41:36.395799"
   },
   "overly_simplistic_explanation_detector": {
     "name": "overly_simplistic_explanation_detector",
