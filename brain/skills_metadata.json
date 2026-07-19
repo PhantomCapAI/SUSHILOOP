@@ -1537,8 +1537,8 @@
   "re_ask_loop_breaker": {
     "name": "re_ask_loop_breaker",
     "title": "Re-ask Loop Breaker",
-    "code_hash": "d1b7be5d21dc5219",
-    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef re_ask_loop_breaker(input_text: str) -> Dict:\n    \"\"\"\n    Detects the user re-asking the same thing in slightly different words and suggests stepping back to think.\n\n    This function combines multiple signals to detect re-ask loops, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term density\n    - Sentence structure similarity\n\n    Args:\n        input_text (str): The user's input text.\n\n    Returns:\n        Dict: A dictionary containing the following keys:\n            - blocked (bool): Wh",
+    "code_hash": "cf26f7e4aa8e6945",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass ReAskLoopBreakerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef re_ask_loop_breaker(input_text: str) -> Dict:\n    \"\"\"\n    Detects the user re-asking the same thing in slightly different words and suggests stepping back to think.\n\n    This function combines multiple signals to detect re-ask loops, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term density\n    - Sentence structure similar",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -1556,9 +1556,9 @@
       },
       "total": 71
     },
-    "diversity": 0.333,
+    "diversity": 0.418,
     "failure_modes": [],
-    "timestamp": "2026-07-12T02:22:05.968538"
+    "timestamp": "2026-07-19T02:13:36.391141"
   },
   "inconsistent_identifier_detector": {
     "name": "inconsistent_identifier_detector",

@@ -1,6 +1,15 @@
 import re
-from collections import Counter
 from typing import Dict
+from dataclasses import dataclass
+from collections import Counter
+
+@dataclass
+class ReAskLoopBreakerResult:
+    blocked: bool
+    reason: str
+    confidence: float
+    category: str
+    details: Dict
 
 def re_ask_loop_breaker(input_text: str) -> Dict:
     """
@@ -12,81 +21,78 @@ def re_ask_loop_breaker(input_text: str) -> Dict:
     - Overgeneral term density
     - Sentence structure similarity
 
+    The confidence score is a weighted sum of these signals, clamped to [0.0, 1.0].
+    The `blocked` decision is based on a threshold of 0.5.
+
     Args:
         input_text (str): The user's input text.
 
     Returns:
-        Dict: A dictionary containing the following keys:
-            - blocked (bool): Whether the input text is likely a re-ask loop.
-            - reason (str): A brief explanation for the decision.
-            - confidence (float): A graded confidence score between 0.0 and 1.0.
-            - category (str): The category of the detected pattern.
-            - details (Dict): Additional details about the detection.
+        Dict: A dictionary containing the result, including `blocked`, `reason`, `confidence`, `category`, and `details`.
     """
     # SUSHILOOP input guard (auto-injected): never raise on bad input.
     if not isinstance(input_text, str) or not input_text.strip():
         return {"blocked": False, "reason": "empty_or_invalid_input",
                 "confidence": 0.0, "category": "none", "details": {}}
 
-    # Preprocess the input text
-    input_text = input_text.lower()
-    sentences = re.split(r'[.!?]', input_text)
-    sentences = [s.strip() for s in sentences if s]
+    # Tokenize the input text
+    tokens = re.findall(r'\b\w+\b', input_text.lower())
 
     # Calculate absolute term density
-    absolute_terms = ['always', 'never', 'every', 'all']
-    absolute_count = sum(1 for sentence in sentences for term in absolute_terms if term in sentence)
-    absolute_ratio = absolute_count / (len(sentences) or 1)
+    absolute_terms = ['always', 'never', 'all', 'none']
+    absolute_term_count = sum(1 for token in tokens if token in absolute_terms)
+    absolute_term_ratio = absolute_term_count / len(tokens) if tokens else 0.0
 
     # Calculate hedge term density
-    hedge_terms = ['maybe', 'perhaps', 'possibly', 'could']
-    hedge_count = sum(1 for sentence in sentences for term in hedge_terms if term in sentence)
-    hedge_ratio = hedge_count / (len(sentences) or 1)
+    hedge_terms = ['maybe', 'possibly', 'could', 'might']
+    hedge_term_count = sum(1 for token in tokens if token in hedge_terms)
+    hedge_term_ratio = hedge_term_count / len(tokens) if tokens else 0.0
 
     # Calculate overgeneral term density
-    overgeneral_terms = ['thing', 'stuff', 'everything', 'nothing']
-    overgeneral_count = sum(1 for sentence in sentences for term in overgeneral_terms if term in sentence)
-    overgeneral_ratio = overgeneral_count / (len(sentences) or 1)
+    overgeneral_terms = ['everyone', 'nobody', 'everything', 'nothing']
+    overgeneral_term_count = sum(1 for token in tokens if token in overgeneral_terms)
+    overgeneral_term_ratio = overgeneral_term_count / len(tokens) if tokens else 0.0
 
     # Calculate sentence structure similarity
-    sentence_lengths = [len(sentence.split()) for sentence in sentences]
-    sentence_length_stddev = (sum((x - sum(sentence_lengths) / len(sentence_lengths)) ** 2 for x in sentence_lengths) / len(sentence_lengths)) ** 0.5 if sentence_lengths else 0
+    sentences = re.split(r'[.!?]', input_text)
+    sentence_lengths = [len(re.findall(r'\b\w+\b', sentence)) for sentence in sentences if sentence]
+    sentence_length_stddev = (sum((length - sum(sentence_lengths) / len(sentence_lengths)) ** 2 for length in sentence_lengths) / len(sentence_lengths)) ** 0.5 if sentence_lengths else 0.0
 
-    # Combine signals to calculate confidence
-    raw_score = 0.4 * absolute_ratio + 0.3 * hedge_ratio + 0.2 * overgeneral_ratio + 0.1 * (1 - sentence_length_stddev / (max(sentence_lengths) or 1))
+    # Calculate the confidence score
+    raw_score = 0.4 * absolute_term_ratio + 0.3 * hedge_term_ratio + 0.2 * overgeneral_term_ratio + 0.1 * sentence_length_stddev
     confidence = max(0.0, min(1.0, raw_score))
 
     # Determine the blocked decision
     blocked = confidence >= 0.5
 
-    # Return the result
-    return {
-        'blocked': blocked,
-        'reason': 'Re-ask loop detected' if blocked else 'No re-ask loop detected',
-        'confidence': confidence,
-        'category': 'Re-ask Loop',
-        'details': {
-            'absolute_ratio': absolute_ratio,
-            'hedge_ratio': hedge_ratio,
-            'overgeneral_ratio': overgeneral_ratio,
+    # Create the result dictionary
+    result = ReAskLoopBreakerResult(
+        blocked=blocked,
+        reason='Re-ask loop detected' if blocked else 'No re-ask loop detected',
+        confidence=confidence,
+        category='ReAskLoopBreaker',
+        details={
+            'absolute_term_ratio': absolute_term_ratio,
+            'hedge_term_ratio': hedge_term_ratio,
+            'overgeneral_term_ratio': overgeneral_term_ratio,
             'sentence_length_stddev': sentence_length_stddev
         }
-    }
+    )
+
+    return result.__dict__
 
 if __name__ == '__main__':
     test_cases = [
-        'I always wonder if I will ever find the answer.',
-        'Maybe I should just try something new.',
-        'Everything is possible if you just believe.',
-        'I am not sure what to do.',
-        'This is a test case with multiple sentences. It should not trigger the re-ask loop detector.'
+        'I always wonder if I will ever be able to do this.',
+        'Maybe I could try to do it, but I am not sure.',
+        'Everyone is going to love this, and nobody will hate it.',
+        'This is a simple sentence.',
+        'This is another simple sentence, and it is very similar to the previous one.'
     ]
 
     for test_case in test_cases:
         result = re_ask_loop_breaker(test_case)
-        print(f'Input: {test_case}')
-        print(f'Result: {result}')
-        print()
+        print(result)
 
 # SUSHILOOP contract normalizer (auto): clamp confidence into [0,1], guarantee dict shape
 _sushi_raw_re_ask_loop_breaker = re_ask_loop_breaker
