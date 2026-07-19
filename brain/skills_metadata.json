@@ -4378,5 +4378,31 @@
     "diversity": 0.375,
     "failure_modes": [],
     "timestamp": "2026-07-19T13:07:12.895321"
+  },
+  "inferential_identifier_detector": {
+    "name": "inferential_identifier_detector",
+    "title": "Inferential Identifier Detector",
+    "code_hash": "917ed0019dee5cc5",
+    "summary": "import re\nfrom typing import Dict\n\ndef inferential_identifier_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects and flags instances where AI-generated text inadvertently reveals personally identifiable information (PII) \n    through subtle inferential patterns, such as mentioning specific locations or relationships that could be used to \n    identify an individual.\n\n    Args:\n        input_text (str): The text to be analyzed for potential PII compromises.\n\n    Returns:\n        Dict: A dictionary containing the results of the analysis, including a boolean indicating whether the text \n     ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 75
+    },
+    "diversity": 0.5,
+    "failure_modes": [],
+    "timestamp": "2026-07-19T18:59:50.276856"
   }
 }
