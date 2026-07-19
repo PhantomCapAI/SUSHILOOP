@@ -412,5 +412,11 @@
     "category": "BIAS_DETECTION",
     "cycle": 254,
     "created_at": "2026-07-17T19:00:49.403512"
+  },
+  "overconfidence_mitigator": {
+    "title": "Overconfidence Mitigator",
+    "category": "COGNITIVE_PROTECTION",
+    "cycle": 261,
+    "created_at": "2026-07-19T13:07:12.893595"
   }
 }
