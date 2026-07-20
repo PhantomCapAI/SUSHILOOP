@@ -3697,30 +3697,29 @@
   "number_claim_spotlighter": {
     "name": "number_claim_spotlighter",
     "title": "Number-Claim Spotlighter",
-    "code_hash": "359864d03fe1940e",
-    "summary": "import re\nfrom typing import Dict\n\ndef number_claim_spotlighter(input_text: str) -> Dict:\n    \"\"\"\n    Highlights specific figures in output and asks the user to confirm the source before relying on them.\n\n    This function combines multiple signals to detect number claims in the input text. It calculates a graded confidence score based on the presence of absolute terms, hedge words, and overgeneral terms. The confidence score is then used to determine whether the input text is blocked or not.\n\n    Args:\n        input_text (str): The input text to be analyzed.\n\n    Returns:\n        Dict: A dict",
+    "code_hash": "f4da90a6325ae3e1",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Number-Claim Spotlighter\n \nCategory: SkillCategory.VERIFICATION_PROMPT\nGenerated: 2026-07-20\n \nDescription:\n    Highlights specific figures in output and asks the user to confirm the source before relying on them\n \nRationale:\n    Numbers feel authoritative and get accepted unchecked\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef number_claim_spotlighter(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Highlights specific figures in output and asks the user to confirm the source before relying on them\n \n    Returns dict with: blocked, reason, confidence, category, de",
     "score": {
-      "tests_pass": 10,
+      "tests_pass": 0,
       "complexity": 10,
       "structure": 10,
-      "documentation": 10,
-      "strategies": 1,
-      "static_total": 41,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 31,
       "behavioral": {
-        "robustness": 10,
-        "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
-        "probes_raised": 0,
-        "probes_valid": 17
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/number_claim_spotlighter.py'"
       },
-      "total": 60
+      "total": 31
     },
-    "diversity": 0.59,
+    "diversity": 0.679,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
+      "charter:The code does not align with the charter's principles as it appears to be checking for specific patterns and blocking the input based on those patterns, which could be seen as replacing user judgment rather than protecting it."
     ],
-    "timestamp": "2026-07-10T14:12:22.234767"
+    "timestamp": "2026-07-20T03:31:27.379949"
   },
   "premature_assumption_catcher": {
     "name": "premature_assumption_catcher",
