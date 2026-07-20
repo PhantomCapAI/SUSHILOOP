@@ -4403,5 +4403,33 @@
     "diversity": 0.5,
     "failure_modes": [],
     "timestamp": "2026-07-19T18:59:50.276856"
+  },
+  "incongruous_recommendation_detector": {
+    "name": "incongruous_recommendation_detector",
+    "title": "Incongruous Recommendation Detector",
+    "code_hash": "222558111f849c86",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    \"\"\"Result of the incongruous recommendation detector.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef incongruous_recommendation_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects when AI-generated output contains recommendations or suggestions that are not aligned with the user's goals or values.\n\n    This function combines multiple signals to detect incongruous recommendations, including:\n    - ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 58
+    },
+    "diversity": 0.603,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-07-20T13:56:25.579519"
   }
 }
