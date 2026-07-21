@@ -1,37 +1,10 @@
 {
-  "cycle_count": 268,
+  "cycle_count": 269,
   "total_skills": 73,
   "success_count": 78,
   "failure_count": 8,
-  "last_run": "2026-07-21T08:20:28.386667",
+  "last_run": "2026-07-21T13:28:48.015581",
   "history": [
-    {
-      "cycle_number": 169,
-      "proposal": {
-        "id": "b22d9693-3332-44e2-9149-4e5932476e74",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Sequential Query Burst Limiter",
-        "description": "This skill detects and limits sequences of similar queries made in rapid succession, preventing overreliance on AI for exploratory thinking, and encouraging humans to reflect on their own thought process. It analyzes query patterns to identify bursts of similar questions, triggering a cooldown period to prompt human introspection",
-        "rationale": "By limiting sequential query bursts, this skill protects human cognition by preventing the formation of habits that rely excessively on AI for idea generation or problem-solving, thereby promoting more balanced and reflective thinking",
-        "success_criteria": [
-          "Reduces average query burst length by 30%",
-          "Increases human response time to queries by 25%",
-          "Decreases overall query volume by 10%"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-06-29T15:39:02.712116"
-      },
-      "result": "REJECTED",
-      "skill_generated": "sequential_query_burst_limiter",
-      "test_results": [],
-      "timestamp": "2026-06-29T15:39:02.713507",
-      "error_message": null
-    },
     {
       "cycle_number": 170,
       "proposal": {
@@ -8465,6 +8438,100 @@
         }
       ],
       "timestamp": "2026-07-21T08:20:28.386667",
+      "error_message": null
+    },
+    {
+      "cycle_number": 269,
+      "proposal": {
+        "id": "5fc0f8af-8770-4c2a-bce1-098a27e0eea5",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Unsubstantiated Claim Sentinel",
+        "description": "Detects and flags statements that assert a claim without providing sufficient evidence or credible sources to support it, prompting the user to verify the information through additional research or fact-checking.",
+        "rationale": "This skill protects human cognition by preventing the spread of misinformation and encouraging critical thinking, media literacy, and the evaluation of evidence when encountering unsubstantiated claims.",
+        "success_criteria": [
+          "Identifies claims lacking credible sources",
+          "Flags statements with unverifiable information",
+          "Prompts user to verify information through fact-checking"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete UnsubstantiatedClaimSentinel.py from skills/",
+        "created_at": "2026-07-21T13:28:48.013823"
+      },
+      "result": "REJECTED",
+      "skill_generated": "unsubstantiated_claim_sentinel",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:unsubstantiated_claim_sentinel",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0010902881622314453
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000010728836059570312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000021696090698242188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010728836059570312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000010728836059570312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 5.7220458984375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0011069774627685547
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000014543533325195312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.6689300537109375e-6
+        }
+      ],
+      "timestamp": "2026-07-21T13:28:48.015581",
       "error_message": null
     }
   ]

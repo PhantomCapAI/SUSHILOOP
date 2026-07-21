@@ -2410,3 +2410,12 @@
 }
 ```
 ---
+
+## [2026-07-21T13:28:51.004548] Cycle 269: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unsubstantiated Claim Sentinel",
+  "skill": "unsubstantiated_claim_sentinel"
+}
+```
+---
