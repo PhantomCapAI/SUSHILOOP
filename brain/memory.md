@@ -2419,3 +2419,12 @@
 }
 ```
 ---
+
+## [2026-07-21T19:13:43.247990] Cycle 270: CycleResult.REJECTED
+```json
+{
+  "proposal": "Fabricated Citation Flagger",
+  "skill": "fabricated_citation_flagger"
+}
+```
+---
