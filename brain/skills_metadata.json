@@ -4431,5 +4431,31 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-07-20T13:56:25.579519"
+  },
+  "tone_mirroring_detector": {
+    "name": "tone_mirroring_detector",
+    "title": "Tone Mirroring Detector",
+    "code_hash": "96b398fa99fbd9a9",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass ToneMirroringResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g., always, never) in the text.\n    \"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|all|none)\\b', text, re.IGNORECASE)\n    word_count = len(re.findall(r'\\b\\w+\\b', text))\n    return len(absolute_terms) / word_count if word_count > 0 else 0.0\n\ndef calculate_hedge_dens",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 63
+    },
+    "diversity": 0.304,
+    "failure_modes": [],
+    "timestamp": "2026-07-21T02:12:52.413298"
   }
 }

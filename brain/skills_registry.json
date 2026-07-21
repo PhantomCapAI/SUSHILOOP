@@ -424,5 +424,11 @@
     "category": "PII_DETECTION",
     "cycle": 262,
     "created_at": "2026-07-19T18:59:50.275127"
+  },
+  "tone_mirroring_detector": {
+    "title": "Tone Mirroring Detector",
+    "category": "BIAS_DETECTION",
+    "cycle": 267,
+    "created_at": "2026-07-21T02:12:52.411673"
   }
 }
