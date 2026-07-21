@@ -3970,30 +3970,28 @@
   "deliberation_pace_nudger": {
     "name": "deliberation_pace_nudger",
     "title": "Deliberation-Pace Nudger",
-    "code_hash": "354863384498f13c",
-    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\nimport math\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms in the input text.\n\n    :param text: Input text\n    :return: Ratio of absolute terms\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"every\", \"all\"]\n    words = re.findall(r'\\b\\w+\\b', text.lower())\n    absolute_count = sum(1 for word in words if word in absolute_terms)\n    return absolute_count / len(words) if words else 0.0\n\ndef calculate_hedge_density(text: str) -> float:\n    \"\"\"\n    Calculate the density of hedgi",
+    "code_hash": "261d959c5a42fcab",
+    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DeliberationPaceNudgerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef count_sentences(text: str) -> int:\n    \"\"\"Count the number of sentences in a given text.\"\"\"\n    return text.count('.') + text.count('!') + text.count('?')\n\ndef count_words(text: str) -> int:\n    \"\"\"Count the number of words in a given text.\"\"\"\n    return len(text.split())\n\ndef count_clauses(text: str) -> int:\n    \"\"\"Count the number of claus",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
+      "documentation": 10,
       "strategies": 7,
-      "static_total": 44,
+      "static_total": 47,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
-        "calibration": 7,
-        "behavioral_total": 17,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 61
+      "total": 72
     },
-    "diversity": 0.351,
-    "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
-    ],
-    "timestamp": "2026-07-13T19:18:21.286416"
+    "diversity": 0.509,
+    "failure_modes": [],
+    "timestamp": "2026-07-21T08:20:31.689230"
   },
   "unsubstantiated_claim_detector": {
     "name": "unsubstantiated_claim_detector",
