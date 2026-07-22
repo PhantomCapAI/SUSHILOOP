@@ -2455,3 +2455,12 @@
 }
 ```
 ---
+
+## [2026-07-22T19:08:06.558646] Cycle 274: CycleResult.REJECTED
+```json
+{
+  "proposal": "Rapid Fire Inference Limiter",
+  "skill": "rapid_fire_inference_limiter"
+}
+```
+---
