@@ -4483,5 +4483,33 @@
       "shallow:discrimination=2,behavioral_total=22"
     ],
     "timestamp": "2026-07-21T13:28:50.987814"
+  },
+  "tautology_trap_detector": {
+    "name": "tautology_trap_detector",
+    "title": "Tautology Trap Detector",
+    "code_hash": "895b8ea34818c9a9",
+    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef tautology_trap_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects tautological statements in AI responses and flags instances of circular reasoning.\n\n    This function combines multiple signals to determine the confidence of a tautological statement.\n    It calculates the ratio of absolute terms, hedge density, and the presence of overgeneral terms.\n    The confidence is then clamped between 0.0 and 1.0.\n\n    Args:\n        input_text (str): The input text to be analyzed.\n\n    Returns:\n        Dict: ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 58
+    },
+    "diversity": 0.556,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-07-22T02:10:55.352395"
   }
 }

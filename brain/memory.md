@@ -2428,3 +2428,12 @@
 }
 ```
 ---
+
+## [2026-07-22T02:10:55.369980] Cycle 271: CycleResult.REJECTED
+```json
+{
+  "proposal": "Tautology Trap Detector",
+  "skill": "tautology_trap_detector"
+}
+```
+---
