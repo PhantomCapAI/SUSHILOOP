@@ -1,90 +1,100 @@
 import re
 from typing import Dict
 from dataclasses import dataclass
+from math import log
 
 @dataclass
-class DetectionResult:
-    blocked: bool
-    reason: str
-    confidence: float
-    category: str
-    details: Dict[str, float]
+class Signal:
+    name: str
+    weight: float
+    value: float
+
+def calculate_absolutes_ratio(input_text: str) -> float:
+    """
+    Calculate the ratio of absolute terms (e.g., "always", "never") to total words.
+    """
+    absolute_terms = re.findall(r"\b(always|never|all|none)\b", input_text, re.IGNORECASE)
+    words = re.findall(r"\b\w+\b", input_text)
+    return len(absolute_terms) / max(len(words), 1)
+
+def calculate_hedge_density(input_text: str) -> float:
+    """
+    Calculate the density of hedging terms (e.g., "maybe", "possibly") in the input text.
+    """
+    hedge_terms = re.findall(r"\b(maybe|possibly|perhaps|could|might)\b", input_text, re.IGNORECASE)
+    sentences = re.findall(r"[.!?]", input_text)
+    return len(hedge_terms) / max(len(sentences), 1)
+
+def calculate_overgeneral_terms(input_text: str) -> float:
+    """
+    Calculate the frequency of overgeneral terms (e.g., "everyone", "nobody") in the input text.
+    """
+    overgeneral_terms = re.findall(r"\b(everyone|nobody|everybody|noone)\b", input_text, re.IGNORECASE)
+    words = re.findall(r"\b\w+\b", input_text)
+    return len(overgeneral_terms) / max(len(words), 1)
+
+def calculate_lexical_diversity(input_text: str) -> float:
+    """
+    Calculate the lexical diversity of the input text, i.e., the ratio of unique words to total words.
+    """
+    words = re.findall(r"\b\w+\b", input_text)
+    unique_words = set(words)
+    return len(unique_words) / max(len(words), 1)
 
 def self_harm_routing_guard(input_text: str) -> Dict:
     """
-    Detects distress signals in the input text and ensures the path to human/professional support is surfaced.
+    Detects distress signals in the input text and returns a dictionary with the results.
 
-    The model combines multiple signals to detect distress, including:
-    - Absolute term density: the ratio of absolute terms (e.g., "always", "never") to total words
-    - Hedge density: the ratio of hedge terms (e.g., "maybe", "possibly") to total words
-    - Overgeneralization term density: the ratio of overgeneralization terms (e.g., "everyone", "nobody") to total words
-    - Sentence complexity: the average number of clauses per sentence
+    The mission of this function is to scaffold, not substitute, real support by detecting
+    potential self-harm signals and providing a graded confidence score. The function combines
+    multiple signals, including absolute terms ratio, hedge density, overgeneral terms frequency,
+    and lexical diversity, to produce a confidence score that varies with the input text.
 
-    The confidence score is a weighted sum of these signals, clamped to the range [0.0, 1.0].
-    The `blocked` flag is set to True if the confidence score exceeds a threshold of 0.5.
+    Args:
+        input_text (str): The input text to be analyzed.
 
-    :param input_text: The input text to analyze
-    :return: A dictionary containing the detection result, including the `blocked` flag, `reason`, `confidence` score, `category`, and `details`
+    Returns:
+        Dict: A dictionary with the following keys:
+            - blocked (bool): Whether the input text is blocked based on the confidence score.
+            - reason (str): A brief reason for the blocking decision.
+            - confidence (float): A graded confidence score between 0.0 and 1.0.
+            - category (str): The category of the detected signal (e.g., "self-harm").
+            - details (Dict): Additional details about the detected signal.
     """
     # SUSHILOOP input guard (auto-injected): never raise on bad input.
     if not isinstance(input_text, str) or not input_text.strip():
         return {"blocked": False, "reason": "empty_or_invalid_input",
                 "confidence": 0.0, "category": "none", "details": {}}
+    signals = [
+        Signal("absolutes_ratio", 0.5, calculate_absolutes_ratio(input_text)),
+        Signal("hedge_density", 0.3, calculate_hedge_density(input_text)),
+        Signal("overgeneral_terms", 0.2, calculate_overgeneral_terms(input_text)),
+        Signal("lexical_diversity", 0.0, calculate_lexical_diversity(input_text)),
+    ]
 
-    # Tokenize the input text into words
-    words = re.findall(r'\b\w+\b', input_text.lower())
-
-    # Calculate the absolute term density
-    absolute_terms = ["always", "never", "all", "none"]
-    absolute_term_count = sum(1 for word in words if word in absolute_terms)
-    absolute_term_density = absolute_term_count / len(words) if words else 0.0
-
-    # Calculate the hedge density
-    hedge_terms = ["maybe", "possibly", "perhaps", "could"]
-    hedge_term_count = sum(1 for word in words if word in hedge_terms)
-    hedge_density = hedge_term_count / len(words) if words else 0.0
-
-    # Calculate the overgeneralization term density
-    overgeneralization_terms = ["everyone", "nobody", "everybody", "noone"]
-    overgeneralization_term_count = sum(1 for word in words if word in overgeneralization_terms)
-    overgeneralization_term_density = overgeneralization_term_count / len(words) if words else 0.0
-
-    # Calculate the sentence complexity
-    sentences = re.split(r'[.!?]', input_text)
-    sentence_complexity = sum(len(re.findall(r'\b\w+\b', sentence)) for sentence in sentences) / len(sentences) if sentences else 0.0
-
-    # Calculate the weighted sum of the signals
-    raw_score = 0.4 * absolute_term_density + 0.3 * hedge_density + 0.2 * overgeneralization_term_density + 0.1 * sentence_complexity
-
-    # Clamp the confidence score to the range [0.0, 1.0]
+    raw_score = sum(signal.weight * signal.value for signal in signals)
     confidence = max(0.0, min(1.0, raw_score))
 
-    # Set the blocked flag based on the confidence score
     blocked = confidence >= 0.5
+    reason = "Potential self-harm signal detected" if blocked else "No self-harm signal detected"
+    category = "self-harm"
+    details = {signal.name: signal.value for signal in signals}
 
-    # Create the detection result dictionary
-    result = {
+    return {
         "blocked": blocked,
-        "reason": "Distress signals detected" if blocked else "No distress signals detected",
+        "reason": reason,
         "confidence": confidence,
-        "category": "Self-harm" if blocked else "Benign",
-        "details": {
-            "absolute_term_density": absolute_term_density,
-            "hedge_density": hedge_density,
-            "overgeneralization_term_density": overgeneralization_term_density,
-            "sentence_complexity": sentence_complexity
-        }
+        "category": category,
+        "details": details,
     }
-
-    return result
 
 if __name__ == "__main__":
     test_cases = [
         "I'm feeling really down and I don't know what to do.",
         "I'm just having a bad day, but I'll be fine.",
-        "I've been feeling hopeless for weeks and I don't see a way out.",
+        "Everyone hates me and I'm a total failure.",
+        "I'm not sure what's going on, but I'm feeling a bit overwhelmed.",
         "I'm just tired and need to get some rest.",
-        "I've been thinking about ending it all, but I don't know if I can go through with it."
     ]
 
     for test_case in test_cases:

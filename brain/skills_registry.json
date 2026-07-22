@@ -338,8 +338,8 @@
   "self_harm_routing_guard": {
     "title": "Self-Harm Routing Guard",
     "category": "CONTENT_SAFETY",
-    "cycle": 209,
-    "created_at": "2026-07-06T15:22:23.758602"
+    "cycle": 273,
+    "created_at": "2026-07-22T13:41:11.994765"
   },
   "emotive_language_amplifier_detector": {
     "title": "Emotive Language Amplifier Detector",
