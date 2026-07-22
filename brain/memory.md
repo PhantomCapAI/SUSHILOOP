@@ -2437,3 +2437,12 @@
 }
 ```
 ---
+
+## [2026-07-22T08:20:48.220618] Cycle 272: CycleResult.REJECTED
+```json
+{
+  "proposal": "Rapid Inference Chains Detector",
+  "skill": "rapid_inference_chains_detector"
+}
+```
+---
