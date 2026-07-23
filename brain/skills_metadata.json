@@ -4592,5 +4592,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-23T02:22:28.449685"
+  },
+  "implicit_assumption_highlighter": {
+    "name": "implicit_assumption_highlighter",
+    "title": "Implicit Assumption Highlighter",
+    "code_hash": "06c22754e6c8b1c9",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass ImplicitAssumptionHighlighterResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef implicit_assumption_highlighter(input_text: str) -> Dict:\n    \"\"\"\n    Identifies and flags instances where AI responses contain implicit assumptions \n    that may not be explicitly stated, promoting critical thinking and evaluation \n    of AI outputs.\n\n    Args:\n    input_text (str): The input text to be evaluated.\n\n    Returns:\n    D",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 58
+    },
+    "diversity": 0.638,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-07-23T13:47:03.729748"
   }
 }
