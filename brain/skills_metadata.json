@@ -4564,5 +4564,33 @@
       "charter:The code does not align with the charter's principles as it attempts to limit the rate of inferences but does so in a way that could potentially replace user judgment by automatically blocking input based on predefined patterns, and its confidence calculation and blocking logic may not be transparen"
     ],
     "timestamp": "2026-07-22T19:08:06.541054"
+  },
+  "effortless_answer_warner": {
+    "name": "effortless_answer_warner",
+    "title": "Effortless-Answer Warner",
+    "code_hash": "f9d308e3b97c3e7c",
+    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef effortless_answer_warner(input_text: str) -> Dict:\n    \"\"\"\n    Detects requests to fully outsource a task the user could reason through, \n    and offers a scaffold instead of a finished answer.\n\n    Args:\n    input_text (str): The input text to be analyzed.\n\n    Returns:\n    dict: A dictionary containing the result of the analysis, with the following keys:\n        - blocked (bool): Whether the input text is blocked or not.\n        - reason (str): The reason for blocking the input text.\n        - confidence (float): The conf",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.658,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-23T02:22:28.449685"
   }
 }
