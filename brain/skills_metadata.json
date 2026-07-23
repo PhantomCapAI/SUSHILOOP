@@ -3968,28 +3968,30 @@
   "deliberation_pace_nudger": {
     "name": "deliberation_pace_nudger",
     "title": "Deliberation-Pace Nudger",
-    "code_hash": "261d959c5a42fcab",
-    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DeliberationPaceNudgerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef count_sentences(text: str) -> int:\n    \"\"\"Count the number of sentences in a given text.\"\"\"\n    return text.count('.') + text.count('!') + text.count('?')\n\ndef count_words(text: str) -> int:\n    \"\"\"Count the number of words in a given text.\"\"\"\n    return len(text.split())\n\ndef count_clauses(text: str) -> int:\n    \"\"\"Count the number of claus",
+    "code_hash": "108b80e72e966519",
+    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DeliberationPaceNudgerResult:\n    \"\"\"Result of the Deliberation Pace Nudger\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the text\"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    words = re.findall(r'\\b\\w+\\b', text.lower())\n    absolute_count = sum(1 for word in words if word in absolute_terms)\n    return",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 7,
-      "static_total": 47,
+      "strategies": 4,
+      "static_total": 44,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 5,
-        "calibration": 10,
-        "behavioral_total": 25,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 72
+      "total": 61
     },
-    "diversity": 0.509,
-    "failure_modes": [],
-    "timestamp": "2026-07-21T08:20:31.689230"
+    "diversity": 0.327,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-07-23T19:07:59.482885"
   },
   "unsubstantiated_claim_detector": {
     "name": "unsubstantiated_claim_detector",
