@@ -436,5 +436,11 @@
     "category": "RATE_LIMITING",
     "cycle": 268,
     "created_at": "2026-07-21T08:20:31.687393"
+  },
+  "pasted_credential_catcher": {
+    "title": "Pasted Credential Catcher",
+    "category": "PII_DETECTION",
+    "cycle": 279,
+    "created_at": "2026-07-24T02:13:27.569146"
   }
 }
