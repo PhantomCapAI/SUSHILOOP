@@ -4676,5 +4676,32 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-24T08:19:22.949733"
+  },
+  "rapid_inference_limiter": {
+    "name": "rapid_inference_limiter",
+    "title": "Rapid Inference Limiter",
+    "code_hash": "dd46908bd9b57ed0",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Rapid Inference Limiter\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-24\n \nDescription:\n    This skill detects and limits instances where AI-generated responses are provided at an unnaturally rapid pace, potentially hindering human reflection and critical thinking. It monitors the time gap between user queries and AI responses, flagging sequences that exceed a certain threshold of rapidity.\n \nRationale:\n    Protecting human cognition requires ensuring that individuals have sufficient time to process and reflect on information. By limiting the rapidity of A",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 31,
+      "behavioral": {
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/rapid_inference_limiter.py'"
+      },
+      "total": 31
+    },
+    "diversity": 0.614,
+    "failure_modes": [
+      "charter:The code does not align with the charter's principles as it appears to be checking for specific patterns in the input text and blocking based on those patterns, but it does not provide a clear reasoning for the blocking decision and does not seem to be primarily focused on protecting human cognition"
+    ],
+    "timestamp": "2026-07-24T13:26:53.209129"
   }
 }
