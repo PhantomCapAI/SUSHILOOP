@@ -2990,8 +2990,8 @@
   "fabricated_citation_flagger": {
     "name": "fabricated_citation_flagger",
     "title": "Fabricated Citation Flagger",
-    "code_hash": "cdb05fe7d4cb4699",
-    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass FabricatedCitationSignals:\n    \"\"\"Dataclass to hold the signals used for fabricated citation detection\"\"\"\n    weighted_pattern_matches: float\n    sentence_count: int\n    clause_count: int\n    lexical_diversity: float\n    hedging_density: float\n    absolute_term_density: float\n\ndef calculate_lexical_diversity(input_text: str) -> float:\n    \"\"\"Calculate the lexical diversity of the input text\"\"\"\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    unique_words = set(words)\n    return len(uniqu",
+    "code_hash": "7685182bd9ae7581",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass FabricatedCitationSignals:\n    \"\"\"Dataclass to hold the signals used to detect fabricated citations.\"\"\"\n    doi_pattern_matches: int\n    case_name_pattern_matches: int\n    sentence_count: int\n    lexical_diversity: float\n    hedging_term_density: float\n\ndef calculate_lexical_diversity(input_text: str) -> float:\n    \"\"\"Calculate the lexical diversity of the input text.\"\"\"\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    unique_words = set(words)\n    if len(words) == 0:\n        re",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -3001,19 +3001,19 @@
       "static_total": 50,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
+        "discrimination": 2,
         "calibration": 7,
-        "behavioral_total": 17,
+        "behavioral_total": 19,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 67
+      "total": 69
     },
-    "diversity": 0.529,
+    "diversity": 0.436,
     "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
+      "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-07-21T19:13:43.228752"
+    "timestamp": "2026-07-24T19:18:22.837455"
   },
   "narrative_consistency_validator": {
     "name": "narrative_consistency_validator",

@@ -1,37 +1,10 @@
 {
-  "cycle_count": 281,
-  "total_skills": 74,
+  "cycle_count": 282,
+  "total_skills": 73,
   "success_count": 80,
   "failure_count": 8,
-  "last_run": "2026-07-24T13:26:49.845509",
+  "last_run": "2026-07-24T19:18:18.116814",
   "history": [
-    {
-      "cycle_number": 182,
-      "proposal": {
-        "id": "487ff01f-1d3c-4e66-9160-b2047daea0a6",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Loaded-Framing Detector",
-        "description": "Flags when a prompt's wording presupposes a conclusion, nudging the model to confirm rather than examine it",
-        "rationale": "Confirmation framing turns AI into an echo, not a sparring partner",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-01T13:12:53.427329"
-      },
-      "result": "REJECTED",
-      "skill_generated": "loaded_framing_detector",
-      "test_results": [],
-      "timestamp": "2026-07-01T13:12:53.428008",
-      "error_message": null
-    },
     {
       "cycle_number": 183,
       "proposal": {
@@ -8599,6 +8572,100 @@
       "skill_generated": "rapid_inference_limiter",
       "test_results": [],
       "timestamp": "2026-07-24T13:26:49.845509",
+      "error_message": null
+    },
+    {
+      "cycle_number": 282,
+      "proposal": {
+        "id": "a7ee461f-0594-43c9-97a2-0992553f4bac",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Fabricated Citation Flagger",
+        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
+        "rationale": "Invented citations are the highest-trust hallucination",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-24T19:18:18.116186"
+      },
+      "result": "REJECTED",
+      "skill_generated": "fabricated_citation_flagger",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:fabricated_citation_flagger",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0020732879638671875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.5367431640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000026226043701171875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.0000171661376953125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000017404556274414062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 0.00001049041748046875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0013644695281982422
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000020503997802734375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        }
+      ],
+      "timestamp": "2026-07-24T19:18:18.116814",
       "error_message": null
     }
   ]
