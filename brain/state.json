@@ -1,37 +1,10 @@
 {
-  "cycle_count": 283,
+  "cycle_count": 284,
   "total_skills": 74,
   "success_count": 80,
   "failure_count": 8,
-  "last_run": "2026-07-25T02:13:05.253085",
+  "last_run": "2026-07-25T08:00:02.804927",
   "history": [
-    {
-      "cycle_number": 184,
-      "proposal": {
-        "id": "08872091-f151-417b-9948-f8a248b7a9bf",
-        "proposal_type": "NEW_SKILL",
-        "category": "PII_DETECTION",
-        "title": "Anonymized Identifier Leakage Detector",
-        "description": "This skill detects when anonymized identifiers, such as hashed or encoded personal data, are inadvertently shared or exposed in AI-generated content, potentially compromising user privacy. It flags instances where these identifiers could be reverse-engineered or linked to sensitive information.",
-        "rationale": "Protecting human cognition from AI overreliance includes safeguarding personal and sensitive information. By detecting anonymized identifier leakage, this skill helps prevent unintended data exposure, reinforcing the importance of data privacy and security in AI-assisted workflows.",
-        "success_criteria": [
-          "Successfully identifies hashed or encoded identifiers in AI-generated text",
-          "Correctly flags potential leakage of sensitive information through these identifiers",
-          "Provides actionable feedback to users on how to secure anonymized identifiers"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-01T13:19:27.702645"
-      },
-      "result": "REJECTED",
-      "skill_generated": "anonymized_identifier_leakage_detector",
-      "test_results": [],
-      "timestamp": "2026-07-01T13:19:27.704020",
-      "error_message": null
-    },
     {
       "cycle_number": 185,
       "proposal": {
@@ -8666,6 +8639,100 @@
         }
       ],
       "timestamp": "2026-07-25T02:13:05.253085",
+      "error_message": null
+    },
+    {
+      "cycle_number": 284,
+      "proposal": {
+        "id": "8b5c3f83-94df-44af-a706-801d0cf7a221",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Insufficient Context Flagger",
+        "description": "This skill detects when a user's input lacks sufficient context to provide a meaningful response, prompting the user to provide more information. It analyzes the input text for ambiguous or vague statements and flags them for further clarification.",
+        "rationale": "This matters for protecting human cognition because it prevents users from relying on AI to fill in gaps in their thinking, instead encouraging them to engage more deeply with the topic and provide more context, which can lead to better understanding and critical thinking.",
+        "success_criteria": [
+          "Detects ambiguous or vague statements in user input",
+          "Flags input for further clarification when necessary",
+          "Provides a clear and actionable prompt for the user to provide more context"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-25T08:00:02.803655"
+      },
+      "result": "REJECTED",
+      "skill_generated": "insufficient_context_flagger",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:insufficient_context_flagger",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0016560554504394531
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000013113021850585938
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 7.867813110351562e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000021457672119140625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000014543533325195312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000015020370483398438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.337860107421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 8.58306884765625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0007750988006591797
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000015735626220703125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        }
+      ],
+      "timestamp": "2026-07-25T08:00:02.804927",
       "error_message": null
     }
   ]
