@@ -4703,5 +4703,33 @@
       "charter:The code does not align with the charter's principles as it appears to be checking for specific patterns in the input text and blocking based on those patterns, but it does not provide a clear reasoning for the blocking decision and does not seem to be primarily focused on protecting human cognition"
     ],
     "timestamp": "2026-07-24T13:26:53.209129"
+  },
+  "framing_effect_detector": {
+    "name": "framing_effect_detector",
+    "title": "Framing Effect Detector",
+    "code_hash": "5871a68ad515324c",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass FramingEffectSignals:\n    \"\"\"Dataclass to hold the signals used for framing effect detection\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms (e.g., 'always', 'never') to total words\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|all|none)\\b', input_text, re.IGNORECASE)\n    word_count = len(re.findall(r'\\b\\w+\\b',",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 63
+    },
+    "diversity": 0.357,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=22"
+    ],
+    "timestamp": "2026-07-25T02:13:10.360113"
   }
 }

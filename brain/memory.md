@@ -2536,3 +2536,12 @@
 }
 ```
 ---
+
+## [2026-07-25T02:13:10.379788] Cycle 283: CycleResult.REJECTED
+```json
+{
+  "proposal": "Framing Effect Detector",
+  "skill": "framing_effect_detector"
+}
+```
+---
