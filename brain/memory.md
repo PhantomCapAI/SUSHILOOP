@@ -2554,3 +2554,12 @@
 }
 ```
 ---
+
+## [2026-07-25T13:15:17.079082] Cycle 285: CycleResult.REJECTED
+```json
+{
+  "proposal": "Inference Chain Truncator",
+  "skill": "inference_chain_truncator"
+}
+```
+---
