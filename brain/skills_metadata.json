@@ -4785,5 +4785,33 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-07-25T13:15:17.060820"
+  },
+  "hidden_assumption_detector": {
+    "name": "hidden_assumption_detector",
+    "title": "Hidden Assumption Detector",
+    "code_hash": "7e4573613f54d134",
+    "summary": "import re\nfrom typing import Dict\n\ndef hidden_assumption_detector(input_text: str) -> Dict:\n    \"\"\"\n    Identifies phrases that imply hidden assumptions in AI-generated text, \n    prompting humans to verify the validity of these assumptions.\n\n    This function combines multiple signals to detect potential hidden assumptions, \n    including weighted pattern matches, structural features, lexical diversity, \n    hedging/absolute-term density, and overgeneral terms. It returns a dictionary \n    with a graded confidence score, indicating the likelihood of hidden assumptions \n    in the input text.\n",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 63
+    },
+    "diversity": 0.537,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-26T19:04:10.147711"
   }
 }

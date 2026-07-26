@@ -2599,3 +2599,12 @@
 }
 ```
 ---
+
+## [2026-07-26T19:04:10.169773] Cycle 290: CycleResult.REJECTED
+```json
+{
+  "proposal": "Hidden Assumption Detector",
+  "skill": "hidden_assumption_detector"
+}
+```
+---
