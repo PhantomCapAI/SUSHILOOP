@@ -448,5 +448,11 @@
     "category": "VERIFICATION_PROMPT",
     "cycle": 286,
     "created_at": "2026-07-25T19:02:04.313529"
+  },
+  "echo_chamber_detector": {
+    "title": "Echo Chamber Detector",
+    "category": "COGNITIVE_PROTECTION",
+    "cycle": 289,
+    "created_at": "2026-07-26T13:10:26.181381"
   }
 }
