@@ -454,5 +454,11 @@
     "category": "COGNITIVE_PROTECTION",
     "cycle": 289,
     "created_at": "2026-07-26T13:10:26.181381"
+  },
+  "unverified_statistical_claim_detector": {
+    "title": "Unverified Statistical Claim Detector",
+    "category": "CONTENT_SAFETY",
+    "cycle": 293,
+    "created_at": "2026-07-27T14:22:43.365505"
   }
 }

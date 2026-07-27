@@ -4869,5 +4869,31 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-07-27T09:41:55.227328"
+  },
+  "unverified_statistical_claim_detector": {
+    "name": "unverified_statistical_claim_detector",
+    "title": "Unverified Statistical Claim Detector",
+    "code_hash": "79264ba621bc4c5e",
+    "summary": "import re\nfrom typing import Dict\n\ndef unverified_statistical_claim_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects and flags statements that present unverified statistical claims.\n\n    This function combines multiple signals to determine the confidence of a detected claim.\n    It checks for weighted pattern matches, structural features, lexical diversity, \n    hedging/absolute-term density, and other factors to provide a graded confidence score.\n\n    Args:\n    input_text (str): The text to be analyzed for unverified statistical claims.\n\n    Returns:\n    dict: A dictionary containing th",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 75
+    },
+    "diversity": 0.532,
+    "failure_modes": [],
+    "timestamp": "2026-07-27T14:22:43.367480"
   }
 }
