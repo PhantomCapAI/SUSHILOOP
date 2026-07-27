@@ -2635,3 +2635,12 @@
 }
 ```
 ---
+
+## [2026-07-27T19:20:08.723297] Cycle 294: CycleResult.REJECTED
+```json
+{
+  "proposal": "Deliberation-Pace Nudger",
+  "skill": "deliberation_pace_nudger"
+}
+```
+---

@@ -3968,8 +3968,8 @@
   "deliberation_pace_nudger": {
     "name": "deliberation_pace_nudger",
     "title": "Deliberation-Pace Nudger",
-    "code_hash": "108b80e72e966519",
-    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DeliberationPaceNudgerResult:\n    \"\"\"Result of the Deliberation Pace Nudger\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the text\"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    words = re.findall(r'\\b\\w+\\b', text.lower())\n    absolute_count = sum(1 for word in words if word in absolute_terms)\n    return",
+    "code_hash": "ca1d432f33da4535",
+    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DeliberationPaceNudgerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef count_sentences(text: str) -> int:\n    \"\"\"Count the number of sentences in the input text.\"\"\"\n    return len(re.split(r'[.!?]\\s*', text))\n\ndef count_words(text: str) -> int:\n    \"\"\"Count the number of words in the input text.\"\"\"\n    return len(re.findall(r'\\b\\w+\\b', text))\n\ndef count_absolute_terms(text: str) -> int:\n    \"\"\"Count the number ",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -3979,19 +3979,19 @@
       "static_total": 44,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
+        "discrimination": 2,
         "calibration": 7,
-        "behavioral_total": 17,
+        "behavioral_total": 19,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 61
+      "total": 63
     },
-    "diversity": 0.327,
+    "diversity": 0.536,
     "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
+      "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-07-23T19:07:59.482885"
+    "timestamp": "2026-07-27T19:20:08.712486"
   },
   "unsubstantiated_claim_detector": {
     "name": "unsubstantiated_claim_detector",
