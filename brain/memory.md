@@ -2617,3 +2617,12 @@
 }
 ```
 ---
+
+## [2026-07-27T09:41:55.244238] Cycle 292: CycleResult.REJECTED
+```json
+{
+  "proposal": "Rapid Succession Threshold Limiter",
+  "skill": "rapid_succession_threshold_limiter"
+}
+```
+---

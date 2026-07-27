@@ -4841,5 +4841,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-27T02:31:26.041878"
+  },
+  "rapid_succession_threshold_limiter": {
+    "name": "rapid_succession_threshold_limiter",
+    "title": "Rapid Succession Threshold Limiter",
+    "code_hash": "99a6e074df8e69c0",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Rapid Succession Threshold Limiter\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-27\n \nDescription:\n    This skill detects and limits instances where a user receives multiple successive affirmative or negative responses from an AI within a short time frame, preventing the reinforcement of narrow thinking patterns. It intervenes by introducing a brief pause or suggesting an alternative perspective to encourage more reflective decision-making.\n \nRationale:\n    This matters for protecting human cognition because it prevents the rapid formation of biases based ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 7,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 59
+    },
+    "diversity": 0.6,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-07-27T09:41:55.227328"
   }
 }
