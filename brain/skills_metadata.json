@@ -4893,5 +4893,33 @@
     "diversity": 0.532,
     "failure_modes": [],
     "timestamp": "2026-07-27T14:22:43.367480"
+  },
+  "emotive_language_detector": {
+    "name": "emotive_language_detector",
+    "title": "Emotive Language Detector",
+    "code_hash": "34a362afd87f25f6",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass EmotiveLanguageDetectionResult:\n    \"\"\"Result of emotive language detection.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef emotive_language_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects the use of emotive language in AI-generated text.\n\n    This function combines multiple signals to detect emotive language, including:\n    - Loaded words and phrases\n    - Structural features (sentence or clause counts, ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.484,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-07-28T08:26:42.126387"
   }
 }

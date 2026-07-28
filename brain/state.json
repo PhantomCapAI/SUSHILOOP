@@ -1,104 +1,10 @@
 {
-  "cycle_count": 295,
+  "cycle_count": 296,
   "total_skills": 77,
   "success_count": 84,
   "failure_count": 8,
-  "last_run": "2026-07-28T02:06:03.709128",
+  "last_run": "2026-07-28T08:26:38.896435",
   "history": [
-    {
-      "cycle_number": 196,
-      "proposal": {
-        "id": "09c1f9a7-9cf8-4e75-af5a-910daee4592a",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Overly Homogeneous Information Detector",
-        "description": "This skill detects when the provided information is overly homogeneous, lacking diverse perspectives or viewpoints, which can lead to an unbalanced understanding of a topic. It analyzes the input text for repetitive ideas, similar sentence structures, and limited vocabulary to identify potential homogeneous information.",
-        "rationale": "Protecting human cognition from overly homogeneous information is crucial as it can lead to a narrow and biased understanding of the world. By detecting and highlighting such information, this skill encourages users to seek out diverse perspectives, fostering a more comprehensive and nuanced understanding.",
-        "success_criteria": [
-          "Detection of repetitive ideas",
-          "Identification of similar sentence structures",
-          "Flagging of limited vocabulary"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-03T08:56:15.538200"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "overly_homogeneous_information_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:overly_homogeneous_information_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0006592273712158203
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000011444091796875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000024318695068359375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000013828277587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.106231689453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.001142263412475586
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.0000152587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-07-03T08:56:15.539417",
-      "error_message": null
-    },
     {
       "cycle_number": 197,
       "proposal": {
@@ -8867,6 +8773,100 @@
         }
       ],
       "timestamp": "2026-07-28T02:06:03.709128",
+      "error_message": null
+    },
+    {
+      "cycle_number": 296,
+      "proposal": {
+        "id": "9bb5779e-5b8b-4380-94ab-a434ad2b8235",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "Emotive Language Detector",
+        "description": "This skill detects the use of emotive language in AI-generated text, which can manipulate human emotions and influence decision-making, and flags it to prevent biased cognition. It identifies specific patterns of emotive language, such as loaded words and phrases, and provides a warning to the user.",
+        "rationale": "Emotive language can have a significant impact on human cognition, leading to biased decision-making and emotional manipulation. By detecting and flagging emotive language, this skill helps to protect human cognition from AI-generated content that may be designed to manipulate or influence emotions, rather than providing objective information.",
+        "success_criteria": [
+          "Detects loaded words and phrases in AI-generated text",
+          "Flags emotive language patterns with a warning to the user",
+          "Provides a confidence score for the detection"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-28T08:26:38.894924"
+      },
+      "result": "REJECTED",
+      "skill_generated": "emotive_language_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:emotive_language_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.001980304718017578
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000023126602172851562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.00001430511474609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000014781951904296875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 9.298324584960938e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0010759830474853516
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000020265579223632812
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-07-28T08:26:38.896435",
       "error_message": null
     }
   ]
