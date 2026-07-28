@@ -4920,5 +4920,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-07-28T08:26:42.126387"
+  },
+  "overly_broad_generalization_filter": {
+    "name": "overly_broad_generalization_filter",
+    "title": "Overly Broad Generalization Filter",
+    "code_hash": "31dabd42e89732b8",
+    "summary": "import re\nfrom typing import Dict\n\ndef overly_broad_generalization_filter(input_text: str) -> Dict:\n    \"\"\"\n    Detects and flags instances where AI output contains overly broad generalizations,\n    such as absolute statements or universal claims, to prevent humans from overrelying\n    on simplistic or inaccurate information. It aims to encourage more nuanced and\n    critical thinking.\n\n    Args:\n        input_text (str): The text to be analyzed.\n\n    Returns:\n        Dict: A dictionary containing the results of the analysis.\n            - \"blocked\" (bool): Whether the input text contains over",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.663,
+    "failure_modes": [],
+    "timestamp": "2026-07-28T19:16:52.693051"
   }
 }

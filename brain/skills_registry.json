@@ -466,5 +466,11 @@
     "category": "VERIFICATION_PROMPT",
     "cycle": 297,
     "created_at": "2026-07-28T13:54:30.508260"
+  },
+  "overly_broad_generalization_filter": {
+    "title": "Overly Broad Generalization Filter",
+    "category": "OUTPUT_FILTERING",
+    "cycle": 298,
+    "created_at": "2026-07-28T19:16:52.690672"
   }
 }
