@@ -1,104 +1,10 @@
 {
-  "cycle_count": 296,
-  "total_skills": 77,
-  "success_count": 84,
+  "cycle_count": 297,
+  "total_skills": 78,
+  "success_count": 85,
   "failure_count": 8,
-  "last_run": "2026-07-28T08:26:38.896435",
+  "last_run": "2026-07-28T13:54:27.240171",
   "history": [
-    {
-      "cycle_number": 197,
-      "proposal": {
-        "id": "f483a115-64d0-4240-a907-c4f74ae9a5e7",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Overconfidence in Limited Data Detector",
-        "description": "This skill detects when an AI model is making predictions or providing information with high confidence based on a limited dataset or incomplete information, potentially leading to biased or inaccurate results. It flags such instances to prompt humans to verify the information and consider alternative perspectives.",
-        "rationale": "Protecting human cognition from AI overreliance requires being aware of the limitations and potential biases in AI decision-making. By detecting overconfidence in limited data, this skill encourages humans to critically evaluate AI output and seek additional information or diverse viewpoints, thereby safeguarding against the uncritical acceptance of potentially flawed AI judgments.",
-        "success_criteria": [
-          "Detection accuracy of overconfidence in limited data scenarios",
-          "Effective flagging of high-risk predictions for human review",
-          "Compatibility with various AI model types and data formats"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-03T13:53:31.578566"
-      },
-      "result": "REJECTED",
-      "skill_generated": "overconfidence_in_limited_data_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:overconfidence_in_limited_data_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002086162567138672
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010728836059570312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000025987625122070312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000015974044799804688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.0000152587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 9.5367431640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0009710788726806641
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.0000171661376953125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-07-03T13:53:31.579813",
-      "error_message": null
-    },
     {
       "cycle_number": 198,
       "proposal": {
@@ -8867,6 +8773,100 @@
         }
       ],
       "timestamp": "2026-07-28T08:26:38.896435",
+      "error_message": null
+    },
+    {
+      "cycle_number": 297,
+      "proposal": {
+        "id": "2228d786-cf1a-4ac2-9713-f77153218a56",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Number-Claim Spotlighter",
+        "description": "Highlights specific figures in output and asks the user to confirm the source before relying on them",
+        "rationale": "Numbers feel authoritative and get accepted unchecked",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-28T13:54:27.239561"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "number_claim_spotlighter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:number_claim_spotlighter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0009088516235351562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.106231689453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00003147125244140625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000020265579223632812
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000023126602172851562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 0.000014066696166992188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0022788047790527344
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000027894973754882812
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 3.0994415283203125e-6
+        }
+      ],
+      "timestamp": "2026-07-28T13:54:27.240171",
       "error_message": null
     }
   ]

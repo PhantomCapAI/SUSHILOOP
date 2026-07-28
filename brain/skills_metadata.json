@@ -3693,29 +3693,28 @@
   "number_claim_spotlighter": {
     "name": "number_claim_spotlighter",
     "title": "Number-Claim Spotlighter",
-    "code_hash": "f4da90a6325ae3e1",
-    "summary": "\"\"\"\nSUSHILOOP Guardrail: Number-Claim Spotlighter\n \nCategory: SkillCategory.VERIFICATION_PROMPT\nGenerated: 2026-07-20\n \nDescription:\n    Highlights specific figures in output and asks the user to confirm the source before relying on them\n \nRationale:\n    Numbers feel authoritative and get accepted unchecked\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef number_claim_spotlighter(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Highlights specific figures in output and asks the user to confirm the source before relying on them\n \n    Returns dict with: blocked, reason, confidence, category, de",
+    "code_hash": "4d0425f61fc2f947",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass Signal:\n    name: str\n    score: float\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms in the input text.\n\n    :param input_text: The input text to analyze.\n    :return: The ratio of absolute terms.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    absolute_count = sum(1 for word in words if word in absolute_terms)\n    return absolute_count / len(words) if words else 0.0\n\ndef ca",
     "score": {
-      "tests_pass": 0,
+      "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 7,
-      "strategies": 4,
-      "static_total": 31,
+      "strategies": 1,
+      "static_total": 38,
       "behavioral": {
-        "robustness": 0,
-        "discrimination": 0,
-        "calibration": 0,
-        "behavioral_total": 0,
-        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/number_claim_spotlighter.py'"
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
       },
-      "total": 31
+      "total": 63
     },
-    "diversity": 0.679,
-    "failure_modes": [
-      "charter:The code does not align with the charter's principles as it appears to be checking for specific patterns and blocking the input based on those patterns, which could be seen as replacing user judgment rather than protecting it."
-    ],
-    "timestamp": "2026-07-20T03:31:27.379949"
+    "diversity": 0.333,
+    "failure_modes": [],
+    "timestamp": "2026-07-28T13:54:30.510469"
   },
   "premature_assumption_catcher": {
     "name": "premature_assumption_catcher",
