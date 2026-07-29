@@ -2707,3 +2707,12 @@
 }
 ```
 ---
+
+## [2026-07-29T19:07:23.852777] Cycle 302: CycleResult.REJECTED
+```json
+{
+  "proposal": "Deliberation-Pace Nudger",
+  "skill": "deliberation_pace_nudger"
+}
+```
+---
