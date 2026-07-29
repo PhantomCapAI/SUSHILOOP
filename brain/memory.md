@@ -2698,3 +2698,12 @@
 }
 ```
 ---
+
+## [2026-07-29T13:59:29.893439] Cycle 301: CycleResult.REJECTED
+```json
+{
+  "proposal": "Emotional Appeal Detector",
+  "skill": "emotional_appeal_detector"
+}
+```
+---
