@@ -1535,30 +1535,29 @@
   "re_ask_loop_breaker": {
     "name": "re_ask_loop_breaker",
     "title": "Re-ask Loop Breaker",
-    "code_hash": "f836abe1b3768920",
-    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass ReAskLoopBreakerResult:\n    \"\"\"Result of the re-ask loop breaker analysis.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef re_ask_loop_breaker(input_text: str) -> Dict:\n    \"\"\"\n    Detects the user re-asking the same thing in slightly different words and suggests stepping back to think.\n\n    This function combines multiple signals to detect re-ask loops, including:\n    - Absolute term density\n    - Hedge term densi",
+    "code_hash": "f86bbfeb66ddb652",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Re-ask Loop Breaker\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-29\n \nDescription:\n    Detects the user re-asking the same thing in slightly different words and suggests stepping back to think\n \nRationale:\n    Re-ask loops signal offloading, not progress\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef re_ask_loop_breaker(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Detects the user re-asking the same thing in slightly different words and suggests stepping back to think\n \n    Returns dict with: blocked, reason, confidence, category, details.\n    \"\"\"\n",
     "score": {
-      "tests_pass": 10,
+      "tests_pass": 0,
       "complexity": 10,
       "structure": 10,
-      "documentation": 10,
-      "strategies": 1,
-      "static_total": 41,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 31,
       "behavioral": {
-        "robustness": 10,
+        "robustness": 0,
         "discrimination": 0,
-        "calibration": 7,
-        "behavioral_total": 17,
-        "probes_raised": 0,
-        "probes_valid": 17
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/re_ask_loop_breaker.py'"
       },
-      "total": 58
+      "total": 31
     },
-    "diversity": 0.311,
+    "diversity": 0.589,
     "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
+      "charter:The code checks for specific patterns in the input text and blocks the input if a match is found, which could be seen as replacing user judgment rather than protecting it, and the patterns checked include 'ignore previous', 'jailbreak', 'DAN', 'override', 'bypass' which seem to be related to safety "
     ],
-    "timestamp": "2026-07-26T02:23:40.645045"
+    "timestamp": "2026-07-29T02:09:36.178740"
   },
   "inconsistent_identifier_detector": {
     "name": "inconsistent_identifier_detector",
