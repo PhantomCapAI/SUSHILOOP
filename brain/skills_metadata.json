@@ -5030,5 +5030,33 @@
       "shallow:discrimination=2,behavioral_total=22"
     ],
     "timestamp": "2026-07-30T13:48:39.544209"
+  },
+  "rapid_succession_query_limiter": {
+    "name": "rapid_succession_query_limiter",
+    "title": "Rapid Succession Query Limiter",
+    "code_hash": "78a78b54d99a8b75",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Rapid Succession Query Limiter\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-30\n \nDescription:\n    This skill detects and limits instances where a user submits multiple queries in rapid succession, potentially indicating overreliance on AI for decision-making. It enforces a cooldown period between queries to encourage human reflection and deliberation.\n \nRationale:\n    By limiting the frequency of user queries, this skill encourages humans to engage in more thoughtful and reflective decision-making, rather than relying on AI as a crutch. This helps to prot",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 56
+    },
+    "diversity": 0.609,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-07-30T19:18:49.232435"
   }
 }
