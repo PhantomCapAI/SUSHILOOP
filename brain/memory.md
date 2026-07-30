@@ -2716,3 +2716,12 @@
 }
 ```
 ---
+
+## [2026-07-30T01:59:10.878921] Cycle 303: CycleResult.REJECTED
+```json
+{
+  "proposal": "Number-Claim Spotlighter",
+  "skill": "number_claim_spotlighter"
+}
+```
+---
