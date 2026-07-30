@@ -908,8 +908,8 @@
   "emotional_contagion_detector": {
     "name": "emotional_contagion_detector",
     "title": "Emotional Contagion Detector",
-    "code_hash": "e4716f8f635eedf9",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass EmotionalContagionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef emotional_contagion_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects and flags instances of emotional contagion in AI-generated content.\n\n    This function combines multiple signals to determine the likelihood of emotional contagion:\n    - Absolute term density: The ratio of absolute terms (e.g., \"always\", \"never\") to total words.\n    - Hedge density: The ratio of hedge ",
+    "code_hash": "3b91952b4d88e658",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    \"\"\"Result of emotional contagion detection.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the text.\"\"\"\n    absolute_terms = re.findall(r\"\\b(always|never|every|all)\\b\", text, re.IGNORECASE)\n    word_count = len(re.findall(r\"\\b\\w+\\b\", text))\n    return len(absolute_terms) / word_count if word_count > 0 else 0.0\n\ndef calc",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -919,19 +919,19 @@
       "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
-        "calibration": 10,
-        "behavioral_total": 22,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 63
+      "total": 58
     },
-    "diversity": 0.453,
+    "diversity": 0.302,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=22"
+      "shallow:discrimination=0,behavioral_total=17"
     ],
-    "timestamp": "2026-07-26T08:20:01.905484"
+    "timestamp": "2026-07-30T08:17:22.094495"
   },
   "echo_chamber_detector": {
     "name": "echo_chamber_detector",
