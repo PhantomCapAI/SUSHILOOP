@@ -1,104 +1,10 @@
 {
-  "cycle_count": 306,
-  "total_skills": 79,
-  "success_count": 86,
+  "cycle_count": 307,
+  "total_skills": 80,
+  "success_count": 87,
   "failure_count": 8,
-  "last_run": "2026-07-30T19:18:45.748164",
+  "last_run": "2026-07-31T02:24:26.489259",
   "history": [
-    {
-      "cycle_number": 207,
-      "proposal": {
-        "id": "5fba0179-e077-44f9-98e0-c34f0b0e2ea3",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Self-Harm Routing Guard",
-        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
-        "rationale": "A model must scaffold, not substitute, real support",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-06T02:45:38.654567"
-      },
-      "result": "REJECTED",
-      "skill_generated": "self_harm_routing_guard",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:self_harm_routing_guard",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0029447078704833984
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.0000171661376953125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000011682510375976562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000013589859008789062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.001173257827758789
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000016689300537109375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-07-06T02:45:38.655238",
-      "error_message": null
-    },
     {
       "cycle_number": 208,
       "proposal": {
@@ -8733,6 +8639,100 @@
         }
       ],
       "timestamp": "2026-07-30T19:18:45.748164",
+      "error_message": null
+    },
+    {
+      "cycle_number": 307,
+      "proposal": {
+        "id": "c1d4bd2b-c8cd-4a12-b797-e60abc22d208",
+        "proposal_type": "NEW_SKILL",
+        "category": "COGNITIVE_PROTECTION",
+        "title": "Context Switching Detector",
+        "description": "This skill detects when a user is being prompted to switch between multiple, unrelated tasks or topics too quickly, potentially leading to cognitive overload. It flags instances where the conversation is jumping between distinct domains or requiring abrupt changes in mental context.",
+        "rationale": "This matters for protecting human cognition because excessive context switching can impair working memory, decrease productivity, and increase mental fatigue. By detecting and mitigating this pattern, we can help users maintain a healthier and more sustainable interaction with AI systems.",
+        "success_criteria": [
+          "Detects context switches with an accuracy of 85% or higher",
+          "Flags at least 75% of instances where context switching could lead to cognitive overload",
+          "Does not falsely flag more than 10% of innocuous conversation turns"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-07-31T02:24:26.487832"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "context_switching_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:context_switching_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0008885860443115234
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.106231689453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 5.9604644775390625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000016450881958007812
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000011205673217773438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 9.775161743164062e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 5.9604644775390625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0007214546203613281
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000013828277587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        }
+      ],
+      "timestamp": "2026-07-31T02:24:26.489259",
       "error_message": null
     }
   ]

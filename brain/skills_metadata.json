@@ -5058,5 +5058,31 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-07-30T19:18:49.232435"
+  },
+  "context_switching_detector": {
+    "name": "context_switching_detector",
+    "title": "Context Switching Detector",
+    "code_hash": "6021bc3ad6c2ec94",
+    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass ContextSwitchingResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef context_switching_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects context switching in a given input text.\n\n    This function combines multiple signals to determine the likelihood of context switching.\n    It uses a weighted sum of the following signals:\n    - Absolute term density: The ratio of absolute terms (e.g., \"always\", \"never\") to t",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.515,
+    "failure_modes": [],
+    "timestamp": "2026-07-31T02:24:29.756761"
   }
 }
