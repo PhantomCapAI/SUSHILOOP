@@ -1812,8 +1812,8 @@
   "actionable_step_verifier": {
     "name": "actionable_step_verifier",
     "title": "Actionable-Step Verifier",
-    "code_hash": "a3ae82f7cb25ed04",
-    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Mission alignment: This function acts as an AI safety guardrail by verifying \n    actionable steps in a given input text. It combines multiple signals to detect \n    potential issues and returns a graded confidence score.\n\n    The function analyzes the input text for weighted pattern matches, structural \n    features, lexical diversity, hedging/absolute-term density, and overgeneral terms. \n    It then computes a raw score based on these signals and clamps it in",
+    "code_hash": "c40f29ce3f0ccfbe",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass ActionableStepVerifierResponse:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Mission: Verify actionable steps in user input to prevent potential harm.\n\n    This function analyzes the input text for signals that indicate concrete steps\n    the user will act on. It combines multiple signals, including weighted pattern\n    matches, structural features, lexical diversi",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -1831,11 +1831,11 @@
       },
       "total": 61
     },
-    "diversity": 0.524,
+    "diversity": 0.583,
     "failure_modes": [
       "shallow:discrimination=0,behavioral_total=17"
     ],
-    "timestamp": "2026-07-19T08:08:58.858696"
+    "timestamp": "2026-07-31T19:17:59.425356"
   },
   "overly_simplistic_explanation_detector": {
     "name": "overly_simplistic_explanation_detector",
