@@ -5,20 +5,21 @@ def fabricated_citation_flagger(input_text: str) -> Dict:
     """
     Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.
 
-    The mission of this function is to detect fabricated citations in AI-generated text. It combines multiple signals,
-    including weighted pattern matches, structural features, lexical diversity, hedging/absolute-term density, and more.
-    The function returns a dictionary with a graded confidence score, reason, and category.
-
     Args:
-        input_text (str): The input text to be analyzed.
+    input_text (str): The text to be evaluated.
 
     Returns:
-        Dict: A dictionary containing the results of the analysis, including:
-            - blocked (bool): Whether the input text is blocked due to fabricated citations.
-            - reason (str): The reason for blocking the input text.
-            - confidence (float): A graded confidence score between 0.0 and 1.0.
-            - category (str): The category of the fabricated citation.
-            - details (dict): Additional details about the fabricated citation.
+    dict: A dictionary containing the results of the evaluation, including:
+        - blocked (bool): Whether the input text is blocked.
+        - reason (str): The reason for blocking the input text.
+        - confidence (float): A confidence score between 0.0 and 1.0.
+        - category (str): The category of the input text.
+        - details (dict): Additional details about the input text.
+
+    This function uses a combination of signals to detect fabricated citations, including:
+    - Pattern matches for common citation formats.
+    - Structural features such as sentence and clause counts.
+    - Lexical diversity and hedging/absolute-term density.
     """
     # SUSHILOOP input guard (auto-injected): never raise on bad input.
     if not isinstance(input_text, str) or not input_text.strip():
@@ -30,86 +31,89 @@ def fabricated_citation_flagger(input_text: str) -> Dict:
         "blocked": False,
         "reason": "",
         "confidence": 0.0,
-        "category": "",
+        "category": "benign",
         "details": {}
     }
 
-    # Define regular expression patterns for detecting citations
-    doi_pattern = r"\b10\.\d{4,9}/[-._;()/:A-Z0-9]+"
-    case_name_pattern = r"\b[A-Z][a-z]+ v\. [A-Z][a-z]+\b"
-    citation_pattern = r"\b\([A-Z][a-z]+, \d{4}\)\b"
+    # Check for empty input
+    if not input_text:
+        return results
 
-    # Count the number of matches for each pattern
-    doi_matches = len(re.findall(doi_pattern, input_text))
-    case_name_matches = len(re.findall(case_name_pattern, input_text))
-    citation_matches = len(re.findall(citation_pattern, input_text))
+    # Split the input text into sentences
+    sentences = re.split(r'[.!?]', input_text)
 
-    # Calculate the total number of matches
-    total_matches = doi_matches + case_name_matches + citation_matches
+    # Calculate the sentence count
+    sentence_count = len(sentences)
 
-    # Calculate the weighted match ratio
-    weighted_match_ratio = (doi_matches * 0.4 + case_name_matches * 0.3 + citation_matches * 0.3) / (total_matches + 1)
+    # Check for single sentence input
+    if sentence_count == 1:
+        sentence_length = len(input_text.split())
+        if sentence_length < 10:
+            return results
 
-    # Calculate the sentence count and ratio
-    sentences = re.split(r"[.!?]", input_text)
-    sentence_count = len([sentence for sentence in sentences if sentence.strip()])
-    sentence_ratio = sentence_count / (len(input_text.split()) + 1)
+    # Calculate the clause count
+    clause_count = sum(1 for sentence in sentences if re.search(r'\band\b|\bor\b', sentence))
 
-    # Calculate the lexical diversity ratio
-    words = re.findall(r"\b\w+\b", input_text)
-    unique_words = set(words)
-    lexical_diversity_ratio = len(unique_words) / (len(words) + 1)
+    # Calculate the lexical diversity
+    words = re.findall(r'\b\w+\b', input_text)
+    word_count = len(words)
+    if word_count > 0:
+        lexical_diversity = len(set(words)) / word_count
+    else:
+        lexical_diversity = 0.0
 
-    # Calculate the hedging/absolute-term density ratio
-    hedging_terms = ["may", "might", "could", "would", "should"]
-    absolute_terms = ["always", "never", "every", "all"]
-    hedging_count = sum(1 for word in words if word in hedging_terms)
-    absolute_count = sum(1 for word in words if word in absolute_terms)
-    hedging_density_ratio = hedging_count / (len(words) + 1)
-    absolute_density_ratio = absolute_count / (len(words) + 1)
+    # Calculate the hedging/absolute-term density
+    hedges = re.findall(r'\b(maybe|perhaps|possibly|probably|certainly|definitely|always|never)\b', input_text, re.IGNORECASE)
+    hedge_count = len(hedges)
+    if word_count > 0:
+        hedge_density = hedge_count / word_count
+    else:
+        hedge_density = 0.0
+
+    # Calculate the pattern match score
+    pattern_matches = re.findall(r'\b\d{4}\.\d{1,2}\.\d{1,2}\b|\bDOI:\d{1,10}\.\d{1,10}\b|\bCase\s\d{1,5}\b', input_text)
+    pattern_match_count = len(pattern_matches)
+    if sentence_count > 0:
+        pattern_match_ratio = pattern_match_count / sentence_count
+    else:
+        pattern_match_ratio = 0.0
 
     # Calculate the raw confidence score
-    raw_confidence = (weighted_match_ratio * 0.4 + sentence_ratio * 0.2 + lexical_diversity_ratio * 0.2 + hedging_density_ratio * 0.1 + absolute_density_ratio * 0.1)
+    raw_confidence = 0.4 * pattern_match_ratio + 0.3 * hedge_density + 0.3 * lexical_diversity
 
-    # Clamp the confidence score to the range [0.0, 1.0]
+    # Clamp the confidence score
     confidence = max(0.0, min(1.0, raw_confidence))
 
-    # Determine the blocking decision based on the confidence score
-    blocked = confidence >= 0.5
-
     # Update the results dictionary
-    results["blocked"] = blocked
-    results["reason"] = "Fabricated citation detected" if blocked else "No fabricated citation detected"
     results["confidence"] = confidence
-    results["category"] = "DOI" if doi_matches > 0 else "Case Name" if case_name_matches > 0 else "Citation"
-    results["details"] = {
-        "doi_matches": doi_matches,
-        "case_name_matches": case_name_matches,
-        "citation_matches": citation_matches,
-        "weighted_match_ratio": weighted_match_ratio,
-        "sentence_ratio": sentence_ratio,
-        "lexical_diversity_ratio": lexical_diversity_ratio,
-        "hedging_density_ratio": hedging_density_ratio,
-        "absolute_density_ratio": absolute_density_ratio
-    }
+    results["blocked"] = confidence >= 0.5
+    if results["blocked"]:
+        results["reason"] = "Fabricated citation detected"
+        results["category"] = "malicious"
+        results["details"] = {
+            "sentence_count": sentence_count,
+            "clause_count": clause_count,
+            "lexical_diversity": lexical_diversity,
+            "hedge_density": hedge_density,
+            "pattern_match_ratio": pattern_match_ratio
+        }
 
     return results
 
 
 if __name__ == "__main__":
     test_cases = [
-        "This is a test with a DOI: 10.1234/abc123.",
-        "The case of Smith v. Johnson is a well-known example.",
-        "According to (John, 2020), this is a citation.",
-        "This text does not contain any fabricated citations.",
-        "The DOI 10.1234/abc123 is a valid identifier.",
-        "The case name Smith v. Johnson is a real case."
+        "This is a benign sentence.",
+        "The study was published in 2022.01.01 and can be found at DOI:10.1234/56789.",
+        "The case of Smith vs. Johnson was decided in 2020.",
+        "Maybe this sentence is a hedge.",
+        "This sentence contains no hedges or absolute terms.",
+        ""
     ]
 
     for test_case in test_cases:
-        results = fabricated_citation_flagger(test_case)
         print(f"Input: {test_case}")
-        print(f"Results: {results}")
+        print(f"Results: {fabricated_citation_flagger(test_case)}")
         print()
 
 # SUSHILOOP contract normalizer (auto): clamp confidence into [0,1], guarantee dict shape

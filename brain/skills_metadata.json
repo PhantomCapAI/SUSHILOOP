@@ -2987,8 +2987,8 @@
   "fabricated_citation_flagger": {
     "name": "fabricated_citation_flagger",
     "title": "Fabricated Citation Flagger",
-    "code_hash": "7685182bd9ae7581",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass FabricatedCitationSignals:\n    \"\"\"Dataclass to hold the signals used to detect fabricated citations.\"\"\"\n    doi_pattern_matches: int\n    case_name_pattern_matches: int\n    sentence_count: int\n    lexical_diversity: float\n    hedging_term_density: float\n\ndef calculate_lexical_diversity(input_text: str) -> float:\n    \"\"\"Calculate the lexical diversity of the input text.\"\"\"\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    unique_words = set(words)\n    if len(words) == 0:\n        re",
+    "code_hash": "ffab855dd460ee63",
+    "summary": "import re\nfrom typing import Dict\n\ndef fabricated_citation_flagger(input_text: str) -> Dict:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.\n\n    Args:\n    input_text (str): The text to be evaluated.\n\n    Returns:\n    dict: A dictionary containing the results of the evaluation, including:\n        - blocked (bool): Whether the input text is blocked.\n        - reason (str): The reason for blocking the input text.\n        - confidence (float): A confidence score between 0.0 and 1.0.\n        - category (str): The category of the i",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -2998,19 +2998,17 @@
       "static_total": 50,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 69
+      "total": 75
     },
-    "diversity": 0.436,
-    "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
-    ],
-    "timestamp": "2026-07-24T19:18:22.837455"
+    "diversity": 0.614,
+    "failure_modes": [],
+    "timestamp": "2026-07-31T08:43:06.117619"
   },
   "narrative_consistency_validator": {
     "name": "narrative_consistency_validator",
