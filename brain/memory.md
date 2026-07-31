@@ -2770,3 +2770,12 @@
 }
 ```
 ---
+
+## [2026-07-31T13:53:52.368552] Cycle 309: CycleResult.REJECTED
+```json
+{
+  "proposal": "Emotive Language Detector",
+  "skill": "emotive_language_detector"
+}
+```
+---
