@@ -1812,8 +1812,8 @@
   "actionable_step_verifier": {
     "name": "actionable_step_verifier",
     "title": "Actionable-Step Verifier",
-    "code_hash": "c40f29ce3f0ccfbe",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass ActionableStepVerifierResponse:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef actionable_step_verifier(input_text: str) -> Dict:\n    \"\"\"\n    Mission: Verify actionable steps in user input to prevent potential harm.\n\n    This function analyzes the input text for signals that indicate concrete steps\n    the user will act on. It combines multiple signals, including weighted pattern\n    matches, structural features, lexical diversi",
+    "code_hash": "adf46d8e58d9e12f",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass ActionableStepVerifierResponse:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef actionable_step_verifier(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Mission alignment: This function aims to identify and flag potentially actionable steps \n    in a given input text, providing a graded confidence score based on multiple signals.\n\n    The function combines weighted pattern matches, structural features, lexical dive",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -1831,11 +1831,11 @@
       },
       "total": 61
     },
-    "diversity": 0.583,
+    "diversity": 0.549,
     "failure_modes": [
       "shallow:discrimination=0,behavioral_total=17"
     ],
-    "timestamp": "2026-07-31T19:17:59.425356"
+    "timestamp": "2026-08-01T19:02:05.524710"
   },
   "overly_simplistic_explanation_detector": {
     "name": "overly_simplistic_explanation_detector",
