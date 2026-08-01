@@ -2788,3 +2788,12 @@
 }
 ```
 ---
+
+## [2026-08-01T02:25:19.661642] Cycle 311: CycleResult.REJECTED
+```json
+{
+  "proposal": "Rapid Fire Question Limiter",
+  "skill": "rapid_fire_question_limiter"
+}
+```
+---
