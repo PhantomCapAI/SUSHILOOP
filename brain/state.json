@@ -1,104 +1,10 @@
 {
-  "cycle_count": 312,
+  "cycle_count": 313,
   "total_skills": 81,
-  "success_count": 89,
+  "success_count": 90,
   "failure_count": 8,
-  "last_run": "2026-08-01T08:13:03.799699",
+  "last_run": "2026-08-01T13:08:44.523110",
   "history": [
-    {
-      "cycle_number": 213,
-      "proposal": {
-        "id": "589c8b42-a03b-4f77-bb42-07dcff589304",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Cascading Query Throttler",
-        "description": "This skill detects and limits the rate of cascading queries, where a single user input triggers a chain of subsequent queries, potentially leading to cognitive overload. It throttles the query rate to prevent overwhelming the user with excessive information.",
-        "rationale": "By limiting the rate of cascading queries, this skill protects human cognition from information overload and promotes more thoughtful, deliberate interaction with AI systems.",
-        "success_criteria": [
-          "Reduced query rate",
-          "Improved user engagement",
-          "Enhanced cognitive safety"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-07T14:22:09.583633"
-      },
-      "result": "REJECTED",
-      "skill_generated": "cascading_query_throttler",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:cascading_query_throttler",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002016305923461914
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000016689300537109375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.0000133514404296875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.58306884765625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0011212825775146484
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.00001811981201171875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-07-07T14:22:09.585119",
-      "error_message": null
-    },
     {
       "cycle_number": 214,
       "proposal": {
@@ -8800,6 +8706,100 @@
         }
       ],
       "timestamp": "2026-08-01T08:13:03.799699",
+      "error_message": null
+    },
+    {
+      "cycle_number": 313,
+      "proposal": {
+        "id": "5a019768-ef64-4efe-b0c5-0f0e540a8e6c",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Self-Harm Routing Guard",
+        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
+        "rationale": "A model must scaffold, not substitute, real support",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-01T13:08:44.522502"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "self_harm_routing_guard",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:self_harm_routing_guard",
+          "message": "import + callable OK",
+          "duration_seconds": 0.00044655799865722656
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.00001049041748046875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000021219253540039062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000013589859008789062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000011920928955078125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.337860107421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 8.821487426757812e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0005507469177246094
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000018596649169921875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-08-01T13:08:44.523110",
       "error_message": null
     }
   ]
