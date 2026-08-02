@@ -5136,5 +5136,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-08-02T02:22:40.941672"
+  },
+  "one_sided_question_detector": {
+    "name": "one_sided_question_detector",
+    "title": "One-Sided Question Detector",
+    "code_hash": "f79d57baf0e74870",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef one_sided_question_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects questions that ask only for support for a position and prompts a steelman of the opposing view.\n\n    This function combines multiple signals to detect one-sided questions, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term density\n    - Sentence structure\n\n ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 68
+    },
+    "diversity": 0.554,
+    "failure_modes": [],
+    "timestamp": "2026-08-02T13:10:46.367015"
   }
 }

@@ -2842,3 +2842,12 @@
 }
 ```
 ---
+
+## [2026-08-02T13:10:46.387748] Cycle 317: CycleResult.SUCCESS
+```json
+{
+  "proposal": "One-Sided Question Detector",
+  "skill": "one_sided_question_detector"
+}
+```
+---
