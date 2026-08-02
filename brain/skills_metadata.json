@@ -5162,5 +5162,33 @@
     "diversity": 0.554,
     "failure_modes": [],
     "timestamp": "2026-08-02T13:10:46.367015"
+  },
+  "rapid_fire_query_throttler": {
+    "name": "rapid_fire_query_throttler",
+    "title": "Rapid Fire Query Throttler",
+    "code_hash": "abea56f4117d1a05",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass QueryAnalysis:\n    \"\"\"Dataclass to hold query analysis results.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms (e.g., always, never) to total words.\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|all|every|none)\\b', input_text, re.IGNORECASE)\n    word_count = len(re.findall(r'\\b\\w+\\b', input",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 63
+    },
+    "diversity": 0.345,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=22"
+    ],
+    "timestamp": "2026-08-02T19:03:07.518421"
   }
 }

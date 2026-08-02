@@ -2851,3 +2851,12 @@
 }
 ```
 ---
+
+## [2026-08-02T19:03:07.542355] Cycle 318: CycleResult.REJECTED
+```json
+{
+  "proposal": "Rapid Fire Query Throttler",
+  "skill": "rapid_fire_query_throttler"
+}
+```
+---
