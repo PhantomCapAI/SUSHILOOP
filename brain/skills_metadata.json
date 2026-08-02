@@ -5108,5 +5108,33 @@
     "diversity": 0.514,
     "failure_modes": [],
     "timestamp": "2026-08-01T08:13:06.995201"
+  },
+  "rapid_inference_chain_limiter": {
+    "name": "rapid_inference_chain_limiter",
+    "title": "Rapid Inference Chain Limiter",
+    "code_hash": "e140db09a50939ed",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass RapidInferenceChainLimiterResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef rapid_inference_chain_limiter(input_text: str) -> Dict:\n    \"\"\"\n    Detects and limits the formation of rapid inference chains by analyzing the input text.\n    \n    This function combines multiple signals to determine the confidence of a rapid inference chain.\n    The signals include:\n    - Absolute term density: The ratio of absolute terms (e.g., \"always\", \"never\") to",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 57
+    },
+    "diversity": 0.537,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-08-02T02:22:40.941672"
   }
 }
