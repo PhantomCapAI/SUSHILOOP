@@ -490,5 +490,11 @@
     "category": "BIAS_DETECTION",
     "cycle": 317,
     "created_at": "2026-08-02T13:10:46.364689"
+  },
+  "tone_shift_detector": {
+    "title": "Tone Shift Detector",
+    "category": "CONTENT_SAFETY",
+    "cycle": 322,
+    "created_at": "2026-08-03T19:24:39.180170"
   }
 }

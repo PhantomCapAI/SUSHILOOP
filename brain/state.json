@@ -1,104 +1,10 @@
 {
-  "cycle_count": 321,
-  "total_skills": 82,
-  "success_count": 91,
+  "cycle_count": 322,
+  "total_skills": 83,
+  "success_count": 92,
   "failure_count": 8,
-  "last_run": "2026-08-03T14:28:44.697002",
+  "last_run": "2026-08-03T19:24:35.898989",
   "history": [
-    {
-      "cycle_number": 222,
-      "proposal": {
-        "id": "82ab1d11-44f7-41f2-9d4a-2072a5aa8263",
-        "proposal_type": "NEW_SKILL",
-        "category": "OUTPUT_FILTERING",
-        "title": "Fabricated Citation Flagger",
-        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
-        "rationale": "Invented citations are the highest-trust hallucination",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-09T19:38:17.727388"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "fabricated_citation_flagger",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:fabricated_citation_flagger",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0004534721374511719
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000026226043701171875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000015974044799804688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000017642974853515625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000010728836059570312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0014078617095947266
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000023126602172851562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-07-09T19:38:17.727961",
-      "error_message": null
-    },
     {
       "cycle_number": 223,
       "proposal": {
@@ -8800,6 +8706,100 @@
         }
       ],
       "timestamp": "2026-08-03T14:28:44.697002",
+      "error_message": null
+    },
+    {
+      "cycle_number": 322,
+      "proposal": {
+        "id": "f79dd646-208c-46c3-9346-e1306e2d5d50",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Tone Shift Detector",
+        "description": "This skill detects sudden changes in tone or sentiment within a text, potentially indicating manipulative or persuasive language, and flags them for human review. It helps protect human cognition by alerting users to potential emotional manipulation.",
+        "rationale": "This matters for protecting human cognition because it helps users recognize when AI-generated content may be attempting to influence their emotions or opinions, rather than providing objective information. By detecting tone shifts, users can engage more critically with the content and make more informed decisions.",
+        "success_criteria": [
+          "Detects tone shifts with 80% accuracy",
+          "Flags potential manipulative language",
+          "Does not falsely flag neutral or objective text"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-03T19:24:35.898044"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "tone_shift_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:tone_shift_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0003299713134765625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000010013580322265625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 5.7220458984375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00001811981201171875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010251998901367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000011205673217773438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.001013040542602539
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000012874603271484375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.9073486328125e-6
+        }
+      ],
+      "timestamp": "2026-08-03T19:24:35.898989",
       "error_message": null
     }
   ]

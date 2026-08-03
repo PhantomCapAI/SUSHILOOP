@@ -5219,5 +5219,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-08-03T14:28:48.579032"
+  },
+  "tone_shift_detector": {
+    "name": "tone_shift_detector",
+    "title": "Tone Shift Detector",
+    "code_hash": "99561ae5838b7026",
+    "summary": "import re\nfrom math import log\nfrom typing import Dict\n\ndef tone_shift_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects sudden changes in tone or sentiment within a text, potentially indicating \n    manipulative or persuasive language, and flags them for human review.\n\n    This function combines multiple signals to detect tone shifts, including:\n    - Absolute term density\n    - Hedge density\n    - Overgeneral term density\n    - Sentence complexity\n\n    The confidence score is a weighted sum of these signals, clamped to [0.0, 1.0].\n    The `blocked` decision is based on a threshold of 0.",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 71
+    },
+    "diversity": 0.59,
+    "failure_modes": [],
+    "timestamp": "2026-08-03T19:24:39.182008"
   }
 }
