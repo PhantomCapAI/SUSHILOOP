@@ -2878,3 +2878,12 @@
 }
 ```
 ---
+
+## [2026-08-03T14:28:48.596754] Cycle 321: CycleResult.REJECTED
+```json
+{
+  "proposal": "Linguistic Inconsistency Detector",
+  "skill": "linguistic_inconsistency_detector"
+}
+```
+---

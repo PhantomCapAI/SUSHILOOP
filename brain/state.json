@@ -1,104 +1,10 @@
 {
-  "cycle_count": 320,
+  "cycle_count": 321,
   "total_skills": 82,
   "success_count": 91,
   "failure_count": 8,
-  "last_run": "2026-08-03T09:34:53.029339",
+  "last_run": "2026-08-03T14:28:44.697002",
   "history": [
-    {
-      "cycle_number": 221,
-      "proposal": {
-        "id": "163055e1-c38d-4014-9f7a-ce00727253fe",
-        "proposal_type": "NEW_SKILL",
-        "category": "OUTPUT_FILTERING",
-        "title": "Unhedged Medical/Legal Claim Filter",
-        "description": "Flags AI output giving medical or legal directives without a verify-with-a-professional caveat",
-        "rationale": "Directive high-stakes advice invites cognitive surrender",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-09T14:48:12.304912"
-      },
-      "result": "REJECTED",
-      "skill_generated": "unhedged_medicallegal_claim_filter",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:unhedged_medicallegal_claim_filter",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002679109573364258
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.0000152587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 0.000010013580322265625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00005602836608886719
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000025987625122070312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.00003743171691894531
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000021219253540039062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0044405460357666016
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.00003266334533691406
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 1.9073486328125e-6
-        }
-      ],
-      "timestamp": "2026-07-09T14:48:12.305346",
-      "error_message": null
-    },
     {
       "cycle_number": 222,
       "proposal": {
@@ -8800,6 +8706,100 @@
         }
       ],
       "timestamp": "2026-08-03T09:34:53.029339",
+      "error_message": null
+    },
+    {
+      "cycle_number": 321,
+      "proposal": {
+        "id": "8cc20127-27a8-42e3-b830-bcd596307fd7",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Linguistic Inconsistency Detector",
+        "description": "This skill identifies and flags instances where AI-generated responses contain linguistic inconsistencies, such as contradictory statements or unclear antecedents, to prompt users to verify and clarify the information. It helps users to critically evaluate AI-generated content and avoid relying on potentially flawed information.",
+        "rationale": "This skill matters for protecting human cognition because it encourages users to engage in active critical thinking and verification, rather than passively accepting AI-generated responses. By detecting linguistic inconsistencies, this skill helps users to identify potential flaws in AI-generated content and to develop a more nuanced understanding of the information presented.",
+        "success_criteria": [
+          "Detection accuracy of linguistic inconsistencies",
+          "Effective prompting of users to verify and clarify information",
+          "Improved user engagement in critical thinking and evaluation of AI-generated content"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-03T14:28:44.695412"
+      },
+      "result": "REJECTED",
+      "skill_generated": "linguistic_inconsistency_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:linguistic_inconsistency_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.001957416534423828
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.344650268554688e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000019550323486328125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000014543533325195312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000015974044799804688
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 9.775161743164062e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0017254352569580078
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000020265579223632812
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-08-03T14:28:44.697002",
       "error_message": null
     }
   ]
