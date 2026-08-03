@@ -4538,29 +4538,30 @@
   "rapid_fire_inference_limiter": {
     "name": "rapid_fire_inference_limiter",
     "title": "Rapid Fire Inference Limiter",
-    "code_hash": "c11401e7b430005b",
-    "summary": "\"\"\"\nSUSHILOOP Guardrail: Rapid Fire Inference Limiter\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-22\n \nDescription:\n    This skill detects and limits rapid successive inferences made by the AI model within a short time frame, preventing the model from overwhelming the user with a high volume of potentially incomplete or inaccurate information. It enforces a minimum time delay between consecutive inferences to encourage more thoughtful and reflective user engagement.\n \nRationale:\n    By limiting the rate at which the AI model can produce inferences, this skill protects human cogn",
+    "code_hash": "e22bafe6de9275e2",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Rapid Fire Inference Limiter\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-08-03\n \nDescription:\n    This skill detects and limits instances where a user is relying too heavily on AI inferences in rapid succession, preventing overreliance on automated reasoning. It does this by tracking the frequency and timing of AI-generated responses and intervening when a predetermined threshold is exceeded.\n \nRationale:\n    This skill matters for protecting human cognition because it helps prevent the erosion of critical thinking skills that can occur when individuals rel",
     "score": {
-      "tests_pass": 0,
+      "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 7,
       "strategies": 4,
-      "static_total": 31,
+      "static_total": 41,
       "behavioral": {
-        "robustness": 0,
+        "robustness": 10,
         "discrimination": 0,
-        "calibration": 0,
-        "behavioral_total": 0,
-        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/rapid_fire_inference_limiter.py'"
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
       },
-      "total": 31
+      "total": 56
     },
-    "diversity": 0.694,
+    "diversity": 0.588,
     "failure_modes": [
-      "charter:The code does not align with the charter's principles as it attempts to limit the rate of inferences but does so in a way that could potentially replace user judgment by automatically blocking input based on predefined patterns, and its confidence calculation and blocking logic may not be transparen"
+      "shallow:discrimination=0,behavioral_total=15"
     ],
-    "timestamp": "2026-07-22T19:08:06.541054"
+    "timestamp": "2026-08-03T02:24:53.729929"
   },
   "effortless_answer_warner": {
     "name": "effortless_answer_warner",
