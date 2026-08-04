@@ -5245,5 +5245,33 @@
     "diversity": 0.59,
     "failure_modes": [],
     "timestamp": "2026-08-03T19:24:39.182008"
+  },
+  "contextual_inference_validator": {
+    "name": "contextual_inference_validator",
+    "title": "Contextual Inference Validator",
+    "code_hash": "fcb41379160e61b3",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Contextual Inference Validator\n \nCategory: SkillCategory.VERIFICATION_PROMPT\nGenerated: 2026-08-04\n \nDescription:\n    This skill detects when AI-generated text implies a conclusion without explicitly stating the underlying assumptions, prompting the user to verify the inference. It identifies instances where the AI's reasoning might be based on unstated or unclear premises.\n \nRationale:\n    This skill matters for protecting human cognition because it helps users recognize when AI outputs might be based on hidden or flawed assumptions, encouraging critical thinking and ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 56
+    },
+    "diversity": 0.681,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-08-04T02:05:09.120174"
   }
 }
