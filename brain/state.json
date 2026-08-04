@@ -1,104 +1,10 @@
 {
-  "cycle_count": 323,
-  "total_skills": 83,
-  "success_count": 92,
+  "cycle_count": 324,
+  "total_skills": 84,
+  "success_count": 93,
   "failure_count": 8,
-  "last_run": "2026-08-04T02:05:06.193954",
+  "last_run": "2026-08-04T08:29:38.506445",
   "history": [
-    {
-      "cycle_number": 224,
-      "proposal": {
-        "id": "3b3b393d-a932-473b-b673-4d35043a7f82",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Overconfidence Phrase Detector",
-        "description": "This skill detects phrases in AI-generated text that may indicate overconfidence, such as absolute language or universal claims, and flags them to prompt users to consider alternative perspectives. It helps users recognize when AI outputs may be overly assertive or lacking in nuance.",
-        "rationale": "Protecting human cognition from AI overreliance requires being aware of potential biases in AI-generated content. Overconfidence in AI outputs can lead users to accept information without critically evaluating it, which can undermine their cognitive abilities and lead to poor decision-making.",
-        "success_criteria": [
-          "Detection accuracy of overconfidence phrases exceeds 80%",
-          "Flags are appropriately categorized by confidence level and phrase type",
-          "Users report increased awareness of potential biases in AI-generated content"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-10T09:27:19.073352"
-      },
-      "result": "REJECTED",
-      "skill_generated": "overconfidence_phrase_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:overconfidence_phrase_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0004968643188476562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.867813110351562e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000012159347534179688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 5.0067901611328125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.000024557113647460938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 7.62939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-07-10T09:27:19.074621",
-      "error_message": null
-    },
     {
       "cycle_number": 225,
       "proposal": {
@@ -8867,6 +8773,100 @@
         }
       ],
       "timestamp": "2026-08-04T02:05:06.193954",
+      "error_message": null
+    },
+    {
+      "cycle_number": 324,
+      "proposal": {
+        "id": "79a1ca1a-01eb-4984-b5c6-79af9a28774d",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Interrogative Burst Limiter",
+        "description": "This skill detects and limits consecutive interrogative sentences (questions) in a user's input to prevent overreliance on AI for instant answers, promoting critical thinking and self-reflection. It helps maintain a balance between inquiry and introspection.",
+        "rationale": "By limiting rapid-fire questioning, this skill encourages users to reflect on their previous questions and the answers provided, fostering a deeper understanding and reducing the likelihood of treating AI as a substitute for human cognition.",
+        "success_criteria": [
+          "Reduces consecutive interrogative sentences by at least 30%",
+          "Does not falsely limit non-interrogative sentences",
+          "Maintains an average user engagement time of at least 2 minutes"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-04T08:29:38.505032"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "interrogative_burst_limiter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:interrogative_burst_limiter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0010669231414794922
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.298324584960938e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00002002716064453125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000014543533325195312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000014543533325195312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 9.298324584960938e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0009329319000244141
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000017881393432617188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        }
+      ],
+      "timestamp": "2026-08-04T08:29:38.506445",
       "error_message": null
     }
   ]

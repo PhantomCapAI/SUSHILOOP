@@ -496,5 +496,11 @@
     "category": "CONTENT_SAFETY",
     "cycle": 322,
     "created_at": "2026-08-03T19:24:39.180170"
+  },
+  "interrogative_burst_limiter": {
+    "title": "Interrogative Burst Limiter",
+    "category": "RATE_LIMITING",
+    "cycle": 324,
+    "created_at": "2026-08-04T08:29:41.607339"
   }
 }

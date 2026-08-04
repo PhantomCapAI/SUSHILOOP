@@ -5273,5 +5273,31 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-08-04T02:05:09.120174"
+  },
+  "interrogative_burst_limiter": {
+    "name": "interrogative_burst_limiter",
+    "title": "Interrogative Burst Limiter",
+    "code_hash": "a09d5203d5b74c7d",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass InterrogativeBurstLimiterResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef interrogative_burst_limiter(input_text: str) -> Dict:\n    \"\"\"\n    This function detects and limits consecutive interrogative sentences (questions) in a user's input.\n    It promotes critical thinking and self-reflection by preventing overreliance on AI for instant answers.\n    \n    The function combines multiple signals to detect interrogative bursts, including:\n    - Sentence coun",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 10,
+      "static_total": 47,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 72
+    },
+    "diversity": 0.592,
+    "failure_modes": [],
+    "timestamp": "2026-08-04T08:29:41.609653"
   }
 }
