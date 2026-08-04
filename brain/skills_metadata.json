@@ -2056,28 +2056,30 @@
   "unhedged_medicallegal_claim_filter": {
     "name": "unhedged_medicallegal_claim_filter",
     "title": "Unhedged Medical/Legal Claim Filter",
-    "code_hash": "935f29a3566d2bf2",
-    "summary": "import re\nfrom typing import Dict\n\ndef unhedged_medicallegal_claim_filter(input_text: str) -> Dict:\n    \"\"\"\n    Flags AI output giving medical or legal directives without a verify-with-a-professional caveat.\n\n    This function uses a combination of signals to detect unhedged medical or legal claims, including:\n    - Absolute term density: the ratio of absolute terms (e.g. \"always\", \"never\") to total words\n    - Hedge density: the ratio of hedging terms (e.g. \"may\", \"might\") to total words\n    - Overgeneral term density: the ratio of overgeneral terms (e.g. \"everyone\", \"all\") to total words\n   ",
+    "code_hash": "ecbbd59643a6e781",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Unhedged Medical/Legal Claim Filter\n \nCategory: SkillCategory.OUTPUT_FILTERING\nGenerated: 2026-08-04\n \nDescription:\n    Flags AI output giving medical or legal directives without a verify-with-a-professional caveat\n \nRationale:\n    Directive high-stakes advice invites cognitive surrender\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef unhedged_medicallegal_claim_filter(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Flags AI output giving medical or legal directives without a verify-with-a-professional caveat\n \n    Returns dict with: blocked, reason, confidence, cat",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 7,
-      "strategies": 1,
-      "static_total": 38,
+      "strategies": 4,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 5,
-        "calibration": 10,
-        "behavioral_total": 25,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 63
+      "total": 56
     },
-    "diversity": 0.562,
-    "failure_modes": [],
-    "timestamp": "2026-07-28T02:06:06.722891"
+    "diversity": 0.671,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-08-04T14:00:07.519981"
   },
   "insufficient_counterfactual_consideration_detector": {
     "name": "insufficient_counterfactual_consideration_detector",
