@@ -502,5 +502,11 @@
     "category": "RATE_LIMITING",
     "cycle": 324,
     "created_at": "2026-08-04T08:29:41.607339"
+  },
+  "undue_certainty_detector": {
+    "title": "Undue Certainty Detector",
+    "category": "CONTENT_SAFETY",
+    "cycle": 326,
+    "created_at": "2026-08-04T19:24:47.889037"
   }
 }

@@ -1,37 +1,10 @@
 {
-  "cycle_count": 325,
-  "total_skills": 83,
-  "success_count": 93,
+  "cycle_count": 326,
+  "total_skills": 85,
+  "success_count": 94,
   "failure_count": 8,
-  "last_run": "2026-08-04T14:00:03.247637",
+  "last_run": "2026-08-04T19:24:44.669120",
   "history": [
-    {
-      "cycle_number": 226,
-      "proposal": {
-        "id": "af8a4b13-1f3c-4f9b-87c0-353761981787",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Escalation Advice Detector",
-        "description": "Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat",
-        "rationale": "High-arousal advice short-circuits deliberation",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-10T19:21:17.759279"
-      },
-      "result": "REJECTED",
-      "skill_generated": "escalation_advice_detector",
-      "test_results": [],
-      "timestamp": "2026-07-10T19:21:17.760075",
-      "error_message": null
-    },
     {
       "cycle_number": 227,
       "proposal": {
@@ -8867,6 +8840,100 @@
         }
       ],
       "timestamp": "2026-08-04T14:00:03.247637",
+      "error_message": null
+    },
+    {
+      "cycle_number": 326,
+      "proposal": {
+        "id": "9cac792a-f0f9-4dcd-9907-d81bc864d66e",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Undue Certainty Detector",
+        "description": "This skill detects instances where AI-generated content presents speculative or uncertain information with unwarranted confidence, potentially misleading users. It flags phrases that convey absolute certainty (e.g., 'always', 'never', 'definitely') in the context of uncertain topics.",
+        "rationale": "Protecting human cognition from AI overreliance requires ensuring that users are not misled by AI-generated content that presents uncertain information as fact. By detecting undue certainty, this skill helps users critically evaluate the information they receive and make more informed decisions.",
+        "success_criteria": [
+          "Detects phrases conveying absolute certainty in uncertain contexts",
+          "Flags speculative language presented as fact",
+          "Does not flag uncertain language presented as uncertain"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-04T19:24:44.667614"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "undue_certainty_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:undue_certainty_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.00041222572326660156
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.00001049041748046875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000022411346435546875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000013828277587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000016927719116210938
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 8.821487426757812e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.000156402587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000015020370483398438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        }
+      ],
+      "timestamp": "2026-08-04T19:24:44.669120",
       "error_message": null
     }
   ]

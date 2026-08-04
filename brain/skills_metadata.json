@@ -5301,5 +5301,31 @@
     "diversity": 0.592,
     "failure_modes": [],
     "timestamp": "2026-08-04T08:29:41.609653"
+  },
+  "undue_certainty_detector": {
+    "name": "undue_certainty_detector",
+    "title": "Undue Certainty Detector",
+    "code_hash": "f6ac6fa2e7db4dfb",
+    "summary": "import re\nfrom typing import Dict\n\ndef undue_certainty_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects instances where AI-generated content presents speculative or uncertain information with unwarranted confidence.\n\n    This skill combines multiple signals to detect undue certainty in AI-generated content. It flags phrases that convey absolute certainty \n    (e.g., 'always', 'never', 'definitely') in the context of uncertain topics, while not flagging uncertain language presented as uncertain.\n\n    Args:\n        input_text (str): The input text to be evaluated.\n\n    Returns:\n        dic",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 71
+    },
+    "diversity": 0.646,
+    "failure_modes": [],
+    "timestamp": "2026-08-04T19:24:47.891360"
   }
 }
