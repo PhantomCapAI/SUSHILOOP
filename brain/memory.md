@@ -2941,3 +2941,12 @@
 }
 ```
 ---
+
+## [2026-08-05T08:28:26.033620] Cycle 328: CycleResult.REJECTED
+```json
+{
+  "proposal": "Interrogation Cascade Preventer",
+  "skill": "interrogation_cascade_preventer"
+}
+```
+---

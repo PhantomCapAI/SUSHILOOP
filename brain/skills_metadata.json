@@ -5353,5 +5353,33 @@
     "diversity": 0.547,
     "failure_modes": [],
     "timestamp": "2026-08-05T02:03:20.786861"
+  },
+  "interrogation_cascade_preventer": {
+    "name": "interrogation_cascade_preventer",
+    "title": "Interrogation Cascade Preventer",
+    "code_hash": "93f11bcefc65da8c",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass InterrogationCascadePreventerResult:\n    \"\"\"Result of the interrogation cascade preventer.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the text.\"\"\"\n    absolute_terms = re.findall(r\"\\b(always|never|every|all)\\b\", text, re.IGNORECASE)\n    word_count = len(re.findall(r\"\\b\\w+\\b\", text))\n    return len(absolute_terms) / word_count i",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 58
+    },
+    "diversity": 0.345,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-08-05T08:28:26.022802"
   }
 }
