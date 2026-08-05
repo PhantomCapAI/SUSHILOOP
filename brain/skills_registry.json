@@ -514,5 +514,11 @@
     "category": "VERIFICATION_PROMPT",
     "cycle": 327,
     "created_at": "2026-08-05T02:03:20.784497"
+  },
+  "sensitive_information_leakage_detector": {
+    "title": "Sensitive Information Leakage Detector",
+    "category": "PII_DETECTION",
+    "cycle": 329,
+    "created_at": "2026-08-05T13:57:52.143972"
   }
 }

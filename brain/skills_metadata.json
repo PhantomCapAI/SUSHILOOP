@@ -5381,5 +5381,31 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-08-05T08:28:26.022802"
+  },
+  "sensitive_information_leakage_detector": {
+    "name": "sensitive_information_leakage_detector",
+    "title": "Sensitive Information Leakage Detector",
+    "code_hash": "283dcc724b861618",
+    "summary": "import re\nfrom typing import Dict\n\ndef sensitive_information_leakage_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects and flags instances where sensitive personal information, such as credit card numbers, \n    social security numbers, or medical record numbers, is inadvertently shared or leaked in text.\n\n    This function combines multiple signals to produce a graded confidence that varies with the input.\n    It uses weighted pattern matches, structural features, and lexical diversity to detect sensitive information.\n\n    Args:\n        input_text (str): The input text to be scanned for s",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 10,
+      "static_total": 50,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 75
+    },
+    "diversity": 0.568,
+    "failure_modes": [],
+    "timestamp": "2026-08-05T13:57:52.146521"
   }
 }
