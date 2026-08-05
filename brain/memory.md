@@ -2959,3 +2959,12 @@
 }
 ```
 ---
+
+## [2026-08-05T19:23:23.826186] Cycle 330: CycleResult.REJECTED
+```json
+{
+  "proposal": "Loaded-Framing Detector",
+  "skill": "loaded_framing_detector"
+}
+```
+---

@@ -5407,5 +5407,33 @@
     "diversity": 0.568,
     "failure_modes": [],
     "timestamp": "2026-08-05T13:57:52.146521"
+  },
+  "loaded_framing_detector": {
+    "name": "loaded_framing_detector",
+    "title": "Loaded-Framing Detector",
+    "code_hash": "57a823fa366540ca",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass LoadedFramingResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef loaded_framing_detector(input_text: str) -> Dict:\n    \"\"\"\n    Flags when a prompt's wording presupposes a conclusion, nudging the model to confirm rather than examine it.\n\n    This function uses a combination of signals to detect loaded framing in the input text.\n    The signals include:\n    - Absolute terms ratio: The ratio of absolute terms (e.g., \"always\", \"",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 57
+    },
+    "diversity": 0.573,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-08-05T19:23:23.802488"
   }
 }
