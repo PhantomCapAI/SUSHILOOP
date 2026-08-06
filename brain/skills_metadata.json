@@ -5435,5 +5435,31 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-08-05T19:23:23.802488"
+  },
+  "sequential_dependency_throttler": {
+    "name": "sequential_dependency_throttler",
+    "title": "Sequential Dependency Throttler",
+    "code_hash": "d88715744762eaf1",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass SequentialDependencyThrottlerResponse:\n    \"\"\"Response from the Sequential Dependency Throttler\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the text\"\"\"\n    absolute_terms = re.findall(r'\\b(always|never|every|all)\\b', text, re.IGNORECASE)\n    words = re.findall(r'\\b\\w+\\b', text)\n    return len(absolute_terms) / len(words) if word",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 66
+    },
+    "diversity": 0.321,
+    "failure_modes": [],
+    "timestamp": "2026-08-06T08:27:24.821233"
   }
 }
