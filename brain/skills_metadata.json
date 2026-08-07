@@ -5515,5 +5515,33 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-08-07T02:26:40.989125"
+  },
+  "sequential_inquiry_throttler": {
+    "name": "sequential_inquiry_throttler",
+    "title": "Sequential Inquiry Throttler",
+    "code_hash": "b30da3099c9d1f38",
+    "summary": "import re\nfrom collections import Counter\nfrom math import log\nfrom typing import Dict\n\ndef sequential_inquiry_throttler(input_text: str) -> Dict:\n    \"\"\"\n    Detects and limits consecutive, similar inquiries from a user within a short timeframe,\n    preventing overreliance on AI for sequential problem-solving and encouraging human reflection\n    on previous results.\n\n    Args:\n        input_text (str): The user's inquiry text.\n\n    Returns:\n        dict: A dictionary containing the results of the throttler, including:\n            - blocked (bool): Whether the inquiry should be blocked.\n      ",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 58
+    },
+    "diversity": 0.667,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-08-07T12:53:02.958416"
   }
 }

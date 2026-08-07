@@ -3022,3 +3022,12 @@
 }
 ```
 ---
+
+## [2026-08-07T12:53:02.969575] Cycle 337: CycleResult.REJECTED
+```json
+{
+  "proposal": "Sequential Inquiry Throttler",
+  "skill": "sequential_inquiry_throttler"
+}
+```
+---
