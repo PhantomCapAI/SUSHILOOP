@@ -5487,5 +5487,33 @@
     "diversity": 0.438,
     "failure_modes": [],
     "timestamp": "2026-08-06T23:54:02.962992"
+  },
+  "sequential_dependency_detector": {
+    "name": "sequential_dependency_detector",
+    "title": "Sequential Dependency Detector",
+    "code_hash": "15c76a4539edd7f6",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Sequential Dependency Detector\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-08-07\n \nDescription:\n    This skill detects and limits the sequential dependency on AI outputs by identifying patterns where a user's input is heavily reliant on the previous AI response, thus preventing overreliance on AI for decision-making. It does this by analyzing the semantic similarity between user inputs and preceding AI outputs.\n \nRationale:\n    By detecting and limiting such sequential dependencies, this skill encourages humans to think critically and make decisions based o",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 7,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 59
+    },
+    "diversity": 0.64,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-08-07T02:26:40.989125"
   }
 }

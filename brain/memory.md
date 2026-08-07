@@ -3004,3 +3004,12 @@
 }
 ```
 ---
+
+## [2026-08-07T02:26:41.000432] Cycle 335: CycleResult.REJECTED
+```json
+{
+  "proposal": "Sequential Dependency Detector",
+  "skill": "sequential_dependency_detector"
+}
+```
+---
