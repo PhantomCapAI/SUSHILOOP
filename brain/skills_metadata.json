@@ -5411,30 +5411,30 @@
   "loaded_framing_detector": {
     "name": "loaded_framing_detector",
     "title": "Loaded-Framing Detector",
-    "code_hash": "57a823fa366540ca",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass LoadedFramingResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef loaded_framing_detector(input_text: str) -> Dict:\n    \"\"\"\n    Flags when a prompt's wording presupposes a conclusion, nudging the model to confirm rather than examine it.\n\n    This function uses a combination of signals to detect loaded framing in the input text.\n    The signals include:\n    - Absolute terms ratio: The ratio of absolute terms (e.g., \"always\", \"",
+    "code_hash": "d6233dd7c1bea5e3",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Loaded-Framing Detector\n \nCategory: SkillCategory.BIAS_DETECTION\nGenerated: 2026-08-07\n \nDescription:\n    Flags when a prompt's wording presupposes a conclusion, nudging the model to confirm rather than examine it\n \nRationale:\n    Confirmation framing turns AI into an echo, not a sparring partner\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef loaded_framing_detector(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Flags when a prompt's wording presupposes a conclusion, nudging the model to confirm rather than examine it\n \n    Returns dict with: blocked, reason, conf",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 7,
-      "strategies": 1,
-      "static_total": 38,
+      "strategies": 4,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 57
+      "total": 56
     },
-    "diversity": 0.573,
+    "diversity": 0.633,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
+      "shallow:discrimination=0,behavioral_total=15"
     ],
-    "timestamp": "2026-08-05T19:23:23.802488"
+    "timestamp": "2026-08-07T07:07:34.104478"
   },
   "sequential_dependency_throttler": {
     "name": "sequential_dependency_throttler",
