@@ -3058,3 +3058,12 @@
 }
 ```
 ---
+
+## [2026-08-08T12:37:34.600997] Cycle 341: CycleResult.REJECTED
+```json
+{
+  "proposal": "Consecutive Inference Throttler",
+  "skill": "consecutive_inference_throttler"
+}
+```
+---

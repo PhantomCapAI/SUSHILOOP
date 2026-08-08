@@ -5571,5 +5571,33 @@
     "diversity": 0.639,
     "failure_modes": [],
     "timestamp": "2026-08-08T06:43:00.239099"
+  },
+  "consecutive_inference_throttler": {
+    "name": "consecutive_inference_throttler",
+    "title": "Consecutive Inference Throttler",
+    "code_hash": "ccee16e2c5941309",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass ConsecutiveInferenceThrottlerResult:\n    \"\"\"Result of the Consecutive Inference Throttler\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef consecutive_inference_throttler(input_text: str) -> Dict:\n    \"\"\"\n    Consecutive Inference Throttler: detects and limits consecutive AI inferences on the same topic or question.\n\n    This skill promotes a balance between AI assistance and human critical thinking by throttling th",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 60
+    },
+    "diversity": 0.629,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=22"
+    ],
+    "timestamp": "2026-08-08T12:37:34.582850"
   }
 }
