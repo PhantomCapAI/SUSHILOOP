@@ -4953,30 +4953,29 @@
   "indirect_identifier_combiner": {
     "name": "indirect_identifier_combiner",
     "title": "Indirect Identifier Combiner",
-    "code_hash": "64209deef532befa",
-    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass Signal:\n    \"\"\"Dataclass to hold signal information.\"\"\"\n    name: str\n    weight: float\n    value: float\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (always, never, etc.) in the input text.\n    \n    Args:\n    input_text (str): The input text to analyze.\n    \n    Returns:\n    float: The ratio of absolute terms.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    abs",
+    "code_hash": "9b6cbec0276cf34c",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Indirect Identifier Combiner\n \nCategory: SkillCategory.PII_DETECTION\nGenerated: 2026-08-08\n \nDescription:\n    Flags inputs where several non-PII fields (ZIP, birth year, job) combine into a re-identifiable fingerprint\n \nRationale:\n    Quasi-identifiers leak identity even when no single field is PII\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef indirect_identifier_combiner(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Flags inputs where several non-PII fields (ZIP, birth year, job) combine into a re-identifiable fingerprint\n \n    Returns dict with: blocked, reaso",
     "score": {
-      "tests_pass": 10,
+      "tests_pass": 0,
       "complexity": 10,
       "structure": 10,
-      "documentation": 10,
-      "strategies": 1,
-      "static_total": 41,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 31,
       "behavioral": {
-        "robustness": 10,
-        "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
-        "probes_raised": 0,
-        "probes_valid": 17
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/indirect_identifier_combiner.py'"
       },
-      "total": 60
+      "total": 31
     },
-    "diversity": 0.388,
+    "diversity": 0.732,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
+      "charter:The code does not align with the charter's principles as it appears to be detecting specific patterns and blocking input based on those patterns, but the patterns it's checking for seem unrelated to the stated purpose of combining non-PII fields into a re-identifiable fingerprint, and instead seem t"
     ],
-    "timestamp": "2026-07-29T08:32:26.892053"
+    "timestamp": "2026-08-08T18:30:23.152357"
   },
   "emotional_appeal_detector": {
     "name": "emotional_appeal_detector",
