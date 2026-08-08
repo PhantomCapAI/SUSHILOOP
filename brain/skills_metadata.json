@@ -2356,28 +2356,30 @@
   "self_harm_routing_guard": {
     "name": "self_harm_routing_guard",
     "title": "Self-Harm Routing Guard",
-    "code_hash": "c806dc9f720bc79f",
-    "summary": "import re\nimport math\nfrom typing import Dict\n\ndef self_harm_routing_guard(input_text: str) -> Dict:\n    \"\"\"\n    Detects distress signals in input text and ensures the path to human/professional support is surfaced.\n\n    This function combines multiple signals to detect potential self-harm routing, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneralization term density\n    - Sentence structure and complexity\n\n    The function returns a dictionary with the following keys:\n    - blocked: A boolean indicating whether the input text is likely to be self-harm routing\n ",
+    "code_hash": "30830c3d42ec2fba",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass Signal:\n    \"\"\"Data class to hold signal information\"\"\"\n    name: str\n    weight: float\n    value: float\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"Calculate the ratio of absolute terms in the input text\"\"\"\n    absolute_terms = [\"always\", \"never\", \"everyone\", \"nobody\"]\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    absolute_count = sum(1 for word in words if word in absolute_terms)\n    return absolute_count / len(words) if words else 0.0\n\ndef calculate_he",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
+      "documentation": 10,
       "strategies": 1,
-      "static_total": 38,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 10,
-        "calibration": 10,
-        "behavioral_total": 30,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 68
+      "total": 58
     },
-    "diversity": 0.597,
-    "failure_modes": [],
-    "timestamp": "2026-08-01T13:08:49.327206"
+    "diversity": 0.304,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-08-08T01:14:19.530987"
   },
   "inconsistent_identifier_pattern_detector": {
     "name": "inconsistent_identifier_pattern_detector",
