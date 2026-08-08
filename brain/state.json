@@ -1,104 +1,10 @@
 {
-  "cycle_count": 339,
-  "total_skills": 88,
-  "success_count": 99,
+  "cycle_count": 340,
+  "total_skills": 90,
+  "success_count": 100,
   "failure_count": 8,
-  "last_run": "2026-08-08T01:14:16.182444",
+  "last_run": "2026-08-08T06:42:57.777587",
   "history": [
-    {
-      "cycle_number": 240,
-      "proposal": {
-        "id": "784a4b45-239f-4c9a-a151-fa6080eb257a",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Unsubstantiated Claim Detector",
-        "description": "This skill detects when a user's prompt or input contains unsubstantiated claims or statements lacking concrete evidence, prompting the user to provide supporting facts or sources. It helps prevent the spread of misinformation and encourages critical thinking.",
-        "rationale": "By identifying unsubstantiated claims, this skill protects human cognition from potential misinformation and promotes a more informed decision-making process, aligning with the mission of using AI as a sparring partner, not a brain replacement.",
-        "success_criteria": [
-          "Identify unsubstantiated claims in user input",
-          "Prompt user to provide supporting evidence",
-          "Integrate with existing fact-checking APIs for verification"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete UnsubstantiatedClaimDetector.py from skills/",
-        "created_at": "2026-07-14T07:55:23.031188"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "unsubstantiated_claim_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:unsubstantiated_claim_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00046539306640625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000011444091796875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000024080276489257812
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.00004100799560546875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000014066696166992188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.344650268554688e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0004982948303222656
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000016689300537109375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-07-14T07:55:23.032794",
-      "error_message": null
-    },
     {
       "cycle_number": 241,
       "proposal": {
@@ -8934,6 +8840,100 @@
         }
       ],
       "timestamp": "2026-08-08T01:14:16.182444",
+      "error_message": null
+    },
+    {
+      "cycle_number": 340,
+      "proposal": {
+        "id": "ff76577e-c584-415d-9292-7bafe36d8ed3",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Unsubstantiated Superlative Detector",
+        "description": "This skill detects and flags instances where absolute or superlative language is used without evidence or justification, prompting users to verify the claim. It catches patterns such as 'the best', 'the greatest', or 'the most effective' without accompanying proof or data.",
+        "rationale": "This skill protects human cognition by preventing the spread of unsubstantiated claims and promoting critical thinking. By flagging absolute language, it encourages users to seek out evidence and consider alternative perspectives, rather than relying on unverified assertions.",
+        "success_criteria": [
+          "Detects unsubstantiated superlatives in text",
+          "Prompts user to verify claims with evidence",
+          "Does not falsely flag justified or supported claims"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-08T06:42:57.776162"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "unsubstantiated_superlative_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:unsubstantiated_superlative_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0003731250762939453
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.5367431640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00004935264587402344
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000016689300537109375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 5.4836273193359375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0006487369537353516
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000012874603271484375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        }
+      ],
+      "timestamp": "2026-08-08T06:42:57.777587",
       "error_message": null
     }
   ]

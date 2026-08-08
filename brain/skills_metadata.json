@@ -5545,5 +5545,31 @@
       "shallow:discrimination=0,behavioral_total=17"
     ],
     "timestamp": "2026-08-07T12:53:02.958416"
+  },
+  "unsubstantiated_superlative_detector": {
+    "name": "unsubstantiated_superlative_detector",
+    "title": "Unsubstantiated Superlative Detector",
+    "code_hash": "493f19a94679cfc6",
+    "summary": "import re\nfrom typing import Dict\n\ndef unsubstantiated_superlative_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects and flags instances where absolute or superlative language is used without evidence or justification.\n\n    This skill protects human cognition by preventing the spread of unsubstantiated claims and promoting critical thinking.\n    By flagging absolute language, it encourages users to seek out evidence and consider alternative perspectives, rather than relying on unverified assertions.\n\n    Args:\n        input_text (str): The text to analyze.\n\n    Returns:\n        dict: A di",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 10,
+        "calibration": 10,
+        "behavioral_total": 30,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 71
+    },
+    "diversity": 0.639,
+    "failure_modes": [],
+    "timestamp": "2026-08-08T06:43:00.239099"
   }
 }
