@@ -3076,3 +3076,12 @@
 }
 ```
 ---
+
+## [2026-08-09T01:19:17.196321] Cycle 343: CycleResult.REJECTED
+```json
+{
+  "proposal": "Exclusionary Language Identifier",
+  "skill": "exclusionary_language_identifier"
+}
+```
+---

@@ -1,104 +1,10 @@
 {
-  "cycle_count": 342,
+  "cycle_count": 343,
   "total_skills": 90,
   "success_count": 100,
   "failure_count": 8,
-  "last_run": "2026-08-08T18:30:18.042841",
+  "last_run": "2026-08-09T01:19:14.158446",
   "history": [
-    {
-      "cycle_number": 243,
-      "proposal": {
-        "id": "8c3c1a55-dd00-4142-9989-70680a7ba878",
-        "proposal_type": "NEW_SKILL",
-        "category": "COGNITIVE_PROTECTION",
-        "title": "Overconfidence Feedback Loop Detector",
-        "description": "This skill detects when AI-generated responses reinforce human overconfidence by repeating similar information without providing new insights, and flags such interactions to encourage more critical thinking. It analyzes the conversational history to identify potential feedback loops that may be hindering cognitive growth.",
-        "rationale": "Protecting human cognition requires preventing the reinforcement of overconfidence, which can lead to poor decision-making and reduced critical thinking skills. By detecting and flagging overconfidence feedback loops, this skill promotes more nuanced and informed interactions between humans and AI systems.",
-        "success_criteria": [
-          "Detection accuracy > 80%",
-          "False positive rate < 10%",
-          "Successful integration with existing cognitive protection skills"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-15T02:00:23.324110"
-      },
-      "result": "REJECTED",
-      "skill_generated": "overconfidence_feedback_loop_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:overconfidence_feedback_loop_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0017838478088378906
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 8.58306884765625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 5.245208740234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000027179718017578125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.0000133514404296875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 1.6689300537109375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0013775825500488281
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000017881393432617188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 1.9073486328125e-6
-        }
-      ],
-      "timestamp": "2026-07-15T02:00:23.325271",
-      "error_message": null
-    },
     {
       "cycle_number": 244,
       "proposal": {
@@ -8867,6 +8773,100 @@
       "skill_generated": "indirect_identifier_combiner",
       "test_results": [],
       "timestamp": "2026-08-08T18:30:18.042841",
+      "error_message": null
+    },
+    {
+      "cycle_number": 343,
+      "proposal": {
+        "id": "5d7a97ff-17a6-4147-a774-5118a25bace9",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "Exclusionary Language Identifier",
+        "description": "This skill detects and flags instances of exclusionary language, such as words or phrases that may be discriminatory or alienating towards certain groups of people, and provides alternative inclusive language suggestions. It aims to promote more considerate and respectful communication.",
+        "rationale": "Exclusionary language can perpetuate biases and negatively impact individuals from underrepresented groups, hindering their ability to engage fully in discussions and undermining their cognitive well-being. By identifying and suggesting alternatives to such language, this skill supports the creation of a more inclusive environment that fosters healthier cognitive interactions with AI.",
+        "success_criteria": [
+          "Successfully identifies at least 80% of commonly recognized exclusionary language patterns",
+          "Provides relevant and respectful alternative language suggestions in at least 90% of cases",
+          "Integrates seamlessly with existing conversation flows without disrupting user experience"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-09T01:19:14.156994"
+      },
+      "result": "REJECTED",
+      "skill_generated": "exclusionary_language_identifier",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:exclusionary_language_identifier",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0019524097442626953
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 5.4836273193359375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000016450881958007812
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010251998901367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000010728836059570312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.000985860824584961
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000015974044799804688
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.9073486328125e-6
+        }
+      ],
+      "timestamp": "2026-08-09T01:19:14.158446",
       "error_message": null
     }
   ]
