@@ -1,104 +1,10 @@
 {
-  "cycle_count": 344,
+  "cycle_count": 345,
   "total_skills": 90,
   "success_count": 100,
   "failure_count": 8,
-  "last_run": "2026-08-09T06:48:11.053665",
+  "last_run": "2026-08-09T12:40:01.534937",
   "history": [
-    {
-      "cycle_number": 245,
-      "proposal": {
-        "id": "dc25a025-0736-4e6d-a630-7620b0ef7f4c",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Unwarranted Certainty Detector",
-        "description": "This skill detects instances where AI-generated text conveys unwarranted certainty on complex or nuanced topics, potentially misleading users and hindering critical thinking. It identifies phrases that imply absolute confidence or universality, such as 'always', 'never', or 'everyone agrees'.",
-        "rationale": "This skill matters for protecting human cognition because unwarranted certainty can lead to oversimplification of complex issues, erosion of critical thinking, and perpetuation of misinformation. By flagging such instances, this skill encourages users to approach AI-generated content with a healthy dose of skepticism and nuance.",
-        "success_criteria": [
-          "Detects unwarranted certainty phrases in AI-generated text with 90% accuracy",
-          "Provides clear and actionable feedback to users on how to rephrase or reevaluate uncertain statements",
-          "Integrates seamlessly with existing CONTENT_SAFETY skills to provide comprehensive protection"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-15T13:27:00.330591"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "unwarranted_certainty_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:unwarranted_certainty_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00042438507080078125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000025987625122070312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000012636184692382812
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.0000133514404296875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.001377105712890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000018358230590820312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-07-15T13:27:00.332121",
-      "error_message": null
-    },
     {
       "cycle_number": 246,
       "proposal": {
@@ -8867,6 +8773,100 @@
         }
       ],
       "timestamp": "2026-08-09T06:48:11.053665",
+      "error_message": null
+    },
+    {
+      "cycle_number": 345,
+      "proposal": {
+        "id": "5da9e67a-21ec-43e4-b120-b191d7c9186c",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Consecutive Query Similarity Limiter",
+        "description": "This skill detects and limits consecutive queries that are highly similar in content, preventing users from relying on AI for repetitive or slightly modified questions. It helps users to think critically and not over-rely on AI for similar queries.",
+        "rationale": "This skill matters for protecting human cognition because it encourages users to think creatively and not rely on AI as a crutch for repetitive tasks. By limiting similar consecutive queries, users are prompted to re-evaluate their thinking and approach problems from different angles.",
+        "success_criteria": [
+          "Reduce consecutive similar query rate by 30%",
+          "Increase user engagement with diverse query topics by 25%",
+          "Maintain a false positive rate below 5%"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-09T12:40:01.533520"
+      },
+      "result": "REJECTED",
+      "skill_generated": "consecutive_query_similarity_limiter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:consecutive_query_similarity_limiter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0019304752349853516
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.106231689453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 5.245208740234375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000024557113647460938
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000012636184692382812
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000010728836059570312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0006783008575439453
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.0000152587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.6689300537109375e-6
+        }
+      ],
+      "timestamp": "2026-08-09T12:40:01.534937",
       "error_message": null
     }
   ]
