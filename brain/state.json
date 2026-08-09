@@ -1,104 +1,10 @@
 {
-  "cycle_count": 343,
+  "cycle_count": 344,
   "total_skills": 90,
   "success_count": 100,
   "failure_count": 8,
-  "last_run": "2026-08-09T01:19:14.158446",
+  "last_run": "2026-08-09T06:48:11.053665",
   "history": [
-    {
-      "cycle_number": 244,
-      "proposal": {
-        "id": "f2e8670a-75d1-4c24-ad70-703cd1058a5f",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Interrogation Depth Limiter",
-        "description": "This skill detects and limits the depth of sequential questions that an AI model can answer in a single session, preventing over-reliance on AI for complex problem-solving. It restricts the number of follow-up questions that can be asked within a certain time frame.",
-        "rationale": "By limiting the depth of interrogation, this skill encourages humans to think critically and make connections between ideas, rather than relying solely on AI for answers. This helps to protect human cognition by promoting active thinking and problem-solving skills.",
-        "success_criteria": [
-          "Reduces the average depth of sequential questions by 30%",
-          "Decreases the number of follow-up questions asked within a 5-minute time frame by 25%",
-          "Increases user engagement with critical thinking exercises by 20%"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-15T08:00:21.755400"
-      },
-      "result": "REJECTED",
-      "skill_generated": "interrogation_depth_limiter",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:interrogation_depth_limiter",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002193927764892578
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000011444091796875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 0.0000133514404296875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000024080276489257812
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000013589859008789062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000012159347534179688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.106231689453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0007779598236083984
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000058650970458984375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 5.7220458984375e-6
-        }
-      ],
-      "timestamp": "2026-07-15T08:00:21.756844",
-      "error_message": null
-    },
     {
       "cycle_number": 245,
       "proposal": {
@@ -8867,6 +8773,100 @@
         }
       ],
       "timestamp": "2026-08-09T01:19:14.158446",
+      "error_message": null
+    },
+    {
+      "cycle_number": 344,
+      "proposal": {
+        "id": "e95b7498-f34d-4282-8912-02cb2c9ce4a4",
+        "proposal_type": "NEW_SKILL",
+        "category": "COGNITIVE_PROTECTION",
+        "title": "Unexamined Premise Spotlighter",
+        "description": "This skill detects and highlights instances where a conclusion is drawn without examining the underlying premises, encouraging users to critically evaluate the argument's foundation. It identifies patterns where a statement is presented as fact without evidence or logical reasoning to support it.",
+        "rationale": "This skill matters for protecting human cognition because it helps users recognize when they are being presented with unexamined or unsupported claims, which can lead to uncritical acceptance and potential manipulation. By highlighting these instances, users are prompted to engage their critical thinking skills and evaluate the argument's validity.",
+        "success_criteria": [
+          "Detection accuracy of unexamined premises",
+          "User engagement with critical thinking prompts",
+          "Reduction in uncritical acceptance of unsupported claims"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-09T06:48:11.052146"
+      },
+      "result": "REJECTED",
+      "skill_generated": "unexamined_premise_spotlighter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:unexamined_premise_spotlighter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0013346672058105469
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000010013580322265625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.9141387939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000020503997802734375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000013113021850585938
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000014066696166992188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0011243820190429688
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000018596649169921875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-08-09T06:48:11.053665",
       "error_message": null
     }
   ]

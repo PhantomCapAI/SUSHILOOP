@@ -3085,3 +3085,12 @@
 }
 ```
 ---
+
+## [2026-08-09T06:48:14.270508] Cycle 344: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unexamined Premise Spotlighter",
+  "skill": "unexamined_premise_spotlighter"
+}
+```
+---
