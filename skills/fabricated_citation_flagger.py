@@ -1,105 +1,107 @@
 import re
 from typing import Dict
-from dataclasses import dataclass
 
-@dataclass
-class FabricatedCitationFlaggerResult:
-    blocked: bool
-    reason: str
-    confidence: float
-    category: str
-    details: Dict[str, float]
-
-def fabricated_citation_flagger(input_text: str) -> Dict[str, object]:
+def fabricated_citation_flagger(input_text: str) -> Dict:
     """
     Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.
 
-    This function uses a combination of signals to detect fabricated citations, including:
+    This function combines multiple signals to detect fabricated citations, including:
     - Pattern matches for common citation formats
     - Structural features such as sentence and clause counts
     - Lexical diversity and hedging/absolute-term density
 
-    The confidence score is a graded, clamped value between 0.0 and 1.0, where:
-    - Near 0.0 indicates clearly-benign input
-    - Above 0.7 indicates a clear positive
+    The confidence score is a graded, clamped value between 0.0 and 1.0, reflecting the strength of the signals.
+    The `blocked` decision is based on a threshold of 0.5, but can be adjusted as needed.
 
-    The `blocked` decision is based on a threshold of 0.5, where:
-    - `blocked` is True for clear positives and False for benign input
-
-    :param input_text: The text to be evaluated
-    :return: A dictionary containing the evaluation results
+    :param input_text: The text to be evaluated for fabricated citations
+    :return: A dictionary containing the evaluation results, including `blocked`, `reason`, `confidence`, `category`, and `details`
     """
     # SUSHILOOP input guard (auto-injected): never raise on bad input.
     if not isinstance(input_text, str) or not input_text.strip():
         return {"blocked": False, "reason": "empty_or_invalid_input",
                 "confidence": 0.0, "category": "none", "details": {}}
 
-    # Initialize signals
-    citation_pattern_match = 0.0
-    sentence_count = 0
-    clause_count = 0
-    lexical_diversity = 0.0
-    hedge_density = 0.0
-    absolutes_ratio = 0.0
-
-    # Pattern match for common citation formats
-    citation_patterns = [r"\b\d{4}\b", r"\bDOI:\d+\.\d+\b", r"\b[A-Z][a-z]+ v\. [A-Z][a-z]+\b"]
-    for pattern in citation_patterns:
-        matches = re.findall(pattern, input_text)
-        if matches:
-            citation_pattern_match = 1.0
-
-    # Structural features
-    sentences = re.split(r"[.!?]", input_text)
-    sentence_count = len([s for s in sentences if s.strip()])
-    clauses = re.split(r"[;:,]", input_text)
-    clause_count = len([c for c in clauses if c.strip()])
-
-    # Lexical diversity
-    words = re.findall(r"\b\w+\b", input_text.lower())
-    unique_words = set(words)
-    if words:
-        lexical_diversity = len(unique_words) / len(words)
-
-    # Hedging/absolute-term density
-    hedge_terms = ["may", "might", "could", "should", "would"]
-    absolute_terms = ["always", "never", "every", "all"]
-    hedge_count = sum(1 for word in words if word in hedge_terms)
-    absolute_count = sum(1 for word in words if word in absolute_terms)
-    if words:
-        hedge_density = hedge_count / len(words)
-        absolutes_ratio = absolute_count / len(words)
-
-    # Combine signals
-    raw_score = 0.2 * citation_pattern_match + 0.2 * (sentence_count / (clause_count + 1)) + 0.2 * lexical_diversity + 0.2 * hedge_density + 0.2 * absolutes_ratio
-    confidence = max(0.0, min(1.0, raw_score))
-
-    # Graded, flipping decision
-    blocked = confidence >= 0.5
-
-    # Return result
-    return {
-        "blocked": blocked,
-        "reason": "Fabricated citation detected" if blocked else "No fabricated citation detected",
-        "confidence": confidence,
-        "category": "Citation",
-        "details": {
-            "citation_pattern_match": citation_pattern_match,
-            "sentence_count": sentence_count,
-            "clause_count": clause_count,
-            "lexical_diversity": lexical_diversity,
-            "hedge_density": hedge_density,
-            "absolutes_ratio": absolutes_ratio
-        }
+    # Initialize the result dictionary
+    result = {
+        "blocked": False,
+        "reason": "",
+        "confidence": 0.0,
+        "category": "fabricated_citation",
+        "details": {}
     }
+
+    # Define common citation patterns
+    citation_patterns = [
+        r"\bDOI:\s*\d+\.\d+/[\w\-\.]+\b",
+        r"\bISBN:\s*\d{13}\b",
+        r"\bISSN:\s*\d{4}-\d{3}[\dxX]\b",
+        r"\bPubMed:\s*PMC\d+\b",
+        r"\bCase\s*\d{1,4}\s*[A-Za-z\s]+\b"
+    ]
+
+    # Define absolute and hedging terms
+    absolute_terms = ["always", "never", "only", "all", "none"]
+    hedging_terms = ["may", "might", "could", "would", "should"]
+
+    # Split the input text into sentences
+    sentences = re.split(r"[.!?]\s*", input_text)
+
+    # Initialize signal counters
+    citation_matches = 0
+    absolute_term_count = 0
+    hedging_term_count = 0
+    sentence_count = len(sentences)
+
+    # Iterate over the sentences
+    for sentence in sentences:
+        # Check for citation patterns
+        for pattern in citation_patterns:
+            if re.search(pattern, sentence):
+                citation_matches += 1
+
+        # Count absolute and hedging terms
+        for term in absolute_terms:
+            absolute_term_count += sentence.lower().count(term)
+        for term in hedging_terms:
+            hedging_term_count += sentence.lower().count(term)
+
+    # Calculate signal ratios
+    if sentence_count > 0:
+        citation_ratio = citation_matches / sentence_count
+        absolute_term_ratio = absolute_term_count / sentence_count
+        hedging_term_ratio = hedging_term_count / sentence_count
+    else:
+        citation_ratio = 0.0
+        absolute_term_ratio = 0.0
+        hedging_term_ratio = 0.0
+
+    # Calculate the raw confidence score
+    raw_confidence = 0.4 * citation_ratio + 0.3 * absolute_term_ratio + 0.3 * hedging_term_ratio
+
+    # Clamp the confidence score
+    confidence = max(0.0, min(1.0, raw_confidence))
+
+    # Update the result dictionary
+    result["confidence"] = confidence
+    result["blocked"] = confidence >= 0.5
+    if result["blocked"]:
+        result["reason"] = "Fabricated citation detected"
+    else:
+        result["reason"] = "No fabricated citation detected"
+    result["details"]["citation_matches"] = citation_matches
+    result["details"]["absolute_term_count"] = absolute_term_count
+    result["details"]["hedging_term_count"] = hedging_term_count
+
+    return result
+
 
 if __name__ == "__main__":
     test_cases = [
-        "The study found that the new treatment was effective (DOI: 10.1234/abc123).",
-        "The court ruled in favor of the plaintiff (Smith v. Johnson).",
-        "The results showed a significant improvement in patient outcomes.",
-        "The new policy will always be enforced, every time, without exception.",
-        "The company may or may not be liable for damages."
+        "This is a test sentence with a DOI: 10.1234/abc123.",
+        "The case of Smith v. Jones is well-known.",
+        "Always remember to cite your sources.",
+        "The book has an ISBN: 978-3-16-148410-0.",
+        "This sentence does not contain any citations."
     ]
 
     for test_case in test_cases:

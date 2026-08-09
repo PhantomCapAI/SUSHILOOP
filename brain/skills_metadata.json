@@ -2991,8 +2991,8 @@
   "fabricated_citation_flagger": {
     "name": "fabricated_citation_flagger",
     "title": "Fabricated Citation Flagger",
-    "code_hash": "47c6c4836ad57936",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass FabricatedCitationFlaggerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef fabricated_citation_flagger(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.\n\n    This function uses a combination of signals to detect fabricated citations, including:\n    - Pattern matches for common citation formats\n    - Structural features such as sentence and ",
+    "code_hash": "c6a2d3412c9c9efd",
+    "summary": "import re\nfrom typing import Dict\n\ndef fabricated_citation_flagger(input_text: str) -> Dict:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.\n\n    This function combines multiple signals to detect fabricated citations, including:\n    - Pattern matches for common citation formats\n    - Structural features such as sentence and clause counts\n    - Lexical diversity and hedging/absolute-term density\n\n    The confidence score is a graded, clamped value between 0.0 and 1.0, reflecting the strength of the signals.\n    The `blocked` de",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -3002,17 +3002,17 @@
       "static_total": 47,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 10,
+        "discrimination": 5,
         "calibration": 10,
-        "behavioral_total": 30,
+        "behavioral_total": 25,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 77
+      "total": 72
     },
-    "diversity": 0.514,
+    "diversity": 0.365,
     "failure_modes": [],
-    "timestamp": "2026-08-07T18:48:46.278311"
+    "timestamp": "2026-08-09T18:33:23.158858"
   },
   "narrative_consistency_validator": {
     "name": "narrative_consistency_validator",
