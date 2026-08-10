@@ -3967,30 +3967,30 @@
   "deliberation_pace_nudger": {
     "name": "deliberation_pace_nudger",
     "title": "Deliberation-Pace Nudger",
-    "code_hash": "efba598818cbb515",
-    "summary": "import re\nfrom collections import Counter\nfrom dataclasses import dataclass\nfrom typing import Dict\n\n@dataclass\nclass DeliberationPaceNudgerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g. \"always\", \"never\") in the input text.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"every\", \"all\"]\n    words = re.findall(r'\\b\\w+\\b', text.lower())\n    absolute_count = sum(1 for word in words if word in absolute_terms)\n    return absol",
+    "code_hash": "76f9f2bf68a9b231",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Deliberation-Pace Nudger\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-08-10\n \nDescription:\n    Distinguishes rapid-fire dependent querying from deliberate use and adds a soft, overridable pause\n \nRationale:\n    Compulsive querying forms dependency loops\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef deliberation_pace_nudger(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Distinguishes rapid-fire dependent querying from deliberate use and adds a soft, overridable pause\n \n    Returns dict with: blocked, reason, confidence, category, details.\n    \"\"\"\n    # ",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 10,
+      "documentation": 7,
       "strategies": 4,
-      "static_total": 44,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
         "discrimination": 0,
-        "calibration": 7,
-        "behavioral_total": 17,
+        "calibration": 5,
+        "behavioral_total": 15,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 61
+      "total": 56
     },
-    "diversity": 0.327,
+    "diversity": 0.708,
     "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
+      "shallow:discrimination=0,behavioral_total=15"
     ],
-    "timestamp": "2026-07-29T19:07:23.842436"
+    "timestamp": "2026-08-10T07:22:31.259025"
   },
   "unsubstantiated_claim_detector": {
     "name": "unsubstantiated_claim_detector",

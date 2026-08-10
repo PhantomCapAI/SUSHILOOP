@@ -1,104 +1,10 @@
 {
-  "cycle_count": 347,
-  "total_skills": 90,
+  "cycle_count": 348,
+  "total_skills": 89,
   "success_count": 101,
   "failure_count": 8,
-  "last_run": "2026-08-10T01:20:47.280938",
+  "last_run": "2026-08-10T07:22:27.856526",
   "history": [
-    {
-      "cycle_number": 248,
-      "proposal": {
-        "id": "9a3662ab-b701-4d7a-8579-98ec91c5429e",
-        "proposal_type": "NEW_SKILL",
-        "category": "COGNITIVE_PROTECTION",
-        "title": "Overexplanation Detector",
-        "description": "This skill detects instances where AI-generated explanations are excessively verbose or redundant, potentially leading to cognitive overload, and provides a simplified summary. It identifies cases where the AI's response includes multiple, near-identical rephrasings of the same concept.",
-        "rationale": "Protecting human cognition from overreliance on AI requires ensuring that AI-generated explanations are concise and easy to understand. Excessive verbosity can lead to mental fatigue, decreased comprehension, and reduced critical thinking skills.",
-        "success_criteria": [
-          "Detects and flags instances of overexplanation in AI-generated text",
-          "Provides a simplified summary of the original explanation",
-          "Reduces cognitive load by minimizing redundant information"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-16T08:05:19.084480"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "overexplanation_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:overexplanation_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00034499168395996094
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 5.0067901611328125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000018835067749023438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 8.344650268554688e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 5.0067901611328125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0006382465362548828
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.0000133514404296875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 1.6689300537109375e-6
-        }
-      ],
-      "timestamp": "2026-07-16T08:05:19.085781",
-      "error_message": null
-    },
     {
       "cycle_number": 249,
       "proposal": {
@@ -9001,6 +8907,100 @@
         }
       ],
       "timestamp": "2026-08-10T01:20:47.280938",
+      "error_message": null
+    },
+    {
+      "cycle_number": 348,
+      "proposal": {
+        "id": "f5bf4919-0fcf-4ef7-bc5d-182a089e6f48",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Deliberation-Pace Nudger",
+        "description": "Distinguishes rapid-fire dependent querying from deliberate use and adds a soft, overridable pause",
+        "rationale": "Compulsive querying forms dependency loops",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-10T07:22:27.855896"
+      },
+      "result": "REJECTED",
+      "skill_generated": "deliberation_pace_nudger",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:deliberation_pace_nudger",
+          "message": "import + callable OK",
+          "duration_seconds": 0.00039124488830566406
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.298324584960938e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00001049041748046875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 5.4836273193359375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 4.76837158203125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 3.5762786865234375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.000018596649169921875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 7.62939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        }
+      ],
+      "timestamp": "2026-08-10T07:22:27.856526",
       "error_message": null
     }
   ]
