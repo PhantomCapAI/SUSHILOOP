@@ -3112,3 +3112,12 @@
 }
 ```
 ---
+
+## [2026-08-10T01:20:50.740330] Cycle 347: CycleResult.REJECTED
+```json
+{
+  "proposal": "Ambiguous Assumption Clarifier",
+  "skill": "ambiguous_assumption_clarifier"
+}
+```
+---
