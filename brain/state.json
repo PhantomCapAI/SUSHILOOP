@@ -1,104 +1,10 @@
 {
-  "cycle_count": 349,
-  "total_skills": 89,
+  "cycle_count": 350,
+  "total_skills": 90,
   "success_count": 101,
   "failure_count": 8,
-  "last_run": "2026-08-10T12:57:12.332797",
+  "last_run": "2026-08-10T18:50:42.656454",
   "history": [
-    {
-      "cycle_number": 250,
-      "proposal": {
-        "id": "c79ec940-0057-4c3b-bdab-70b33e3a0bbf",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Overrepresented Demographic Flagger",
-        "description": "This skill detects and flags instances where a specific demographic group is overrepresented in a given text, potentially indicating biased representation or stereotyping. It analyzes the text for disproportionate mentions of certain demographics and alerts the user to potential biases.",
-        "rationale": "This skill matters for protecting human cognition because it helps users recognize and mitigate potential biases in the information they consume, promoting more nuanced and balanced understanding of complex issues.",
-        "success_criteria": [
-          "Correctly identifies overrepresented demographic groups",
-          "Provides relevant alerts and flags to the user",
-          "Does not produce excessive false positives"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-16T19:03:15.829182"
-      },
-      "result": "REJECTED",
-      "skill_generated": "overrepresented_demographic_flagger",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:overrepresented_demographic_flagger",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002216339111328125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.298324584960938e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000026226043701171875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.00001811981201171875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000019550323486328125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.00001239776611328125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.001592397689819336
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000027894973754882812
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-07-16T19:03:15.830624",
-      "error_message": null
-    },
     {
       "cycle_number": 251,
       "proposal": {
@@ -8934,6 +8840,100 @@
       "skill_generated": "one_sided_question_detector",
       "test_results": [],
       "timestamp": "2026-08-10T12:57:12.332797",
+      "error_message": null
+    },
+    {
+      "cycle_number": 350,
+      "proposal": {
+        "id": "b780f2da-2aaf-418a-b102-1371c554b2b0",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Sequential Inquiry Throttler",
+        "description": "This skill detects and limits consecutive, similar inquiries within a short time frame, encouraging humans to reflect on previous questions and answers before proceeding. It helps prevent the overreliance on AI for iterative problem-solving by introducing a delay or requiring a brief summary of the reasoning behind the sequence of inquiries.",
+        "rationale": "By throttling sequential inquiries, this skill promotes human reflection, critical thinking, and problem-solving skills, aligning with the mission of using AI as a sparring partner rather than a brain replacement.",
+        "success_criteria": [
+          "Reduction in consecutive similar inquiries",
+          "Increase in human reflection time before subsequent inquiries",
+          "Improved quality of inquiries indicating deeper human understanding"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-10T18:50:42.655210"
+      },
+      "result": "REJECTED",
+      "skill_generated": "sequential_inquiry_throttler",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:sequential_inquiry_throttler",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0004680156707763672
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000011682510375976562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00002002716064453125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 9.775161743164062e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000010251998901367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.337860107421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 5.4836273193359375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0006432533264160156
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000013828277587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.9073486328125e-6
+        }
+      ],
+      "timestamp": "2026-08-10T18:50:42.656454",
       "error_message": null
     }
   ]

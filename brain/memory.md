@@ -3139,3 +3139,12 @@
 }
 ```
 ---
+
+## [2026-08-10T18:50:50.306919] Cycle 350: CycleResult.REJECTED
+```json
+{
+  "proposal": "Sequential Inquiry Throttler",
+  "skill": "sequential_inquiry_throttler"
+}
+```
+---
