@@ -5144,28 +5144,29 @@
   "one_sided_question_detector": {
     "name": "one_sided_question_detector",
     "title": "One-Sided Question Detector",
-    "code_hash": "f79d57baf0e74870",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef one_sided_question_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects questions that ask only for support for a position and prompts a steelman of the opposing view.\n\n    This function combines multiple signals to detect one-sided questions, including:\n    - Absolute term density\n    - Hedge term density\n    - Overgeneral term density\n    - Sentence structure\n\n ",
+    "code_hash": "ee6e5993f529d113",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: One-Sided Question Detector\n \nCategory: SkillCategory.BIAS_DETECTION\nGenerated: 2026-08-10\n \nDescription:\n    Detects questions that ask only for support for a position and prompts a steelman of the opposing view\n \nRationale:\n    Single-sided queries entrench priors\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef one_sided_question_detector(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Detects questions that ask only for support for a position and prompts a steelman of the opposing view\n \n    Returns dict with: blocked, reason, confidence, category, details.\n    \"",
     "score": {
-      "tests_pass": 10,
+      "tests_pass": 0,
       "complexity": 10,
       "structure": 10,
       "documentation": 7,
-      "strategies": 1,
-      "static_total": 38,
+      "strategies": 4,
+      "static_total": 31,
       "behavioral": {
-        "robustness": 10,
-        "discrimination": 10,
-        "calibration": 10,
-        "behavioral_total": 30,
-        "probes_raised": 0,
-        "probes_valid": 17
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/one_sided_question_detector.py'"
       },
-      "total": 68
+      "total": 31
     },
-    "diversity": 0.554,
-    "failure_modes": [],
-    "timestamp": "2026-08-02T13:10:46.367015"
+    "diversity": 0.611,
+    "failure_modes": [
+      "charter:The code does not align with the stated purpose of detecting one-sided questions and prompting a steelman of the opposing view, instead it checks for specific patterns like 'ignore previous', 'jailbreak', 'DAN', 'override', 'bypass' which seems unrelated to the stated purpose."
+    ],
+    "timestamp": "2026-08-10T12:57:16.425598"
   },
   "rapid_fire_query_throttler": {
     "name": "rapid_fire_query_throttler",
