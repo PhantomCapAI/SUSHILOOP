@@ -1,104 +1,10 @@
 {
-  "cycle_count": 351,
-  "total_skills": 90,
+  "cycle_count": 352,
+  "total_skills": 89,
   "success_count": 102,
   "failure_count": 8,
-  "last_run": "2026-08-11T01:18:44.411413",
+  "last_run": "2026-08-11T06:58:22.732109",
   "history": [
-    {
-      "cycle_number": 252,
-      "proposal": {
-        "id": "cc19f7b2-5c25-4a0e-89f4-33a17b74abda",
-        "proposal_type": "NEW_SKILL",
-        "category": "OUTPUT_FILTERING",
-        "title": "Fabricated Citation Flagger",
-        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
-        "rationale": "Invented citations are the highest-trust hallucination",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-17T08:02:08.590561"
-      },
-      "result": "REJECTED",
-      "skill_generated": "fabricated_citation_flagger",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:fabricated_citation_flagger",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0014519691467285156
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00002002716064453125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000012636184692382812
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000011920928955078125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 4.0531158447265625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0004458427429199219
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000013828277587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-07-17T08:02:08.591312",
-      "error_message": null
-    },
     {
       "cycle_number": 253,
       "proposal": {
@@ -8934,6 +8840,33 @@
         }
       ],
       "timestamp": "2026-08-11T01:18:44.411413",
+      "error_message": null
+    },
+    {
+      "cycle_number": 352,
+      "proposal": {
+        "id": "fd574204-00ec-4ed3-99e0-d45b44af6590",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Escalation Advice Detector",
+        "description": "Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat",
+        "rationale": "High-arousal advice short-circuits deliberation",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-11T06:58:22.731375"
+      },
+      "result": "REJECTED",
+      "skill_generated": "escalation_advice_detector",
+      "test_results": [],
+      "timestamp": "2026-08-11T06:58:22.732109",
       "error_message": null
     }
   ]
