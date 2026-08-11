@@ -1,104 +1,10 @@
 {
-  "cycle_count": 350,
+  "cycle_count": 351,
   "total_skills": 90,
-  "success_count": 101,
+  "success_count": 102,
   "failure_count": 8,
-  "last_run": "2026-08-10T18:50:42.656454",
+  "last_run": "2026-08-11T01:18:44.411413",
   "history": [
-    {
-      "cycle_number": 251,
-      "proposal": {
-        "id": "9780565f-44a2-41db-b4d9-f6c0929354d6",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Sequential Dependency Tracker",
-        "description": "This skill detects and limits sequences of AI-generated responses that depend heavily on previous responses, preventing over-reliance on AI-generated context. It tracks the frequency and density of sequential dependencies in AI responses.",
-        "rationale": "By limiting the sequential dependency of AI responses, we can encourage humans to engage more actively with the conversation, rather than passively relying on AI-generated context. This helps to protect human cognition by promoting more intentional and thoughtful interaction with AI systems.",
-        "success_criteria": [
-          "Reduced sequential dependency in AI responses",
-          "Increased human engagement with conversation",
-          "Improved conversation flow and coherence"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-17T02:12:50.594717"
-      },
-      "result": "REJECTED",
-      "skill_generated": "sequential_dependency_tracker",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:sequential_dependency_tracker",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0003619194030761719
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 5.0067901611328125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 4.5299530029296875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.000016927719116210938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 1.9073486328125e-6
-        }
-      ],
-      "timestamp": "2026-07-17T02:12:50.596071",
-      "error_message": null
-    },
     {
       "cycle_number": 252,
       "proposal": {
@@ -8934,6 +8840,100 @@
         }
       ],
       "timestamp": "2026-08-10T18:50:42.656454",
+      "error_message": null
+    },
+    {
+      "cycle_number": 351,
+      "proposal": {
+        "id": "7aaff0cb-eca3-4298-a443-2c45bfab71e1",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Unhedged Medical/Legal Claim Filter",
+        "description": "Flags AI output giving medical or legal directives without a verify-with-a-professional caveat",
+        "rationale": "Directive high-stakes advice invites cognitive surrender",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-11T01:18:44.410842"
+      },
+      "result": "SUCCESS",
+      "skill_generated": "unhedged_medicallegal_claim_filter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:unhedged_medicallegal_claim_filter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0008997917175292969
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.106231689453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 5.0067901611328125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000014543533325195312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 8.344650268554688e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 0.00002384185791015625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 7.152557373046875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0006589889526367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000011205673217773438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.430511474609375e-6
+        }
+      ],
+      "timestamp": "2026-08-11T01:18:44.411413",
       "error_message": null
     }
   ]

@@ -1,96 +1,92 @@
 import re
 from typing import Dict
+from dataclasses import dataclass
+
+@dataclass
+class DetectionResult:
+    blocked: bool
+    reason: str
+    confidence: float
+    category: str
+    details: Dict[str, float]
 
 def unhedged_medicallegal_claim_filter(input_text: str) -> Dict:
     """
     Flags AI output giving medical or legal directives without a verify-with-a-professional caveat.
 
-    This function uses a combination of signals to detect unhedged medical or legal claims, including:
-    - Absolute term density: the ratio of absolute terms (e.g. "always", "never") to total words
-    - Hedge density: the ratio of hedging terms (e.g. "may", "might") to total words
-    - Overgeneral term density: the ratio of overgeneral terms (e.g. "everyone", "all") to total words
-    - Sentence structure: the presence of imperative sentences (e.g. "You should...")
+    This function combines multiple signals to detect unhedged medical or legal claims in the input text.
+    The signals include:
+    1. Absolute terms density: The ratio of absolute terms (e.g., "always", "never") to the total number of words.
+    2. Hedge density: The ratio of hedging terms (e.g., "may", "might") to the total number of words.
+    3. Overgeneral terms: The presence of overgeneral terms (e.g., "everyone", "all") in the input text.
 
     The confidence score is a weighted sum of these signals, clamped to the range [0.0, 1.0].
-    The `blocked` decision is based on a threshold of 0.5.
+    The `blocked` field is set to True if the confidence score exceeds a threshold of 0.5.
 
-    :param input_text: The text to be evaluated
-    :return: A dictionary containing the evaluation results:
-        - "blocked": a boolean indicating whether the text is blocked
-        - "reason": a string explaining why the text is blocked
-        - "confidence": a float in the range [0.0, 1.0] indicating the confidence in the evaluation
-        - "category": a string indicating the category of the text (e.g. "medical", "legal")
-        - "details": a dictionary containing additional details about the evaluation
+    :param input_text: The input text to be analyzed.
+    :return: A dictionary containing the detection result, including the `blocked` field, `reason`, `confidence`, `category`, and `details`.
     """
     # SUSHILOOP input guard (auto-injected): never raise on bad input.
     if not isinstance(input_text, str) or not input_text.strip():
         return {"blocked": False, "reason": "empty_or_invalid_input",
                 "confidence": 0.0, "category": "none", "details": {}}
 
-    # Preprocessing: convert to lowercase and remove punctuation
-    input_text = re.sub(r'[^\w\s]', '', input_text.lower())
+    # Define the patterns for absolute terms, hedging terms, and overgeneral terms
+    absolute_terms = re.compile(r"\b(always|never|must|should|will)\b", re.IGNORECASE)
+    hedge_terms = re.compile(r"\b(may|might|could|would|can)\b", re.IGNORECASE)
+    overgeneral_terms = re.compile(r"\b(everyone|all|anyone|no one)\b", re.IGNORECASE)
 
-    # Tokenize the input text
-    tokens = input_text.split()
+    # Count the number of absolute terms, hedging terms, and overgeneral terms
+    absolute_count = len(absolute_terms.findall(input_text))
+    hedge_count = len(hedge_terms.findall(input_text))
+    overgeneral_count = len(overgeneral_terms.findall(input_text))
 
-    # Calculate absolute term density
-    absolute_terms = ["always", "never", "all", "none"]
-    absolute_term_count = sum(1 for token in tokens if token in absolute_terms)
-    absolute_term_density = absolute_term_count / len(tokens) if tokens else 0.0
+    # Calculate the total number of words
+    word_count = len(input_text.split())
 
-    # Calculate hedge density
-    hedge_terms = ["may", "might", "could", "should"]
-    hedge_term_count = sum(1 for token in tokens if token in hedge_terms)
-    hedge_density = hedge_term_count / len(tokens) if tokens else 0.0
+    # Calculate the density of absolute terms and hedging terms
+    absolute_density = absolute_count / word_count if word_count > 0 else 0.0
+    hedge_density = hedge_count / word_count if word_count > 0 else 0.0
 
-    # Calculate overgeneral term density
-    overgeneral_terms = ["everyone", "all", "anyone"]
-    overgeneral_term_count = sum(1 for token in tokens if token in overgeneral_terms)
-    overgeneral_term_density = overgeneral_term_count / len(tokens) if tokens else 0.0
+    # Calculate the weighted sum of the signals
+    raw_score = 0.5 * absolute_density + 0.3 * (1 - hedge_density) + 0.2 * (overgeneral_count > 0)
 
-    # Calculate sentence structure score
-    sentences = re.split(r'[.!?]', input_text)
-    imperative_sentence_count = sum(1 for sentence in sentences if sentence.strip().startswith("you"))
-    sentence_structure_score = imperative_sentence_count / len(sentences) if sentences else 0.0
-
-    # Calculate confidence score
-    raw_score = 0.4 * absolute_term_density + 0.3 * (1 - hedge_density) + 0.2 * overgeneral_term_density + 0.1 * sentence_structure_score
+    # Clamp the confidence score to the range [0.0, 1.0]
     confidence = max(0.0, min(1.0, raw_score))
 
-    # Determine blocked decision
+    # Set the `blocked` field based on the confidence score
     blocked = confidence >= 0.5
 
-    # Determine category
-    category = "medical" if any(token in ["doctor", "hospital", "medicine"] for token in tokens) else "legal" if any(token in ["lawyer", "court", "judge"] for token in tokens) else "unknown"
-
-    # Create output dictionary
-    output = {
+    # Create the detection result dictionary
+    result = {
         "blocked": blocked,
         "reason": "Unhedged medical or legal claim detected" if blocked else "No unhedged medical or legal claim detected",
         "confidence": confidence,
-        "category": category,
+        "category": "Medical/Legal Claim",
         "details": {
-            "absolute_term_density": absolute_term_density,
+            "absolute_density": absolute_density,
             "hedge_density": hedge_density,
-            "overgeneral_term_density": overgeneral_term_density,
-            "sentence_structure_score": sentence_structure_score
+            "overgeneral_terms": overgeneral_count > 0
         }
     }
 
-    return output
+    return result
 
 
 if __name__ == "__main__":
     test_cases = [
         "You should always consult a doctor before taking any medication.",
-        "I'm feeling great, thanks for asking!",
-        "Everyone should follow the law and respect the rights of others.",
-        "The court has ruled in favor of the defendant.",
-        "If you have any symptoms, you may want to consider seeing a doctor."
+        "I'm not a medical professional, but I think you might want to consider seeing a doctor.",
+        "Everyone should take this medication to cure their illness.",
+        "This is just a harmless suggestion, and you should not take it as medical advice.",
+        "If you have any concerns, please consult a qualified medical professional."
     ]
 
     for test_case in test_cases:
-        print(unhedged_medicallegal_claim_filter(test_case))
+        result = unhedged_medicallegal_claim_filter(test_case)
+        print(f"Input: {test_case}")
+        print(f"Result: {result}")
+        print()
 
 # SUSHILOOP contract normalizer (auto): clamp confidence into [0,1], guarantee dict shape
 _sushi_raw_unhedged_medicallegal_claim_filter = unhedged_medicallegal_claim_filter
