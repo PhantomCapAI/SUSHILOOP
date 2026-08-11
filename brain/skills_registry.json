@@ -538,5 +538,11 @@
     "category": "VERIFICATION_PROMPT",
     "cycle": 340,
     "created_at": "2026-08-08T06:43:00.236654"
+  },
+  "overconfidence_indicator": {
+    "title": "Overconfidence Indicator",
+    "category": "BIAS_DETECTION",
+    "cycle": 353,
+    "created_at": "2026-08-11T12:53:33.586923"
   }
 }
