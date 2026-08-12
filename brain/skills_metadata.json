@@ -4620,8 +4620,8 @@
   "pasted_credential_catcher": {
     "name": "pasted_credential_catcher",
     "title": "Pasted Credential Catcher",
-    "code_hash": "e45f7772217b2a07",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, str]\n\ndef pasted_credential_catcher(input_text: str) -> Dict[str, str]:\n    \"\"\"\n    Detects API keys, tokens, and passwords accidentally pasted into prompts before they reach the model.\n\n    This function combines multiple signals to detect potential credentials in the input text.\n    It returns a dictionary with the detection result, including a confidence score that varies with the input.\n\n    :",
+    "code_hash": "72741f63a37b4291",
+    "summary": "import re\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef pasted_credential_catcher(input_text: str) -> Dict:\n    \"\"\"\n    Detects API keys, tokens, and passwords accidentally pasted into prompts before they reach the model.\n\n    This function uses a combination of signals to detect potential credentials, including:\n    - Pattern matches for common credential formats\n    - Structural features such as sentence and word counts\n    - ",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -4631,17 +4631,19 @@
       "static_total": 47,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 5,
-        "calibration": 10,
-        "behavioral_total": 25,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 72
+      "total": 64
     },
-    "diversity": 0.573,
-    "failure_modes": [],
-    "timestamp": "2026-07-24T02:13:27.571034"
+    "diversity": 0.312,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-08-12T01:27:37.040339"
   },
   "unrealistic_expectation_setter": {
     "name": "unrealistic_expectation_setter",

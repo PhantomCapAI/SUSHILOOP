@@ -3184,3 +3184,12 @@
 }
 ```
 ---
+
+## [2026-08-12T01:27:37.060130] Cycle 355: CycleResult.REJECTED
+```json
+{
+  "proposal": "Pasted Credential Catcher",
+  "skill": "pasted_credential_catcher"
+}
+```
+---

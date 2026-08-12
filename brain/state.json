@@ -1,104 +1,10 @@
 {
-  "cycle_count": 354,
-  "total_skills": 91,
+  "cycle_count": 355,
+  "total_skills": 90,
   "success_count": 103,
   "failure_count": 8,
-  "last_run": "2026-08-11T18:56:05.730192",
+  "last_run": "2026-08-12T01:27:33.227917",
   "history": [
-    {
-      "cycle_number": 255,
-      "proposal": {
-        "id": "a283f256-6b6d-4be7-a357-70dd3857863e",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Overfitting Query Throttler",
-        "description": "This skill detects and limits consecutive queries that are overly similar, preventing overreliance on AI for trivial variations of the same question. It helps maintain human engagement by encouraging users to rephrase or generalize their queries.",
-        "rationale": "By preventing the AI from being bombarded with nearly identical queries, this skill promotes deeper human understanding and reduces the likelihood of users relying on the AI as a mere suggestion generator rather than a tool for meaningful exploration and learning.",
-        "success_criteria": [
-          "Detects and throttles queries with high similarity",
-          "Allows for a reasonable number of dissimilar queries before rate limiting",
-          " Does not overly restrict legitimate exploratory behavior"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-18T02:02:35.793464"
-      },
-      "result": "REJECTED",
-      "skill_generated": "overfitting_query_throttler",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:overfitting_query_throttler",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00039649009704589844
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010967254638671875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.198883056640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 5.245208740234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 4.5299530029296875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.000020742416381835938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 7.867813110351562e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.1457672119140625e-6
-        }
-      ],
-      "timestamp": "2026-07-18T02:02:35.794884",
-      "error_message": null
-    },
     {
       "cycle_number": 256,
       "proposal": {
@@ -8867,6 +8773,100 @@
         }
       ],
       "timestamp": "2026-08-11T18:56:05.730192",
+      "error_message": null
+    },
+    {
+      "cycle_number": 355,
+      "proposal": {
+        "id": "5c83981f-5396-41c6-b199-cefb36932d93",
+        "proposal_type": "NEW_SKILL",
+        "category": "PII_DETECTION",
+        "title": "Pasted Credential Catcher",
+        "description": "Detects API keys, tokens, and passwords accidentally pasted into prompts before they reach the model",
+        "rationale": "Users routinely paste secrets they meant to redact",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-12T01:27:33.227162"
+      },
+      "result": "REJECTED",
+      "skill_generated": "pasted_credential_catcher",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:pasted_credential_catcher",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0020818710327148438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.298324584960938e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00002193450927734375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000015497207641601562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.00001430511474609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 3.0994415283203125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 9.5367431640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0008978843688964844
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.0000209808349609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 3.337860107421875e-6
+        }
+      ],
+      "timestamp": "2026-08-12T01:27:33.227917",
       "error_message": null
     }
   ]
