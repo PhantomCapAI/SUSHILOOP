@@ -3746,30 +3746,30 @@
   "sequential_dependency_limiter": {
     "name": "sequential_dependency_limiter",
     "title": "Sequential Dependency Limiter",
-    "code_hash": "c4ec4f32a6cf3e4a",
-    "summary": "\"\"\"\nSUSHILOOP Guardrail: Sequential Dependency Limiter\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-07-11\n \nDescription:\n    This skill detects and limits sequential dependency on AI outputs by tracking the number of consecutive queries that rely on previous AI responses, preventing overreliance on AI-generated content. It intervenes when a user's queries exceed a certain threshold of sequential dependency, prompting them to verify information through other means.\n \nRationale:\n    This matters for protecting human cognition because it prevents the formation of a feedback loop where ",
+    "code_hash": "d9077d3224846158",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass SequentialDependencyLimiterResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_lexical_diversity(text: str) -> float:\n    words = re.findall(r'\\b\\w+\\b', text.lower())\n    unique_words = set(words)\n    if len(words) == 0:\n        return 0.0\n    return len(unique_words) / len(words)\n\ndef calculate_hedge_density(text: str) -> float:\n    hedges = re.findall(r'\\b(maybe|perhaps|possibly|probably|likely|unlikely|certainly",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 7,
-      "strategies": 4,
-      "static_total": 41,
+      "strategies": 1,
+      "static_total": 38,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
-        "calibration": 5,
-        "behavioral_total": 15,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 56
+      "total": 60
     },
-    "diversity": 0.731,
+    "diversity": 0.347,
     "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=15"
+      "shallow:discrimination=2,behavioral_total=22"
     ],
-    "timestamp": "2026-07-11T13:08:43.361755"
+    "timestamp": "2026-08-12T18:55:46.820266"
   },
   "unverified_claim_sentinel": {
     "name": "unverified_claim_sentinel",

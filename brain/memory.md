@@ -3211,3 +3211,12 @@
 }
 ```
 ---
+
+## [2026-08-12T18:55:46.829967] Cycle 358: CycleResult.REJECTED
+```json
+{
+  "proposal": "Sequential Dependency Limiter",
+  "skill": "sequential_dependency_limiter"
+}
+```
+---
