@@ -5682,5 +5682,32 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-08-09T12:40:04.813688"
+  },
+  "overconfidence_mitigation_module": {
+    "name": "overconfidence_mitigation_module",
+    "title": "Overconfidence Mitigation Module",
+    "code_hash": "237324e3e559f891",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Overconfidence Mitigation Module\n \nCategory: SkillCategory.COGNITIVE_PROTECTION\nGenerated: 2026-08-12\n \nDescription:\n    This module detects and flags instances where AI-generated responses exhibit overly confident language, prompting users to critically evaluate the information. It identifies phrases that convey absolute certainty, such as 'always', 'never', or 'definitely', and suggests more nuanced interpretations.\n \nRationale:\n    Protecting human cognition from AI overreliance requires encouraging critical thinking and skepticism. By mitigating overconfidence in A",
+    "score": {
+      "tests_pass": 0,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 31,
+      "behavioral": {
+        "robustness": 0,
+        "discrimination": 0,
+        "calibration": 0,
+        "behavioral_total": 0,
+        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/overconfidence_mitigation_module.py'"
+      },
+      "total": 31
+    },
+    "diversity": 0.678,
+    "failure_modes": [
+      "charter:The code does not align with the charter's principles as it appears to be checking for specific patterns and blocking based on confidence, but the patterns checked are not related to overconfidence mitigation as stated in the skill's purpose, and instead seem to be related to jailbreak or override a"
+    ],
+    "timestamp": "2026-08-12T12:58:05.613769"
   }
 }

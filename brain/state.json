@@ -1,104 +1,10 @@
 {
-  "cycle_count": 356,
-  "total_skills": 90,
+  "cycle_count": 357,
+  "total_skills": 91,
   "success_count": 103,
   "failure_count": 8,
-  "last_run": "2026-08-12T07:17:14.468239",
+  "last_run": "2026-08-12T12:58:02.227271",
   "history": [
-    {
-      "cycle_number": 257,
-      "proposal": {
-        "id": "b60e5c75-d094-45d6-99c0-3f251147e75d",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Consecutive Query Similarity Threshold",
-        "description": "This skill detects and limits consecutive queries that are too similar, preventing overreliance on AI for repetitive or slightly modified tasks, and promoting human critical thinking and creativity. It analyzes the semantic similarity between consecutive queries and blocks or warns the user if the similarity exceeds a certain threshold.",
-        "rationale": "By limiting consecutive similar queries, this skill encourages humans to think critically and approach problems from different angles, rather than relying on AI to generate slightly modified responses, thus protecting human cognition and promoting more effective human-AI collaboration.",
-        "success_criteria": [
-          "Reduced consecutive query similarity",
-          "Increased human engagement in problem-solving",
-          "Improved overall quality of human-AI interaction"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-18T13:04:26.891130"
-      },
-      "result": "REJECTED",
-      "skill_generated": "consecutive_query_similarity_threshold",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:consecutive_query_similarity_threshold",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002324819564819336
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.775161743164062e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000018596649169921875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000012636184692382812
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0003733634948730469
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000015974044799804688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-07-18T13:04:26.892805",
-      "error_message": null
-    },
     {
       "cycle_number": 258,
       "proposal": {
@@ -8867,6 +8773,33 @@
         }
       ],
       "timestamp": "2026-08-12T07:17:14.468239",
+      "error_message": null
+    },
+    {
+      "cycle_number": 357,
+      "proposal": {
+        "id": "4e52a9cf-c989-4bb1-b59a-01aa029671b8",
+        "proposal_type": "NEW_SKILL",
+        "category": "COGNITIVE_PROTECTION",
+        "title": "Overconfidence Mitigation Module",
+        "description": "This module detects and flags instances where AI-generated responses exhibit overly confident language, prompting users to critically evaluate the information. It identifies phrases that convey absolute certainty, such as 'always', 'never', or 'definitely', and suggests more nuanced interpretations.",
+        "rationale": "Protecting human cognition from AI overreliance requires encouraging critical thinking and skepticism. By mitigating overconfidence in AI-generated responses, this module helps users develop a more discerning approach to information evaluation, fostering a healthier relationship between humans and AI.",
+        "success_criteria": [
+          "Correctly identifies overconfidence language patterns in AI-generated responses",
+          "Provides effective suggestions for rephrasing or reevaluating confident statements",
+          "Reduces user reliance on absolute or dogmatic AI-generated information"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-12T12:58:02.225634"
+      },
+      "result": "REJECTED",
+      "skill_generated": "overconfidence_mitigation_module",
+      "test_results": [],
+      "timestamp": "2026-08-12T12:58:02.227271",
       "error_message": null
     }
   ]

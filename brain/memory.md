@@ -3202,3 +3202,12 @@
 }
 ```
 ---
+
+## [2026-08-12T12:58:05.633164] Cycle 357: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overconfidence Mitigation Module",
+  "skill": "overconfidence_mitigation_module"
+}
+```
+---
