@@ -1,104 +1,10 @@
 {
-  "cycle_count": 355,
+  "cycle_count": 356,
   "total_skills": 90,
   "success_count": 103,
   "failure_count": 8,
-  "last_run": "2026-08-12T01:27:33.227917",
+  "last_run": "2026-08-12T07:17:14.468239",
   "history": [
-    {
-      "cycle_number": 256,
-      "proposal": {
-        "id": "2491d1ca-44da-4258-9f7e-2db29d926f4c",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Actionable-Step Verifier",
-        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
-        "rationale": "A verification beat is the antidote to ask-accept-move-on",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-18T07:41:33.219567"
-      },
-      "result": "REJECTED",
-      "skill_generated": "actionable_step_verifier",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:actionable_step_verifier",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002071857452392578
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.298324584960938e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000021219253540039062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000013828277587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000012636184692382812
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0007765293121337891
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.0000152587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-07-18T07:41:33.220144",
-      "error_message": null
-    },
     {
       "cycle_number": 257,
       "proposal": {
@@ -8867,6 +8773,100 @@
         }
       ],
       "timestamp": "2026-08-12T01:27:33.227917",
+      "error_message": null
+    },
+    {
+      "cycle_number": 356,
+      "proposal": {
+        "id": "b6de23dd-f4e4-4782-b246-c7f9cbb4ea8c",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Escalation Advice Detector",
+        "description": "Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat",
+        "rationale": "High-arousal advice short-circuits deliberation",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-12T07:17:14.467436"
+      },
+      "result": "REJECTED",
+      "skill_generated": "escalation_advice_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:escalation_advice_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0019981861114501953
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.67572021484375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.0000209808349609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000013589859008789062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000013589859008789062
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 8.58306884765625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0009832382202148438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000019073486328125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        }
+      ],
+      "timestamp": "2026-08-12T07:17:14.468239",
       "error_message": null
     }
   ]

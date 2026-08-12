@@ -3193,3 +3193,12 @@
 }
 ```
 ---
+
+## [2026-08-12T07:17:17.808285] Cycle 356: CycleResult.REJECTED
+```json
+{
+  "proposal": "Escalation Advice Detector",
+  "skill": "escalation_advice_detector"
+}
+```
+---
