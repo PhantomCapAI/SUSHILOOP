@@ -5711,5 +5711,33 @@
       "charter:The code does not align with the charter's principles as it appears to be checking for specific patterns and blocking based on confidence, but the patterns checked are not related to overconfidence mitigation as stated in the skill's purpose, and instead seem to be related to jailbreak or override a"
     ],
     "timestamp": "2026-08-12T12:58:05.613769"
+  },
+  "contextual_knowledge_gap_identifier": {
+    "name": "contextual_knowledge_gap_identifier",
+    "title": "Contextual Knowledge Gap Identifier",
+    "code_hash": "e90c7c98862d424a",
+    "summary": "import re\nfrom typing import Dict\nfrom collections import Counter\nfrom dataclasses import dataclass\n\n@dataclass\nclass ContextualKnowledgeGapIdentifierResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef contextual_knowledge_gap_identifier(input_text: str) -> Dict:\n    \"\"\"\n    Identifies when a user's prompt lacks essential contextual information, \n    prompting them to provide additional details to ensure accurate and relevant AI responses.\n\n    Args:\n    input_text (str): The user's input text.\n\n    Returns:\n    Dict: A dictionar",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 58
+    },
+    "diversity": 0.643,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-08-13T07:19:28.020359"
   }
 }

@@ -1,104 +1,10 @@
 {
-  "cycle_count": 359,
-  "total_skills": 90,
+  "cycle_count": 360,
+  "total_skills": 91,
   "success_count": 103,
   "failure_count": 8,
-  "last_run": "2026-08-13T01:29:11.693705",
+  "last_run": "2026-08-13T07:19:24.324046",
   "history": [
-    {
-      "cycle_number": 260,
-      "proposal": {
-        "id": "8f16dde1-16ee-4361-9ff0-680ca12e0fba",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Actionable-Step Verifier",
-        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
-        "rationale": "A verification beat is the antidote to ask-accept-move-on",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-19T08:08:55.327204"
-      },
-      "result": "REJECTED",
-      "skill_generated": "actionable_step_verifier",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:actionable_step_verifier",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0016951560974121094
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000011444091796875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00003147125244140625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000015020370483398438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000014066696166992188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0009503364562988281
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000019788742065429688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-07-19T08:08:55.327892",
-      "error_message": null
-    },
     {
       "cycle_number": 261,
       "proposal": {
@@ -8800,6 +8706,100 @@
         }
       ],
       "timestamp": "2026-08-13T01:29:11.693705",
+      "error_message": null
+    },
+    {
+      "cycle_number": 360,
+      "proposal": {
+        "id": "1adaf423-4686-4913-9165-9ebb799075c0",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Contextual Knowledge Gap Identifier",
+        "description": "This skill identifies when a user's prompt lacks essential contextual information, prompting them to provide additional details to ensure accurate and relevant AI responses. It detects when the input text is missing critical background information, definitions, or premises required for a well-informed answer.",
+        "rationale": "This skill matters for protecting human cognition because it encourages users to think critically about the information they provide to AI systems, ensuring they are not relying solely on the AI for context or assumptions. By prompting users to fill in knowledge gaps, this skill helps prevent the perpetuation of misinformation and promotes more accurate and informed decision-making.",
+        "success_criteria": [
+          "Identifies missing contextual information in user prompts",
+          "Prompts users to provide additional relevant details",
+          "Improves the accuracy and relevance of AI responses"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-13T07:19:24.322542"
+      },
+      "result": "REJECTED",
+      "skill_generated": "contextual_knowledge_gap_identifier",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:contextual_knowledge_gap_identifier",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0028290748596191406
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.821487426757812e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.9141387939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000015974044799804688
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000010967254638671875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000011444091796875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 6.9141387939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0011391639709472656
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.000014781951904296875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        }
+      ],
+      "timestamp": "2026-08-13T07:19:24.324046",
       "error_message": null
     }
   ]
