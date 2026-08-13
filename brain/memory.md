@@ -3238,3 +3238,12 @@
 }
 ```
 ---
+
+## [2026-08-13T12:58:45.298632] Cycle 361: CycleResult.REJECTED
+```json
+{
+  "proposal": "Interrogation Depth Limiter",
+  "skill": "interrogation_depth_limiter"
+}
+```
+---
