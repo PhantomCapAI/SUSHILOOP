@@ -3220,3 +3220,12 @@
 }
 ```
 ---
+
+## [2026-08-13T01:29:15.900116] Cycle 359: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unhedged Medical/Legal Claim Filter",
+  "skill": "unhedged_medicallegal_claim_filter"
+}
+```
+---

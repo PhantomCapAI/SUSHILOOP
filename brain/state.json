@@ -1,104 +1,10 @@
 {
-  "cycle_count": 358,
-  "total_skills": 91,
+  "cycle_count": 359,
+  "total_skills": 90,
   "success_count": 103,
   "failure_count": 8,
-  "last_run": "2026-08-12T18:55:42.781219",
+  "last_run": "2026-08-13T01:29:11.693705",
   "history": [
-    {
-      "cycle_number": 259,
-      "proposal": {
-        "id": "d8d89880-6dea-4a4b-968a-e70adb6b9692",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Re-ask Loop Breaker",
-        "description": "Detects the user re-asking the same thing in slightly different words and suggests stepping back to think",
-        "rationale": "Re-ask loops signal offloading, not progress",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-19T02:13:33.638193"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "re_ask_loop_breaker",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:re_ask_loop_breaker",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0010917186737060547
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000026226043701171875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000016927719116210938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.00008487701416015625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 4.0531158447265625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000025272369384765625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0012309551239013672
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000020742416381835938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        }
-      ],
-      "timestamp": "2026-07-19T02:13:33.638827",
-      "error_message": null
-    },
     {
       "cycle_number": 260,
       "proposal": {
@@ -8800,6 +8706,100 @@
         }
       ],
       "timestamp": "2026-08-12T18:55:42.781219",
+      "error_message": null
+    },
+    {
+      "cycle_number": 359,
+      "proposal": {
+        "id": "587fe380-e518-4dfd-90cf-71f390e2033c",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Unhedged Medical/Legal Claim Filter",
+        "description": "Flags AI output giving medical or legal directives without a verify-with-a-professional caveat",
+        "rationale": "Directive high-stakes advice invites cognitive surrender",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-13T01:29:11.693050"
+      },
+      "result": "REJECTED",
+      "skill_generated": "unhedged_medicallegal_claim_filter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:unhedged_medicallegal_claim_filter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0020945072174072266
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.298324584960938e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00003266334533691406
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000020503997802734375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000030517578125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 0.000015020370483398438
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.002935647964477539
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.0000247955322265625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        }
+      ],
+      "timestamp": "2026-08-13T01:29:11.693705",
       "error_message": null
     }
   ]

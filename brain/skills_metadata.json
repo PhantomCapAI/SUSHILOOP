@@ -2056,28 +2056,30 @@
   "unhedged_medicallegal_claim_filter": {
     "name": "unhedged_medicallegal_claim_filter",
     "title": "Unhedged Medical/Legal Claim Filter",
-    "code_hash": "34511af88eb811e9",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef unhedged_medicallegal_claim_filter(input_text: str) -> Dict:\n    \"\"\"\n    Flags AI output giving medical or legal directives without a verify-with-a-professional caveat.\n\n    This function combines multiple signals to detect unhedged medical or legal claims in the input text.\n    The signals include:\n    1. Absolute terms density: The ratio of absolute terms (e.g., \"always\", \"never\") to",
+    "code_hash": "47c924fed1c3cf71",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass Signal:\n    name: str\n    weight: float\n    value: float\n\ndef calculate_absolutes_ratio(text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g. \"always\", \"never\") to total words.\n    \"\"\"\n    absolute_terms = re.findall(r\"\\b(always|never|must|should|will)\\b\", text, re.IGNORECASE)\n    total_words = len(re.findall(r\"\\b\\w+\\b\", text))\n    return len(absolute_terms) / max(total_words, 1)\n\ndef calculate_hedge_density(text: str) -> float:\n    \"\"\"\n    Calculate the density of hedging terms (e.g. \"",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
-      "strategies": 4,
+      "documentation": 10,
+      "strategies": 1,
       "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 10,
-        "calibration": 10,
-        "behavioral_total": 30,
+        "discrimination": 0,
+        "calibration": 7,
+        "behavioral_total": 17,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 71
+      "total": 58
     },
-    "diversity": 0.333,
-    "failure_modes": [],
-    "timestamp": "2026-08-11T01:18:47.434825"
+    "diversity": 0.327,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=17"
+    ],
+    "timestamp": "2026-08-13T01:29:15.889173"
   },
   "insufficient_counterfactual_consideration_detector": {
     "name": "insufficient_counterfactual_consideration_detector",
