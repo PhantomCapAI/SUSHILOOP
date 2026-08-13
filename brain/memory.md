@@ -3247,3 +3247,12 @@
 }
 ```
 ---
+
+## [2026-08-13T18:56:35.639157] Cycle 362: CycleResult.REJECTED
+```json
+{
+  "proposal": "Undue Emphasis Detector",
+  "skill": "undue_emphasis_detector"
+}
+```
+---
