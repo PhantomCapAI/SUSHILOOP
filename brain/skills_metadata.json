@@ -2989,28 +2989,28 @@
   "fabricated_citation_flagger": {
     "name": "fabricated_citation_flagger",
     "title": "Fabricated Citation Flagger",
-    "code_hash": "c6a2d3412c9c9efd",
-    "summary": "import re\nfrom typing import Dict\n\ndef fabricated_citation_flagger(input_text: str) -> Dict:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.\n\n    This function combines multiple signals to detect fabricated citations, including:\n    - Pattern matches for common citation formats\n    - Structural features such as sentence and clause counts\n    - Lexical diversity and hedging/absolute-term density\n\n    The confidence score is a graded, clamped value between 0.0 and 1.0, reflecting the strength of the signals.\n    The `blocked` de",
+    "code_hash": "b7b6907e89fa2abc",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass FabricatedCitationFlaggerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef fabricated_citation_flagger(input_text: str) -> Dict:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.\n\n    This function uses a combination of signals to detect fabricated citations, including:\n    - Weighted pattern matches for citation formats\n    - Structural features ",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
+      "documentation": 10,
       "strategies": 10,
-      "static_total": 47,
+      "static_total": 50,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 5,
+        "discrimination": 10,
         "calibration": 10,
-        "behavioral_total": 25,
+        "behavioral_total": 30,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 72
+      "total": 80
     },
-    "diversity": 0.365,
+    "diversity": 0.578,
     "failure_modes": [],
-    "timestamp": "2026-08-09T18:33:23.158858"
+    "timestamp": "2026-08-14T07:17:06.970538"
   },
   "narrative_consistency_validator": {
     "name": "narrative_consistency_validator",

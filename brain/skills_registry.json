@@ -368,8 +368,8 @@
   "fabricated_citation_flagger": {
     "title": "Fabricated Citation Flagger",
     "category": "OUTPUT_FILTERING",
-    "cycle": 346,
-    "created_at": "2026-08-09T18:33:23.156248"
+    "cycle": 364,
+    "created_at": "2026-08-14T07:17:06.967817"
   },
   "temporal_personal_data_exposure_detector": {
     "title": "Temporal Personal Data Exposure Detector",
