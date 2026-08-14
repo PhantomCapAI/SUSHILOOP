@@ -3274,3 +3274,12 @@
 }
 ```
 ---
+
+## [2026-08-14T12:54:58.006029] Cycle 365: CycleResult.REJECTED
+```json
+{
+  "proposal": "Effortless-Answer Warner",
+  "skill": "effortless_answer_warner"
+}
+```
+---
