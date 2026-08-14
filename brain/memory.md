@@ -3283,3 +3283,12 @@
 }
 ```
 ---
+
+## [2026-08-14T18:46:15.459464] Cycle 366: CycleResult.REJECTED
+```json
+{
+  "proposal": "Indirect Identifier Combiner",
+  "skill": "indirect_identifier_combiner"
+}
+```
+---
