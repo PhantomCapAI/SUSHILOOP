@@ -3256,3 +3256,12 @@
 }
 ```
 ---
+
+## [2026-08-14T01:28:20.727537] Cycle 363: CycleResult.REJECTED
+```json
+{
+  "proposal": "Sequential Insight Floodgate",
+  "skill": "sequential_insight_floodgate"
+}
+```
+---

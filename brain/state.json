@@ -1,37 +1,10 @@
 {
-  "cycle_count": 362,
+  "cycle_count": 363,
   "total_skills": 91,
   "success_count": 103,
   "failure_count": 8,
-  "last_run": "2026-08-13T18:56:32.176415",
+  "last_run": "2026-08-14T01:28:17.274389",
   "history": [
-    {
-      "cycle_number": 263,
-      "proposal": {
-        "id": "79d97110-0ccf-4514-a2e2-28c6ac06bc3f",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Number-Claim Spotlighter",
-        "description": "Highlights specific figures in output and asks the user to confirm the source before relying on them",
-        "rationale": "Numbers feel authoritative and get accepted unchecked",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-20T03:31:24.273495"
-      },
-      "result": "REJECTED",
-      "skill_generated": "number_claim_spotlighter",
-      "test_results": [],
-      "timestamp": "2026-07-20T03:31:24.274082",
-      "error_message": null
-    },
     {
       "cycle_number": 264,
       "proposal": {
@@ -8800,6 +8773,100 @@
         }
       ],
       "timestamp": "2026-08-13T18:56:32.176415",
+      "error_message": null
+    },
+    {
+      "cycle_number": 363,
+      "proposal": {
+        "id": "5ec528ac-927c-4672-8f6e-ece1516f9303",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Sequential Insight Floodgate",
+        "description": "This skill detects and limits the rate at which AI provides consecutive, high-confidence insights without explicit user requests, preventing overwhelming users with too much information and encouraging them to think critically about each insight before proceeding.",
+        "rationale": "By controlling the flow of high-confidence insights, this skill protects human cognition by giving users the space to reflect on and process each piece of information, rather than being inundated with an unmanageable volume of data that could lead to overreliance on AI.",
+        "success_criteria": [
+          "Reduces user complaints about information overload",
+          "Increases average time spent by users reflecting on AI-provided insights",
+          "Lowers metrics on user frustration and AI overreliance"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete SequentialInsightFloodgate.py from skills/",
+        "created_at": "2026-08-14T01:28:17.272784"
+      },
+      "result": "REJECTED",
+      "skill_generated": "sequential_insight_floodgate",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:sequential_insight_floodgate",
+          "message": "import + callable OK",
+          "duration_seconds": 0.00043082237243652344
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000010728836059570312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000010251998901367188
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 4.5299530029296875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 3.337860107421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.00002193450927734375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 5.9604644775390625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        }
+      ],
+      "timestamp": "2026-08-14T01:28:17.274389",
       "error_message": null
     }
   ]

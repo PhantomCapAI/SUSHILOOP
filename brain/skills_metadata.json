@@ -5767,5 +5767,33 @@
       "shallow:discrimination=2,behavioral_total=19"
     ],
     "timestamp": "2026-08-13T18:56:35.627875"
+  },
+  "sequential_insight_floodgate": {
+    "name": "sequential_insight_floodgate",
+    "title": "Sequential Insight Floodgate",
+    "code_hash": "74110685729e5cf5",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Sequential Insight Floodgate\n \nCategory: SkillCategory.RATE_LIMITING\nGenerated: 2026-08-14\n \nDescription:\n    This skill detects and limits the rate at which AI provides consecutive, high-confidence insights without explicit user requests, preventing overwhelming users with too much information and encouraging them to think critically about each insight before proceeding.\n \nRationale:\n    By controlling the flow of high-confidence insights, this skill protects human cognition by giving users the space to reflect on and process each piece of information, rather than bei",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 41,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 56
+    },
+    "diversity": 0.667,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-08-14T01:28:20.706575"
   }
 }
