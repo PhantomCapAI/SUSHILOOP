@@ -5795,5 +5795,31 @@
       "shallow:discrimination=0,behavioral_total=15"
     ],
     "timestamp": "2026-08-14T01:28:20.706575"
+  },
+  "conversational_loopback_limiter": {
+    "name": "conversational_loopback_limiter",
+    "title": "Conversational Loopback Limiter",
+    "code_hash": "3722355bb68224b1",
+    "summary": "import re\nimport json\nimport math\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass ConversationAnalysis:\n    \"\"\"Holds the results of the conversation analysis.\"\"\"\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: float\n    sentence_count: int\n    word_count: int\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"Calculates the ratio of absolute terms in the input text.\"\"\"\n    absolute_terms = re.findall(r\"\\b(always|never|every|all)\\b\", input_text, re.IGNORECASE)\n    word_count = len(re.findall(r\"\\b\\w+\\b\", input_text))\n    return",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 7,
+      "strategies": 1,
+      "static_total": 38,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 5,
+        "calibration": 10,
+        "behavioral_total": 25,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 63
+    },
+    "diversity": 0.375,
+    "failure_modes": [],
+    "timestamp": "2026-08-15T00:58:26.599163"
   }
 }

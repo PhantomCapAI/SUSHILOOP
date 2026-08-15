@@ -544,5 +544,11 @@
     "category": "BIAS_DETECTION",
     "cycle": 353,
     "created_at": "2026-08-11T12:53:33.586923"
+  },
+  "conversational_loopback_limiter": {
+    "title": "Conversational Loopback Limiter",
+    "category": "RATE_LIMITING",
+    "cycle": 367,
+    "created_at": "2026-08-15T00:58:26.596978"
   }
 }
