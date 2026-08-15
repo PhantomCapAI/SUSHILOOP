@@ -1,104 +1,10 @@
 {
-  "cycle_count": 368,
-  "total_skills": 93,
+  "cycle_count": 369,
+  "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-15T06:29:47.389447",
+  "last_run": "2026-08-15T12:28:14.601353",
   "history": [
-    {
-      "cycle_number": 269,
-      "proposal": {
-        "id": "5fc0f8af-8770-4c2a-bce1-098a27e0eea5",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Unsubstantiated Claim Sentinel",
-        "description": "Detects and flags statements that assert a claim without providing sufficient evidence or credible sources to support it, prompting the user to verify the information through additional research or fact-checking.",
-        "rationale": "This skill protects human cognition by preventing the spread of misinformation and encouraging critical thinking, media literacy, and the evaluation of evidence when encountering unsubstantiated claims.",
-        "success_criteria": [
-          "Identifies claims lacking credible sources",
-          "Flags statements with unverifiable information",
-          "Prompts user to verify information through fact-checking"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete UnsubstantiatedClaimSentinel.py from skills/",
-        "created_at": "2026-07-21T13:28:48.013823"
-      },
-      "result": "REJECTED",
-      "skill_generated": "unsubstantiated_claim_sentinel",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:unsubstantiated_claim_sentinel",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0010902881622314453
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010728836059570312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.198883056640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000021696090698242188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000010728836059570312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000010728836059570312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 5.7220458984375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0011069774627685547
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000014543533325195312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 1.6689300537109375e-6
-        }
-      ],
-      "timestamp": "2026-07-21T13:28:48.015581",
-      "error_message": null
-    },
     {
       "cycle_number": 270,
       "proposal": {
@@ -8800,6 +8706,100 @@
         }
       ],
       "timestamp": "2026-08-15T06:29:47.389447",
+      "error_message": null
+    },
+    {
+      "cycle_number": 369,
+      "proposal": {
+        "id": "f65f8061-a292-4c1d-a481-20910c0b4340",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Self-Harm Routing Guard",
+        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
+        "rationale": "A model must scaffold, not substitute, real support",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-15T12:28:14.600585"
+      },
+      "result": "REJECTED",
+      "skill_generated": "self_harm_routing_guard",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:self_harm_routing_guard",
+          "message": "import + callable OK",
+          "duration_seconds": 0.00045180320739746094
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 0.000010728836059570312
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.4373016357421875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000010967254638671875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 5.7220458984375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 4.5299530029296875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 3.814697265625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.000023603439331054688
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 5.9604644775390625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 1.9073486328125e-6
+        }
+      ],
+      "timestamp": "2026-08-15T12:28:14.601353",
       "error_message": null
     }
   ]

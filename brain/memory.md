@@ -3310,3 +3310,12 @@
 }
 ```
 ---
+
+## [2026-08-15T12:28:17.725872] Cycle 369: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Harm Routing Guard",
+  "skill": "self_harm_routing_guard"
+}
+```
+---
