@@ -3319,3 +3319,12 @@
 }
 ```
 ---
+
+## [2026-08-15T18:21:14.541619] Cycle 370: CycleResult.REJECTED
+```json
+{
+  "proposal": "Inferred Attribute Protector",
+  "skill": "inferred_attribute_protector"
+}
+```
+---

@@ -1017,15 +1017,15 @@
   "inferred_attribute_protector": {
     "name": "inferred_attribute_protector",
     "title": "Inferred Attribute Protector",
-    "code_hash": "bb8e770ba78a4e0d",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass InferenceResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef inferred_attribute_protector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects and flags instances where AI-generated text infers sensitive personal attributes.\n\n    This function combines multiple signals to determine the confidence of inference.\n    It uses weighted pattern matches, structural features, lexical diversity, hedging/absolute-term density,\n ",
+    "code_hash": "3d63b349891e7cad",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass InferredAttribute:\n    \"\"\"Data class to hold the result of the inference.\"\"\"\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef inferred_attribute_protector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    This function detects and flags instances where AI-generated text infers sensitive attributes \n    about an individual, such as age, location, or occupation, based on subtle contextual cues.\n\n    Args:\n    input_text (str): The",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 10,
-      "strategies": 4,
-      "static_total": 44,
+      "strategies": 1,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
         "discrimination": 2,
@@ -1034,13 +1034,13 @@
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 66
+      "total": 63
     },
-    "diversity": 0.471,
+    "diversity": 0.418,
     "failure_modes": [
       "shallow:discrimination=2,behavioral_total=22"
     ],
-    "timestamp": "2026-08-02T08:14:27.958674"
+    "timestamp": "2026-08-15T18:21:14.530169"
   },
   "ambiguous_recommendation_detector": {
     "name": "ambiguous_recommendation_detector",
