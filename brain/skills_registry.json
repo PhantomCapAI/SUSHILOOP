@@ -550,5 +550,11 @@
     "category": "RATE_LIMITING",
     "cycle": 367,
     "created_at": "2026-08-15T00:58:26.596978"
+  },
+  "overconfidence_identifier_in_conclusive_language": {
+    "title": "Overconfidence Identifier in Conclusive Language",
+    "category": "BIAS_DETECTION",
+    "cycle": 368,
+    "created_at": "2026-08-15T06:29:50.470324"
   }
 }
