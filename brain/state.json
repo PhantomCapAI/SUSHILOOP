@@ -1,37 +1,10 @@
 {
-  "cycle_count": 373,
-  "total_skills": 92,
+  "cycle_count": 374,
+  "total_skills": 93,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-16T12:29:24.137372",
+  "last_run": "2026-08-16T18:20:57.503121",
   "history": [
-    {
-      "cycle_number": 274,
-      "proposal": {
-        "id": "c7668a03-5801-4459-a7e5-e8647e3321b4",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Rapid Fire Inference Limiter",
-        "description": "This skill detects and limits rapid successive inferences made by the AI model within a short time frame, preventing the model from overwhelming the user with a high volume of potentially incomplete or inaccurate information. It enforces a minimum time delay between consecutive inferences to encourage more thoughtful and reflective user engagement.",
-        "rationale": "By limiting the rate at which the AI model can produce inferences, this skill protects human cognition by giving users sufficient time to process, reflect, and critically evaluate the information being presented, thereby promoting more effective learning and decision-making.",
-        "success_criteria": [
-          "Reduction in user complaints about information overload",
-          "Increase in user engagement metrics, such as time spent on tasks and self-reported understanding",
-          "Decrease in AI model inference rate without negatively impacting system responsiveness"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-22T19:08:03.160503"
-      },
-      "result": "REJECTED",
-      "skill_generated": "rapid_fire_inference_limiter",
-      "test_results": [],
-      "timestamp": "2026-07-22T19:08:03.162033",
-      "error_message": null
-    },
     {
       "cycle_number": 275,
       "proposal": {
@@ -8800,6 +8773,100 @@
         }
       ],
       "timestamp": "2026-08-16T12:29:24.137372",
+      "error_message": null
+    },
+    {
+      "cycle_number": 374,
+      "proposal": {
+        "id": "f0275625-1baf-4190-8308-09e9c6937304",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Sequential Dependency Limiter",
+        "description": "This guardrail detects and limits the number of sequential AI-generated responses that rely on previous outputs, preventing over-reliance on AI and promoting human evaluation of each response. It achieves this by tracking the number of consecutive AI responses that cite or build upon previous AI outputs.",
+        "rationale": "By limiting the number of sequential AI-generated responses, this guardrail encourages humans to actively evaluate and validate each response, rather than simply accepting a chain of AI-generated outputs. This helps to protect human cognition by promoting critical thinking and reducing the risk of unchecked AI-generated content.",
+        "success_criteria": [
+          "Reduces the average number of sequential AI responses by 30%",
+          "Increases human evaluation and validation of AI outputs by 25%",
+          "Maintains a false positive rate below 5%"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete SequentialDependencyLimiter.py from skills/",
+        "created_at": "2026-08-16T18:20:57.501536"
+      },
+      "result": "REJECTED",
+      "skill_generated": "sequential_dependency_limiter",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:sequential_dependency_limiter",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0021805763244628906
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.5367431640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.9141387939453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.000022411346435546875
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.00001621246337890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.0000152587890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 9.775161743164062e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0011987686157226562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.00003647804260253906
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.86102294921875e-6
+        }
+      ],
+      "timestamp": "2026-08-16T18:20:57.503121",
       "error_message": null
     }
   ]

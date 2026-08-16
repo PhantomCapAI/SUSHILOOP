@@ -3749,15 +3749,15 @@
   "sequential_dependency_limiter": {
     "name": "sequential_dependency_limiter",
     "title": "Sequential Dependency Limiter",
-    "code_hash": "d9077d3224846158",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass SequentialDependencyLimiterResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef calculate_lexical_diversity(text: str) -> float:\n    words = re.findall(r'\\b\\w+\\b', text.lower())\n    unique_words = set(words)\n    if len(words) == 0:\n        return 0.0\n    return len(unique_words) / len(words)\n\ndef calculate_hedge_density(text: str) -> float:\n    hedges = re.findall(r'\\b(maybe|perhaps|possibly|probably|likely|unlikely|certainly",
+    "code_hash": "2daa07d378560d32",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nimport math\n\n@dataclass\nclass SequentialDependencyLimiterResponse:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef sequential_dependency_limiter(input_text: str) -> Dict:\n    \"\"\"\n    Detects and limits the number of sequential AI-generated responses that rely on previous outputs.\n\n    This guardrail combines multiple signals to determine the confidence of a sequential dependency:\n    1. Absolute term density: The ratio of absolute terms (e.g., \"always\", \"never\") to t",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
+      "documentation": 10,
       "strategies": 1,
-      "static_total": 38,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
         "discrimination": 2,
@@ -3766,13 +3766,13 @@
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 60
+      "total": 63
     },
-    "diversity": 0.347,
+    "diversity": 0.529,
     "failure_modes": [
       "shallow:discrimination=2,behavioral_total=22"
     ],
-    "timestamp": "2026-08-12T18:55:46.820266"
+    "timestamp": "2026-08-16T18:21:02.768876"
   },
   "unverified_claim_sentinel": {
     "name": "unverified_claim_sentinel",

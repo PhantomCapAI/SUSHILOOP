@@ -3355,3 +3355,12 @@
 }
 ```
 ---
+
+## [2026-08-16T18:21:02.780014] Cycle 374: CycleResult.REJECTED
+```json
+{
+  "proposal": "Sequential Dependency Limiter",
+  "skill": "sequential_dependency_limiter"
+}
+```
+---
