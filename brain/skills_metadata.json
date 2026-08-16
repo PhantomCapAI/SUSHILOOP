@@ -3693,29 +3693,30 @@
   "number_claim_spotlighter": {
     "name": "number_claim_spotlighter",
     "title": "Number-Claim Spotlighter",
-    "code_hash": "fefde41da225cd9d",
-    "summary": "\"\"\"\nSUSHILOOP Guardrail: Number-Claim Spotlighter\n \nCategory: SkillCategory.VERIFICATION_PROMPT\nGenerated: 2026-07-30\n \nDescription:\n    Highlights specific figures in output and asks the user to confirm the source before relying on them\n \nRationale:\n    Numbers feel authoritative and get accepted unchecked\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef number_claim_spotlighter(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Highlights specific figures in output and asks the user to confirm the source before relying on them\n \n    Returns dict with: blocked, reason, confidence, category, de",
+    "code_hash": "b0a1df1769109510",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass Signal:\n    name: str\n    weight: float\n    value: float\n\ndef calculate_absolutes_ratio(input_text: str) -> float:\n    \"\"\"\n    Calculate the ratio of absolute terms (e.g., always, never) in the input text.\n    \"\"\"\n    absolute_terms = [\"always\", \"never\", \"all\", \"none\"]\n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n    absolute_count = sum(1 for word in words if word in absolute_terms)\n    return absolute_count / len(words) if words else 0.0\n\ndef calculate_hedge_density",
     "score": {
-      "tests_pass": 0,
+      "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 7,
-      "strategies": 4,
-      "static_total": 31,
+      "documentation": 10,
+      "strategies": 1,
+      "static_total": 41,
       "behavioral": {
-        "robustness": 0,
-        "discrimination": 0,
-        "calibration": 0,
-        "behavioral_total": 0,
-        "error": "[Errno 2] No such file or directory: '/home/runner/work/SUSHILOOP/SUSHILOOP/skills/number_claim_spotlighter.py'"
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 10,
+        "behavioral_total": 22,
+        "probes_raised": 0,
+        "probes_valid": 17
       },
-      "total": 31
+      "total": 63
     },
-    "diversity": 0.689,
+    "diversity": 0.316,
     "failure_modes": [
-      "charter:The code does not align with the charter's principles as it appears to be checking for specific patterns and blocking the input based on those patterns, which could be seen as replacing user judgment rather than protecting it."
+      "shallow:discrimination=2,behavioral_total=22"
     ],
-    "timestamp": "2026-07-30T01:59:10.859858"
+    "timestamp": "2026-08-16T12:29:27.380064"
   },
   "premature_assumption_catcher": {
     "name": "premature_assumption_catcher",
