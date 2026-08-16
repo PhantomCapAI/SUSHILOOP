@@ -1,104 +1,10 @@
 {
-  "cycle_count": 370,
+  "cycle_count": 371,
   "total_skills": 93,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-15T18:21:10.308218",
+  "last_run": "2026-08-16T01:01:22.582977",
   "history": [
-    {
-      "cycle_number": 271,
-      "proposal": {
-        "id": "6c3cb044-686d-4225-8c66-2926fa94f1c2",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Tautology Trap Detector",
-        "description": "This skill detects and flags instances where AI responses contain tautological statements, prompting users to re-evaluate the conversation and ensure they are not relying solely on the AI for critical thinking. It identifies repetitive or circular reasoning patterns that may undermine human cognitive engagement.",
-        "rationale": "Tautological statements can lead to a false sense of understanding, causing humans to overlook the lack of substantial information or meaningful insights, thereby hindering their critical thinking and problem-solving skills. By detecting and highlighting such patterns, this skill encourages users to engage more deeply with the subject matter and think independently.",
-        "success_criteria": [
-          "Correctly identifies tautological statements in AI responses",
-          "Flags instances of circular reasoning",
-          "Prompts users to re-evaluate conversations and think critically"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-22T02:10:52.680849"
-      },
-      "result": "REJECTED",
-      "skill_generated": "tautology_trap_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:tautology_trap_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0014598369598388672
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.00003981590270996094
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.867813110351562e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000023603439331054688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000019073486328125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.00001239776611328125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 7.62939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0008077621459960938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.00001621246337890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-07-22T02:10:52.682278",
-      "error_message": null
-    },
     {
       "cycle_number": 272,
       "proposal": {
@@ -8800,6 +8706,100 @@
         }
       ],
       "timestamp": "2026-08-15T18:21:10.308218",
+      "error_message": null
+    },
+    {
+      "cycle_number": 371,
+      "proposal": {
+        "id": "a98641d3-0a23-4e4a-b01a-96516dd1eb28",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Overly Broad Recommendation Detector",
+        "description": "This skill detects and flags instances where AI-generated text provides overly broad or generic recommendations, promoting human critical thinking and consideration of multiple perspectives. It analyzes the text for phrases that lack specificity and suggest actions without clear justification.",
+        "rationale": "Overly broad recommendations can lead to uncritical acceptance of AI-generated advice, undermining human cognition and decision-making. By detecting and flagging such recommendations, this skill encourages humans to think critically and consider multiple perspectives, aligning with the mission of using AI as a sparring partner, not a brain replacement.",
+        "success_criteria": [
+          "Detection accuracy of 85% or higher for overly broad recommendations",
+          "Successful integration with existing guardrails without introducing significant latency",
+          "User feedback indicates improved critical thinking and decision-making"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-16T01:01:22.581338"
+      },
+      "result": "REJECTED",
+      "skill_generated": "overly_broad_recommendation_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:overly_broad_recommendation_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.0003986358642578125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 8.106231689453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 0.00001621246337890625
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 0.000011682510375976562
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 0.000012874603271484375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 8.106231689453125e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.0011894702911376953
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 0.00001430511474609375
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.6226043701171875e-6
+        }
+      ],
+      "timestamp": "2026-08-16T01:01:22.582977",
       "error_message": null
     }
   ]

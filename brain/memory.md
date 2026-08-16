@@ -3328,3 +3328,12 @@
 }
 ```
 ---
+
+## [2026-08-16T01:01:28.898610] Cycle 371: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overly Broad Recommendation Detector",
+  "skill": "overly_broad_recommendation_detector"
+}
+```
+---

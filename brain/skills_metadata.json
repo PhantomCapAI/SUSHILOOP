@@ -5847,5 +5847,33 @@
     "diversity": 0.701,
     "failure_modes": [],
     "timestamp": "2026-08-15T06:29:50.472967"
+  },
+  "overly_broad_recommendation_detector": {
+    "name": "overly_broad_recommendation_detector",
+    "title": "Overly Broad Recommendation Detector",
+    "code_hash": "aec4d06480bca3cb",
+    "summary": "import re\nfrom typing import Dict\n\ndef overly_broad_recommendation_detector(input_text: str) -> Dict:\n    \"\"\"\n    Detects and flags instances where AI-generated text provides overly broad or generic recommendations.\n    \n    This skill analyzes the text for phrases that lack specificity and suggest actions without clear justification.\n    It promotes human critical thinking and consideration of multiple perspectives by detecting and flagging\n    such recommendations, aligning with the mission of using AI as a sparring partner, not a brain replacement.\n    \n    The detection combines multiple s",
+    "score": {
+      "tests_pass": 10,
+      "complexity": 10,
+      "structure": 10,
+      "documentation": 10,
+      "strategies": 4,
+      "static_total": 44,
+      "behavioral": {
+        "robustness": 10,
+        "discrimination": 2,
+        "calibration": 7,
+        "behavioral_total": 19,
+        "probes_raised": 0,
+        "probes_valid": 17
+      },
+      "total": 63
+    },
+    "diversity": 0.671,
+    "failure_modes": [
+      "shallow:discrimination=2,behavioral_total=19"
+    ],
+    "timestamp": "2026-08-16T01:01:28.887200"
   }
 }
