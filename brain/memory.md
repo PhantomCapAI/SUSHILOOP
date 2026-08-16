@@ -3337,3 +3337,12 @@
 }
 ```
 ---
+
+## [2026-08-16T06:31:48.482385] Cycle 372: CycleResult.REJECTED
+```json
+{
+  "proposal": "Overly Simplistic Solution Detector",
+  "skill": "overly_simplistic_solution_detector"
+}
+```
+---

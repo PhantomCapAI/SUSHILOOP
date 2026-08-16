@@ -2438,30 +2438,30 @@
   "overly_simplistic_solution_detector": {
     "name": "overly_simplistic_solution_detector",
     "title": "Overly Simplistic Solution Detector",
-    "code_hash": "1fb94bc3921b917e",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom math import log\n\n@dataclass\nclass TextAnalysis:\n    \"\"\"Holds the results of text analysis.\"\"\"\n    sentence_count: int\n    word_count: int\n    lexical_diversity: float\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: int\n\ndef analyze_text(input_text: str) -> TextAnalysis:\n    \"\"\"Analyzes the input text and returns the results.\"\"\"\n    sentences = re.split(r'[.!?]', input_text)\n    sentence_count = len([s for s in sentences if s.strip()])\n    \n    words = re.findall(r'\\b\\w+\\b', input_text.lower())\n ",
+    "code_hash": "f2cf363e777c68eb",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass DetectionResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef overly_simplistic_solution_detector(input_text: str) -> Dict[str, object]:\n    \"\"\"\n    Detects and flags AI-generated outputs that oversimplify complex problems or provide solutions without sufficient context or evidence.\n\n    This skill combines multiple signals to detect overly simplistic solutions, including:\n    - Absolute term density: the ratio of absolute terms (e.g. \"always\", \"",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
       "documentation": 7,
-      "strategies": 4,
-      "static_total": 41,
+      "strategies": 1,
+      "static_total": 38,
       "behavioral": {
         "robustness": 10,
         "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
+        "calibration": 10,
+        "behavioral_total": 22,
         "probes_raised": 0,
-        "probes_valid": 7
+        "probes_valid": 17
       },
       "total": 60
     },
-    "diversity": 0.451,
+    "diversity": 0.557,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
+      "shallow:discrimination=2,behavioral_total=22"
     ],
-    "timestamp": "2026-06-23T09:31:30.501459"
+    "timestamp": "2026-08-16T06:31:48.471363"
   },
   "overly_simplistic_conclusion_detector": {
     "name": "overly_simplistic_conclusion_detector",
