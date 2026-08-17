@@ -3373,3 +3373,12 @@
 }
 ```
 ---
+
+## [2026-08-17T06:43:42.142296] Cycle 376: CycleResult.REJECTED
+```json
+{
+  "proposal": "Consecutive Query Throttler",
+  "skill": "consecutive_query_throttler"
+}
+```
+---
