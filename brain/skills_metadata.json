@@ -4570,8 +4570,8 @@
   "effortless_answer_warner": {
     "name": "effortless_answer_warner",
     "title": "Effortless-Answer Warner",
-    "code_hash": "6c89e70a78d7ac53",
-    "summary": "import re\nfrom collections import Counter\nfrom typing import Dict\n\ndef effortless_answer_warner(input_text: str) -> Dict:\n    \"\"\"\n    Detects requests to fully outsource a task the user could reason through, \n    and offers a scaffold instead of a finished answer.\n\n    Args:\n    input_text (str): The input text to be evaluated.\n\n    Returns:\n    Dict: A dictionary containing the evaluation results, including:\n        - blocked (bool): Whether the input text is blocked.\n        - reason (str): The reason for blocking the input text.\n        - confidence (float): The confidence level of the eval",
+    "code_hash": "ad56eb6be41031b1",
+    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\n\n@dataclass\nclass EffortlessAnswerWarnerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict\n\ndef effortless_answer_warner(input_text: str) -> Dict:\n    \"\"\"\n    Detects requests to fully outsource a task the user could reason through, \n    and offers a scaffold instead of a finished answer.\n\n    Args:\n    input_text (str): The input text to analyze.\n\n    Returns:\n    Dict: A dictionary containing the result of the analysis, including \n          whether the input is blocked, the re",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
@@ -4581,19 +4581,19 @@
       "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 0,
+        "discrimination": 2,
         "calibration": 7,
-        "behavioral_total": 17,
+        "behavioral_total": 19,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 58
+      "total": 60
     },
-    "diversity": 0.549,
+    "diversity": 0.39,
     "failure_modes": [
-      "shallow:discrimination=0,behavioral_total=17"
+      "shallow:discrimination=2,behavioral_total=19"
     ],
-    "timestamp": "2026-08-14T12:54:57.986017"
+    "timestamp": "2026-08-17T00:59:03.835299"
   },
   "implicit_assumption_highlighter": {
     "name": "implicit_assumption_highlighter",
