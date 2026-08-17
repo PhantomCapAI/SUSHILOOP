@@ -3391,3 +3391,12 @@
 }
 ```
 ---
+
+## [2026-08-17T18:32:01.865779] Cycle 378: CycleResult.REJECTED
+```json
+{
+  "proposal": "Deliberation-Pace Nudger",
+  "skill": "deliberation_pace_nudger"
+}
+```
+---
