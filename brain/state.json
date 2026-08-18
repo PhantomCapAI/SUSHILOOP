@@ -1,37 +1,10 @@
 {
-  "cycle_count": 380,
-  "total_skills": 93,
+  "cycle_count": 381,
+  "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-18T06:34:30.619845",
+  "last_run": "2026-08-18T12:35:48.644625",
   "history": [
-    {
-      "cycle_number": 281,
-      "proposal": {
-        "id": "5363b27e-616b-434a-a668-76eebc285d28",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Rapid Inference Limiter",
-        "description": "This skill detects and limits instances where AI-generated responses are provided at an unnaturally rapid pace, potentially hindering human reflection and critical thinking. It monitors the time gap between user queries and AI responses, flagging sequences that exceed a certain threshold of rapidity.",
-        "rationale": "Protecting human cognition requires ensuring that individuals have sufficient time to process and reflect on information. By limiting the rapidity of AI-generated responses, this skill encourages more deliberate and thoughtful interaction, aligning with the mission of using AI as a sparring partner rather than a brain replacement.",
-        "success_criteria": [
-          "Reduces instances of rapid response sequences by 30%",
-          "Increases average user reflection time by 25%",
-          "Maintains or improves user satisfaction ratings"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-24T13:26:49.844097"
-      },
-      "result": "REJECTED",
-      "skill_generated": "rapid_inference_limiter",
-      "test_results": [],
-      "timestamp": "2026-07-24T13:26:49.845509",
-      "error_message": null
-    },
     {
       "cycle_number": 282,
       "proposal": {
@@ -8733,6 +8706,33 @@
       "skill_generated": "indirect_identifier_combiner",
       "test_results": [],
       "timestamp": "2026-08-18T06:34:30.619845",
+      "error_message": null
+    },
+    {
+      "cycle_number": 381,
+      "proposal": {
+        "id": "dea14c9e-c43b-486a-8702-599084bad641",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "One-Sided Question Detector",
+        "description": "Detects questions that ask only for support for a position and prompts a steelman of the opposing view",
+        "rationale": "Single-sided queries entrench priors",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-18T12:35:48.643927"
+      },
+      "result": "REJECTED",
+      "skill_generated": "one_sided_question_detector",
+      "test_results": [],
+      "timestamp": "2026-08-18T12:35:48.644625",
       "error_message": null
     }
   ]

@@ -3418,3 +3418,12 @@
 }
 ```
 ---
+
+## [2026-08-18T12:35:48.998214] Cycle 381: CycleResult.REJECTED
+```json
+{
+  "proposal": "One-Sided Question Detector",
+  "skill": "one_sided_question_detector"
+}
+```
+---
