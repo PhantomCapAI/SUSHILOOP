@@ -3611,30 +3611,30 @@
   "escalation_advice_detector": {
     "name": "escalation_advice_detector",
     "title": "Escalation Advice Detector",
-    "code_hash": "273736033ef2e746",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass EscalationSignals:\n    absolutes_ratio: float\n    hedge_density: float\n    overgeneral_terms: int\n    sentence_count: int\n    word_count: int\n\ndef calculate_escalation_signals(input_text: str) -> EscalationSignals:\n    \"\"\"\n    Calculate various signals that may indicate escalation advice.\n    \n    Args:\n    input_text (str): The input text to analyze.\n    \n    Returns:\n    EscalationSignals: A dataclass containing the calculated signals.\n    \"\"\"\n    words = re.findall(r'\\b\\w+\\b",
+    "code_hash": "154f6e53f0d62987",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Escalation Advice Detector\n \nCategory: SkillCategory.CONTENT_SAFETY\nGenerated: 2026-08-19\n \nDescription:\n    Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat\n \nRationale:\n    High-arousal advice short-circuits deliberation\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef escalation_advice_detector(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat\n \n    Returns dict with: blocked, reason, confidence, c",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 10,
-      "strategies": 1,
+      "documentation": 7,
+      "strategies": 4,
       "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 2,
-        "calibration": 7,
-        "behavioral_total": 19,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 60
+      "total": 56
     },
-    "diversity": 0.408,
+    "diversity": 0.667,
     "failure_modes": [
-      "shallow:discrimination=2,behavioral_total=19"
+      "shallow:discrimination=0,behavioral_total=15"
     ],
-    "timestamp": "2026-08-12T07:17:17.790160"
+    "timestamp": "2026-08-19T06:36:02.994383"
   },
   "overexplanation_detector": {
     "name": "overexplanation_detector",

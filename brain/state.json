@@ -1,104 +1,10 @@
 {
-  "cycle_count": 383,
+  "cycle_count": 384,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-19T00:58:23.637083",
+  "last_run": "2026-08-19T06:36:02.609590",
   "history": [
-    {
-      "cycle_number": 284,
-      "proposal": {
-        "id": "8b5c3f83-94df-44af-a706-801d0cf7a221",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Insufficient Context Flagger",
-        "description": "This skill detects when a user's input lacks sufficient context to provide a meaningful response, prompting the user to provide more information. It analyzes the input text for ambiguous or vague statements and flags them for further clarification.",
-        "rationale": "This matters for protecting human cognition because it prevents users from relying on AI to fill in gaps in their thinking, instead encouraging them to engage more deeply with the topic and provide more context, which can lead to better understanding and critical thinking.",
-        "success_criteria": [
-          "Detects ambiguous or vague statements in user input",
-          "Flags input for further clarification when necessary",
-          "Provides a clear and actionable prompt for the user to provide more context"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-25T08:00:02.803655"
-      },
-      "result": "REJECTED",
-      "skill_generated": "insufficient_context_flagger",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:insufficient_context_flagger",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0016560554504394531
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.867813110351562e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000021457672119140625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000014543533325195312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000015020370483398438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.58306884765625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0007750988006591797
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000015735626220703125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-07-25T08:00:02.804927",
-      "error_message": null
-    },
     {
       "cycle_number": 285,
       "proposal": {
@@ -8666,6 +8572,100 @@
       "skill_generated": "re_ask_loop_breaker",
       "test_results": [],
       "timestamp": "2026-08-19T00:58:23.637083",
+      "error_message": null
+    },
+    {
+      "cycle_number": 384,
+      "proposal": {
+        "id": "65782c63-fb59-4b0d-970c-413afae438ac",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Escalation Advice Detector",
+        "description": "Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat",
+        "rationale": "High-arousal advice short-circuits deliberation",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-19T06:36:02.609122"
+      },
+      "result": "REJECTED",
+      "skill_generated": "escalation_advice_detector",
+      "test_results": [
+        {
+          "passed": true,
+          "test_name": "import:escalation_advice_detector",
+          "message": "import + callable OK",
+          "duration_seconds": 0.00033593177795410156
+        },
+        {
+          "passed": true,
+          "test_name": "edge:empty_string",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:whitespace_only",
+          "message": "ok",
+          "duration_seconds": 6.198883056640625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_char",
+          "message": "ok",
+          "duration_seconds": 9.059906005859375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_word",
+          "message": "ok",
+          "duration_seconds": 5.4836273193359375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:single_sentence_no_punct",
+          "message": "ok",
+          "duration_seconds": 5.245208740234375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:none_input",
+          "message": "ok",
+          "duration_seconds": 2.384185791015625e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:numeric_like",
+          "message": "ok",
+          "duration_seconds": 3.5762786865234375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:very_long",
+          "message": "ok",
+          "duration_seconds": 0.000019073486328125
+        },
+        {
+          "passed": true,
+          "test_name": "edge:unicode",
+          "message": "ok",
+          "duration_seconds": 5.245208740234375e-6
+        },
+        {
+          "passed": true,
+          "test_name": "edge:newlines_only",
+          "message": "ok",
+          "duration_seconds": 2.1457672119140625e-6
+        }
+      ],
+      "timestamp": "2026-08-19T06:36:02.609590",
       "error_message": null
     }
   ]
