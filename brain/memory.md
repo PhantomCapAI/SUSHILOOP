@@ -3436,3 +3436,12 @@
 }
 ```
 ---
+
+## [2026-08-19T00:58:24.061498] Cycle 383: CycleResult.REJECTED
+```json
+{
+  "proposal": "Re-ask Loop Breaker",
+  "skill": "re_ask_loop_breaker"
+}
+```
+---
