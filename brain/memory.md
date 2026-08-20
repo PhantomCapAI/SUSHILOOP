@@ -3481,3 +3481,12 @@
 }
 ```
 ---
+
+## [2026-08-20T06:37:31.389802] Cycle 388: CycleResult.REJECTED
+```json
+{
+  "proposal": "Indirect Identifier Combiner",
+  "skill": "indirect_identifier_combiner"
+}
+```
+---
