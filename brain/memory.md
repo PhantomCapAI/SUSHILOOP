@@ -3490,3 +3490,12 @@
 }
 ```
 ---
+
+## [2026-08-20T12:37:44.393296] Cycle 389: CycleResult.REJECTED
+```json
+{
+  "proposal": "Number-Claim Spotlighter",
+  "skill": "number_claim_spotlighter"
+}
+```
+---
