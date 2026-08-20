@@ -2989,28 +2989,30 @@
   "fabricated_citation_flagger": {
     "name": "fabricated_citation_flagger",
     "title": "Fabricated Citation Flagger",
-    "code_hash": "b7b6907e89fa2abc",
-    "summary": "import re\nfrom typing import Dict\nfrom dataclasses import dataclass\nfrom collections import Counter\n\n@dataclass\nclass FabricatedCitationFlaggerResult:\n    blocked: bool\n    reason: str\n    confidence: float\n    category: str\n    details: Dict[str, float]\n\ndef fabricated_citation_flagger(input_text: str) -> Dict:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable.\n\n    This function uses a combination of signals to detect fabricated citations, including:\n    - Weighted pattern matches for citation formats\n    - Structural features ",
+    "code_hash": "f0dfa5e1ecdb44f8",
+    "summary": "\"\"\"\nSUSHILOOP Guardrail: Fabricated Citation Flagger\n \nCategory: SkillCategory.OUTPUT_FILTERING\nGenerated: 2026-08-20\n \nDescription:\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable\n \nRationale:\n    Invented citations are the highest-trust hallucination\n\"\"\"\nfrom typing import Dict, Any\nimport re\n \n \ndef fabricated_citation_flagger(input_text: str) -> Dict[str, Any]:\n    \"\"\"\n    Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable\n \n    Returns dict with: blocked, reason, confidence, cate",
     "score": {
       "tests_pass": 10,
       "complexity": 10,
       "structure": 10,
-      "documentation": 10,
-      "strategies": 10,
-      "static_total": 50,
+      "documentation": 7,
+      "strategies": 4,
+      "static_total": 41,
       "behavioral": {
         "robustness": 10,
-        "discrimination": 10,
-        "calibration": 10,
-        "behavioral_total": 30,
+        "discrimination": 0,
+        "calibration": 5,
+        "behavioral_total": 15,
         "probes_raised": 0,
         "probes_valid": 17
       },
-      "total": 80
+      "total": 56
     },
-    "diversity": 0.578,
-    "failure_modes": [],
-    "timestamp": "2026-08-14T07:17:06.970538"
+    "diversity": 0.605,
+    "failure_modes": [
+      "shallow:discrimination=0,behavioral_total=15"
+    ],
+    "timestamp": "2026-08-20T18:31:53.988638"
   },
   "narrative_consistency_validator": {
     "name": "narrative_consistency_validator",

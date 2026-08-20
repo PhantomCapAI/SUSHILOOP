@@ -3499,3 +3499,12 @@
 }
 ```
 ---
+
+## [2026-08-20T18:31:54.007553] Cycle 390: CycleResult.REJECTED
+```json
+{
+  "proposal": "Fabricated Citation Flagger",
+  "skill": "fabricated_citation_flagger"
+}
+```
+---
