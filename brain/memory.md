@@ -3526,3 +3526,12 @@
 }
 ```
 ---
+
+## [2026-08-21T12:36:57.645931] Cycle 393: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unhedged Medical/Legal Claim Filter",
+  "skill": "unhedged_medicallegal_claim_filter"
+}
+```
+---

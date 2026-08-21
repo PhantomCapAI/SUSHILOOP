@@ -1,104 +1,10 @@
 {
-  "cycle_count": 392,
-  "total_skills": 93,
+  "cycle_count": 393,
+  "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-21T06:37:36.759061",
+  "last_run": "2026-08-21T12:36:57.240008",
   "history": [
-    {
-      "cycle_number": 293,
-      "proposal": {
-        "id": "c221f2d8-d348-45f1-a801-75b9d6d12c85",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Unverified Statistical Claim Detector",
-        "description": "This skill detects and flags statements that present unverified statistical claims, such as unsubstantiated percentages or numbers, to prevent the spread of misinformation and promote critical thinking. It identifies phrases that imply statistical evidence without providing credible sources or context.",
-        "rationale": "This skill matters for protecting human cognition because it helps users recognize and question potentially misleading information, encouraging a more discerning approach to consuming statistical data and fostering a healthier relationship with AI-generated content.",
-        "success_criteria": [
-          "Correctly identifies unverified statistical claims in text",
-          "Provides clear feedback on the nature of the detected claim",
-          "Does not falsely flag verified statistical information"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-27T14:22:39.494161"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "unverified_statistical_claim_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:unverified_statistical_claim_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0003535747528076172
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 8.58306884765625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000020742416381835938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.0000152587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.00004315376281738281
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0011172294616699219
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000023603439331054688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-07-27T14:22:39.495428",
-      "error_message": null
-    },
     {
       "cycle_number": 294,
       "proposal": {
@@ -8264,6 +8170,33 @@
       "skill_generated": "effortless_answer_warner",
       "test_results": [],
       "timestamp": "2026-08-21T06:37:36.759061",
+      "error_message": null
+    },
+    {
+      "cycle_number": 393,
+      "proposal": {
+        "id": "cb4c9bde-57a9-4428-9684-df85db0aa057",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Unhedged Medical/Legal Claim Filter",
+        "description": "Flags AI output giving medical or legal directives without a verify-with-a-professional caveat",
+        "rationale": "Directive high-stakes advice invites cognitive surrender",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-21T12:36:57.239383"
+      },
+      "result": "REJECTED",
+      "skill_generated": "unhedged_medicallegal_claim_filter",
+      "test_results": [],
+      "timestamp": "2026-08-21T12:36:57.240008",
       "error_message": null
     }
   ]
