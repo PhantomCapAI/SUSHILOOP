@@ -3508,3 +3508,12 @@
 }
 ```
 ---
+
+## [2026-08-21T01:01:49.537134] Cycle 391: CycleResult.REJECTED
+```json
+{
+  "proposal": "Re-ask Loop Breaker",
+  "skill": "re_ask_loop_breaker"
+}
+```
+---

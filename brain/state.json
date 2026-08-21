@@ -1,104 +1,10 @@
 {
-  "cycle_count": 390,
+  "cycle_count": 391,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-20T18:31:53.397764",
+  "last_run": "2026-08-21T01:01:49.007544",
   "history": [
-    {
-      "cycle_number": 291,
-      "proposal": {
-        "id": "d0ccbc1e-3db9-4257-a39b-b83bcc2abb9c",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Rapid Inference Chaining Limiter",
-        "description": "This skill detects and limits the rapid chaining of inferences in AI-generated responses, preventing the AI from overwhelming the user with complex and potentially unreliable conclusions. It identifies sequences of inferences that exceed a certain threshold of depth or speed, and intervenes to slow down the conversation and encourage more critical thinking.",
-        "rationale": "Rapid inference chaining can lead to a loss of transparency and accountability in AI-driven decision-making, making it difficult for humans to evaluate the validity of the conclusions. By limiting the rate at which inferences are chained, this skill helps protect human cognition by promoting more deliberate and reflective thinking.",
-        "success_criteria": [
-          "Reduces the average depth of inference chains in AI responses",
-          "Increases the time spent by users on critical thinking and evaluation",
-          "Improves user satisfaction with the transparency and explainability of AI-driven decision-making"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-27T02:31:22.506426"
-      },
-      "result": "REJECTED",
-      "skill_generated": "rapid_inference_chaining_limiter",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:rapid_inference_chaining_limiter",
-          "message": "import + callable OK",
-          "duration_seconds": 0.001560211181640625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010967254638671875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000028848648071289062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000015735626220703125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000016927719116210938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 9.5367431640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0015833377838134766
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.0000209808349609375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-07-27T02:31:22.508013",
-      "error_message": null
-    },
     {
       "cycle_number": 292,
       "proposal": {
@@ -8398,6 +8304,33 @@
         }
       ],
       "timestamp": "2026-08-20T18:31:53.397764",
+      "error_message": null
+    },
+    {
+      "cycle_number": 391,
+      "proposal": {
+        "id": "31fb5b22-51db-43b5-88f7-28a3b97fcc69",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Re-ask Loop Breaker",
+        "description": "Detects the user re-asking the same thing in slightly different words and suggests stepping back to think",
+        "rationale": "Re-ask loops signal offloading, not progress",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-21T01:01:49.007145"
+      },
+      "result": "REJECTED",
+      "skill_generated": "re_ask_loop_breaker",
+      "test_results": [],
+      "timestamp": "2026-08-21T01:01:49.007544",
       "error_message": null
     }
   ]
