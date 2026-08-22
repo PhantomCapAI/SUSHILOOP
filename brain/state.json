@@ -1,104 +1,10 @@
 {
-  "cycle_count": 394,
-  "total_skills": 92,
+  "cycle_count": 395,
+  "total_skills": 93,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-21T18:29:28.732657",
+  "last_run": "2026-08-22T00:58:04.887107",
   "history": [
-    {
-      "cycle_number": 295,
-      "proposal": {
-        "id": "cefe507f-756a-4495-a4b2-3445cb688655",
-        "proposal_type": "NEW_SKILL",
-        "category": "OUTPUT_FILTERING",
-        "title": "Unhedged Medical/Legal Claim Filter",
-        "description": "Flags AI output giving medical or legal directives without a verify-with-a-professional caveat",
-        "rationale": "Directive high-stakes advice invites cognitive surrender",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-28T02:06:03.708497"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "unhedged_medicallegal_claim_filter",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:unhedged_medicallegal_claim_filter",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00045228004455566406
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010967254638671875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000023603439331054688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000015020370483398438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000012874603271484375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 9.298324584960938e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0008151531219482422
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000018358230590820312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-07-28T02:06:03.709128",
-      "error_message": null
-    },
     {
       "cycle_number": 296,
       "proposal": {
@@ -8130,6 +8036,33 @@
       "skill_generated": "deliberation_pace_nudger",
       "test_results": [],
       "timestamp": "2026-08-21T18:29:28.732657",
+      "error_message": null
+    },
+    {
+      "cycle_number": 395,
+      "proposal": {
+        "id": "f11c61d7-499c-4dcd-988d-82c84a189138",
+        "proposal_type": "NEW_SKILL",
+        "category": "COGNITIVE_PROTECTION",
+        "title": "Effortless-Answer Warner",
+        "description": "Detects requests to fully outsource a task the user could reason through, and offers a scaffold instead of a finished answer",
+        "rationale": "Doing all the thinking replaces the user one decision at a time",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-22T00:58:04.886457"
+      },
+      "result": "REJECTED",
+      "skill_generated": "effortless_answer_warner",
+      "test_results": [],
+      "timestamp": "2026-08-22T00:58:04.887107",
       "error_message": null
     }
   ]
