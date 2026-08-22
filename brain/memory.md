@@ -3571,3 +3571,12 @@
 }
 ```
 ---
+
+## [2026-08-22T18:21:51.989506] Cycle 398: CycleResult.REJECTED
+```json
+{
+  "proposal": "Actionable-Step Verifier",
+  "skill": "actionable_step_verifier"
+}
+```
+---
