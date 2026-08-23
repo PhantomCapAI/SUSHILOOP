@@ -3580,3 +3580,12 @@
 }
 ```
 ---
+
+## [2026-08-23T01:02:45.918609] Cycle 399: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Harm Routing Guard",
+  "skill": "self_harm_routing_guard"
+}
+```
+---
