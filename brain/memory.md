@@ -3598,3 +3598,12 @@
 }
 ```
 ---
+
+## [2026-08-23T12:30:14.635666] Cycle 401: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unhedged Medical/Legal Claim Filter",
+  "skill": "unhedged_medicallegal_claim_filter"
+}
+```
+---

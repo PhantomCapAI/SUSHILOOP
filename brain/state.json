@@ -1,104 +1,10 @@
 {
-  "cycle_count": 400,
+  "cycle_count": 401,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-23T06:32:58.371731",
+  "last_run": "2026-08-23T12:30:14.287782",
   "history": [
-    {
-      "cycle_number": 301,
-      "proposal": {
-        "id": "afe206d5-83fc-4474-a269-e952843bbef8",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Emotional Appeal Detector",
-        "description": "This skill detects when AI-generated text relies heavily on emotional appeals rather than logical reasoning, potentially manipulating human cognition. It flags instances where the text uses sentimentally charged language to persuade or influence the user.",
-        "rationale": "Protecting human cognition from AI overreliance requires ensuring that users are not unduly influenced by emotional manipulation. By detecting and highlighting emotional appeals, this skill promotes critical thinking and helps users make more informed decisions.",
-        "success_criteria": [
-          "Detects emotional appeals in AI-generated text",
-          "Provides clear explanations for flagged instances",
-          "Does not incorrectly flag neutral or objective text"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-29T13:59:24.256774"
-      },
-      "result": "REJECTED",
-      "skill_generated": "emotional_appeal_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:emotional_appeal_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0012996196746826172
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 5.245208740234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000015020370483398438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 8.344650268554688e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 1.9073486328125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 5.245208740234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0007257461547851562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000012159347534179688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 1.6689300537109375e-6
-        }
-      ],
-      "timestamp": "2026-07-29T13:59:24.258191",
-      "error_message": null
-    },
     {
       "cycle_number": 302,
       "proposal": {
@@ -7795,6 +7701,33 @@
       "skill_generated": "deliberation_pace_nudger",
       "test_results": [],
       "timestamp": "2026-08-23T06:32:58.371731",
+      "error_message": null
+    },
+    {
+      "cycle_number": 401,
+      "proposal": {
+        "id": "d3480ff3-7747-4684-b255-0eae3ce890cf",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Unhedged Medical/Legal Claim Filter",
+        "description": "Flags AI output giving medical or legal directives without a verify-with-a-professional caveat",
+        "rationale": "Directive high-stakes advice invites cognitive surrender",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-23T12:30:14.287213"
+      },
+      "result": "REJECTED",
+      "skill_generated": "unhedged_medicallegal_claim_filter",
+      "test_results": [],
+      "timestamp": "2026-08-23T12:30:14.287782",
       "error_message": null
     }
   ]
