@@ -1,104 +1,10 @@
 {
-  "cycle_count": 404,
-  "total_skills": 93,
+  "cycle_count": 405,
+  "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-24T06:47:26.250938",
+  "last_run": "2026-08-24T12:39:35.764414",
   "history": [
-    {
-      "cycle_number": 305,
-      "proposal": {
-        "id": "4106f4cc-83e3-4a78-a078-c01df8ed95f8",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Rapid Fire Question Limiter",
-        "description": "This skill detects and limits the number of rapid-fire questions asked in a short period, preventing overwhelming and promoting thoughtful engagement. It ensures that users are not relying too heavily on AI for quick answers, encouraging them to reflect on their queries.",
-        "rationale": "This skill matters for protecting human cognition because it prevents users from falling into a pattern of dependency on AI for instant gratification, instead encouraging them to think critically about their questions and consider the implications of their inquiries.",
-        "success_criteria": [
-          "Reduces the average number of questions asked per minute by 30%",
-          "Increases the average time spent on each question by 25%",
-          "Decreases user complaints about information overload by 20%"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-30T13:48:34.377570"
-      },
-      "result": "REJECTED",
-      "skill_generated": "rapid_fire_question_limiter",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:rapid_fire_question_limiter",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002268075942993164
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.5367431640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00002002716064453125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.0000152587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000014066696166992188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0009758472442626953
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000019073486328125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        }
-      ],
-      "timestamp": "2026-07-30T13:48:34.379200",
-      "error_message": null
-    },
     {
       "cycle_number": 306,
       "proposal": {
@@ -7594,6 +7500,33 @@
       "skill_generated": "indirect_identifier_combiner",
       "test_results": [],
       "timestamp": "2026-08-24T06:47:26.250938",
+      "error_message": null
+    },
+    {
+      "cycle_number": 405,
+      "proposal": {
+        "id": "35fdf3d5-e90d-4156-ab39-69be630a68fa",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Self-Harm Routing Guard",
+        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
+        "rationale": "A model must scaffold, not substitute, real support",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-24T12:39:35.763917"
+      },
+      "result": "REJECTED",
+      "skill_generated": "self_harm_routing_guard",
+      "test_results": [],
+      "timestamp": "2026-08-24T12:39:35.764414",
       "error_message": null
     }
   ]

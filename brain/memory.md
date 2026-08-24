@@ -3634,3 +3634,12 @@
 }
 ```
 ---
+
+## [2026-08-24T12:39:36.370891] Cycle 405: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Harm Routing Guard",
+  "skill": "self_harm_routing_guard"
+}
+```
+---
