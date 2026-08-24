@@ -3643,3 +3643,12 @@
 }
 ```
 ---
+
+## [2026-08-24T18:32:55.455762] Cycle 406: CycleResult.REJECTED
+```json
+{
+  "proposal": "Fabricated Citation Flagger",
+  "skill": "fabricated_citation_flagger"
+}
+```
+---
