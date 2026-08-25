@@ -1,104 +1,10 @@
 {
-  "cycle_count": 409,
+  "cycle_count": 410,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-25T12:38:14.328689",
+  "last_run": "2026-08-25T18:33:05.724840",
   "history": [
-    {
-      "cycle_number": 310,
-      "proposal": {
-        "id": "a3c83589-7713-403a-9412-b11d43566304",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Actionable-Step Verifier",
-        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
-        "rationale": "A verification beat is the antidote to ask-accept-move-on",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-07-31T19:17:55.516158"
-      },
-      "result": "REJECTED",
-      "skill_generated": "actionable_step_verifier",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:actionable_step_verifier",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0022051334381103516
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.00001049041748046875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000030517578125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.00001621246337890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000015735626220703125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 9.5367431640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.001056671142578125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000021696090698242188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-07-31T19:17:55.516917",
-      "error_message": null
-    },
     {
       "cycle_number": 311,
       "proposal": {
@@ -7259,6 +7165,33 @@
       "skill_generated": "unhedged_medicallegal_claim_filter",
       "test_results": [],
       "timestamp": "2026-08-25T12:38:14.328689",
+      "error_message": null
+    },
+    {
+      "cycle_number": 410,
+      "proposal": {
+        "id": "c8bcbc42-49d1-4c63-a59a-70b2e96960ec",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Deliberation-Pace Nudger",
+        "description": "Distinguishes rapid-fire dependent querying from deliberate use and adds a soft, overridable pause",
+        "rationale": "Compulsive querying forms dependency loops",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-25T18:33:05.724290"
+      },
+      "result": "REJECTED",
+      "skill_generated": "deliberation_pace_nudger",
+      "test_results": [],
+      "timestamp": "2026-08-25T18:33:05.724840",
       "error_message": null
     }
   ]
