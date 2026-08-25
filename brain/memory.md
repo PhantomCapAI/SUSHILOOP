@@ -3670,3 +3670,12 @@
 }
 ```
 ---
+
+## [2026-08-25T12:38:14.985673] Cycle 409: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unhedged Medical/Legal Claim Filter",
+  "skill": "unhedged_medicallegal_claim_filter"
+}
+```
+---
