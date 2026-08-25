@@ -3652,3 +3652,12 @@
 }
 ```
 ---
+
+## [2026-08-25T01:00:07.269552] Cycle 407: CycleResult.REJECTED
+```json
+{
+  "proposal": "Re-ask Loop Breaker",
+  "skill": "re_ask_loop_breaker"
+}
+```
+---
