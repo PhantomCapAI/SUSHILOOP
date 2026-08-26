@@ -1,104 +1,10 @@
 {
-  "cycle_count": 410,
-  "total_skills": 92,
+  "cycle_count": 411,
+  "total_skills": 93,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-25T18:33:05.724840",
+  "last_run": "2026-08-26T01:01:18.539800",
   "history": [
-    {
-      "cycle_number": 311,
-      "proposal": {
-        "id": "bde35904-1a91-48eb-a05e-d11e916360f4",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Rapid Fire Question Limiter",
-        "description": "This skill detects and limits the rate at which a human is asked consecutive questions by an AI, preventing mental overload and promoting thoughtful consideration of each query. It intervenes when a threshold of questions per minute is exceeded, suggesting a pause or summary of previous answers.",
-        "rationale": "Protecting human cognition from the potential negative effects of rapid, unrelenting questioning by AI systems is crucial. By limiting the rate of questioning, this skill encourages humans to engage more deeply with each question, fostering a more meaningful interaction and reducing the risk of mental fatigue or decreased critical thinking ability.",
-        "success_criteria": [
-          "Reduced average questions per minute in human-AI interactions",
-          "Improved user engagement and satisfaction with AI-assisted tasks",
-          "Demonstrated effectiveness in preventing mental overload in high-pressure decision-making scenarios"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-01T02:25:16.069776"
-      },
-      "result": "REJECTED",
-      "skill_generated": "rapid_fire_question_limiter",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:rapid_fire_question_limiter",
-          "message": "import + callable OK",
-          "duration_seconds": 0.002408266067504883
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000029325485229492188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000019788742065429688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000020742416381835938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000012874603271484375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.002111673355102539
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.00002765655517578125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-08-01T02:25:16.071248",
-      "error_message": null
-    },
     {
       "cycle_number": 312,
       "proposal": {
@@ -7192,6 +7098,33 @@
       "skill_generated": "deliberation_pace_nudger",
       "test_results": [],
       "timestamp": "2026-08-25T18:33:05.724840",
+      "error_message": null
+    },
+    {
+      "cycle_number": 411,
+      "proposal": {
+        "id": "d9f9304b-3a3d-4b98-837e-d9bc103adb36",
+        "proposal_type": "NEW_SKILL",
+        "category": "COGNITIVE_PROTECTION",
+        "title": "Effortless-Answer Warner",
+        "description": "Detects requests to fully outsource a task the user could reason through, and offers a scaffold instead of a finished answer",
+        "rationale": "Doing all the thinking replaces the user one decision at a time",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-26T01:01:18.539195"
+      },
+      "result": "REJECTED",
+      "skill_generated": "effortless_answer_warner",
+      "test_results": [],
+      "timestamp": "2026-08-26T01:01:18.539800",
       "error_message": null
     }
   ]
