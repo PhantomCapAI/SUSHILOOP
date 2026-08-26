@@ -3697,3 +3697,12 @@
 }
 ```
 ---
+
+## [2026-08-26T06:39:43.819911] Cycle 412: CycleResult.REJECTED
+```json
+{
+  "proposal": "Indirect Identifier Combiner",
+  "skill": "indirect_identifier_combiner"
+}
+```
+---
