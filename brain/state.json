@@ -1,104 +1,10 @@
 {
-  "cycle_count": 413,
+  "cycle_count": 414,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-26T12:41:39.503811",
+  "last_run": "2026-08-26T19:43:15.101837",
   "history": [
-    {
-      "cycle_number": 314,
-      "proposal": {
-        "id": "2832ffe4-4cba-4c5d-bb06-f863333e60fb",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Actionable-Step Verifier",
-        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
-        "rationale": "A verification beat is the antidote to ask-accept-move-on",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-01T19:02:02.333077"
-      },
-      "result": "REJECTED",
-      "skill_generated": "actionable_step_verifier",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:actionable_step_verifier",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0023360252380371094
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000012159347534179688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000023365020751953125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.00001430511474609375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000012874603271484375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0008573532104492188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000018835067749023438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-08-01T19:02:02.333761",
-      "error_message": null
-    },
     {
       "cycle_number": 315,
       "proposal": {
@@ -6991,6 +6897,33 @@
       "skill_generated": "one_sided_question_detector",
       "test_results": [],
       "timestamp": "2026-08-26T12:41:39.503811",
+      "error_message": null
+    },
+    {
+      "cycle_number": 414,
+      "proposal": {
+        "id": "21c096d4-b5bf-4109-b2e6-94cdb7998f62",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Actionable-Step Verifier",
+        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
+        "rationale": "A verification beat is the antidote to ask-accept-move-on",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-26T19:43:15.101341"
+      },
+      "result": "REJECTED",
+      "skill_generated": "actionable_step_verifier",
+      "test_results": [],
+      "timestamp": "2026-08-26T19:43:15.101837",
       "error_message": null
     }
   ]
