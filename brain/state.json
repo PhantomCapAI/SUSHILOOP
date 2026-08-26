@@ -1,104 +1,10 @@
 {
-  "cycle_count": 412,
-  "total_skills": 93,
+  "cycle_count": 413,
+  "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-26T06:39:37.104671",
+  "last_run": "2026-08-26T12:41:39.503811",
   "history": [
-    {
-      "cycle_number": 313,
-      "proposal": {
-        "id": "5a019768-ef64-4efe-b0c5-0f0e540a8e6c",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Self-Harm Routing Guard",
-        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
-        "rationale": "A model must scaffold, not substitute, real support",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-01T13:08:44.522502"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "self_harm_routing_guard",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:self_harm_routing_guard",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00044655799865722656
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.00001049041748046875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000021219253540039062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000013589859008789062
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000011920928955078125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0005507469177246094
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000018596649169921875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-08-01T13:08:44.523110",
-      "error_message": null
-    },
     {
       "cycle_number": 314,
       "proposal": {
@@ -7058,6 +6964,33 @@
       "skill_generated": "indirect_identifier_combiner",
       "test_results": [],
       "timestamp": "2026-08-26T06:39:37.104671",
+      "error_message": null
+    },
+    {
+      "cycle_number": 413,
+      "proposal": {
+        "id": "74661608-95b6-4b06-b67a-4ed8f479a595",
+        "proposal_type": "NEW_SKILL",
+        "category": "BIAS_DETECTION",
+        "title": "One-Sided Question Detector",
+        "description": "Detects questions that ask only for support for a position and prompts a steelman of the opposing view",
+        "rationale": "Single-sided queries entrench priors",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-26T12:41:39.503318"
+      },
+      "result": "REJECTED",
+      "skill_generated": "one_sided_question_detector",
+      "test_results": [],
+      "timestamp": "2026-08-26T12:41:39.503811",
       "error_message": null
     }
   ]
