@@ -1,104 +1,10 @@
 {
-  "cycle_count": 415,
+  "cycle_count": 416,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-08-27T06:57:24.463237",
+  "last_run": "2026-08-27T21:39:06.620246",
   "history": [
-    {
-      "cycle_number": 316,
-      "proposal": {
-        "id": "ff58fbb4-582f-4e41-b418-c2fabe9eae54",
-        "proposal_type": "NEW_SKILL",
-        "category": "PII_DETECTION",
-        "title": "Inferred Attribute Protector",
-        "description": "This skill detects and flags instances where AI-generated text infers sensitive personal attributes, such as age, location, or occupation, based on contextual information, to prevent potential privacy breaches and protect human cognition from overreliance on AI.",
-        "rationale": "This skill matters for protecting human cognition because it helps prevent AI from making potentially sensitive inferences about individuals, which could lead to unintended consequences, such as bias or discrimination, and promotes more mindful and critical interaction with AI outputs.",
-        "success_criteria": [
-          "Detection accuracy of inferred attributes",
-          "False positive rate below 5%",
-          "Successful integration with existing PII detection skills"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-02T08:14:23.227829"
-      },
-      "result": "REJECTED",
-      "skill_generated": "inferred_attribute_protector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:inferred_attribute_protector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0021822452545166016
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.775161743164062e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000017642974853515625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.00001239776611328125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000012159347534179688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 7.152557373046875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0008606910705566406
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000016689300537109375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-08-02T08:14:23.229400",
-      "error_message": null
-    },
     {
       "cycle_number": 317,
       "proposal": {
@@ -6857,6 +6763,33 @@
       "skill_generated": "re_ask_loop_breaker",
       "test_results": [],
       "timestamp": "2026-08-27T06:57:24.463237",
+      "error_message": null
+    },
+    {
+      "cycle_number": 416,
+      "proposal": {
+        "id": "08e6d867-773c-4b6e-979c-fa1d06eef87f",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Fabricated Citation Flagger",
+        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
+        "rationale": "Invented citations are the highest-trust hallucination",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-08-27T21:39:06.619767"
+      },
+      "result": "REJECTED",
+      "skill_generated": "fabricated_citation_flagger",
+      "test_results": [],
+      "timestamp": "2026-08-27T21:39:06.620246",
       "error_message": null
     }
   ]
