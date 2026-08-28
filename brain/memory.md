@@ -3742,3 +3742,12 @@
 }
 ```
 ---
+
+## [2026-08-28T08:45:26.786542] Cycle 417: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Harm Routing Guard",
+  "skill": "self_harm_routing_guard"
+}
+```
+---
