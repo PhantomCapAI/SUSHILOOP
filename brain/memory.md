@@ -3769,3 +3769,12 @@
 }
 ```
 ---
+
+## [2026-08-29T12:11:11.367240] Cycle 420: CycleResult.REJECTED
+```json
+{
+  "proposal": "Indirect Identifier Combiner",
+  "skill": "indirect_identifier_combiner"
+}
+```
+---
