@@ -3787,3 +3787,12 @@
 }
 ```
 ---
+
+## [2026-08-30T03:17:32.962669] Cycle 422: CycleResult.REJECTED
+```json
+{
+  "proposal": "Fabricated Citation Flagger",
+  "skill": "fabricated_citation_flagger"
+}
+```
+---
