@@ -3814,3 +3814,12 @@
 }
 ```
 ---
+
+## [2026-08-30T20:27:06.937955] Cycle 425: CycleResult.REJECTED
+```json
+{
+  "proposal": "Unhedged Medical/Legal Claim Filter",
+  "skill": "unhedged_medicallegal_claim_filter"
+}
+```
+---
