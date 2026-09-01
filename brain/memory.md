@@ -3877,3 +3877,12 @@
 }
 ```
 ---
+
+## [2026-09-01T20:27:08.037394] Cycle 432: CycleResult.REJECTED
+```json
+{
+  "proposal": "Fabricated Citation Flagger",
+  "skill": "fabricated_citation_flagger"
+}
+```
+---
