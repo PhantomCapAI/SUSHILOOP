@@ -3850,3 +3850,12 @@
 }
 ```
 ---
+
+## [2026-09-01T03:17:02.200021] Cycle 429: CycleResult.REJECTED
+```json
+{
+  "proposal": "One-Sided Question Detector",
+  "skill": "one_sided_question_detector"
+}
+```
+---
