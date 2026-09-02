@@ -1,104 +1,10 @@
 {
-  "cycle_count": 433,
+  "cycle_count": 434,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-02T02:35:08.270078",
+  "last_run": "2026-09-02T10:29:47.453716",
   "history": [
-    {
-      "cycle_number": 334,
-      "proposal": {
-        "id": "00cc60d5-fa13-4527-8b6c-1180db10c7b7",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Unsubstantiated Supposition Detector",
-        "description": "This skill detects and flags instances where AI-generated text presents unsubstantiated suppositions as facts, prompting users to verify the information through additional research or critical thinking. It identifies phrases that imply certainty without evidence, such as 'it is clear that' or 'obviously', and suggests alternative, more nuanced language.",
-        "rationale": "This skill matters for protecting human cognition because it helps users recognize when AI-generated text may be presenting unverified information as fact, which can lead to the spread of misinformation and undermine critical thinking. By prompting users to verify information, this skill encourages a more discerning approach to evaluating AI-generated content.",
-        "success_criteria": [
-          "Detection accuracy of unsubstantiated suppositions",
-          "Effective prompting of users to verify information",
-          "Reduction in user acceptance of unverified information as fact"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-06T23:54:00.181340"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "unsubstantiated_supposition_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:unsubstantiated_supposition_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.000438690185546875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000022649765014648438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.0000133514404296875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.821487426757812e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0012409687042236328
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000018358230590820312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-08-06T23:54:00.182852",
-      "error_message": null
-    },
     {
       "cycle_number": 335,
       "proposal": {
@@ -5651,6 +5557,33 @@
       "skill_generated": "self_harm_routing_guard",
       "test_results": [],
       "timestamp": "2026-09-02T02:35:08.270078",
+      "error_message": null
+    },
+    {
+      "cycle_number": 434,
+      "proposal": {
+        "id": "42ed000b-c0ae-4c4f-9cf2-23b7b15d9611",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Actionable-Step Verifier",
+        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
+        "rationale": "A verification beat is the antidote to ask-accept-move-on",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-02T10:29:47.453516"
+      },
+      "result": "REJECTED",
+      "skill_generated": "actionable_step_verifier",
+      "test_results": [],
+      "timestamp": "2026-09-02T10:29:47.453716",
       "error_message": null
     }
   ]
