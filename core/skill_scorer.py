@@ -248,7 +248,13 @@ def behavioral_score(skill_name: str) -> Dict[str, Any]:
     robustness = round(10 * valid / n) if n else 0
 
     # discrimination: does blocked/confidence actually differ across inputs?
+    # NOTE: a score of 5 is reachable two different ways — by flipping `blocked`
+    # (+5) OR by a wide confidence spread alone (+5). Those are not equivalent:
+    # a skill whose confidence glides 0.0->0.9 but never sets blocked=True flags
+    # nothing. `blocked_flips` is reported separately so a caller gating on real
+    # detection can require it instead of trusting the collapsed score.
     discrimination = 0
+    distinct_block = False
     if valid >= 2:
         distinct_block = len(set(blocked_flags)) > 1
         conf_spread = (max(confidences) - min(confidences)) if confidences else 0.0
@@ -274,4 +280,5 @@ def behavioral_score(skill_name: str) -> Dict[str, Any]:
     total = robustness + discrimination + calibration
     return {"robustness": robustness, "discrimination": discrimination,
             "calibration": calibration, "behavioral_total": total,
+            "blocked_flips": distinct_block,
             "probes_raised": raised, "probes_valid": valid}

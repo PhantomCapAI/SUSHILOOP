@@ -27,6 +27,16 @@ DIVERSITY_THRESHOLD = 0.30
 MIN_DISCRIMINATION = 5      # out of 10 (scorer emits 0/2/5/7/10)
 MIN_BEHAVIORAL_TOTAL = 18   # out of 30
 
+# MIN_DISCRIMINATION alone does NOT enforce the property it was written for.
+# The scorer awards +5 for flipping `blocked` and, independently, +5 for a wide
+# confidence spread — so a skill that never sets blocked=True on ANY probe still
+# scores exactly 5 on spread alone and clears the floor. That is the precise
+# failure mode the floor exists to stop: measured against the probe battery,
+# 63 of 93 shipped skills flag nothing at all, and 60 of those shipped at
+# discrimination=5. A guardrail that never fires is theater no matter how
+# smoothly its confidence moves, so require the flip explicitly.
+REQUIRE_BLOCKED_FLIP = True
+
 # Best-of-N generation. A single free-tier 70B generation clears the quality
 # gates only ~1-in-8 times, so a single-shot cycle rejects most of the time even
 # though the gates are correct. Generating a few candidates per cycle and keeping
@@ -73,16 +83,28 @@ class SushiLoop:
             beh = score_skill(skill_name, code, test_passed=True).get('behavioral', {})
             disc = beh.get('discrimination', 0)
             btot = beh.get('behavioral_total', 0)
+            flips = bool(beh.get('blocked_flips', False))
             div_ok = (div >= DIVERSITY_THRESHOLD) or not existing
-            passes = div_ok and disc >= MIN_DISCRIMINATION and btot >= MIN_BEHAVIORAL_TOTAL
-            rank = (passes, div_ok, disc, btot, div)
+            flip_ok = flips or not REQUIRE_BLOCKED_FLIP
+            passes = (div_ok and flip_ok
+                      and disc >= MIN_DISCRIMINATION and btot >= MIN_BEHAVIORAL_TOTAL)
+            # Rank prefers a candidate that actually fires over one that merely
+            # scores well, so best-of-N converges on real detection.
+            rank = (passes, div_ok, flip_ok, disc, btot, div)
             logger.info(f"Candidate {attempt}/{GENERATION_ATTEMPTS}: {skill_name} "
-                        f"div={div:.2f} discrim={disc} behavioral={btot} pass={passes}")
+                        f"div={div:.2f} discrim={disc} behavioral={btot} "
+                        f"flips={flips} pass={passes}")
             if best is None or rank > best[0]:
                 best = (rank, skill_name, code)
             if passes:
                 break
             reasons = []
+            if not flip_ok:
+                reasons.append(
+                    "it never returned blocked=True on ANY input — it flags nothing. "
+                    "Lower your blocking threshold and make sure a clear positive "
+                    "(dense PII, an injection attempt, an absolute unhedged claim) "
+                    "returns blocked=True while benign input returns blocked=False")
             if not div_ok:
                 reasons.append(f"too similar to an existing skill (diversity {div:.2f} < {DIVERSITY_THRESHOLD}) — use a genuinely different detection approach and signals")
             if disc < MIN_DISCRIMINATION:
@@ -195,8 +217,14 @@ class SushiLoop:
                 discrimination = behavioral.get('discrimination', 0)
                 behavioral_total = behavioral.get('behavioral_total', 0)
                 behavioral_error = behavioral.get('error')
-                if discrimination < MIN_DISCRIMINATION or behavioral_total < MIN_BEHAVIORAL_TOTAL:
+                blocked_flips = bool(behavioral.get('blocked_flips', False))
+                never_fires = REQUIRE_BLOCKED_FLIP and not blocked_flips
+                if (discrimination < MIN_DISCRIMINATION
+                        or behavioral_total < MIN_BEHAVIORAL_TOTAL
+                        or never_fires):
                     detail = f" (load/run error: {behavioral_error})" if behavioral_error else ""
+                    if never_fires:
+                        detail = " — blocked=True on 0 probes, it flags nothing" + detail
                     logger.warning(
                         f"Behavioral floor: {skill_name} too shallow "
                         f"(discrim={discrimination}<{MIN_DISCRIMINATION} or "
@@ -210,7 +238,9 @@ class SushiLoop:
                         proposal_title=proposal.title,
                         score=score,
                         diversity=diversity,
-                        failure_modes=[f"shallow:discrimination={discrimination},behavioral_total={behavioral_total}"],
+                        failure_modes=[f"shallow:discrimination={discrimination},"
+                                       f"behavioral_total={behavioral_total},"
+                                       f"blocked_flips={blocked_flips}"],
                     )
                     self.git.rollback(branch)
                     history.result = CycleResult.REJECTED
