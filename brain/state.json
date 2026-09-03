@@ -1,104 +1,10 @@
 {
-  "cycle_count": 439,
-  "total_skills": 92,
+  "cycle_count": 440,
+  "total_skills": 93,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-03T15:41:12.068690",
+  "last_run": "2026-09-03T20:25:17.844327",
   "history": [
-    {
-      "cycle_number": 340,
-      "proposal": {
-        "id": "ff76577e-c584-415d-9292-7bafe36d8ed3",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Unsubstantiated Superlative Detector",
-        "description": "This skill detects and flags instances where absolute or superlative language is used without evidence or justification, prompting users to verify the claim. It catches patterns such as 'the best', 'the greatest', or 'the most effective' without accompanying proof or data.",
-        "rationale": "This skill protects human cognition by preventing the spread of unsubstantiated claims and promoting critical thinking. By flagging absolute language, it encourages users to seek out evidence and consider alternative perspectives, rather than relying on unverified assertions.",
-        "success_criteria": [
-          "Detects unsubstantiated superlatives in text",
-          "Prompts user to verify claims with evidence",
-          "Does not falsely flag justified or supported claims"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-08T06:42:57.776162"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "unsubstantiated_superlative_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:unsubstantiated_superlative_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0003731250762939453
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.5367431640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.198883056640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00004935264587402344
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000016689300537109375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 5.4836273193359375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0006487369537353516
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000012874603271484375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-08-08T06:42:57.777587",
-      "error_message": null
-    },
     {
       "cycle_number": 341,
       "proposal": {
@@ -5249,6 +5155,33 @@
       "skill_generated": "re_ask_loop_breaker",
       "test_results": [],
       "timestamp": "2026-09-03T15:41:12.068690",
+      "error_message": null
+    },
+    {
+      "cycle_number": 440,
+      "proposal": {
+        "id": "73ee1cc3-7e42-40dd-9018-827030f0ce78",
+        "proposal_type": "NEW_SKILL",
+        "category": "COGNITIVE_PROTECTION",
+        "title": "Effortless-Answer Warner",
+        "description": "Detects requests to fully outsource a task the user could reason through, and offers a scaffold instead of a finished answer",
+        "rationale": "Doing all the thinking replaces the user one decision at a time",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-03T20:25:17.843894"
+      },
+      "result": "REJECTED",
+      "skill_generated": "effortless_answer_warner",
+      "test_results": [],
+      "timestamp": "2026-09-03T20:25:17.844327",
       "error_message": null
     }
   ]
