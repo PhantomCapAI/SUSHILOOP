@@ -1,104 +1,10 @@
 {
-  "cycle_count": 437,
+  "cycle_count": 438,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-03T02:42:00.390980",
+  "last_run": "2026-09-03T10:35:26.022076",
   "history": [
-    {
-      "cycle_number": 338,
-      "proposal": {
-        "id": "9bd378c8-2f55-486a-a32d-b0afa734c357",
-        "proposal_type": "NEW_SKILL",
-        "category": "OUTPUT_FILTERING",
-        "title": "Fabricated Citation Flagger",
-        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
-        "rationale": "Invented citations are the highest-trust hallucination",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-07T18:48:42.910787"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "fabricated_citation_flagger",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:fabricated_citation_flagger",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0011098384857177734
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.5367431640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000023365020751953125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000016450881958007812
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000017881393432617188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000011444091796875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0014367103576660156
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000021696090698242188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-08-07T18:48:42.911457",
-      "error_message": null
-    },
     {
       "cycle_number": 339,
       "proposal": {
@@ -5383,6 +5289,33 @@
       "skill_generated": "self_harm_routing_guard",
       "test_results": [],
       "timestamp": "2026-09-03T02:42:00.390980",
+      "error_message": null
+    },
+    {
+      "cycle_number": 438,
+      "proposal": {
+        "id": "958d986a-14b5-4212-86fb-753c400ee245",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Fabricated Citation Flagger",
+        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
+        "rationale": "Invented citations are the highest-trust hallucination",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-03T10:35:26.021627"
+      },
+      "result": "REJECTED",
+      "skill_generated": "fabricated_citation_flagger",
+      "test_results": [],
+      "timestamp": "2026-09-03T10:35:26.022076",
       "error_message": null
     }
   ]
