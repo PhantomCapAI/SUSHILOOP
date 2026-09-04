@@ -1,37 +1,10 @@
 {
-  "cycle_count": 441,
+  "cycle_count": 442,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-04T02:38:56.370400",
+  "last_run": "2026-09-04T10:27:42.667711",
   "history": [
-    {
-      "cycle_number": 342,
-      "proposal": {
-        "id": "e1332f1d-12e0-45f5-9f4e-fb0564d6e634",
-        "proposal_type": "NEW_SKILL",
-        "category": "PII_DETECTION",
-        "title": "Indirect Identifier Combiner",
-        "description": "Flags inputs where several non-PII fields (ZIP, birth year, job) combine into a re-identifiable fingerprint",
-        "rationale": "Quasi-identifiers leak identity even when no single field is PII",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-08T18:30:18.042144"
-      },
-      "result": "REJECTED",
-      "skill_generated": "indirect_identifier_combiner",
-      "test_results": [],
-      "timestamp": "2026-08-08T18:30:18.042841",
-      "error_message": null
-    },
     {
       "cycle_number": 343,
       "proposal": {
@@ -5115,6 +5088,33 @@
       "skill_generated": "unhedged_medicallegal_claim_filter",
       "test_results": [],
       "timestamp": "2026-09-04T02:38:56.370400",
+      "error_message": null
+    },
+    {
+      "cycle_number": 442,
+      "proposal": {
+        "id": "012c2d42-ef15-44f6-89ef-2d98d01c6ef4",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Deliberation-Pace Nudger",
+        "description": "Distinguishes rapid-fire dependent querying from deliberate use and adds a soft, overridable pause",
+        "rationale": "Compulsive querying forms dependency loops",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-04T10:27:42.667420"
+      },
+      "result": "REJECTED",
+      "skill_generated": "deliberation_pace_nudger",
+      "test_results": [],
+      "timestamp": "2026-09-04T10:27:42.667711",
       "error_message": null
     }
   ]

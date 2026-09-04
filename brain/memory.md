@@ -3967,3 +3967,12 @@
 }
 ```
 ---
+
+## [2026-09-04T10:27:43.397870] Cycle 442: CycleResult.REJECTED
+```json
+{
+  "proposal": "Deliberation-Pace Nudger",
+  "skill": "deliberation_pace_nudger"
+}
+```
+---
