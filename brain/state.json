@@ -1,104 +1,10 @@
 {
-  "cycle_count": 440,
-  "total_skills": 93,
+  "cycle_count": 441,
+  "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-03T20:25:17.844327",
+  "last_run": "2026-09-04T02:38:56.370400",
   "history": [
-    {
-      "cycle_number": 341,
-      "proposal": {
-        "id": "e2aac5ec-7e57-4d17-89b7-cd384225f9d5",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Consecutive Inference Throttler",
-        "description": "This skill detects and limits consecutive AI inferences on the same topic or question, preventing over-reliance on AI and encouraging human reflection and critical thinking. It throttles the AI response rate after a specified number of consecutive inferences, prompting the user to review and analyze the information before proceeding.",
-        "rationale": "This skill matters for protecting human cognition because it prevents the formation of a habit of relying solely on AI for answers, instead promoting a balance between AI assistance and human critical thinking. By throttling consecutive inferences, it encourages users to engage more deeply with the information and develop their own understanding, rather than simply accepting AI-generated responses.",
-        "success_criteria": [
-          "Reduces consecutive AI inferences on the same topic",
-          "Increases user engagement with AI-generated responses",
-          "Prompts users to reflect on and analyze information before proceeding"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-08T12:37:31.377562"
-      },
-      "result": "REJECTED",
-      "skill_generated": "consecutive_inference_throttler",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:consecutive_inference_throttler",
-          "message": "import + callable OK",
-          "duration_seconds": 0.001833200454711914
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.059906005859375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00002384185791015625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000015735626220703125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000015497207641601562
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000010251998901367188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0010581016540527344
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000019073486328125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-08-08T12:37:31.378996",
-      "error_message": null
-    },
     {
       "cycle_number": 342,
       "proposal": {
@@ -5182,6 +5088,33 @@
       "skill_generated": "effortless_answer_warner",
       "test_results": [],
       "timestamp": "2026-09-03T20:25:17.844327",
+      "error_message": null
+    },
+    {
+      "cycle_number": 441,
+      "proposal": {
+        "id": "d4c6bc53-96c1-4a0b-b515-6fca2917a5f3",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Unhedged Medical/Legal Claim Filter",
+        "description": "Flags AI output giving medical or legal directives without a verify-with-a-professional caveat",
+        "rationale": "Directive high-stakes advice invites cognitive surrender",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-04T02:38:56.369886"
+      },
+      "result": "REJECTED",
+      "skill_generated": "unhedged_medicallegal_claim_filter",
+      "test_results": [],
+      "timestamp": "2026-09-04T02:38:56.370400",
       "error_message": null
     }
   ]
