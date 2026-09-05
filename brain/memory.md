@@ -4012,3 +4012,12 @@
 }
 ```
 ---
+
+## [2026-09-05T14:27:52.859912] Cycle 447: CycleResult.REJECTED
+```json
+{
+  "proposal": "Re-ask Loop Breaker",
+  "skill": "re_ask_loop_breaker"
+}
+```
+---

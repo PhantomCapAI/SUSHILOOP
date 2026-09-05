@@ -1,104 +1,10 @@
 {
-  "cycle_count": 446,
+  "cycle_count": 447,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-05T09:52:52.342547",
+  "last_run": "2026-09-05T14:27:52.519586",
   "history": [
-    {
-      "cycle_number": 347,
-      "proposal": {
-        "id": "6ea2cd8e-36d1-45be-9129-bb872592a440",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Ambiguous Assumption Clarifier",
-        "description": "This skill detects and prompts users to clarify ambiguous assumptions in their input, helping to prevent AI from making uninformed decisions. It identifies phrases that imply uncertainty or ambiguity, such as 'possibly', 'maybe', or 'it seems', and prompts the user to provide more context or confirmation.",
-        "rationale": "This skill matters for protecting human cognition because it encourages users to think critically about their assumptions and provide more accurate information, rather than relying on AI to make assumptions or fill in gaps. By clarifying ambiguous assumptions, users can make more informed decisions and avoid potential pitfalls.",
-        "success_criteria": [
-          "Detects ambiguous assumptions in user input",
-          "Prompts user to clarify or confirm assumptions",
-          "Reduces instances of AI making uninformed decisions"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-10T01:20:47.279491"
-      },
-      "result": "REJECTED",
-      "skill_generated": "ambiguous_assumption_clarifier",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:ambiguous_assumption_clarifier",
-          "message": "import + callable OK",
-          "duration_seconds": 0.001416921615600586
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.00001621246337890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000018358230590820312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.00001049041748046875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.00001049041748046875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0007274150848388672
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000034809112548828125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.86102294921875e-6
-        }
-      ],
-      "timestamp": "2026-08-10T01:20:47.280938",
-      "error_message": null
-    },
     {
       "cycle_number": 348,
       "proposal": {
@@ -4847,6 +4753,33 @@
       "skill_generated": "actionable_step_verifier",
       "test_results": [],
       "timestamp": "2026-09-05T09:52:52.342547",
+      "error_message": null
+    },
+    {
+      "cycle_number": 447,
+      "proposal": {
+        "id": "f8c1a6a5-c409-4272-ae14-e2e792b161ac",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Re-ask Loop Breaker",
+        "description": "Detects the user re-asking the same thing in slightly different words and suggests stepping back to think",
+        "rationale": "Re-ask loops signal offloading, not progress",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-05T14:27:52.519228"
+      },
+      "result": "REJECTED",
+      "skill_generated": "re_ask_loop_breaker",
+      "test_results": [],
+      "timestamp": "2026-09-05T14:27:52.519586",
       "error_message": null
     }
   ]
