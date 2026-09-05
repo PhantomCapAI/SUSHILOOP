@@ -1,104 +1,10 @@
 {
-  "cycle_count": 447,
+  "cycle_count": 448,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-05T14:27:52.519586",
+  "last_run": "2026-09-05T19:50:59.600989",
   "history": [
-    {
-      "cycle_number": 348,
-      "proposal": {
-        "id": "f5bf4919-0fcf-4ef7-bc5d-182a089e6f48",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Deliberation-Pace Nudger",
-        "description": "Distinguishes rapid-fire dependent querying from deliberate use and adds a soft, overridable pause",
-        "rationale": "Compulsive querying forms dependency loops",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-10T07:22:27.855896"
-      },
-      "result": "REJECTED",
-      "skill_generated": "deliberation_pace_nudger",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:deliberation_pace_nudger",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00039124488830566406
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.298324584960938e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.198883056640625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.00001049041748046875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 5.4836273193359375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 4.76837158203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.000018596649169921875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 7.62939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-08-10T07:22:27.856526",
-      "error_message": null
-    },
     {
       "cycle_number": 349,
       "proposal": {
@@ -4780,6 +4686,33 @@
       "skill_generated": "re_ask_loop_breaker",
       "test_results": [],
       "timestamp": "2026-09-05T14:27:52.519586",
+      "error_message": null
+    },
+    {
+      "cycle_number": 448,
+      "proposal": {
+        "id": "d7dea4b9-e2e3-4215-ac52-5ded664a7f33",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Fabricated Citation Flagger",
+        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
+        "rationale": "Invented citations are the highest-trust hallucination",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-05T19:50:59.600530"
+      },
+      "result": "REJECTED",
+      "skill_generated": "fabricated_citation_flagger",
+      "test_results": [],
+      "timestamp": "2026-09-05T19:50:59.600989",
       "error_message": null
     }
   ]

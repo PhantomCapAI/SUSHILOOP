@@ -4021,3 +4021,12 @@
 }
 ```
 ---
+
+## [2026-09-05T19:50:59.935650] Cycle 448: CycleResult.REJECTED
+```json
+{
+  "proposal": "Fabricated Citation Flagger",
+  "skill": "fabricated_citation_flagger"
+}
+```
+---
