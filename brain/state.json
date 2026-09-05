@@ -1,104 +1,10 @@
 {
-  "cycle_count": 445,
+  "cycle_count": 446,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-05T02:41:05.346971",
+  "last_run": "2026-09-05T09:52:52.342547",
   "history": [
-    {
-      "cycle_number": 346,
-      "proposal": {
-        "id": "f824c611-c410-4a6a-a66d-3aff93891654",
-        "proposal_type": "NEW_SKILL",
-        "category": "OUTPUT_FILTERING",
-        "title": "Fabricated Citation Flagger",
-        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
-        "rationale": "Invented citations are the highest-trust hallucination",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-09T18:33:19.100874"
-      },
-      "result": "SUCCESS",
-      "skill_generated": "fabricated_citation_flagger",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:fabricated_citation_flagger",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00045990943908691406
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010728836059570312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.67572021484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.0000286102294921875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.0000152587890625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 8.58306884765625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0007915496826171875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.000019788742065429688
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        }
-      ],
-      "timestamp": "2026-08-09T18:33:19.101661",
-      "error_message": null
-    },
     {
       "cycle_number": 347,
       "proposal": {
@@ -4914,6 +4820,33 @@
       "skill_generated": "one_sided_question_detector",
       "test_results": [],
       "timestamp": "2026-09-05T02:41:05.346971",
+      "error_message": null
+    },
+    {
+      "cycle_number": 446,
+      "proposal": {
+        "id": "3ff55ba5-0bcf-4f55-a5ca-fcf814785694",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Actionable-Step Verifier",
+        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
+        "rationale": "A verification beat is the antidote to ask-accept-move-on",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-05T09:52:52.342171"
+      },
+      "result": "REJECTED",
+      "skill_generated": "actionable_step_verifier",
+      "test_results": [],
+      "timestamp": "2026-09-05T09:52:52.342547",
       "error_message": null
     }
   ]
