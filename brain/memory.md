@@ -4030,3 +4030,12 @@
 }
 ```
 ---
+
+## [2026-09-06T02:37:25.170819] Cycle 449: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Harm Routing Guard",
+  "skill": "self_harm_routing_guard"
+}
+```
+---
