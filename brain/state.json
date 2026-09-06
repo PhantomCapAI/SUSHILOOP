@@ -1,37 +1,10 @@
 {
-  "cycle_count": 451,
-  "total_skills": 92,
+  "cycle_count": 452,
+  "total_skills": 93,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-06T14:49:37.663661",
+  "last_run": "2026-09-06T19:54:42.984859",
   "history": [
-    {
-      "cycle_number": 352,
-      "proposal": {
-        "id": "fd574204-00ec-4ed3-99e0-d45b44af6590",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Escalation Advice Detector",
-        "description": "Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat",
-        "rationale": "High-arousal advice short-circuits deliberation",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-11T06:58:22.731375"
-      },
-      "result": "REJECTED",
-      "skill_generated": "escalation_advice_detector",
-      "test_results": [],
-      "timestamp": "2026-08-11T06:58:22.732109",
-      "error_message": null
-    },
     {
       "cycle_number": 353,
       "proposal": {
@@ -4579,6 +4552,33 @@
       "skill_generated": "re_ask_loop_breaker",
       "test_results": [],
       "timestamp": "2026-09-06T14:49:37.663661",
+      "error_message": null
+    },
+    {
+      "cycle_number": 452,
+      "proposal": {
+        "id": "d39d4d82-cfa9-4a33-bcb8-edb8ae85f685",
+        "proposal_type": "NEW_SKILL",
+        "category": "PII_DETECTION",
+        "title": "Indirect Identifier Combiner",
+        "description": "Flags inputs where several non-PII fields (ZIP, birth year, job) combine into a re-identifiable fingerprint",
+        "rationale": "Quasi-identifiers leak identity even when no single field is PII",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-06T19:54:42.984467"
+      },
+      "result": "REJECTED",
+      "skill_generated": "indirect_identifier_combiner",
+      "test_results": [],
+      "timestamp": "2026-09-06T19:54:42.984859",
       "error_message": null
     }
   ]
