@@ -1,104 +1,10 @@
 {
-  "cycle_count": 453,
+  "cycle_count": 454,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-07T02:35:07.242700",
+  "last_run": "2026-09-07T11:25:57.493090",
   "history": [
-    {
-      "cycle_number": 354,
-      "proposal": {
-        "id": "c798cbea-5de5-4f8b-a189-3d837b827b7b",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Sequential Dependency Detector",
-        "description": "This skill detects when a user is relying too heavily on AI-generated responses by identifying sequential dependencies in their queries, where each new question is heavily influenced by the previous AI response. It limits the rate at which such dependent queries can be made.",
-        "rationale": "This matters for protecting human cognition because it encourages users to think critically about their questions and not simply rely on AI to generate a series of follow-up queries, thereby potentially undermining their own thought process and problem-solving abilities.",
-        "success_criteria": [
-          "Detection accuracy of sequential dependencies exceeds 80%",
-          "Rate limiting effectively reduces dependent queries without hindering legitimate use",
-          "User feedback indicates improved critical thinking and reduced overreliance on AI"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-11T18:56:05.728529"
-      },
-      "result": "REJECTED",
-      "skill_generated": "sequential_dependency_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:sequential_dependency_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0004417896270751953
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000010728836059570312
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000011205673217773438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 5.7220458984375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 5.245208740234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 3.0994415283203125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 3.337860107421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.000021457672119140625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 8.344650268554688e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.1457672119140625e-6
-        }
-      ],
-      "timestamp": "2026-08-11T18:56:05.730192",
-      "error_message": null
-    },
     {
       "cycle_number": 355,
       "proposal": {
@@ -4512,6 +4418,33 @@
       "skill_generated": "self_harm_routing_guard",
       "test_results": [],
       "timestamp": "2026-09-07T02:35:07.242700",
+      "error_message": null
+    },
+    {
+      "cycle_number": 454,
+      "proposal": {
+        "id": "8ac61048-51f4-45d5-8990-5c9716126b5c",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Fabricated Citation Flagger",
+        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
+        "rationale": "Invented citations are the highest-trust hallucination",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-07T11:25:57.492715"
+      },
+      "result": "REJECTED",
+      "skill_generated": "fabricated_citation_flagger",
+      "test_results": [],
+      "timestamp": "2026-09-07T11:25:57.493090",
       "error_message": null
     }
   ]

@@ -4075,3 +4075,12 @@
 }
 ```
 ---
+
+## [2026-09-07T11:25:57.744925] Cycle 454: CycleResult.REJECTED
+```json
+{
+  "proposal": "Fabricated Citation Flagger",
+  "skill": "fabricated_citation_flagger"
+}
+```
+---
