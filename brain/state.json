@@ -1,104 +1,10 @@
 {
-  "cycle_count": 461,
+  "cycle_count": 462,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-09T02:47:31.424936",
+  "last_run": "2026-09-09T10:40:21.156025",
   "history": [
-    {
-      "cycle_number": 362,
-      "proposal": {
-        "id": "add42397-ac82-44b3-b060-e9a36725848b",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "Undue Emphasis Detector",
-        "description": "This skill detects when AI-generated content places undue emphasis on specific aspects of a topic, potentially leading to an unbalanced or biased view, and alerts the user to consider multiple perspectives.",
-        "rationale": "Protecting human cognition from AI overreliance requires ensuring that users are exposed to balanced and nuanced information, rather than being swayed by AI-generated content that may prioritize certain viewpoints over others, potentially leading to cognitive biases and distorted decision-making.",
-        "success_criteria": [
-          "Detects undue emphasis in AI-generated text",
-          "Provides user alerts with suggested alternative perspectives",
-          "Integrates with existing SUSHILOOP guardrails for comprehensive protection"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-13T18:56:32.174791"
-      },
-      "result": "REJECTED",
-      "skill_generated": "undue_emphasis_detector",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:undue_emphasis_detector",
-          "message": "import + callable OK",
-          "duration_seconds": 0.0022339820861816406
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 9.775161743164062e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.9141387939453125e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000028371810913085938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 0.000018596649169921875
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 0.000024318695068359375
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 0.000013113021850585938
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.0036258697509765625
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 0.00002765655517578125
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-08-13T18:56:32.176415",
-      "error_message": null
-    },
     {
       "cycle_number": 363,
       "proposal": {
@@ -4043,6 +3949,33 @@
       "skill_generated": "one_sided_question_detector",
       "test_results": [],
       "timestamp": "2026-09-09T02:47:31.424936",
+      "error_message": null
+    },
+    {
+      "cycle_number": 462,
+      "proposal": {
+        "id": "be8b49ff-66da-4cef-833e-dff5538c7bf4",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Actionable-Step Verifier",
+        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
+        "rationale": "A verification beat is the antidote to ask-accept-move-on",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-09T10:40:21.155590"
+      },
+      "result": "REJECTED",
+      "skill_generated": "actionable_step_verifier",
+      "test_results": [],
+      "timestamp": "2026-09-09T10:40:21.156025",
       "error_message": null
     }
   ]
