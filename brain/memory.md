@@ -4219,3 +4219,12 @@
 }
 ```
 ---
+
+## [2026-09-11T10:30:34.402621] Cycle 470: CycleResult.REJECTED
+```json
+{
+  "proposal": "Fabricated Citation Flagger",
+  "skill": "fabricated_citation_flagger"
+}
+```
+---
