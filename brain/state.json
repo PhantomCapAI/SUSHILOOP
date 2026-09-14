@@ -1,37 +1,10 @@
 {
-  "cycle_count": 480,
+  "cycle_count": 481,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-13T20:12:28.455826",
+  "last_run": "2026-09-14T03:05:15.178257",
   "history": [
-    {
-      "cycle_number": 381,
-      "proposal": {
-        "id": "dea14c9e-c43b-486a-8702-599084bad641",
-        "proposal_type": "NEW_SKILL",
-        "category": "BIAS_DETECTION",
-        "title": "One-Sided Question Detector",
-        "description": "Detects questions that ask only for support for a position and prompts a steelman of the opposing view",
-        "rationale": "Single-sided queries entrench priors",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-18T12:35:48.643927"
-      },
-      "result": "REJECTED",
-      "skill_generated": "one_sided_question_detector",
-      "test_results": [],
-      "timestamp": "2026-08-18T12:35:48.644625",
-      "error_message": null
-    },
     {
       "cycle_number": 382,
       "proposal": {
@@ -2971,6 +2944,33 @@
       "skill_generated": "fabricated_citation_flagger",
       "test_results": [],
       "timestamp": "2026-09-13T20:12:28.455826",
+      "error_message": null
+    },
+    {
+      "cycle_number": 481,
+      "proposal": {
+        "id": "c8461d21-32b8-46c9-b833-6cc1019fdc73",
+        "proposal_type": "NEW_SKILL",
+        "category": "CONTENT_SAFETY",
+        "title": "Self-Harm Routing Guard",
+        "description": "Detects distress signals and ensures the path to human/professional support is surfaced, never replaced by the model",
+        "rationale": "A model must scaffold, not substitute, real support",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-14T03:05:15.178145"
+      },
+      "result": "REJECTED",
+      "skill_generated": "self_harm_routing_guard",
+      "test_results": [],
+      "timestamp": "2026-09-14T03:05:15.178257",
       "error_message": null
     }
   ]
