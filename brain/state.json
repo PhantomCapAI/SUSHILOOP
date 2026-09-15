@@ -1,37 +1,10 @@
 {
-  "cycle_count": 485,
+  "cycle_count": 486,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-15T03:07:02.998965",
+  "last_run": "2026-09-15T10:57:57.364287",
   "history": [
-    {
-      "cycle_number": 386,
-      "proposal": {
-        "id": "688b64b4-cf5c-468f-9072-df7e8004aafe",
-        "proposal_type": "NEW_SKILL",
-        "category": "CONTENT_SAFETY",
-        "title": "Escalation Advice Detector",
-        "description": "Flags output that counsels confrontation, retaliation, or risky physical action and surfaces a cool-down beat",
-        "rationale": "High-arousal advice short-circuits deliberation",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-19T18:27:22.486790"
-      },
-      "result": "REJECTED",
-      "skill_generated": "escalation_advice_detector",
-      "test_results": [],
-      "timestamp": "2026-08-19T18:27:22.487466",
-      "error_message": null
-    },
     {
       "cycle_number": 387,
       "proposal": {
@@ -2837,6 +2810,33 @@
       "skill_generated": "self_harm_routing_guard",
       "test_results": [],
       "timestamp": "2026-09-15T03:07:02.998965",
+      "error_message": null
+    },
+    {
+      "cycle_number": 486,
+      "proposal": {
+        "id": "44a07466-b0cc-49ab-80de-9b10dab0e5dd",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Fabricated Citation Flagger",
+        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
+        "rationale": "Invented citations are the highest-trust hallucination",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-15T10:57:57.364137"
+      },
+      "result": "REJECTED",
+      "skill_generated": "fabricated_citation_flagger",
+      "test_results": [],
+      "timestamp": "2026-09-15T10:57:57.364287",
       "error_message": null
     }
   ]
