@@ -4354,3 +4354,12 @@
 }
 ```
 ---
+
+## [2026-09-15T03:07:03.595083] Cycle 485: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Harm Routing Guard",
+  "skill": "self_harm_routing_guard"
+}
+```
+---
