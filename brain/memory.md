@@ -4399,3 +4399,12 @@
 }
 ```
 ---
+
+## [2026-09-16T10:45:04.530724] Cycle 490: CycleResult.REJECTED
+```json
+{
+  "proposal": "Deliberation-Pace Nudger",
+  "skill": "deliberation_pace_nudger"
+}
+```
+---
