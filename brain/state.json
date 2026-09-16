@@ -1,104 +1,10 @@
 {
-  "cycle_count": 488,
-  "total_skills": 93,
+  "cycle_count": 489,
+  "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-15T20:47:54.375579",
+  "last_run": "2026-09-16T03:03:38.400626",
   "history": [
-    {
-      "cycle_number": 389,
-      "proposal": {
-        "id": "41b0edfe-a886-489f-999b-9b98995a2f56",
-        "proposal_type": "NEW_SKILL",
-        "category": "VERIFICATION_PROMPT",
-        "title": "Number-Claim Spotlighter",
-        "description": "Highlights specific figures in output and asks the user to confirm the source before relying on them",
-        "rationale": "Numbers feel authoritative and get accepted unchecked",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-20T12:37:43.651530"
-      },
-      "result": "REJECTED",
-      "skill_generated": "number_claim_spotlighter",
-      "test_results": [
-        {
-          "passed": true,
-          "test_name": "import:number_claim_spotlighter",
-          "message": "import + callable OK",
-          "duration_seconds": 0.00044083595275878906
-        },
-        {
-          "passed": true,
-          "test_name": "edge:empty_string",
-          "message": "ok",
-          "duration_seconds": 0.000011205673217773438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:whitespace_only",
-          "message": "ok",
-          "duration_seconds": 6.4373016357421875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_char",
-          "message": "ok",
-          "duration_seconds": 0.000011205673217773438
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_word",
-          "message": "ok",
-          "duration_seconds": 5.245208740234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:single_sentence_no_punct",
-          "message": "ok",
-          "duration_seconds": 4.5299530029296875e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:none_input",
-          "message": "ok",
-          "duration_seconds": 2.384185791015625e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:numeric_like",
-          "message": "ok",
-          "duration_seconds": 3.5762786865234375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:very_long",
-          "message": "ok",
-          "duration_seconds": 0.000021696090698242188
-        },
-        {
-          "passed": true,
-          "test_name": "edge:unicode",
-          "message": "ok",
-          "duration_seconds": 7.3909759521484375e-6
-        },
-        {
-          "passed": true,
-          "test_name": "edge:newlines_only",
-          "message": "ok",
-          "duration_seconds": 2.6226043701171875e-6
-        }
-      ],
-      "timestamp": "2026-08-20T12:37:43.652267",
-      "error_message": null
-    },
     {
       "cycle_number": 390,
       "proposal": {
@@ -2837,6 +2743,33 @@
       "skill_generated": "effortless_answer_warner",
       "test_results": [],
       "timestamp": "2026-09-15T20:47:54.375579",
+      "error_message": null
+    },
+    {
+      "cycle_number": 489,
+      "proposal": {
+        "id": "d46b5434-5ac0-411a-92bd-c43c47d4cc10",
+        "proposal_type": "NEW_SKILL",
+        "category": "OUTPUT_FILTERING",
+        "title": "Unhedged Medical/Legal Claim Filter",
+        "description": "Flags AI output giving medical or legal directives without a verify-with-a-professional caveat",
+        "rationale": "Directive high-stakes advice invites cognitive surrender",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-16T03:03:38.400277"
+      },
+      "result": "REJECTED",
+      "skill_generated": "unhedged_medicallegal_claim_filter",
+      "test_results": [],
+      "timestamp": "2026-09-16T03:03:38.400626",
       "error_message": null
     }
   ]
