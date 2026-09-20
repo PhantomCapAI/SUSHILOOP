@@ -4543,3 +4543,12 @@
 }
 ```
 ---
+
+## [2026-09-20T10:31:02.753799] Cycle 506: CycleResult.REJECTED
+```json
+{
+  "proposal": "Deliberation-Pace Nudger",
+  "skill": "deliberation_pace_nudger"
+}
+```
+---

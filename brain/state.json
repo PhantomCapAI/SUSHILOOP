@@ -1,37 +1,10 @@
 {
-  "cycle_count": 505,
+  "cycle_count": 506,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-20T03:05:26.508610",
+  "last_run": "2026-09-20T10:31:02.305505",
   "history": [
-    {
-      "cycle_number": 406,
-      "proposal": {
-        "id": "2cfe6370-4db1-46ca-9740-ac5e9e60df05",
-        "proposal_type": "NEW_SKILL",
-        "category": "OUTPUT_FILTERING",
-        "title": "Fabricated Citation Flagger",
-        "description": "Flags AI output that cites sources, DOIs, or case names in a format that is plausible but unverifiable",
-        "rationale": "Invented citations are the highest-trust hallucination",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-24T18:32:55.077198"
-      },
-      "result": "REJECTED",
-      "skill_generated": "fabricated_citation_flagger",
-      "test_results": [],
-      "timestamp": "2026-08-24T18:32:55.077973",
-      "error_message": null
-    },
     {
       "cycle_number": 407,
       "proposal": {
@@ -2703,6 +2676,33 @@
       "skill_generated": "unhedged_medicallegal_claim_filter",
       "test_results": [],
       "timestamp": "2026-09-20T03:05:26.508610",
+      "error_message": null
+    },
+    {
+      "cycle_number": 506,
+      "proposal": {
+        "id": "d369f8b3-5fee-4ed1-b491-4ddb67eae4d1",
+        "proposal_type": "NEW_SKILL",
+        "category": "RATE_LIMITING",
+        "title": "Deliberation-Pace Nudger",
+        "description": "Distinguishes rapid-fire dependent querying from deliberate use and adds a soft, overridable pause",
+        "rationale": "Compulsive querying forms dependency loops",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-20T10:31:02.305361"
+      },
+      "result": "REJECTED",
+      "skill_generated": "deliberation_pace_nudger",
+      "test_results": [],
+      "timestamp": "2026-09-20T10:31:02.305505",
       "error_message": null
     }
   ]
