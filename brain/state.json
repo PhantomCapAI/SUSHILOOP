@@ -1,37 +1,10 @@
 {
-  "cycle_count": 509,
+  "cycle_count": 510,
   "total_skills": 92,
   "success_count": 106,
   "failure_count": 8,
-  "last_run": "2026-09-21T03:02:03.189066",
+  "last_run": "2026-09-21T11:49:53.259521",
   "history": [
-    {
-      "cycle_number": 410,
-      "proposal": {
-        "id": "c8bcbc42-49d1-4c63-a59a-70b2e96960ec",
-        "proposal_type": "NEW_SKILL",
-        "category": "RATE_LIMITING",
-        "title": "Deliberation-Pace Nudger",
-        "description": "Distinguishes rapid-fire dependent querying from deliberate use and adds a soft, overridable pause",
-        "rationale": "Compulsive querying forms dependency loops",
-        "success_criteria": [
-          "Catches the target pattern",
-          "Returns reason + confidence",
-          "Low false-positive rate"
-        ],
-        "tests_required": [
-          "auto"
-        ],
-        "estimated_complexity": 5,
-        "rollback_plan": "Delete file from skills/",
-        "created_at": "2026-08-25T18:33:05.724290"
-      },
-      "result": "REJECTED",
-      "skill_generated": "deliberation_pace_nudger",
-      "test_results": [],
-      "timestamp": "2026-08-25T18:33:05.724840",
-      "error_message": null
-    },
     {
       "cycle_number": 411,
       "proposal": {
@@ -2703,6 +2676,33 @@
       "skill_generated": "one_sided_question_detector",
       "test_results": [],
       "timestamp": "2026-09-21T03:02:03.189066",
+      "error_message": null
+    },
+    {
+      "cycle_number": 510,
+      "proposal": {
+        "id": "603ec5e7-02e6-415a-8268-ee628a098960",
+        "proposal_type": "NEW_SKILL",
+        "category": "VERIFICATION_PROMPT",
+        "title": "Actionable-Step Verifier",
+        "description": "When output contains concrete steps the user will act on, injects a short 'verify these before acting' checkpoint",
+        "rationale": "A verification beat is the antidote to ask-accept-move-on",
+        "success_criteria": [
+          "Catches the target pattern",
+          "Returns reason + confidence",
+          "Low false-positive rate"
+        ],
+        "tests_required": [
+          "auto"
+        ],
+        "estimated_complexity": 5,
+        "rollback_plan": "Delete file from skills/",
+        "created_at": "2026-09-21T11:49:53.259240"
+      },
+      "result": "REJECTED",
+      "skill_generated": "actionable_step_verifier",
+      "test_results": [],
+      "timestamp": "2026-09-21T11:49:53.259521",
       "error_message": null
     }
   ]
