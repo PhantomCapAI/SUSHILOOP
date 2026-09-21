@@ -4588,3 +4588,12 @@
 }
 ```
 ---
+
+## [2026-09-21T17:44:57.753014] Cycle 511: CycleResult.REJECTED
+```json
+{
+  "proposal": "Re-ask Loop Breaker",
+  "skill": "re_ask_loop_breaker"
+}
+```
+---
