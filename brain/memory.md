@@ -4597,3 +4597,12 @@
 }
 ```
 ---
+
+## [2026-09-21T21:37:35.597034] Cycle 512: CycleResult.REJECTED
+```json
+{
+  "proposal": "Fabricated Citation Flagger",
+  "skill": "fabricated_citation_flagger"
+}
+```
+---
