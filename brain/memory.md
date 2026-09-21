@@ -4570,3 +4570,12 @@
 }
 ```
 ---
+
+## [2026-09-21T03:02:03.601435] Cycle 509: CycleResult.REJECTED
+```json
+{
+  "proposal": "One-Sided Question Detector",
+  "skill": "one_sided_question_detector"
+}
+```
+---
