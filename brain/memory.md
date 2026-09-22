@@ -4606,3 +4606,12 @@
 }
 ```
 ---
+
+## [2026-09-22T03:01:51.408284] Cycle 513: CycleResult.REJECTED
+```json
+{
+  "proposal": "Self-Harm Routing Guard",
+  "skill": "self_harm_routing_guard"
+}
+```
+---
